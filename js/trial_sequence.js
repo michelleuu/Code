@@ -101,9 +101,11 @@ export function buildTrialSequence(selectionFn) {
   };
 
   /* ---- 2a. Text-input task (NS / LS) ---- */
+  // Used for Number Series and Letter Series tasks — participant types a text answer.
   const taskInput = {
     type: jsPsychSurveyText,
     preamble: function () {
+      // Look up the selected task in the bank to get its stem (the question text)
       const task = window.TRIAL_BANK_FULL.find(
         (t) => t.id === trial.currentSelection?.bankId,
       );
@@ -111,7 +113,7 @@ export function buildTrialSequence(selectionFn) {
       const stem =
         task.stimulus?.item?.stem ||
         "(Stem not available — fill from MITRE item bank)";
-      const surface = task.name?.split(" ")[0] || "";
+      const surface = task.name?.split(" ")[0] || ""; // e.g. "NS", "LS"
       return `
         <div id="task-screen">
           <div class="task-label">${surface} Task</div>
@@ -140,10 +142,10 @@ export function buildTrialSequence(selectionFn) {
         ],
     on_load: function () {
       startStageTracking("task", stageData.task.moves, stageData.task.clicks);
-      startKeyTracking();
+      startKeyTracking(); // records every keypress for the keypressLog
       trial.responseTracker = makeResponseTracker(activeTracking.t0);
       const inputEl = document.querySelector("#input-0");
-      if (inputEl) trial.responseTracker.attachToInput(inputEl);
+      if (inputEl) trial.responseTracker.attachToInput(inputEl); // tracks edits, erases, focus/blur
     },
     on_finish: function (data) {
       stopStageTracking();
@@ -153,8 +155,9 @@ export function buildTrialSequence(selectionFn) {
       const task = window.TRIAL_BANK_FULL.find(
         (t) => t.id === trial.currentSelection?.bankId,
       );
-      const key = task?.stimulus?.item?.key ?? null;
+      const key = task?.stimulus?.item?.key ?? null; // correct answer from the bank
       const answer = (data.response?.task_answer || "").trim();
+      // Compare case-insensitively; null if no answer key exists (item not yet filled in)
       const correct =
         key !== null
           ? answer.toLowerCase() === String(key).toLowerCase()
@@ -162,6 +165,7 @@ export function buildTrialSequence(selectionFn) {
             : 0
           : null;
 
+      // Store performance so feedback screen and controller can read it
       trial.currentRealPerf = {
         correct,
         total: 1,
@@ -170,8 +174,7 @@ export function buildTrialSequence(selectionFn) {
         backspaceCount: trial.backspaceCount,
       };
 
-      // Update the target emotion based on how the participant performed.
-      // Ex: if disappointment was targeted but they did well, show pride instead
+      // Resolve post-task: real performance may pivot the target emotion (e.g. success under disappointment target → pride).
       if (trial.currentSelection && !trial.currentSelection.honestFeedback)
         trial.currentDisplayed = resolveOutcomeFeedback(
           trial.currentSelection,
@@ -179,6 +182,7 @@ export function buildTrialSequence(selectionFn) {
           session.participant,
         );
 
+      // Save response behaviour summary (how participant typed, changed answer, etc.)
       const taskRespType =
         task?.stimulus?.response === "choice" ? "choice" : "input";
       if (trial.responseTracker) {
@@ -210,6 +214,10 @@ export function buildTrialSequence(selectionFn) {
   };
 
   /* ---- 2b. Mental-rotation block ---- */
+  // Mental rotation is a multi-item block: participant judges each image pair (same / mirrored)
+  // one at a time. The block loops through all stimulusRefs in the selected task before ending.
+
+  // rotBlockStart: invisible 1ms node that starts tracking before the first image appears
   const rotBlockStart = {
     type: jsPsychHtmlKeyboardResponse,
     stimulus: "",
@@ -224,6 +232,7 @@ export function buildTrialSequence(selectionFn) {
     },
   };
 
+  // rotItemNode: shows one image pair and waits for Same / Mirrored button click
   const rotItemNode = {
     type: jsPsychHtmlButtonResponse,
     stimulus: function () {
@@ -231,7 +240,7 @@ export function buildTrialSequence(selectionFn) {
         window.TRIAL_BANK_FULL.find(
           (t) => t.id === trial.currentSelection?.bankId,
         )?.stimulus?.block?.stimulusRefs || [];
-      const ref = refs[trial.currentBlockItem];
+      const ref = refs[trial.currentBlockItem]; // current item index within the block
       if (!ref) return `<div id="task-screen"><p>—</p></div>`;
       return `
         <div id="task-screen">
@@ -250,14 +259,15 @@ export function buildTrialSequence(selectionFn) {
           },
         ],
     on_finish: function (data) {
-      stageData.task.eye.push(...extractWebgazerPoints(data, "task"));
+      stageData.task.eye.push(...extractWebgazerPoints(data, "task")); // accumulate gaze across all items
       const refs =
         window.TRIAL_BANK_FULL.find(
           (t) => t.id === trial.currentSelection?.bankId,
         )?.stimulus?.block?.stimulusRefs || [];
       const ref = refs[trial.currentBlockItem];
-      const answer = data.response === 0 ? "same" : "different";
+      const answer = data.response === 0 ? "same" : "different"; // button index → label
       const t = Math.round(data.rt);
+      // Track first choice and timing separately from final choice (participant may review)
       if (trial.rotBlockTracker.firstChoice === null) {
         trial.rotBlockTracker.firstChoice = answer;
         trial.rotBlockTracker.timeToFirst = t;
@@ -271,7 +281,7 @@ export function buildTrialSequence(selectionFn) {
         item: trial.currentBlockItem,
       });
       const isCorrect = answer === ref?.correctResp ? 1 : 0;
-      trial.blockCorrect += isCorrect;
+      trial.blockCorrect += isCorrect; // running tally across all items in this block
       trial.blockTotal++;
       trial.keypressLog.push({
         item: trial.currentBlockItem,
@@ -279,7 +289,7 @@ export function buildTrialSequence(selectionFn) {
         correct: isCorrect,
         rt: data.rt,
       });
-      trial.currentBlockItem++;
+      trial.currentBlockItem++; // advance to next image pair
     },
     data: function () {
       return {
@@ -291,6 +301,7 @@ export function buildTrialSequence(selectionFn) {
     },
   };
 
+  // rotBlockLoop: repeats rotItemNode until all image pairs in the block have been shown
   const rotBlockLoop = {
     timeline: [rotItemNode],
     loop_function: function () {
@@ -298,10 +309,12 @@ export function buildTrialSequence(selectionFn) {
         window.TRIAL_BANK_FULL.find(
           (t) => t.id === trial.currentSelection?.bankId,
         )?.stimulus?.block?.stimulusRefs || [];
-      return trial.currentBlockItem < refs.length;
+      return trial.currentBlockItem < refs.length; // keep looping until every item is done
     },
   };
 
+  // rotBlockEnd: invisible 1ms node that fires after the loop — computes block-level performance
+  // and resolves which feedback to show (same pivot logic as taskInput)
   const rotBlockEnd = {
     type: jsPsychHtmlKeyboardResponse,
     stimulus: "",
@@ -310,12 +323,14 @@ export function buildTrialSequence(selectionFn) {
     on_start: function () {
       stopStageTracking();
       stopKeyTracking();
+      // Aggregate all item results into one performance record for the block
       trial.currentRealPerf = {
         correct: trial.blockCorrect,
         total: trial.blockTotal,
-        rtMs: performance.now() - session.trialStartMs,
+        rtMs: performance.now() - session.trialStartMs, // total block time, not per-item
         responses: trial.keypressLog.slice(),
       };
+      // Resolve feedback based on block-level accuracy + speed (mental rotation uses self_speed framing)
       if (trial.currentSelection && !trial.currentSelection.honestFeedback)
         trial.currentDisplayed = resolveOutcomeFeedback(
           trial.currentSelection,
@@ -339,9 +354,10 @@ export function buildTrialSequence(selectionFn) {
     },
   };
 
-  /* Dispatcher — picks the correct task branch */
+  /* Dispatcher — picks the correct task branch based on the selected task's unit type */
   const taskDispatch = [
     {
+      // NS / LS: typed text answer
       timeline: [taskInput],
       conditional_function: function () {
         const task = window.TRIAL_BANK_FULL.find(
@@ -351,6 +367,7 @@ export function buildTrialSequence(selectionFn) {
       },
     },
     {
+      // FS / MR: multiple-choice button answer (reuses same taskInput node, choice layout differs in HTML)
       timeline: [taskInput],
       conditional_function: function () {
         const task = window.TRIAL_BANK_FULL.find(
@@ -360,6 +377,7 @@ export function buildTrialSequence(selectionFn) {
       },
     },
     {
+      // Mental rotation: multi-item block with its own loop
       timeline: [rotBlockStart, rotBlockLoop, rotBlockEnd],
       conditional_function: function () {
         const task = window.TRIAL_BANK_FULL.find(
@@ -385,28 +403,29 @@ export function buildTrialSequence(selectionFn) {
   const feedback = {
     type: jsPsychHtmlButtonResponse,
     stimulus: function () {
-      const isCalib = trial.currentSelection?.honestFeedback;
+      const isCalib = trial.currentSelection?.honestFeedback; // true during practice rounds — no emotion induction
       const perf = trial.currentRealPerf;
       const correct = perf?.correct || 0,
         total = perf?.total || 1;
-      const scoreHtml = `<div class="feedback-score">${correct}/${total}</div>`;
+      const scoreHtml = `<div class="feedback-score">${correct}/${total}</div>`; // always shown regardless of branch
+
+      // Calibration: only display score and no framed text
       if (isCalib) {
-        const pct = Math.round((correct / total) * 100);
-        const msg =
-          pct >= 80
-            ? `Well done!`
-            : `Getting the hang of it is what matters here.`;
-        return `<div id="feedback-screen">${scoreHtml}<div class="feedback-text pos">${msg}</div></div>`;
+        return `<div id="feedback-screen">${scoreHtml}</div>`;
       }
-      const d = trial.currentDisplayed;
+
+      //  Fallback: controller couldn't produce framed feedback (edge case), show score only
+      const d = trial.currentDisplayed; // set by resolveOutcomeFeedback() in taskInput/rotBlock on_finish
       if (!d || d.honestFallback || !d.framedText) {
-        const ok = correct >= total * 0.5;
-        return `<div id="feedback-screen">${scoreHtml}<div class="feedback-text ${ok ? "pos" : "neg"}">${ok ? "Good work." : "Keep going — this is a tough one."}</div></div>`;
+        return `<div id="feedback-screen">${scoreHtml}</div>`;
       }
+
+      // Normal induction path: show score + emotion-framed text
       const isPos = isPositiveEmotion(d.emotionShown);
       return `<div id="feedback-screen">${scoreHtml}<div class="feedback-text ${isPos ? "pos" : "neg"}">${d.framedText}</div></div>`;
     },
     choices: ["Continue"],
+    // Attach WebGazer to track where participant looks during feedback (skipped in dev mode)
     extensions: SKIP_WEBGAZER
       ? []
       : [
@@ -416,37 +435,40 @@ export function buildTrialSequence(selectionFn) {
           },
         ],
     on_load: function () {
-      session.revealTsMs = performance.now();
+      session.revealTsMs = performance.now(); // timestamp when feedback became visible — used to compute reaction latency
       startStageTracking(
         "feedback",
         stageData.feedback.moves,
         stageData.feedback.clicks,
       );
+      // Start webcam recording — captures facial expression in response to the feedback text
       startCapture(
         `${session.participant.participantId}_t${session.trialOrdinal}_feedback`,
       );
     },
     on_finish: function (data) {
       stopStageTracking();
-      stopCapture();
+      stopCapture(); // saves the .webm clip for this trial
       stageData.feedback.eye = extractWebgazerPoints(data, "feedback");
+      // Log what was actually shown to the participant (may differ from target if outcome pivoted)
       data.framed_text = trial.currentDisplayed?.framedText || null;
-      data.emotion_shown = trial.currentDisplayed?.emotionShown || null;
-      data.pivoted_to = trial.currentDisplayed?.pivotedTo || null;
-      data.honest_fallback = trial.currentDisplayed?.honestFallback || false;
-      data.pct = trial.currentDisplayed?.pct || null;
-      data.pct_ref = trial.currentDisplayed?.pctRef || null;
-      data.attribution = trial.currentDisplayed?.attribution || null;
+      data.emotion_shown = trial.currentDisplayed?.emotionShown || null; // emotion the framing was designed to induce
+      data.pivoted_to = trial.currentDisplayed?.pivotedTo || null; // set if outcome forced a pivot (e.g. success → pride instead of disappointment)
+      data.honest_fallback = trial.currentDisplayed?.honestFallback || false; // true if framing failed and score was shown plain
+      data.pct = trial.currentDisplayed?.pct || null; // percentile number shown in feedback text
+      data.pct_ref = trial.currentDisplayed?.pctRef || null; // what the pct refers to: self_score / self_speed / peer_success
+      data.attribution = trial.currentDisplayed?.attribution || null; // effort vs ability attribution frame used
       data.feedback_eye_moves_raw = J(stageData.feedback.eye);
       data.feedback_eye_count = stageData.feedback.eye.length;
     },
     data: function () {
+      // Static metadata logged at trial start (before on_finish fields are added)
       return {
         phase: "feedback",
         ordinal: session.trialOrdinal,
         bankId: trial.currentSelection?.bankId,
         domainUsed: trial.currentSelection?.domainUsed,
-        targetEmotion: trial.currentSelection?.targetEmotion,
+        targetEmotion: trial.currentSelection?.targetEmotion, // what emotion was planned before the task
         feedback_id: trial.currentSelection?.feedbackId || null,
       };
     },
@@ -456,7 +478,8 @@ export function buildTrialSequence(selectionFn) {
   const probe = {
     type: jsPsychHtmlButtonResponse,
     stimulus: function () {
-      window._probeValues = {};
+      window._probeValues = {}; // reset ratings bucket before building the screen
+      // Use task-specific probe list if defined, otherwise fall back to the global PROBES list
       const probeList =
         window.TRIAL_BANK_FULL.find(
           (t) => t.id === trial.currentSelection?.bankId,
@@ -464,6 +487,7 @@ export function buildTrialSequence(selectionFn) {
       let rows = "";
       for (const em of probeList) {
         if (em === "none") {
+          // "None of the above" checkbox — written as 0/1 into _probeValues
           rows += `
             <div class="probe-row" style="margin-top:10px">
               <div class="probe-label">none of the above</div>
@@ -476,6 +500,7 @@ export function buildTrialSequence(selectionFn) {
               </div>
             </div>`;
         } else {
+          // 1–7 Likert slider for each emotion; rating written to _probeValues on every change
           rows += `
             <div class="probe-row">
               <div class="probe-label">${em}</div>
@@ -514,11 +539,14 @@ export function buildTrialSequence(selectionFn) {
         window.TRIAL_BANK_FULL.find(
           (t) => t.id === trial.currentSelection?.bankId,
         )?.response?.probes || PROBES;
+      // Collect final ratings from _probeValues; default to 1 (not at all) if participant skipped a slider
       const selfReport = {};
       for (const em of probeList)
         selfReport[em] = window._probeValues?.[em] ?? 1;
 
+      // Unique key for matching this trial's probe data to the webcam clip file
       const trialUid = `${session.participant.participantId}_t${session.trialOrdinal}`;
+      // Bundle everything that happened this trial into one record for the controller
       const realized = {
         trialUid,
         participantId: session.participant.participantId,
@@ -529,46 +557,50 @@ export function buildTrialSequence(selectionFn) {
         domainUsed: trial.currentSelection?.domainUsed || null,
         primeId: trial.currentSelection?.primeId || null,
         honestFeedback: !!trial.currentSelection?.honestFeedback,
-        realPerformance: trial.currentRealPerf,
-        displayed: trial.currentDisplayed,
-        selfReport,
+        realPerformance: trial.currentRealPerf,   // accuracy + RT from task
+        displayed: trial.currentDisplayed,         // what feedback was actually shown
+        selfReport,                                // participant's emotion ratings
         task: window.TRIAL_BANK_FULL.find(
           (t) => t.id === trial.currentSelection?.bankId,
         ),
         capture: {
-          revealTsMs: session.revealTsMs,
-          captureWindowMs: 10000,
-          baselineWindowMs: [-2000, 0],
+          revealTsMs: session.revealTsMs,          // when feedback appeared on screen
+          captureWindowMs: 10000,                  // webcam clip length in ms
+          baselineWindowMs: [-2000, 0],            // pre-feedback baseline window for FER
         },
       };
 
+      // Controller updates pool counts, ledger, and derives cleanCore / inductionFailed labels
       onTrialFinish(realized, session.participant, session.pool, clock);
+      // Check whether the session should advance to the next phase (e.g. main → positive_close)
       advancePhase(session.participant, session.pool, clock);
 
+      // Write trial outcome fields to jsPsych's data log
       data.self_report = J(selfReport);
       data.derived = J(realized.derived);
-      data.felt_dominant = realized.derived?.feltDominant || null;
-      data.confirmed = realized.derived?.confirmed || false;
-      data.clean_core = realized.derived?.cleanCore || false;
-      data.off_target = realized.derived?.offTarget || false;
-      data.induction_failed = realized.derived?.inductionFailed || false;
+      data.felt_dominant = realized.derived?.feltDominant || null;   // emotion with the highest rating
+      data.confirmed = realized.derived?.confirmed || false;          // did the target emotion register?
+      data.clean_core = realized.derived?.cleanCore || false;         // target ≥ 5, all others ≤ 3
+      data.off_target = realized.derived?.offTarget || false;         // a different emotion dominated
+      data.induction_failed = realized.derived?.inductionFailed || false; // no emotion rated above threshold
       data.correct = trial.currentRealPerf?.correct;
       data.total = trial.currentRealPerf?.total;
       data.rt_task_ms = trial.currentRealPerf?.rtMs;
-      data.cumNegLoad = session.participant.ledger.cumNegLoad;
+      data.cumNegLoad = session.participant.ledger.cumNegLoad;        // running total of negative emotion exposure
       data.phase_at_finish = session.participant.phase;
-      data.controller_reason = J(trial.currentSelection?.reason || {});
+      data.controller_reason = J(trial.currentSelection?.reason || {}); // why the controller picked this trial
 
       data.probe_eye_moves_raw = J(stageData.probe.eye);
       data.probe_eye_count = stageData.probe.eye.length;
 
+      // Exponential moving average of trial duration — used by controller to estimate time remaining
       const trialMs = performance.now() - session.trialStartMs;
       const med = session.participant.ledger.medianTrialMs;
       session.participant.ledger.medianTrialMs = med
         ? med * 0.85 + trialMs * 0.15
         : trialMs;
 
-      session.trialOrdinal++;
+      session.trialOrdinal++; // increment after all logging so ordinal is stable throughout this trial
     },
     data: function () {
       return {
