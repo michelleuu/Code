@@ -1,0 +1,473 @@
+<!doctype html>
+<!--
+  Adaptive Feedback Emotion Study — jsPsych experiment
+  =====================================================
+  Architecture: Procedural state-machine controller (controller.js) drives a
+  looping jsPsych timeline.  Each iteration calls selectNextTrial() to pick the
+  next (task × domain × emotion × variant), renders prime → task → feedback →
+  emotion probe, then calls onTrialFinish() to update ledgers and the global pool.
+
+  Phases (managed by advancePhase() at every trial boundary):
+    intake  → calibration → main → positive_close → debrief
+
+  File layout (place in same folder as this HTML):
+    jspsych/             — jspsych.js, plugins, extension-webgazer.js, jspsych.css
+    css/experiment.css   — all experiment styles
+    js/                  — state, utils, tracking, webcam, response-tracker, trial-sequence
+    controller.js        — selectNextTrial, resolveOutcomeFeedback, onTrialFinish, advancePhase
+    trial_schema.js      — TRIAL_BANK, EMOTION_PROFILE, PARTICIPANT_STATE_TEMPLATE, etc.
+    rotation_subbank.js  — ROT_SUBBANK, ROT_CALIBRATION
+    reasoning_battery.js — REASONING_BANK, REASONING_CALIBRATION
+    mitre_reasoning_items.js
+    stimuli/rot/         — rotation image pairs (objId_disparity[_R].jpg)
+-->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Feedback Study</title>
+
+    <!-- jsPsych core -->
+    <script src="jspsych/jspsych.js"></script>
+    <script src="jspsych/plugin-html-button-response.js"></script>
+    <script src="jspsych/plugin-html-keyboard-response.js"></script>
+    <script src="jspsych/plugin-survey-text.js"></script>
+
+    <!-- WebGazer eye-tracking -->
+    <script src="https://cdn.jsdelivr.net/npm/webgazer@3.3.0/dist/webgazer.min.js"></script>
+    <script src="jspsych/extension-webgazer.js"></script>
+    <script src="jspsych/plugin-webgazer-init-camera.js"></script>
+    <script src="jspsych/plugin-webgazer-calibrate.js"></script>
+    <script src="jspsych/plugin-webgazer-validate.js"></script>
+
+
+    <link rel="stylesheet" href="jspsych/jspsych.css" />
+    <link rel="stylesheet" href="css/experiment.css" />
+  </head>
+  <body></body>
+
+  <script type="module">
+    import { session, clock, SKIP_WEBGAZER } from "./js/state.js";
+    import { downloadFile, J } from "./js/utils.js";
+    import { initWebcam } from "./js/webcam.js";
+    import { buildTrialSequence } from "./js/trial_sequence.js";
+    import { selectNextTrial, advancePhase, CONFIG } from "./controller.js";
+    import {
+      PARTICIPANT_STATE_TEMPLATE,
+      POOL_STATE_TEMPLATE,
+    } from "./trial_schema.js";
+    import { ROT_SUBBANK, ROT_CALIBRATION } from "./rotation_subbank.js";
+    import {
+      REASONING_BANK,
+      REASONING_CALIBRATION,
+    } from "./reasoning_battery.js";
+
+    /* ---- Trial bank — merge sub-banks ---- */
+    window.TRIAL_BANK_FULL = [
+      ...REASONING_BANK,
+      ...ROT_SUBBANK,
+      ROT_CALIBRATION,
+      REASONING_CALIBRATION,
+    ];
+
+    /* ---- jsPsych init ---- */
+    const jsPsych = initJsPsych({
+      extensions: SKIP_WEBGAZER ? [] : [{ type: jsPsychExtensionWebgazer }],
+      on_finish: async function () {
+        const pid = jsPsych.data.get().values()[0]?.participant_id || "unknown";
+        const cleanCSV = jsPsych.data
+          .get()
+          .ignore([
+            "stimulus",
+            "internal_node_id",
+            "prime_eye_moves_raw",
+            "task_eye_moves_raw",
+            "feedback_eye_moves_raw",
+            "probe_eye_moves_raw",
+          ])
+          .csv();
+        downloadFile(cleanCSV, `emotion_study_summary_${pid}.csv`, "text/csv");
+        downloadFile(
+          jsPsych.data.get().json(true),
+          `emotion_study_raw_${pid}.json`,
+          "application/json",
+        );
+        jsPsych.data.displayData();
+      },
+    });
+
+    /* ---- Session setup ---- */
+    session.participant = JSON.parse(
+      JSON.stringify(PARTICIPANT_STATE_TEMPLATE),
+    );
+    session.pool = JSON.parse(JSON.stringify(POOL_STATE_TEMPLATE));
+    session.participant.participantId =
+      "P-" + Date.now() + "-" + Math.floor(Math.random() * 1000);
+
+    window.jsPsych = jsPsych; // exposes finishTrial() to inline onclick handlers
+
+    jsPsych.data.addProperties({
+      participant_id: session.participant.participantId,
+      jspsych_version: jsPsych.version(),
+      browser_width: window.innerWidth,
+      browser_height: window.innerHeight,
+    });
+
+    /* ====================================================================
+       TIMELINE
+       ==================================================================== */
+    const timeline = [];
+
+    /* 1. Consent */
+    timeline.push({
+      type: jsPsychHtmlButtonResponse,
+      stimulus: `
+        <div class="box">
+          <h1>Feedback Study</h1>
+          <p>This study examines how people respond to performance feedback while preforming specific tasks. The session takes about 10–20 minutes. You will complete several short tasks and answer a few questions after each one.</p>
+          <p>Your responses, response stimes, eye movements, and mouse movements will be recorded. Webcam recordings will capture your reactions throughout the study.</p>
+          <p style="margin-top:24px;font-size:15px;color:#666">By clicking "I Agree," you confirm that you consent to participate and will proceed to the study.</p>
+        </div>`,
+      choices: ["I Agree"],
+      data: { phase: "consent" },
+    });
+
+    /* 2. Intake survey */
+    timeline.push({
+      type: jsPsychHtmlButtonResponse,
+      stimulus: function () {
+        window.intakeSurveyValues = {};
+        const scaleHtml = (name, lo, hi) => {
+          let h = `<div class="scale-row">`;
+          for (let v = 1; v <= 7; v++) {
+            h += `<label>
+              <span>${v}</span>
+              <input type="radio" name="${name}" value="${v}"
+                onchange="intakeSurveyValues['${name}']=parseInt(this.value)">
+            </label>`;
+          }
+          h += `</div><div style="display:flex;justify-content:space-between;font-size:12px;color:#aaa;margin:2px 0 8px">
+            <span>${lo}</span><span>${hi}</span></div>`;
+          return h;
+        };
+        return `
+          <div class="box" style="text-align:left;max-width:640px">
+            <h2>About You</h2>
+            <p style="font-size:15px;color:#555;margin-bottom:22px">Please answer each question honestly. There are no right or wrong answers.</p>
+
+            <div class="intake-row">
+              <label>How much does <strong>Design</strong> feel like a core part of who you are? (1 = not at all, 7 = very much)</label>
+              ${scaleHtml("val_design", "Not at all", "Very much")}
+            </div>
+            <div class="intake-row">
+              <label>How much does <strong>Computing</strong> feel like a core part of who you are?</label>
+              ${scaleHtml("val_computing", "Not at all", "Very much")}
+            </div>
+            <div class="intake-row">
+              <label>How much does <strong>Media</strong> feel like a core part of who you are?</label>
+              ${scaleHtml("val_media", "Not at all", "Very much")}
+            </div>
+
+            <div class="intake-row" style="margin-top:28px">
+              <label>How well do you expect to perform on <strong>Design</strong> tasks today? (1 = poorly, 7 = very well)</label>
+              ${scaleHtml("exp_design", "Poorly", "Very well")}
+            </div>
+            <div class="intake-row">
+              <label>How well do you expect to perform on <strong>Computing</strong> tasks today?</label>
+              ${scaleHtml("exp_computing", "Poorly", "Very well")}
+            </div>
+            <div class="intake-row">
+              <label>How well do you expect to perform on <strong>Media</strong> tasks today?</label>
+              ${scaleHtml("exp_media", "Poorly", "Very well")}
+            </div>
+
+            <div class="intake-row" style="margin-top:28px">
+              <label>I often compare how I am doing with how others are doing. (1 = strongly disagree, 7 = strongly agree)</label>
+              ${scaleHtml("sco", "Strongly disagree", "Strongly agree")}
+            </div>
+          </div>`;
+      },
+      choices: ["Continue"],
+      on_finish: function () {
+        const rv = (name) => window.intakeSurveyValues[name] ?? 4;
+        session.participant.domainValue = {
+          design: rv("val_design"),
+          computing: rv("val_computing"),
+          media: rv("val_media"),
+        };
+        session.participant.domainExpectancy = {
+          design: rv("exp_design"),
+          computing: rv("exp_computing"),
+          media: rv("exp_media"),
+        };
+        session.participant.sco = rv("sco");
+        jsPsych.data.addProperties({
+          intake_val_design: session.participant.domainValue.design,
+          intake_val_computing: session.participant.domainValue.computing,
+          intake_val_media: session.participant.domainValue.media,
+          intake_exp_design: session.participant.domainExpectancy.design,
+          intake_exp_computing: session.participant.domainExpectancy.computing,
+          intake_exp_media: session.participant.domainExpectancy.media,
+          intake_sco: session.participant.sco,
+        });
+        advancePhase(session.participant, session.pool, clock);
+      },
+      data: { phase: "intake_survey" },
+    });
+
+    /* 3. Webcam setup */
+    timeline.push({
+      type: jsPsychHtmlButtonResponse,
+      stimulus: `
+        <div class="box">
+          <h2>Camera Setup</h2>
+          <p>This study records brief video clips of your facial expressions after you receive feedback.</p>
+          <p>You will be asked to allow camera access on the next screen.</p>
+          <p>Please sit comfortably in a well-lit room and keep your head fairly still.</p>
+        </div>`,
+      choices: ["Continue"],
+      on_finish: async function () {
+        await initWebcam();
+      },
+      data: { phase: "webcam_setup_instructions" },
+    });
+
+    /* 4. WebGazer calibration (skipped in dev mode) */
+    if (!SKIP_WEBGAZER) {
+      timeline.push({
+        type: jsPsychWebgazerInitCamera,
+        data: { phase: "webgazer_init_camera" },
+      });
+
+      timeline.push({
+        type: jsPsychHtmlButtonResponse,
+        stimulus: `
+          <div class="box">
+            <h2>Eye Tracking Calibration</h2>
+            <p>Dots will appear around the screen. <strong>Look directly at each dot and click it.</strong></p>
+            <p>Keep your head still during calibration.</p>
+          </div>`,
+        choices: ["Begin Calibration"],
+        data: { phase: "eyetrack_calibration_instructions" },
+      });
+
+      timeline.push({
+        type: jsPsychWebgazerCalibrate,
+        calibration_points: [
+          [25, 25],
+          [75, 25],
+          [50, 50],
+          [25, 75],
+          [75, 75],
+        ],
+        repetitions_per_point: 2,
+        randomize_calibration_order: true,
+        data: { phase: "webgazer_calibrate" },
+      });
+
+      timeline.push({
+        type: jsPsychHtmlButtonResponse,
+        stimulus: `
+          <div class="box">
+            <h2>Accuracy Check</h2>
+            <p>Dots will appear. <strong>Look at each dot — do not click.</strong></p>
+          </div>`,
+        choices: ["Begin"],
+        post_trial_gap: 1000,
+        data: { phase: "eyetrack_validate_instructions" },
+      });
+
+      timeline.push({
+        type: jsPsychWebgazerValidate,
+        validation_points: [
+          [25, 25],
+          [75, 25],
+          [50, 50],
+          [25, 75],
+          [75, 75],
+        ],
+        roi_radius: 200,
+        time_to_saccade: 1000,
+        validation_duration: 2000,
+        data: { phase: "webgazer_validate" },
+      });
+    }
+
+    timeline.push({
+      type: jsPsychHtmlButtonResponse,
+      stimulus: SKIP_WEBGAZER
+        ? `<div class="box"><h2>All Set</h2><p>You are about to begin the study.</p><p>You will complete a short practice round first.</p></div>`
+        : `<div class="box"><h2>All Set</h2><p>Eye tracking is calibrated. You are about to begin the study.</p><p>You will complete a short practice round first.</p></div>`,
+      choices: ["Begin Study"],
+      on_start: function () {
+        clock.start();
+      },
+      data: { phase: "calibration_complete" },
+    });
+
+    /* 5. Calibration phase */
+    timeline.push({
+      type: jsPsychHtmlButtonResponse,
+      stimulus: `
+        <div class="box">
+          <h2>Practice Round</h2>
+          <p>Before the main study, you will complete a short practice round.</p>
+          <p>You will get real feedback after each task so you can get comfortable with the format.</p>
+        </div>`,
+      choices: ["Begin Practice"],
+      data: { phase: "calibration_intro" },
+    });
+
+    var calibTrialIndex = 0;
+    const calibTasks = [ROT_CALIBRATION, REASONING_CALIBRATION];
+
+    function makeCalibSelection() {
+      const task = calibTasks[calibTrialIndex % calibTasks.length];
+      const dv = session.participant.domainValue;
+      const topDomain =
+        Object.entries(dv)
+          .filter(([, v]) => v !== null)
+          .sort((a, b) => b[1] - a[1])[0]?.[0] || "computing";
+      return {
+        phase: "calibration",
+        bankId: task.id,
+        domainUsed: task.domains.includes(topDomain)
+          ? topDomain
+          : task.domains[0],
+        targetEmotion: null,
+        primeId: null,
+        feedbackId: null,
+        honestFeedback: true,
+        reason: { note: "calibration" },
+      };
+    }
+
+    timeline.push({
+      timeline: buildTrialSequence(makeCalibSelection),
+      loop_function: function () {
+        calibTrialIndex++;
+        return (
+          calibTrialIndex < CONFIG.calibration.maxTasks &&
+          session.participant.ledger.lastCalibrationOk === false
+        );
+      },
+    });
+
+    timeline.push({
+      type: jsPsychHtmlButtonResponse,
+      stimulus: `
+        <div class="box">
+          <h2>Practice Complete</h2>
+          <p>Good — you have the format down. The main study is about to begin.</p>
+          <p>You will complete a series of tasks and see your results after each one.</p>
+        </div>`,
+      choices: ["Begin Main Study"],
+      data: { phase: "calibration_complete_notice" },
+    });
+
+    /* 6. Main adaptive loop */
+    // var mainTrialCount = 0;
+    timeline.push({
+      timeline: buildTrialSequence(function () {
+        return selectNextTrial(session.participant, session.pool, clock);
+      }),
+      loop_function: function () {
+        //mainTrialCount++;
+        //return session.participant.phase !== "debrief" && mainTrialCount < 10;
+        return session.participant.phase !== "debrief";
+      },
+    });
+
+    /* 7. Debrief */
+    timeline.push({
+      type: jsPsychHtmlButtonResponse,
+      stimulus: `
+        <div class="box">
+          <h2>Study Complete — Important Information</h2>
+          <p>Thank you for completing the study.</p>
+          <p><strong>Some of the feedback you received during the study was adjusted.</strong>
+          This was done as part of the research design to study emotional responses to performance feedback.
+          It does not reflect your actual ability.</p>
+          <p>The feedback did not indicate your true skill level. Your real performance was
+          recorded separately and will remain confidential.</p>
+          <p>If you feel uncomfortable with any aspect of the study, please let the researcher know.</p>
+          <p style="margin-top:22px;font-size:15px">You may withdraw your data at any time. To withdraw,
+          click "Withdraw My Data" below and speak with the researcher.</p>
+        </div>`,
+      choices: ["I Understand", "Withdraw My Data"],
+      on_finish: function (data) {
+        if (data.response === 1) {
+          jsPsych.data.addProperties({ data_withdrawn: true });
+          alert(
+            "Your data withdrawal request has been recorded. Please speak with the researcher.",
+          );
+        }
+      },
+      data: { phase: "debrief" },
+    });
+
+    /* 8. Manipulation check */
+    timeline.push({
+      type: jsPsychHtmlButtonResponse,
+      stimulus: `
+        <div class="box">
+          <h2>A Few Final Questions</h2>
+          <p>During the study, did you ever feel that the feedback you received was inaccurate or unfair?</p>
+          <p style="font-size:14px;color:#888">Your answer will not affect your participation or compensation.</p>
+        </div>`,
+      choices: ["No — the feedback seemed fair", "Yes — something felt off"],
+      on_finish: function (data) {
+        jsPsych.data.addProperties({
+          manipulation_check_suspicious: data.response === 1,
+        });
+      },
+      data: { phase: "manipulation_check" },
+    });
+
+    /* 9. Post-study experience ratings */
+    timeline.push({
+      type: jsPsychHtmlButtonResponse,
+      stimulus: function () {
+        window._postSurveyValues = {};
+        const qs = [
+          {
+            id: "ps_stress",
+            label: "How stressed did you feel during the tasks?",
+          },
+          { id: "ps_effort", label: "How much effort did you put in?" },
+          {
+            id: "ps_engagement",
+            label: "How engaged were you with the tasks?",
+          },
+        ];
+        let rows = "";
+        for (const q of qs) {
+          rows += `
+            <div class="probe-row">
+              <div class="probe-label" style="width:260px;text-align:left;font-size:13px">${q.label}</div>
+              <div class="probe-radios">
+                <div class="probe-radio-options">
+                  ${[1, 2, 3, 4, 5, 6, 7].map((v) => `<label class="probe-radio-label"><input type="radio" name="${q.id}" value="${v}" onchange="window._postSurveyValues['${q.id}']=parseInt(this.value)"><span>${v}</span></label>`).join("")}
+                </div>
+                <div class="probe-anchors"><span>Not at all</span><span>Extremely</span></div>
+              </div>
+            </div>`;
+        }
+        return `<div id="probe-screen"><h3>Overall experience</h3>${rows}</div>`;
+      },
+      choices: ["Finish"],
+      on_finish: function () {
+        const get = (id) => window._postSurveyValues?.[id] ?? 4;
+        jsPsych.data.addProperties({
+          post_stress: get("ps_stress"),
+          post_effort: get("ps_effort"),
+          post_engagement: get("ps_engagement"),
+        });
+      },
+      data: { phase: "post_survey" },
+    });
+
+
+    /* ---- Run ---- */
+    jsPsych.run(timeline);
+  </script>
+</html>

@@ -1,0 +1,225 @@
+/* ---- Layout ---- */
+body {
+  font-family: Arial, sans-serif;
+  background: #f5f5f5;
+}
+.box {
+  max-width: 760px;
+  margin: auto;
+  padding: 35px;
+  text-align: center;
+}
+.box p {
+  font-size: 17px;
+  line-height: 1.7;
+  margin: 10px 0;
+}
+.box h1 {
+  font-size: 26px;
+  margin-bottom: 14px;
+}
+.box h2 {
+  font-size: 22px;
+  margin-bottom: 12px;
+}
+
+/* ---- Prime screen ---- */
+#prime-screen {
+  max-width: 640px;
+  margin: 60px auto;
+  padding: 32px 40px;
+  background: #fff;
+  border-left: 4px solid #4a90d9;
+  border-radius: 4px;
+  font-size: 18px;
+  line-height: 1.7;
+  color: #222;
+}
+
+/* ---- Task screens ---- */
+#task-screen {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 30px 20px;
+  text-align: center;
+}
+.task-label {
+  font-size: 14px;
+  color: #888;
+  margin-bottom: 6px;
+  letter-spacing: 0.04em;
+}
+.task-prompt {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 18px;
+  color: #111;
+}
+
+/* rotation pair */
+.rot-pair {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  margin: 20px 0;
+}
+.rot-pair img {
+  max-height: 380px;
+  max-width: 480px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+.rot-choices {
+  display: flex;
+  gap: 32px;
+  justify-content: center;
+  margin: 18px 0 4px;
+}
+.rot-choice-label {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 16px;
+  color: #333;
+  cursor: pointer;
+}
+.rot-warn {
+  color: #c0392b;
+  font-size: 14px;
+  margin-top: 8px;
+  display: none;
+}
+.rot-next-btn {
+  margin-top: 14px;
+  padding: 9px 32px;
+  font-size: 15px;
+  background: #4a90d9;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* rotation block progress */
+.rot-progress {
+  font-size: 13px;
+  color: #aaa;
+  margin-top: 6px;
+}
+
+/* ---- Feedback screen ---- */
+#feedback-screen {
+  max-width: 620px;
+  margin: 80px auto;
+  padding: 36px 44px;
+  background: #fff;
+  border-radius: 8px;
+  text-align: center;
+}
+.feedback-score {
+  font-size: 32px;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 12px;
+}
+.feedback-text {
+  font-size: 19px;
+  line-height: 1.6;
+  color: #333;
+  margin: 8px 0 24px;
+}
+
+/* ---- Emotion probe ---- */
+#probe-screen {
+  max-width: 680px;
+  margin: 40px auto;
+  padding: 28px 32px;
+  background: #fff;
+  border-radius: 8px;
+}
+#probe-screen h3 {
+  font-size: 17px;
+  margin-bottom: 18px;
+  color: #333;
+}
+.probe-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 14px;
+}
+.probe-label {
+  width: 150px;
+  font-size: 15px;
+  color: #444;
+  flex-shrink: 0;
+  text-align: right;
+  padding-right: 16px;
+  text-transform: capitalize;
+}
+.probe-radios {
+  flex: 1;
+}
+.probe-radio-options {
+  display: flex;
+  gap: 6px;
+}
+.probe-radio-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 13px;
+  gap: 2px;
+  cursor: pointer;
+}
+.probe-anchors {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: #aaa;
+  margin: 4px 0 0;
+}
+
+/* ---- Heatmap ---- */
+.heatmap-container {
+  position: relative;
+  margin: 20px auto 60px;
+  border: 2px solid #333;
+  background: white;
+  overflow: hidden;
+}
+
+/* ---- Survey intake ---- */
+.intake-row {
+  margin: 18px 0;
+  text-align: left;
+  max-width: 560px;
+}
+.intake-row label {
+  display: block;
+  font-size: 16px;
+  margin-bottom: 6px;
+  color: #333;
+}
+.intake-row select {
+  font-size: 15px;
+  padding: 6px 10px;
+  border-radius: 4px;
+  border: 1px solid #bbb;
+  width: 100%;
+}
+.scale-row {
+  display: flex;
+  gap: 8px;
+}
+.scale-row label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 12px;
+  gap: 4px;
+  cursor: pointer;
+}
+.scale-row input[type="radio"] {
+  cursor: pointer;
+}
