@@ -1,4 +1,6 @@
 reports/
-stimuli/
+stimuli/iqa/
+stimuli/mitre/
+stimuli/rot/
 .DS_Store
 
