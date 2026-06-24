@@ -26,31 +26,12 @@
  * post-task, off-target harvesting (label = felt dominant), clean-core balancing.
  * ========================================================================== */
 
-import {
-  TRIAL_BANK,
-  EMOTION_PROFILE,
-  EMOTIONS,
-  ANTI_STACK,
-} from "./trial_schema.js";
+import { EMOTION_PROFILE, EMOTIONS, ANTI_STACK } from "./trial_schema.js";
+import { TRIAL_BANK, CALIBRATION_BANK } from "./trial_bank.js"; // assembled from the sub-banks you have
 
 /* ---- Tunables — SET FROM PILOT (placeholders) -------------------------- */
-const DEFAULT_TOTAL_BUDGET_MS = 20 * 60 * 1000;
-const totalBudgetFromPilot = () => {
-  const pilot =
-    typeof window === "undefined" ? null : window.PILOT_CONFIG?.totalBudgetMs;
-  if (Number.isFinite(pilot) && pilot > 0) return pilot;
-
-  const search = typeof window === "undefined" ? "" : window.location?.search;
-  const params = new URLSearchParams(search);
-  const minutes = Number(params.get("totalBudgetMin"));
-  if (Number.isFinite(minutes) && minutes > 0) return minutes * 60 * 1000;
-
-  const ms = Number(params.get("totalBudgetMs"));
-  return Number.isFinite(ms) && ms > 0 ? ms : DEFAULT_TOTAL_BUDGET_MS;
-};
-
 export const CONFIG = {
-  totalBudgetMs: totalBudgetFromPilot(),
+  totalBudgetMs: 45 * 60 * 1000, // TODO pilot: whole-session wall-clock budget
   closing: { nTrials: 4, lastEmotion: "pride" },
   // reserve is dynamic: nTrials * observed median trial time (fallback fixed below)
   closingReserveFallbackMs: 8 * 60 * 1000, // TODO pilot
@@ -259,7 +240,7 @@ function selectInduction(participant, pool, phase) {
 /* ---- Build (emotion x task x domain x variant x pct) candidates --------- */
 function enumerateCandidates(emotion, participant, pool) {
   const out = [];
-  for (const task of activeBank()) {
+  for (const task of TRIAL_BANK) {
     for (const domain of task.domains) {
       const fr = framingFor(task, domain); // v3: per-domain framing (or flat fallback)
       const variants = (fr.feedback || {})[emotion];
@@ -342,7 +323,7 @@ export function resolveOutcomeFeedback(
   const task = taskById(selection.bankId);
   const fr = framingFor(task, selection.domainUsed);
   const domain = selection.domainUsed;
-  const outcome = realPerformance?.correct >= 1 ? "correct" : "incorrect"; // TODO threshold per scoreFn
+  const outcome = roundOutcome(realPerformance, task); // block tasks resolve on passMark, not correct>=1
   const fits = (v) =>
     !v.requiresOutcome ||
     v.requiresOutcome === "any" ||
@@ -472,17 +453,15 @@ export function onTrialFinish(realized, participant, pool, clock) {
 
   if (realized.phase === "calibration") {
     L.calibrationCount = (L.calibrationCount || 0) + 1;
-    L.lastCalibrationOk = realized.realPerformance?.correct >= 1; // TODO threshold
+    L.lastCalibrationOk =
+      roundOutcome(realized.realPerformance, taskById(realized.bankId)) ===
+      "correct";
     // TODO: refine participant.domainExpectancy + per-task believable band from real perf
     return;
   }
 
-  if (realized.phase === "positive_close") {
-    L.closingCount = (L.closingCount || 0) + 1;
-  }
-
   const target = realized.targetEmotion;
-  const task = realized.task || taskById(realized.bankId);
+  const task = taskById(realized.bankId); // realize() doesn't attach task; look it up
   const dom = realized.derived || (realized.derived = {});
 
   // LABEL = felt dominant emotion, not the target (off-target clips still count)
@@ -597,8 +576,9 @@ const deficitSnapshot = (pool) =>
   );
 const passedGates = (c, s) =>
   GATES.map((g) => g.name).filter((n) => !feasibility(c, s).includes(n));
-const activeBank = () => window.TRIAL_BANK_FULL || TRIAL_BANK;
-const taskById = (id) => activeBank().find((t) => t.id === id);
+const taskById = (id) =>
+  TRIAL_BANK.find((t) => t.id === id) ||
+  CALIBRATION_BANK.find((t) => t.id === id);
 
 function topValueDomains(p) {
   // domains sorted by identity value
@@ -642,7 +622,7 @@ function chooseVariant(c, s) {
 function expectancyOk(v, exp) {
   return exp === "high" ? v >= CONFIG.caps.valueMin : v <= CONFIG.caps.valueMin;
 }
-function drawPct(variant, task) {
+function drawPct(variant, task, _s) {
   const [lo, hi] = variant.pct;
   return Math.round((lo + hi) / 2);
 } // TODO seeded RNG
@@ -677,15 +657,17 @@ function snapshot(s) {
     domainValue: { ...s.domainValue },
   };
 }
-function pickCalibrationTask(domain, tier) {
-  const b = activeBank();
+function pickCalibrationTask(domain, _tier, _participant) {
+  // use the family FAMILIARISATION blocks (honest feedback, reserved stimuli), never an
+  // experimental single-shot task. Prefer one serving the participant's top domain.
   return (
-    b.find((t) => t.domains.includes(domain) && t.difficultyTier === tier) ||
-    b[0]
+    CALIBRATION_BANK.find((t) => t.domains.includes(domain)) ||
+    CALIBRATION_BANK[0] ||
+    TRIAL_BANK[0]
   );
 }
 function selectNeutralSpacer(p) {
-  const t = activeBank()[0];
+  const t = TRIAL_BANK[0];
   return {
     phase: p.phase,
     bankId: t.id,
@@ -724,6 +706,25 @@ function framingFor(task, domain) {
 const stimulusIdOf = (task) => task.stimulusId || task.id; // single-shot key (shared across re-framings)
 const expectedOutcome = (e) =>
   EMOTION_PROFILE[e]?.valence === "pos" ? "correct" : "incorrect";
+
+// Round outcome for post-task variant resolution. Single-item tasks resolve on
+// correct>=1; BLOCK tasks (rotation/IQA/future media families) resolve on the block
+// PASS — proportion correct >= calibration.passMark — surfaced by the scoreFn as
+// `passed` (fallback: compute from correct/total; final fallback: correct>=1).
+function roundOutcome(realPerformance, task) {
+  if (!realPerformance) return "incorrect";
+  if (task?.unit === "block") {
+    const passed =
+      realPerformance.passed != null
+        ? realPerformance.passed
+        : realPerformance.total
+          ? realPerformance.correct / realPerformance.total >=
+            (task.calibration?.passMark ?? 0.5)
+          : realPerformance.correct >= 1;
+    return passed ? "correct" : "incorrect";
+  }
+  return realPerformance.correct >= 1 ? "correct" : "incorrect";
+}
 const primeSetsExpectancy = (
   fr,
   primeId, // expectancy the shown prime set (for pivot)
@@ -768,7 +769,12 @@ function pickGatedNegativePivot(fr, fits, order, task, domain, s) {
 
 function rtBucket(realPerformance, task) {
   // rushed (effort) vs engaged (ability)
-  const median = task.calibration?.medianRtMs || 20000;
+  // block tasks measure WHOLE-BLOCK rt -> compare against the block median, not per-item
+  const median =
+    task.unit === "block"
+      ? (task.calibration?.blockRtMs ??
+        (task.calibration?.medianRtMs || 5000) * (task.stimulus?.block?.n ?? 1))
+      : task.calibration?.medianRtMs || 20000;
   const rt = realPerformance?.rtMs ?? median;
   return rt < CONFIG.pivot.rushFrac * median ? "rushed" : "engaged";
 }
@@ -880,17 +886,43 @@ function detectSuspicion() {
 } // TODO: probe-based (boredom/confusion + "none") + manipulation check
 
 /* ============================================================================
- * jsPsych WIRING (notes)
- *   - One looping timeline node with FUNCTION-valued params. Each iteration:
- *       advancePhase(participant, pool, clock);            // boundary check first
- *       const sel = selectNextTrial(participant, pool, clock);
- *     render prime (sel.primeId) -> task -> SCORE -> resolveOutcomeFeedback(sel,
- *     realPerformance, participant) -> capture + framed result -> sliders.
- *   - on_finish: build the realized record (merge sel + realPerformance + capture +
- *       selfReport), call onTrialFinish(realized, participant, pool, clock), and write
- *       the whole sel.reason trace to jsPsych.data.
- *   - loop_function: continue while participant.phase !== "debrief".
- *   - conditional_function (or branch): when phase === "debrief", run debrief + data-
- *       withdrawal node. The distress flag forces phase -> positive_close on the next
- *       boundary, so distress routes through a positive close into debrief.
+ * jsPsych WIRING
+ *
+ * BANK LOADING
+ *   Import TRIAL_BANK + CALIBRATION_BANK from trial_bank.js, which in turn
+ *   imports the pre-generated static files from stimuli/ (iqa_bank.js,
+ *   rotation_bank.js, reasoning_bank.js, …). Do NOT import the generator
+ *   modules (iqa_subbank.js etc.) into jsPsych — they write files and pull
+ *   Node-only dependencies.
+ *
+ * PER-TRIAL RENDERING SEQUENCE (one looping timeline node, FUNCTION params):
+ *   1. advancePhase(participant, pool, clock)      // phase boundary check
+ *   2. sel = selectNextTrial(participant, pool, clock)
+ *   3. Lookup task = TRIAL_BANK.find(t => t.id === sel.bankId)
+ *   4. If task.instructions: show instruction string above the stimulus.
+ *      t0 for RT scoring is taken from gaze_offset_text (gaze leaving the
+ *      instruction area), NOT from stimulus onset, so instructions do not
+ *      contaminate response-time data.
+ *   5. If sel.primeId: show the prime text (from framingFor(task, sel.domainUsed)
+ *      .primes.find(p => p.id === sel.primeId).text) before stimulus onset.
+ *   6. Run task stimulus component (task.stimulus.component).
+ *   7. Score: realPerformance = task.stimulus.scoreFn(responseData).
+ *      scoreFn must return { correct, total, rtMs } for single-item tasks
+ *      or { correct, total, rtMs, passed } for unit:"block" tasks.
+ *   8. displayed = resolveOutcomeFeedback(sel, realPerformance, participant)
+ *   9. Show framed result text (displayed.framedText) + capture window.
+ *   10. Show self-report sliders (PROBES, Likert 1-7).
+ *
+ * on_finish:
+ *   Build the realized record by merging sel + realPerformance + capture +
+ *   selfReport, then call onTrialFinish(realized, participant, pool, clock).
+ *   Write the full sel.reason trace to jsPsych.data for sequence modelling.
+ *
+ * loop_function:
+ *   Continue while participant.phase !== "debrief".
+ *
+ * conditional_function (or timeline branch):
+ *   When phase === "debrief", run the debrief + data-withdrawal node.
+ *   The distress flag forces phase → positive_close on the next boundary,
+ *   so distress always routes through a positive close before debrief.
  * ========================================================================== */

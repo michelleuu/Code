@@ -189,6 +189,81 @@ body {
   overflow: hidden;
 }
 
+/* ---- Webcam preview ---- */
+.webcam-preview {
+  width: 320px;
+  height: 240px;
+  display: block;
+  margin: 18px auto 6px;
+  border-radius: 8px;
+  background: #111;
+  transform: scaleX(-1); /* mirror so it feels like looking in a mirror */
+  object-fit: cover;
+}
+
+/* ---- Task instructions line (shown below stimulus, above input) ---- */
+.task-instructions {
+  font-size: 15px;
+  color: #555;
+  margin: 10px 0 18px;
+}
+
+/* ---- Figure Series arrow sequence ---- */
+.fs-sequence {
+  margin: 18px auto 10px;
+  max-width: 680px;
+}
+
+/* ---- Matrix Reasoning image ---- */
+.mr-image {
+  max-width: 520px;
+  max-height: 380px;
+  display: block;
+  margin: 16px auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+.mr-options {
+  font-size: 14px;
+  color: #666;
+  margin: 6px 0 12px;
+  letter-spacing: 0.06em;
+}
+
+/* ---- IQA 2AFC image pair ---- */
+.iqa-pair {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 28px;
+  margin: 16px 0 10px;
+}
+.iqa-side {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.iqa-img {
+  max-width: 340px;
+  max-height: 280px;
+  border: 2px solid #ddd;
+  border-radius: 4px;
+  display: block;
+}
+.iqa-img-label {
+  font-size: 13px;
+  color: #888;
+  margin-top: 6px;
+}
+
+/* ---- Feedback valence colours ---- */
+.feedback-text.pos {
+  color: #1a6e2e;
+}
+.feedback-text.neg {
+  color: #8b1a1a;
+}
+
 /* ---- Survey intake ---- */
 .intake-row {
   margin: 18px 0;

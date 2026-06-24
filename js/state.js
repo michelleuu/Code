@@ -1,5 +1,5 @@
 /* DEV TOGGLE: set true to skip WebGazer calibration during testing */
-export const SKIP_WEBGAZER = false;
+export const SKIP_WEBGAZER = true;
 
 /* Session-level state — persists across trials */
 export const session = {

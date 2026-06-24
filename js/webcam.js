@@ -12,6 +12,10 @@ export async function initWebcam() {
   }
 }
 
+export function getStream() {
+  return webcamStream;
+}
+
 export function startCapture(trialUid) {
   if (!webcamStream || captureActive) return;
   const chunks = [];

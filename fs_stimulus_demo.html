@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Figure Series — stimulus / encoding demo</title>
+<style>
+  :root { --ink:#141414; --line:#d7d7d7; --muted:#6b6b6b; --focus:#1f6feb; --ok:#1a7f37; --no:#b3261e; --bg:#fff; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink);
+         font:15px/1.5 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif; }
+  .wrap { max-width:760px; margin:0 auto; padding:28px 22px 64px; }
+  h1 { font-size:17px; font-weight:650; letter-spacing:.01em; margin:0 0 2px; }
+  .sub { color:var(--muted); margin:0 0 22px; font-size:13px; }
+  .card { border:1px solid var(--line); border-radius:10px; padding:22px 22px 26px; }
+  .label { font-size:11px; text-transform:uppercase; letter-spacing:.08em; color:var(--muted); margin:0 0 10px; }
+  /* stem */
+  .stem { display:flex; flex-wrap:wrap; gap:14px; align-items:center; padding:14px 4px 22px; }
+  .stem .arrow { width:34px; height:34px; }
+  .uni { font-size:30px; line-height:34px; width:34px; height:34px; text-align:center;
+         font-variant-emoji:text; } /* request text, not emoji, presentation */
+  .prompt { margin:0 0 16px; font-size:14px; }
+  /* options — eight orientations in MITRE order, radio-style */
+  .opts { display:flex; flex-direction:column; gap:8px; max-width:120px; }
+  .opt { display:flex; align-items:center; gap:14px; padding:7px 12px; cursor:pointer;
+         border:1px solid var(--line); border-radius:8px; background:#fff;
+         font:inherit; color:inherit; text-align:left; transition:border-color .12s,background .12s; }
+  .opt:hover { border-color:#aaa; background:#fafafa; }
+  .opt:focus-visible { outline:2px solid var(--focus); outline-offset:2px; }
+  .opt .dot { width:13px; height:13px; border:1.5px solid #9a9a9a; border-radius:50%; flex:0 0 auto; }
+  .opt[aria-checked="true"] .dot { border-color:var(--ink); box-shadow:inset 0 0 0 3px var(--ink); }
+  .opt .arrow { width:30px; height:30px; }
+  .opt .uni { font-size:26px; width:30px; height:30px; line-height:30px; }
+  .opt:disabled { cursor:default; opacity:.85; }
+  .opt.correct { border-color:var(--ok); background:#eef7f0; }
+  .opt.wrong   { border-color:var(--no); background:#fceeed; }
+  /* feedback + data */
+  .fb { margin-top:18px; font-size:14px; min-height:22px; }
+  .fb b.ok { color:var(--ok); } .fb b.no { color:var(--no); }
+  .data { margin-top:18px; padding:12px 14px; background:#f6f6f6; border-radius:8px;
+          font:12px/1.6 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; color:#333; white-space:pre-wrap; }
+  .bar { display:flex; gap:18px; align-items:center; margin-top:22px; flex-wrap:wrap; }
+  button.act { font:inherit; padding:8px 16px; border:1px solid var(--ink); border-radius:8px;
+               background:var(--ink); color:#fff; cursor:pointer; }
+  button.act:focus-visible { outline:2px solid var(--focus); outline-offset:2px; }
+  .toggle { display:flex; gap:8px; align-items:center; color:var(--muted); font-size:13px; margin-left:auto; }
+  .toggle button { font:inherit; padding:5px 11px; border:1px solid var(--line); background:#fff; border-radius:7px; cursor:pointer; color:var(--ink); }
+  .toggle button[aria-pressed="true"] { background:var(--ink); color:#fff; border-color:var(--ink); }
+  @media (prefers-reduced-motion: reduce) { * { transition:none !important; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Figure Series — stimulus &amp; encoding</h1>
+  <p class="sub">One rotated SVG arrow drives both the stem and the eight options. Toggle SVG/Unicode to compare consistency. This is the participant-facing view only; the jsPsych wiring is in <code>fs_jspsych.js</code>.</p>
+
+  <div class="card">
+    <p class="label" id="stemlabel">Sequence — which arrow comes next?</p>
+    <div class="stem" id="stem" aria-labelledby="stemlabel"></div>
+
+    <p class="prompt">Select the next arrow:</p>
+    <div class="opts" id="opts" role="radiogroup" aria-label="Answer options"></div>
+
+    <div class="fb" id="fb" aria-live="polite"></div>
+    <div class="data" id="data"></div>
+
+    <div class="bar">
+      <button class="act" id="next">Next item</button>
+      <span class="toggle">render:
+        <button id="svgBtn" aria-pressed="true">SVG</button>
+        <button id="uniBtn" aria-pressed="false">Unicode</button>
+      </span>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ---- 8 canonical directions, clockwise from North. Option order = MITRE order. ---- */
+const DIRS = [
+  { code:"N",  deg:0,   uni:"\u2191", name:"up" },
+  { code:"NE", deg:45,  uni:"\u2197", name:"up-right" },
+  { code:"E",  deg:90,  uni:"\u2192", name:"right" },
+  { code:"SE", deg:135, uni:"\u2198", name:"down-right" },
+  { code:"S",  deg:180, uni:"\u2193", name:"down" },
+  { code:"SW", deg:225, uni:"\u2199", name:"down-left" },
+  { code:"W",  deg:270, uni:"\u2190", name:"left" },
+  { code:"NW", deg:315, uni:"\u2196", name:"up-left" },
+];
+const byCode = Object.fromEntries(DIRS.map((d,i)=>[d.code,{...d,index:i}]));
+
+/* One arrow, pointing up, rotated by the direction's degrees. Font-free + pixel-consistent. */
+function arrowSVG(code, px) {
+  const d = byCode[code];
+  return `<svg class="arrow" width="${px}" height="${px}" viewBox="0 0 100 100" aria-hidden="true">
+    <g transform="rotate(${d.deg} 50 50)" fill="none" stroke="currentColor"
+       stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="50" y1="84" x2="50" y2="26"/>
+      <polyline points="31,47 50,26 69,47"/>
+    </g></svg>`;
+}
+const glyph = (code, mode) =>
+  mode === "uni" ? `<span class="uni" aria-hidden="true">${byCode[code].uni}</span>` : arrowSVG(code, 30);
+
+/* ---- Demo items (real MITRE Form-1 items, arrows recovered as Unicode → direction codes) ---- */
+const ITEMS = [
+  { ref:"as_b1i11", b:-0.14, tier:"easy",
+    stem:["W","E","E","NE","N","S","S","SE","E","W","W","SW","S"], key:"N" },
+  { ref:"as_b1i2",  b:-0.62, tier:"easy",
+    stem:["S","NW","SE","W","NW","SE","N","NW","SE"], key:"E" },
+];
+
+let idx = 0, mode = "svg", t0 = 0, answered = false;
+
+function render() {
+  const it = ITEMS[idx]; answered = false; t0 = performance.now();
+  // stem
+  document.getElementById("stem").innerHTML =
+    it.stem.map(c => mode === "uni"
+      ? `<span class="uni" aria-hidden="true">${byCode[c].uni}</span>`
+      : arrowSVG(c, 34)).join("");
+  // options
+  const opts = document.getElementById("opts");
+  opts.innerHTML = DIRS.map(d =>
+    `<button class="opt" role="radio" aria-checked="false" data-code="${d.code}"
+       aria-label="${d.name}"><span class="dot"></span>${glyph(d.code, mode)}</button>`).join("");
+  opts.querySelectorAll(".opt").forEach(b => b.addEventListener("click", () => choose(b, it)));
+  document.getElementById("fb").textContent = "";
+  document.getElementById("data").textContent =
+    `item ${it.ref}   b=${it.b}   tier=${it.tier}\nstem: [${it.stem.join(", ")}]\nkey:  "${it.key}"`;
+}
+
+function choose(btn, it) {
+  if (answered) return;
+  answered = true;
+  const rt = Math.round(performance.now() - t0);
+  const chosen = btn.dataset.code;
+  const correct = chosen === it.key;
+  document.querySelectorAll(".opt").forEach(b => {
+    b.disabled = true; b.setAttribute("aria-checked", b.dataset.code === chosen ? "true" : "false");
+    if (b.dataset.code === it.key) b.classList.add("correct");
+    if (b.dataset.code === chosen && !correct) b.classList.add("wrong");
+  });
+  document.getElementById("fb").innerHTML = correct
+    ? `<b class="ok">Correct.</b> chosen <code>${chosen}</code> · RT ${rt} ms`
+    : `<b class="no">Incorrect.</b> chosen <code>${chosen}</code>, key <code>${it.key}</code> · RT ${rt} ms`;
+  document.getElementById("data").textContent +=
+    `\n\nrecorded → { response:"${chosen}", correct:${correct}, rt:${rt} }`;
+}
+
+document.getElementById("next").addEventListener("click", () => { idx = (idx + 1) % ITEMS.length; render(); });
+function setMode(m){ mode=m;
+  svgBtn.setAttribute("aria-pressed", m==="svg"); uniBtn.setAttribute("aria-pressed", m==="uni"); render(); }
+document.getElementById("svgBtn").addEventListener("click", ()=>setMode("svg"));
+document.getElementById("uniBtn").addEventListener("click", ()=>setMode("uni"));
+render();
+</script>
+</body>
+</html>

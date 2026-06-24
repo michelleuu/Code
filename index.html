@@ -15,11 +15,15 @@
     css/experiment.css   — all experiment styles
     js/                  — state, utils, tracking, webcam, response-tracker, trial-sequence
     controller.js        — selectNextTrial, resolveOutcomeFeedback, onTrialFinish, advancePhase
-    trial_schema.js      — TRIAL_BANK, EMOTION_PROFILE, PARTICIPANT_STATE_TEMPLATE, etc.
-    rotation_subbank.js  — ROT_SUBBANK, ROT_CALIBRATION
-    reasoning_battery.js — REASONING_BANK, REASONING_CALIBRATION
-    mitre_reasoning_items.js
+    trial_schema.js      — EMOTION_PROFILE, PARTICIPANT_STATE_TEMPLATE, POOL_STATE_TEMPLATE, PROBES
+    trial_bank.js        — TRIAL_BANK, CALIBRATION_BANK (assembled from stimuli/ static files)
+    fs_jspsych.js        — arrowSVG, renderSequence, DIRS (Figure Series rendering)
+    stimuli/iqa_bank.js  — IQA_SUBBANK, IQA_CALIBRATION
+    stimuli/rotation_bank.js  — ROT_SUBBANK, ROT_CALIBRATION
+    stimuli/reasoning_bank.js — REASONING_BANK, REASONING_CALIBRATION
     stimuli/rot/         — rotation image pairs (objId_disparity[_R].jpg)
+    stimuli/iqa/kadid/   — KADID-10k image pairs for IQA tasks
+    stimuli/mitre/mr/    — matrix reasoning PNG images
 -->
 <html lang="en">
   <head>
@@ -47,26 +51,17 @@
   <script type="module">
     import { session, clock, SKIP_WEBGAZER } from "./js/state.js";
     import { downloadFile, J } from "./js/utils.js";
-    import { initWebcam } from "./js/webcam.js";
+    import { initWebcam, getStream } from "./js/webcam.js";
     import { buildTrialSequence } from "./js/trial_sequence.js";
     import { selectNextTrial, advancePhase, CONFIG } from "./controller.js";
     import {
       PARTICIPANT_STATE_TEMPLATE,
       POOL_STATE_TEMPLATE,
     } from "./trial_schema.js";
-    import { ROT_SUBBANK, ROT_CALIBRATION } from "./rotation_subbank.js";
-    import {
-      REASONING_BANK,
-      REASONING_CALIBRATION,
-    } from "./reasoning_battery.js";
+    import { TRIAL_BANK, CALIBRATION_BANK } from "./trial_bank.js";
 
-    /* ---- Trial bank — merge sub-banks ---- */
-    window.TRIAL_BANK_FULL = [
-      ...REASONING_BANK,
-      ...ROT_SUBBANK,
-      ROT_CALIBRATION,
-      REASONING_CALIBRATION,
-    ];
+    /* ---- Trial bank — all tasks + calibration tasks accessible by trial_sequence.js ---- */
+    window.TRIAL_BANK_FULL = [...TRIAL_BANK, ...CALIBRATION_BANK];
 
     /* ---- jsPsych init ---- */
     const jsPsych = initJsPsych({
@@ -213,21 +208,48 @@
       data: { phase: "intake_survey" },
     });
 
-    /* 3. Webcam setup */
+    /* 3a. Webcam setup — instructions + trigger permission */
     timeline.push({
       type: jsPsychHtmlButtonResponse,
       stimulus: `
         <div class="box">
           <h2>Camera Setup</h2>
-          <p>This study records brief video clips of your facial expressions after you receive feedback.</p>
-          <p>You will be asked to allow camera access on the next screen.</p>
-          <p>Please sit comfortably in a well-lit room and keep your head fairly still.</p>
+          <p>This study records brief video clips of your facial expressions when you receive feedback.</p>
+          <p>Please sit comfortably in a well-lit room and keep your face in frame. Click <strong>Enable Camera</strong> and allow access when your browser asks.</p>
         </div>`,
-      choices: ["Continue"],
-      on_finish: async function () {
-        await initWebcam();
+      choices: ["Enable Camera"],
+      on_finish: function () {
+        // Fire the permission request; store the promise so the preview screen can await it
+        window._webcamReady = initWebcam();
       },
       data: { phase: "webcam_setup_instructions" },
+    });
+
+    /* 3b. Webcam preview — live feed so participant can check positioning */
+    timeline.push({
+      type: jsPsychHtmlButtonResponse,
+      stimulus: `
+        <div class="box">
+          <h2>Check Your Position</h2>
+          <p>Make sure your face is fully visible and the room is well-lit. When you're ready, click <strong>OK</strong>.</p>
+          <video id="webcam-preview" autoplay playsinline muted
+            class="webcam-preview"></video>
+          <p id="webcam-status" style="color:#aaa;font-size:13px;margin-top:8px">Connecting to camera…</p>
+        </div>`,
+      choices: ["OK, looks good"],
+      on_load: async function () {
+        if (window._webcamReady) await window._webcamReady;
+        const stream = getStream();
+        const video = document.getElementById("webcam-preview");
+        const status = document.getElementById("webcam-status");
+        if (video && stream) {
+          video.srcObject = stream;
+          if (status) status.style.display = "none";
+        } else if (status) {
+          status.textContent = "Camera unavailable — you can still continue.";
+        }
+      },
+      data: { phase: "webcam_preview" },
     });
 
     /* 4. WebGazer calibration (skipped in dev mode) */
@@ -309,39 +331,19 @@
       stimulus: `
         <div class="box">
           <h2>Practice Round</h2>
-          <p>Before the main study, you will complete a short practice round.</p>
-          <p>You will get real feedback after each task so you can get comfortable with the format.</p>
+          <p>Before the main study, you will complete a short practice round of 1–3 tasks.</p>
+          <p>Each task is followed by your score and a short emotion check-in. The practice ends once you have completed at least one task successfully, or after 3 tasks at most.</p>
         </div>`,
       choices: ["Begin Practice"],
       data: { phase: "calibration_intro" },
     });
 
     var calibTrialIndex = 0;
-    const calibTasks = [ROT_CALIBRATION, REASONING_CALIBRATION];
-
-    function makeCalibSelection() {
-      const task = calibTasks[calibTrialIndex % calibTasks.length];
-      const dv = session.participant.domainValue;
-      const topDomain =
-        Object.entries(dv)
-          .filter(([, v]) => v !== null)
-          .sort((a, b) => b[1] - a[1])[0]?.[0] || "computing";
-      return {
-        phase: "calibration",
-        bankId: task.id,
-        domainUsed: task.domains.includes(topDomain)
-          ? topDomain
-          : task.domains[0],
-        targetEmotion: null,
-        primeId: null,
-        feedbackId: null,
-        honestFeedback: true,
-        reason: { note: "calibration" },
-      };
-    }
 
     timeline.push({
-      timeline: buildTrialSequence(makeCalibSelection),
+      timeline: buildTrialSequence(function () {
+        return selectNextTrial(session.participant, session.pool, clock);
+      }),
       loop_function: function () {
         calibTrialIndex++;
         return (
@@ -356,10 +358,15 @@
       stimulus: `
         <div class="box">
           <h2>Practice Complete</h2>
-          <p>Good — you have the format down. The main study is about to begin.</p>
+          <p>The main study is about to begin.</p>
           <p>You will complete a series of tasks and see your results after each one.</p>
         </div>`,
       choices: ["Begin Main Study"],
+      on_finish: function () {
+        if (session.participant.phase === "calibration") {
+          session.participant.phase = "main";
+        }
+      },
       data: { phase: "calibration_complete_notice" },
     });
 

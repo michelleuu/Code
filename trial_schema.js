@@ -108,143 +108,26 @@ export const framingForDomains = (domains, framing) =>
   Object.fromEntries(domains.map(d => [d, framing]));
 
 /* ============================================================================
- * TRIAL BANK — flat list of fully-specified, single-shot tasks.
+ * TRIAL BANK — assembled in trial_bank.js, NOT here.
+ *
+ * The live bank is composed from pre-generated static files in stimuli/:
+ *   iqa_bank.js, rotation_bank.js, reasoning_bank.js (and future families).
+ * The controller imports TRIAL_BANK + CALIBRATION_BANK from trial_bank.js.
+ * This schema file exports only vocabularies, state templates, and helpers.
  *
  * Bank-width rule of thumb (size during pilot): for every
  * (domain x emotion x comparison) cell the controller can route to, have
  *   #tasks  >=  max times any single participant could be sent to that cell,
  * or a participant exhausts the cell and you're forced to repeat a task.
  *
- * Each task lists ONLY the feedback variants it can carry credibly given its
- * fixed difficulty; presence of a variant = support for that (emotion, comparison).
+ * Tasks list ONLY the feedback variants they can carry credibly given fixed
+ * difficulty; presence of a variant = support for that (emotion, comparison).
+ * Each task also carries:
+ *   instructions : short neutral string shown above the stimulus before any
+ *                  framing fires; invariant across all tasks of this family;
+ *                  taught in familiarisation. t0 for RT taken from
+ *                  gaze_offset_text (gaze leaving the instruction).
  * ========================================================================== */
-export const TRIAL_BANK = [
-
-  /* --- EASY visuospatial: credible for top-percentile -> pride / relief --- */
-  {
-    id: "rot_easy_01",
-    name: "Mental rotation — easy fixed set",
-    domains: ["design", "computing"],
-    modality: "visuospatial",
-    languageLoad: "low",
-    difficultyTier: "easy",
-    stimulus: { component: "mentalRotation", stimulusRef: "rot_easy_01_items", scoreFn: "scoreRotation" },
-    calibration: { realPSuccess: 0.85, medianRtMs: 9000, plausiblePct: [60, 99] }, // piloted; fixed
-    timer: { mode: "hidden" },
-
-    // primes available on this task (controller picks one only when the target needs/uses it)
-    primes: [
-      { id: "p_expectLow",  setsExpectancy: "low",  attributionFrame: "none",
-        text: "Heads-up — this set trips up most people." },                  // enables RELIEF
-      { id: "p_abilityPos", setsExpectancy: "none", attributionFrame: "ability",
-        text: "This one is a clean read of visual-spatial talent." },          // optional PRIDE amplifier
-    ],
-
-    // feedback[emotion] = [ variants ];  variant.comparison selected by participant SCO
-    feedback: {
-      pride: [
-        { id: "pride_ind",  comparison: "individuating",   attribution: "ability_effort", severity: 1,
-          pct: [88, 99], template: "${pct}th percentile — one of the highest we've seen. Strong spatial sense, and it shows you worked it." },
-        { id: "pride_norm", comparison: "normative_shared", attribution: "ability_effort", severity: 1,
-          pct: [88, 99], template: "${pct}th percentile — you're well above the group on a set most clear only with effort." },
-      ],
-      relief: [
-        { id: "relief_norm", comparison: "normative_shared", attribution: "task_difficulty", severity: 0,
-          requiresExpectancy: "low", pct: [62, 85],
-          template: "${pct}th percentile — you cleared the set most people miss." },
-      ],
-    },
-
-    response: { probes: PROBES, scale: { type: "likert", min: 1, max: 7 }, cleanCore: { dominantMin: 5, othersMax: 3 } },
-  },
-
-  /* --- HARD logic: credible for bottom-percentile -> shame / guilt / disap. --- */
-  {
-    id: "seq_hard_01",
-    name: "Number-sequence — hard fixed set",
-    domains: ["computing"],
-    modality: "logic",
-    languageLoad: "low",
-    difficultyTier: "hard",
-    stimulus: { component: "numberSequence", stimulusRef: "seq_hard_01_items", scoreFn: "scoreSequence" },
-    calibration: { realPSuccess: 0.20, medianRtMs: 22000, plausiblePct: [2, 45] },
-    timer: { mode: "hidden" },
-
-    primes: [
-      { id: "p_expectHigh", setsExpectancy: "high", attributionFrame: "none",
-        text: "Your pattern scores so far suggest this should go smoothly." },   // enables DISAPPOINTMENT
-      { id: "p_abilityDiag", setsExpectancy: "none", attributionFrame: "ability",
-        text: "This set is diagnostic of core logical-reasoning ability." },     // optional SHAME amplifier (no success promise)
-      { id: "p_effortCue",  setsExpectancy: "none", attributionFrame: "effort",
-        text: "These reward a careful, systematic approach more than raw speed." }, // optional GUILT amplifier
-    ],
-
-    feedback: {
-      // strong shame is credible here because difficulty is hard; only individuating (must single the person out)
-      shame: [
-        { id: "shame_mild", comparison: "individuating", attribution: "ability", severity: 2,
-          pct: [3, 18], template: "You're in the bottom ${pct}% — logical sequencing may not be your strength." },
-        { id: "shame_hard", comparison: "individuating", attribution: "ability", severity: 3,
-          pct: [2, 10], template: "Bottom ${pct}% again — others at your level are well ahead; this may not be where your talent lies." },
-      ],
-      guilt: [
-        { id: "guilt_effort", comparison: "individuating", attribution: "effort", severity: 1,
-          pct: [4, 22], template: "Bottom ${pct}% — you clearly have the head for this; you just didn't work it systematically." },
-      ],
-      disappointment: [
-        { id: "disap_ind", comparison: "individuating", attribution: "none", severity: 1,
-          requiresExpectancy: "high", pct: [8, 35],
-          template: "${pct}th percentile — below what your last rounds pointed to." },
-      ],
-    },
-
-    response: { probes: PROBES, scale: { type: "likert", min: 1, max: 7 }, cleanCore: { dominantMin: 5, othersMax: 3 } },
-  },
-
-  /* --- MID perceptual: moderate emotions; note selective comparison support --- */
-  {
-    id: "compose_mid_01",
-    name: "Visual composition — mid fixed set",
-    domains: ["media", "design"],
-    modality: "perceptual",
-    languageLoad: "low",                 // visual variant chosen to stay fair for the international cohort
-    difficultyTier: "mid",
-    stimulus: { component: "visualCompose", stimulusRef: "compose_mid_01_items", scoreFn: "scoreCompose" },
-    calibration: { realPSuccess: 0.50, medianRtMs: 15000, plausiblePct: [25, 80] },
-    timer: { mode: "hidden" },
-
-    primes: [
-      { id: "p_expectLow",  setsExpectancy: "low",  attributionFrame: "none",
-        text: "Most people struggle with this composition set." },             // enables RELIEF
-      { id: "p_expectHigh", setsExpectancy: "high", attributionFrame: "none",
-        text: "Your eye has been sharp; this one should suit you." },          // enables DISAPPOINTMENT
-    ],
-
-    feedback: {
-      pride: [ // only individuating offered here (no strong normative read for this set)
-        { id: "pride_ind", comparison: "individuating", attribution: "ability_effort", severity: 1,
-          pct: [72, 80], template: "${pct}th percentile — a genuinely strong design eye, and the care shows." },
-      ],
-      guilt: [
-        { id: "guilt_effort", comparison: "individuating", attribution: "effort", severity: 1,
-          pct: [25, 40], template: "Bottom ${pct}% — the instinct is there; you just didn't take your time." },
-      ],
-      disappointment: [
-        { id: "disap_ind", comparison: "individuating", attribution: "none", severity: 1,
-          requiresExpectancy: "high", pct: [25, 45],
-          template: "${pct}th percentile — short of what your run suggested." },
-      ],
-      relief: [
-        { id: "relief_norm", comparison: "normative_shared", attribution: "task_difficulty", severity: 0,
-          requiresExpectancy: "low", pct: [60, 80],
-          template: "${pct}th percentile — you nailed the set that catches most people." },
-      ],
-      // shame omitted: mid difficulty can't show a believable enough bottom-percentile for strong shame
-    },
-
-    response: { probes: PROBES, scale: { type: "likert", min: 1, max: 7 }, cleanCore: { dominantMin: 5, othersMax: 3 } },
-  },
-];
 
 /* ============================================================================
  * PARTICIPANT STATE — set at intake, updated every trial's on_finish.
@@ -380,9 +263,9 @@ export const REALIZED_TRIAL_EXAMPLE = {
  *     - clean-core -> pool.confirmedClean[felt]++ (spine); any confirmed -> pool.confirmed[felt]++
  *     - update cumNegLoad/consecutiveNeg from FELT; record referent claim; set distress/suspicion
  *
- * jsPsych: looping timeline node with FUNCTION-valued params -> each iteration calls
- * selectNextTrial(...) to fill prime text / stimulus / framed result. Push results in
- * on_finish -> onTrialFinish(...). loop_function stops at pool quotas or maxTrials.
- * conditional_function routes positive_close and distress-abort. Write the full
- * selection.reason trace to jsPsych.data for later sequence/order modelling.
+ * jsPsych: one looping timeline node with FUNCTION-valued params. See the
+ * jsPsych wiring section in controller.js for the full per-trial sequence
+ * (instructions → prime → task → score → resolveOutcomeFeedback → capture
+ * → sliders → onTrialFinish). loop_function stops when phase === "debrief".
+ * Write the full selection.reason trace to jsPsych.data for later modelling.
  * ========================================================================== */

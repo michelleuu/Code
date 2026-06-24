@@ -1,9 +1,11 @@
-/* AUTO-GENERATED from the public MITRE/ETS guide (DTIC AD1107949), Appendices B-D.
+/* AUTO-GENERATED from the public MITRE/ETS guide (DTIC AD1107949), Appendices B-E.
  * NS + LS carry real stems, keys, and IRT b-values (constructed-response, fully runnable).
- * FS carries real b only (arrow glyphs render from your authorized copy). MR is in the
- * battery as reference slots (images from matrixReasoning.zip + keys/params from Appendix E).
+ * MR carries real keys (A-H) + b-values; its image is stimuli/mitre/mr/<label>.png — runnable.
+ * FS carries real direction-code stems (N,NE,E,SE,S,SW,W,NW) + key + b — rendered as rotated SVG
+ *   arrows (see fs_jspsych.js); 8-option choice, no font. All four surfaces are now runnable.
  * tier = within-surface b-tertile (RELATIVE placeholder — set real tiers/bands from your pilot).
- * VERIFY against your PDF: NS keys auto-verified for 19/70 (rest use combined rules); LS not auto-verified.
+ * VERIFY against your PDF: NS keys auto-verified for 19/70 (rest use combined rules); LS/FS/MR keys not auto-verified.
+ * MR label case follows the p.35 parameter table (e.g. F10.NEW1); confirm your image filenames match.
  * Keep this file inside your secured system (Appendix A) — it contains answer keys. */
 export const MITRE_ITEMS = {
  "NS": [
@@ -2690,420 +2692,1698 @@ export const MITRE_ITEMS = {
    "form": "1",
    "b": -0.14,
    "disc": 0.64,
-   "tier": "mid"
+   "tier": "mid",
+   "stem": [
+    "W",
+    "E",
+    "E",
+    "NE",
+    "N",
+    "S",
+    "S",
+    "SE",
+    "E",
+    "W",
+    "W",
+    "SW",
+    "S"
+   ],
+   "key": "N"
   },
   {
    "label": "as_b1i2",
    "form": "1",
    "b": -0.62,
    "disc": 1.06,
-   "tier": "mid"
+   "tier": "mid",
+   "stem": [
+    "S",
+    "NW",
+    "SE",
+    "W",
+    "NW",
+    "SE",
+    "N",
+    "NW",
+    "SE"
+   ],
+   "key": "E"
   },
   {
    "label": "as_b1i5",
    "form": "1",
    "b": 0.67,
    "disc": 0.84,
-   "tier": "hard"
+   "tier": "hard",
+   "stem": [
+    "SW",
+    "NW",
+    "W",
+    "NW",
+    "NW",
+    "NW",
+    "N",
+    "NW",
+    "NE",
+    "NW",
+    "E",
+    "NW"
+   ],
+   "key": "SE"
   },
   {
    "label": "as_b1i7",
    "form": "1",
    "b": 0.36,
    "disc": 1.08,
-   "tier": "mid"
+   "tier": "mid",
+   "stem": [
+    "S",
+    "SW",
+    "N",
+    "SW",
+    "W",
+    "SW",
+    "E",
+    "SW",
+    "N",
+    "SW",
+    "S",
+    "SW"
+   ],
+   "key": "E"
   },
   {
    "label": "as_b1i13",
    "form": "1",
    "b": -0.37,
    "disc": 1.23,
-   "tier": "mid"
+   "tier": "mid",
+   "stem": [
+    "NE",
+    "NE",
+    "N",
+    "NW",
+    "SE",
+    "SE",
+    "E",
+    "NE",
+    "SW",
+    "SW",
+    "S",
+    "SE",
+    "NW",
+    "NW"
+   ],
+   "key": "W"
   },
   {
    "label": "as_b1i3",
    "form": "1",
    "b": 1.84,
    "disc": 1.4,
-   "tier": "hard"
+   "tier": "hard",
+   "stem": [
+    "S",
+    "NE",
+    "W",
+    "NW",
+    "NE",
+    "W",
+    "E",
+    "NE",
+    "W"
+   ],
+   "key": "SW"
   },
   {
    "label": "as_b1i15",
    "form": "1",
    "b": -0.64,
    "disc": 0.66,
-   "tier": "mid"
+   "tier": "mid",
+   "stem": [
+    "N",
+    "NE",
+    "W",
+    "E",
+    "SE",
+    "N",
+    "S",
+    "SW",
+    "E"
+   ],
+   "key": "W"
   },
   {
    "label": "as_b1i16",
    "form": "1",
    "b": 0.57,
    "disc": 1.07,
-   "tier": "mid"
+   "tier": "mid",
+   "stem": [
+    "S",
+    "SW",
+    "S",
+    "W",
+    "NW",
+    "W",
+    "N",
+    "NE",
+    "N",
+    "E"
+   ],
+   "key": "SE"
   },
   {
    "label": "as_b1i10",
    "form": "1",
    "b": -1.77,
    "disc": 0.85,
-   "tier": "easy"
+   "tier": "easy",
+   "stem": [
+    "NW",
+    "SE",
+    "S",
+    "NE",
+    "SW",
+    "S",
+    "SE",
+    "NW",
+    "S",
+    "SW"
+   ],
+   "key": "NE"
   },
   {
    "label": "as_b2i2",
    "form": "1",
    "b": 1.38,
    "disc": 0.8,
-   "tier": "hard"
+   "tier": "hard",
+   "stem": [
+    "NW",
+    "N",
+    "NE",
+    "NE",
+    "N",
+    "NE",
+    "SE",
+    "N",
+    "NE"
+   ],
+   "key": "SW"
   },
   {
    "label": "as_b2i5",
    "form": "1",
    "b": 0.4,
    "disc": 0.5,
-   "tier": "mid"
+   "tier": "mid",
+   "stem": [
+    "NW",
+    "SW",
+    "NE",
+    "NW",
+    "SE",
+    "NE",
+    "SW",
+    "SE",
+    "NW"
+   ],
+   "key": "SW"
   },
   {
    "label": "as_b2i12",
    "form": "1",
    "b": 0.28,
    "disc": 1.17,
-   "tier": "mid"
+   "tier": "mid",
+   "stem": [
+    "S",
+    "NE",
+    "NE",
+    "SW",
+    "W",
+    "SE",
+    "SE",
+    "NW",
+    "N",
+    "SW",
+    "SW",
+    "NE",
+    "E"
+   ],
+   "key": "NW"
   },
   {
    "label": "as_b2i13",
    "form": "1",
    "b": -2.19,
    "disc": 0.5,
-   "tier": "easy"
+   "tier": "easy",
+   "stem": [
+    "W",
+    "W",
+    "S",
+    "E",
+    "N",
+    "N",
+    "W",
+    "S",
+    "E",
+    "E",
+    "N",
+    "W",
+    "S",
+    "S"
+   ],
+   "key": "E"
   },
   {
    "label": "as_b2i3",
    "form": "1",
    "b": 2.12,
    "disc": 1.21,
-   "tier": "hard"
+   "tier": "hard",
+   "stem": [
+    "NE",
+    "SW",
+    "N",
+    "S",
+    "SW",
+    "N",
+    "NW",
+    "SW",
+    "N"
+   ],
+   "key": "E"
   },
   {
    "label": "as_b2i14",
    "form": "1",
    "b": 0.91,
    "disc": 0.5,
-   "tier": "hard"
+   "tier": "hard",
+   "stem": [
+    "E",
+    "N",
+    "SE",
+    "NW",
+    "S",
+    "E",
+    "SW",
+    "NW",
+    "W",
+    "S",
+    "NW",
+    "NW"
+   ],
+   "key": "N"
   },
   {
    "label": "as_b2i10",
    "form": "1",
    "b": 0.24,
    "disc": 0.75,
-   "tier": "mid"
+   "tier": "mid",
+   "stem": [
+    "NE",
+    "E",
+    "W",
+    "SE",
+    "S",
+    "W",
+    "SW",
+    "W",
+    "W",
+    "NW"
+   ],
+   "key": "N"
   },
   {
    "label": "as_b3i1",
    "form": "1",
    "b": 0.68,
    "disc": 0.99,
-   "tier": "hard"
+   "tier": "hard",
+   "stem": [
+    "NW",
+    "SE",
+    "NE",
+    "SE",
+    "SE",
+    "SE"
+   ],
+   "key": "SW"
   },
   {
    "label": "as_b3i4",
    "form": "1",
    "b": -0.31,
    "disc": 0.9,
-   "tier": "mid"
+   "tier": "mid",
+   "stem": [
+    "S",
+    "SE",
+    "W",
+    "SW",
+    "N",
+    "NW",
+    "E",
+    "NE",
+    "S"
+   ],
+   "key": "SE"
   },
   {
    "label": "as_b3i7",
    "form": "1",
    "b": -1.12,
    "disc": 1.59,
-   "tier": "easy"
+   "tier": "easy",
+   "stem": [
+    "SE",
+    "SE",
+    "N",
+    "SW",
+    "SW",
+    "E",
+    "NW",
+    "NW",
+    "S",
+    "NE",
+    "NE"
+   ],
+   "key": "W"
   },
   {
    "label": "as_b3i13",
    "form": "1",
    "b": -1.04,
    "disc": 0.78,
-   "tier": "easy"
+   "tier": "easy",
+   "stem": [
+    "SE",
+    "SE",
+    "SW",
+    "NE",
+    "SW",
+    "SW",
+    "NW",
+    "SE",
+    "NW",
+    "NW",
+    "NE",
+    "SW"
+   ],
+   "key": "NE"
   },
   {
    "label": "as_b3i8",
    "form": "1",
    "b": -1.25,
    "disc": 0.93,
-   "tier": "easy"
+   "tier": "easy",
+   "stem": [
+    "N",
+    "N",
+    "NW",
+    "E",
+    "E",
+    "NE",
+    "S",
+    "S",
+    "SE"
+   ],
+   "key": "W"
   },
   {
    "label": "as_b3i15",
    "form": "1",
    "b": -0.68,
    "disc": 0.75,
-   "tier": "easy"
+   "tier": "easy",
+   "stem": [
+    "SE",
+    "W",
+    "NE",
+    "SW",
+    "N",
+    "SE",
+    "NW",
+    "E",
+    "SW",
+    "NE"
+   ],
+   "key": "S"
   },
   {
    "label": "as_b3i16",
    "form": "1",
    "b": -1.19,
    "disc": 0.58,
-   "tier": "easy"
+   "tier": "easy",
+   "stem": [
+    "E",
+    "SE",
+    "N",
+    "S",
+    "SW",
+    "E",
+    "W",
+    "NW",
+    "S"
+   ],
+   "key": "N"
   },
   {
    "label": "as_b3i10",
    "form": "1",
    "b": -0.8,
    "disc": 1.25,
-   "tier": "easy"
+   "tier": "easy",
+   "stem": [
+    "N",
+    "SW",
+    "NE",
+    "E",
+    "NW",
+    "NE",
+    "S",
+    "NE",
+    "NE"
+   ],
+   "key": "W"
   },
   {
    "label": "as_b4i11",
    "form": "1",
    "b": 2.06,
    "disc": 0.39,
-   "tier": "hard"
+   "tier": "hard",
+   "stem": [
+    "E",
+    "S",
+    "S",
+    "W",
+    "S",
+    "W",
+    "W",
+    "N",
+    "W",
+    "N",
+    "N",
+    "E"
+   ],
+   "key": "N"
   },
   {
    "label": "as_b4i2",
    "form": "1",
    "b": 0.96,
    "disc": 0.46,
-   "tier": "hard"
+   "tier": "hard",
+   "stem": [
+    "W",
+    "E",
+    "W",
+    "N",
+    "E",
+    "W",
+    "E",
+    "E",
+    "W"
+   ],
+   "key": "S"
   },
   {
    "label": "as_b4i3",
    "form": "1",
    "b": 3.3,
    "disc": 0.32,
-   "tier": "hard"
+   "tier": "hard",
+   "stem": [
+    "E",
+    "W",
+    "S",
+    "SW",
+    "W",
+    "S",
+    "N",
+    "W",
+    "S"
+   ],
+   "key": "SE"
   },
   {
    "label": "as_b5i2",
    "form": "1",
    "b": -1.76,
    "disc": 0.82,
-   "tier": "easy"
+   "tier": "easy",
+   "stem": [
+    "SE",
+    "S",
+    "N",
+    "SW",
+    "S",
+    "N",
+    "NW",
+    "S",
+    "N"
+   ],
+   "key": "NE"
   },
   {
    "label": "as_b5i8",
    "form": "1",
    "b": -2.43,
    "disc": 0.81,
-   "tier": "easy"
+   "tier": "easy",
+   "stem": [
+    "E",
+    "E",
+    "W",
+    "S",
+    "S",
+    "N",
+    "W",
+    "W",
+    "E"
+   ],
+   "key": "N"
   },
   {
    "label": "as_b5i16",
    "form": "1",
    "b": 0.51,
    "disc": 0.19,
-   "tier": "mid"
+   "tier": "mid",
+   "stem": [
+    "W",
+    "N",
+    "E",
+    "N",
+    "E",
+    "S",
+    "E",
+    "S",
+    "W",
+    "S"
+   ],
+   "key": "W"
   },
   {
    "label": "as_b1i4",
    "form": "2",
    "b": -1.02,
    "disc": 0.63,
-   "tier": "easy"
+   "tier": "easy",
+   "stem": [
+    "SW",
+    "NW",
+    "NW",
+    "NE",
+    "NE",
+    "SE",
+    "SE",
+    "SW",
+    "SW"
+   ],
+   "key": "NW"
   },
   {
    "label": "as_b1i12",
    "form": "2",
    "b": 0.71,
    "disc": 0.77,
-   "tier": "hard"
+   "tier": "hard",
+   "stem": [
+    "SW",
+    "NW",
+    "NW",
+    "N",
+    "NW",
+    "NE",
+    "NE",
+    "E",
+    "NE",
+    "SE",
+    "SE",
+    "S"
+   ],
+   "key": "SE"
   },
   {
    "label": "as_b1i6",
    "form": "2",
    "b": 1.8,
    "disc": 0.73,
-   "tier": "hard"
+   "tier": "hard",
+   "stem": [
+    "W",
+    "N",
+    "SW",
+    "N",
+    "N",
+    "N",
+    "NW",
+    "N",
+    "E",
+    "N",
+    "NE",
+    "N"
+   ],
+   "key": "S"
   },
   {
    "label": "as_b1i8",
    "form": "2",
    "b": -1.15,
    "disc": 0.68,
-   "tier": "easy"
+   "tier": "easy",
+   "stem": [
+    "NW",
+    "NW",
+    "S",
+    "NE",
+    "NE",
+    "W",
+    "SE",
+    "SE",
+    "N"
+   ],
+   "key": "SW"
   },
   {
    "label": "as_b2i1",
    "form": "2",
    "b": -2.5,
    "disc": 0.58,
-   "tier": "easy"
+   "tier": "easy",
+   "stem": [
+    "S",
+    "E",
+    "W",
+    "E",
+    "N",
+    "E",
+    "E",
+    "E"
+   ],
+   "key": "S"
   },
   {
    "label": "as_b2i4",
    "form": "2",
    "b": -1.44,
    "disc": 0.73,
-   "tier": "easy"
+   "tier": "easy",
+   "stem": [
+    "W",
+    "E",
+    "N",
+    "S",
+    "E",
+    "W"
+   ],
+   "key": "S"
   },
   {
    "label": "as_b2i11",
    "form": "2",
    "b": 0.22,
    "disc": 0.78,
-   "tier": "mid"
+   "tier": "mid",
+   "stem": [
+    "NE",
+    "N",
+    "N",
+    "E",
+    "SE",
+    "E",
+    "E",
+    "S",
+    "SW",
+    "S",
+    "S",
+    "W"
+   ],
+   "key": "NW"
   },
   {
    "label": "as_b2i6",
    "form": "2",
    "b": 1.62,
    "disc": 1.16,
-   "tier": "hard"
+   "tier": "hard",
+   "stem": [
+    "NE",
+    "SW",
+    "W",
+    "SW",
+    "SE",
+    "SW",
+    "N",
+    "SW",
+    "SW",
+    "SW",
+    "E",
+    "SW"
+   ],
+   "key": "NW"
   },
   {
    "label": "as_b2i8",
    "form": "2",
    "b": -0.27,
    "disc": 1.17,
-   "tier": "mid"
+   "tier": "mid",
+   "stem": [
+    "W",
+    "W",
+    "NE",
+    "N",
+    "N",
+    "SE",
+    "E",
+    "E",
+    "SW",
+    "S",
+    "S"
+   ],
+   "key": "NW"
   },
   {
    "label": "as_b2i15",
    "form": "2",
    "b": 1.96,
    "disc": 1.05,
-   "tier": "hard"
+   "tier": "hard",
+   "stem": [
+    "NE",
+    "S",
+    "SW",
+    "SE",
+    "SE",
+    "W",
+    "NW",
+    "SE",
+    "SW",
+    "N",
+    "NE",
+    "SE"
+   ],
+   "key": "NW"
   },
   {
    "label": "as_b2i9",
    "form": "2",
    "b": -0.21,
    "disc": 1.02,
-   "tier": "mid"
+   "tier": "mid",
+   "stem": [
+    "S",
+    "SW",
+    "NW",
+    "W",
+    "NW",
+    "NW",
+    "N",
+    "NE",
+    "NW"
+   ],
+   "key": "E"
   },
   {
    "label": "as_b2i16",
    "form": "2",
    "b": -0.86,
    "disc": 0.68,
-   "tier": "easy"
+   "tier": "easy",
+   "stem": [
+    "NE",
+    "E",
+    "SW",
+    "SE",
+    "S",
+    "NW",
+    "SW",
+    "W",
+    "NE",
+    "NW"
+   ],
+   "key": "N"
   },
   {
    "label": "as_b3i11",
    "form": "2",
    "b": -0.31,
    "disc": 0.9,
-   "tier": "mid"
+   "tier": "mid",
+   "stem": [
+    "N",
+    "SE",
+    "SE",
+    "NW",
+    "E",
+    "SW",
+    "SW",
+    "NE",
+    "S",
+    "NW",
+    "NW",
+    "SE"
+   ],
+   "key": "W"
   },
   {
    "label": "as_b3i2",
    "form": "2",
    "b": 0.29,
    "disc": 0.98,
-   "tier": "mid"
+   "tier": "mid",
+   "stem": [
+    "E",
+    "N",
+    "NW",
+    "S",
+    "N",
+    "NW",
+    "W",
+    "N",
+    "NW"
+   ],
+   "key": "N"
   },
   {
    "label": "as_b3i12",
    "form": "2",
    "b": -0.41,
    "disc": 1.12,
-   "tier": "mid"
+   "tier": "mid",
+   "stem": [
+    "E",
+    "E",
+    "SE",
+    "N",
+    "S",
+    "S",
+    "SW",
+    "E",
+    "W",
+    "W",
+    "NW",
+    "S",
+    "N",
+    "N"
+   ],
+   "key": "NE"
   },
   {
    "label": "as_b3i6",
    "form": "2",
    "b": 1.6,
    "disc": 0.97,
-   "tier": "hard"
+   "tier": "hard",
+   "stem": [
+    "N",
+    "E",
+    "NW",
+    "E",
+    "E",
+    "E",
+    "NE",
+    "E",
+    "S",
+    "E",
+    "SE",
+    "E"
+   ],
+   "key": "W"
   },
   {
    "label": "as_b3i3",
    "form": "2",
    "b": 2.27,
    "disc": 0.58,
-   "tier": "hard"
+   "tier": "hard",
+   "stem": [
+    "N",
+    "S",
+    "N",
+    "SE",
+    "S",
+    "N",
+    "W",
+    "S",
+    "N"
+   ],
+   "key": "NE"
   },
   {
    "label": "as_b3i9",
    "form": "2",
    "b": -1.28,
    "disc": 1.18,
-   "tier": "easy"
+   "tier": "easy",
+   "stem": [
+    "NE",
+    "NE",
+    "W",
+    "SE",
+    "SE",
+    "N",
+    "SW",
+    "SW",
+    "E",
+    "NW",
+    "NW"
+   ],
+   "key": "S"
   },
   {
    "label": "as_b4i4",
    "form": "2",
    "b": -4.48,
    "disc": 0.53,
-   "tier": "easy"
+   "tier": "easy",
+   "stem": [
+    "NE",
+    "E",
+    "SE",
+    "S",
+    "SW",
+    "W",
+    "NW",
+    "N",
+    "NE"
+   ],
+   "key": "E"
   },
   {
    "label": "as_b4i5",
    "form": "2",
    "b": -0.35,
    "disc": 1.1,
-   "tier": "mid"
+   "tier": "mid",
+   "stem": [
+    "NW",
+    "W",
+    "NE",
+    "N",
+    "SE",
+    "E"
+   ],
+   "key": "SW"
   },
   {
    "label": "as_b4i7",
    "form": "2",
    "b": -1.62,
    "disc": 1.25,
-   "tier": "easy"
+   "tier": "easy",
+   "stem": [
+    "NE",
+    "NE",
+    "S",
+    "SE",
+    "SE",
+    "W",
+    "SW",
+    "SW",
+    "N",
+    "NW",
+    "NW"
+   ],
+   "key": "E"
   },
   {
    "label": "as_b4i8",
    "form": "2",
    "b": -2.45,
    "disc": 0.6,
-   "tier": "easy"
+   "tier": "easy",
+   "stem": [
+    "S",
+    "S",
+    "NE",
+    "W",
+    "W",
+    "SE",
+    "N",
+    "N",
+    "SW"
+   ],
+   "key": "E"
   },
   {
    "label": "as_b4i15",
    "form": "2",
    "b": 2.74,
    "disc": 0.29,
-   "tier": "hard"
+   "tier": "hard",
+   "stem": [
+    "S",
+    "SE",
+    "NE",
+    "SW",
+    "W",
+    "SW",
+    "SE",
+    "SW",
+    "N",
+    "NW",
+    "SW",
+    "SW",
+    "E"
+   ],
+   "key": "NE"
   },
   {
    "label": "as_b4i9",
    "form": "2",
    "b": 0.08,
    "disc": 0.76,
-   "tier": "mid"
+   "tier": "mid",
+   "stem": [
+    "N",
+    "E",
+    "SW",
+    "E",
+    "S",
+    "SW",
+    "S",
+    "W",
+    "SW"
+   ],
+   "key": "W"
   },
   {
    "label": "as_b4i10",
    "form": "2",
    "b": -0.03,
    "disc": 0.95,
-   "tier": "mid"
+   "tier": "mid",
+   "stem": [
+    "NE",
+    "NW",
+    "W",
+    "SE",
+    "NE",
+    "W",
+    "SW",
+    "SE",
+    "W"
+   ],
+   "key": "NW"
   },
   {
    "label": "as_b5i4",
    "form": "2",
    "b": -1.5,
    "disc": 0.86,
-   "tier": "easy"
+   "tier": "easy",
+   "stem": [
+    "N",
+    "S",
+    "E",
+    "W",
+    "S",
+    "N"
+   ],
+   "key": "W"
   },
   {
    "label": "as_b5i11",
    "form": "2",
    "b": 1.31,
    "disc": 0.68,
-   "tier": "hard"
+   "tier": "hard",
+   "stem": [
+    "NW",
+    "W",
+    "W",
+    "S",
+    "NE",
+    "N",
+    "N",
+    "W",
+    "SE",
+    "E",
+    "E",
+    "N"
+   ],
+   "key": "SW"
   },
   {
    "label": "as_b5i7",
    "form": "2",
    "b": 0.63,
    "disc": 0.58,
-   "tier": "hard"
+   "tier": "hard",
+   "stem": [
+    "NW",
+    "W",
+    "SW",
+    "W",
+    "NE",
+    "W",
+    "NW",
+    "W",
+    "SE",
+    "W",
+    "NE",
+    "W"
+   ],
+   "key": "SW"
   },
   {
    "label": "as_b5i13",
    "form": "2",
    "b": -0.99,
    "disc": 0.98,
-   "tier": "easy"
+   "tier": "easy",
+   "stem": [
+    "NW",
+    "NW",
+    "SE",
+    "N",
+    "NE",
+    "NE",
+    "SW",
+    "E",
+    "SE",
+    "SE",
+    "NW",
+    "S"
+   ],
+   "key": "SW"
   },
   {
    "label": "as_b5i15",
    "form": "2",
    "b": 1.94,
    "disc": 0.7,
-   "tier": "hard"
+   "tier": "hard",
+   "stem": [
+    "SW",
+    "W",
+    "E",
+    "NW",
+    "NW",
+    "N",
+    "S",
+    "NW",
+    "NE",
+    "E",
+    "W",
+    "NW"
+   ],
+   "key": "SE"
+  }
+ ],
+ "MR": [
+  {
+   "label": "F15.2",
+   "form": "1",
+   "b": 1.15,
+   "disc": 1.11,
+   "tier": "mid",
+   "key": "C"
+  },
+  {
+   "label": "F19.4",
+   "form": "1",
+   "b": 0.94,
+   "disc": 1.1,
+   "tier": "mid",
+   "key": "D"
+  },
+  {
+   "label": "F4.2",
+   "form": "1",
+   "b": -1.22,
+   "disc": 1.28,
+   "tier": "easy",
+   "key": "D"
+  },
+  {
+   "label": "F18.3",
+   "form": "1",
+   "b": 1.33,
+   "disc": 1.09,
+   "tier": "mid",
+   "key": "C"
+  },
+  {
+   "label": "F10.NEW1",
+   "form": "1",
+   "b": 0.95,
+   "disc": 0.68,
+   "tier": "mid",
+   "key": "D"
+  },
+  {
+   "label": "F16.3",
+   "form": "1",
+   "b": 1.07,
+   "disc": 1.03,
+   "tier": "mid",
+   "key": "G"
+  },
+  {
+   "label": "F17.1",
+   "form": "1",
+   "b": 0.61,
+   "disc": 0.9,
+   "tier": "mid",
+   "key": "G"
+  },
+  {
+   "label": "F11.3",
+   "form": "1",
+   "b": 0.6,
+   "disc": 1.28,
+   "tier": "mid",
+   "key": "G"
+  },
+  {
+   "label": "F20.1",
+   "form": "1",
+   "b": 1.88,
+   "disc": 1.16,
+   "tier": "hard",
+   "key": "B"
+  },
+  {
+   "label": "F12.5",
+   "form": "1",
+   "b": -0.03,
+   "disc": 1.91,
+   "tier": "easy",
+   "key": "D"
+  },
+  {
+   "label": "F2.2",
+   "form": "1",
+   "b": -0.34,
+   "disc": 1.63,
+   "tier": "easy",
+   "key": "H"
+  },
+  {
+   "label": "F15.4",
+   "form": "1",
+   "b": -0.12,
+   "disc": 1.53,
+   "tier": "easy",
+   "key": "C"
+  },
+  {
+   "label": "F8.4",
+   "form": "1",
+   "b": 0.94,
+   "disc": 0.97,
+   "tier": "mid",
+   "key": "D"
+  },
+  {
+   "label": "F14.4",
+   "form": "1",
+   "b": 2.36,
+   "disc": 0.47,
+   "tier": "hard",
+   "key": "E"
+  },
+  {
+   "label": "F6.NEW1",
+   "form": "1",
+   "b": 1.33,
+   "disc": 0.5,
+   "tier": "mid",
+   "key": "B"
+  },
+  {
+   "label": "F13.NEW2",
+   "form": "1",
+   "b": 2.15,
+   "disc": 1.11,
+   "tier": "hard",
+   "key": "F"
+  },
+  {
+   "label": "F12.4",
+   "form": "1",
+   "b": 0.84,
+   "disc": 1.41,
+   "tier": "mid",
+   "key": "C"
+  },
+  {
+   "label": "F16.2",
+   "form": "1",
+   "b": 0.31,
+   "disc": 1.81,
+   "tier": "easy",
+   "key": "B"
+  },
+  {
+   "label": "F15.5",
+   "form": "1",
+   "b": 1.71,
+   "disc": 0.63,
+   "tier": "hard",
+   "key": "F"
+  },
+  {
+   "label": "F1.NEW1",
+   "form": "1",
+   "b": -0.68,
+   "disc": 0.9,
+   "tier": "easy",
+   "key": "C"
+  },
+  {
+   "label": "F3.5",
+   "form": "1",
+   "b": 0.99,
+   "disc": 0.51,
+   "tier": "mid",
+   "key": "C"
+  },
+  {
+   "label": "F1.4",
+   "form": "1",
+   "b": 2.47,
+   "disc": 0.47,
+   "tier": "hard",
+   "key": "A"
+  },
+  {
+   "label": "F13.NEW3",
+   "form": "1",
+   "b": 1.26,
+   "disc": 0.7,
+   "tier": "mid",
+   "key": "H"
+  },
+  {
+   "label": "F16.5",
+   "form": "1",
+   "b": 0.94,
+   "disc": 1.04,
+   "tier": "mid",
+   "key": "D"
+  },
+  {
+   "label": "F7.1",
+   "form": "1",
+   "b": -0.79,
+   "disc": 1.43,
+   "tier": "easy",
+   "key": "D"
+  },
+  {
+   "label": "F5.NEW1",
+   "form": "1",
+   "b": 3.98,
+   "disc": 0.36,
+   "tier": "hard",
+   "key": "G"
+  },
+  {
+   "label": "F10.NEW2",
+   "form": "1",
+   "b": 0.43,
+   "disc": 0.8,
+   "tier": "easy",
+   "key": "F"
+  },
+  {
+   "label": "F19.1",
+   "form": "1",
+   "b": 0.81,
+   "disc": 0.92,
+   "tier": "mid",
+   "key": "E"
+  },
+  {
+   "label": "F11.6",
+   "form": "1",
+   "b": -0.51,
+   "disc": 1.71,
+   "tier": "easy",
+   "key": "A"
+  },
+  {
+   "label": "F9.4",
+   "form": "1",
+   "b": 1.75,
+   "disc": 0.66,
+   "tier": "hard",
+   "key": "E"
+  },
+  {
+   "label": "F11.1",
+   "form": "2",
+   "b": -0.23,
+   "disc": 1.44,
+   "tier": "easy",
+   "key": "D"
+  },
+  {
+   "label": "F6.4",
+   "form": "2",
+   "b": 2.16,
+   "disc": 0.79,
+   "tier": "hard",
+   "key": "A"
+  },
+  {
+   "label": "F12.NEW1",
+   "form": "2",
+   "b": -0.48,
+   "disc": 1.9,
+   "tier": "easy",
+   "key": "H"
+  },
+  {
+   "label": "F15.1",
+   "form": "2",
+   "b": 0.77,
+   "disc": 1.25,
+   "tier": "mid",
+   "key": "G"
+  },
+  {
+   "label": "F20.3",
+   "form": "2",
+   "b": 0.41,
+   "disc": 1.51,
+   "tier": "easy",
+   "key": "F"
+  },
+  {
+   "label": "F19.2",
+   "form": "2",
+   "b": 1.57,
+   "disc": 0.97,
+   "tier": "hard",
+   "key": "C"
+  },
+  {
+   "label": "F20.4",
+   "form": "2",
+   "b": 1.39,
+   "disc": 0.96,
+   "tier": "hard",
+   "key": "H"
+  },
+  {
+   "label": "F16.NEW1",
+   "form": "2",
+   "b": 0.85,
+   "disc": 0.87,
+   "tier": "mid",
+   "key": "F"
+  },
+  {
+   "label": "F3.3",
+   "form": "2",
+   "b": -0.71,
+   "disc": 0.82,
+   "tier": "easy",
+   "key": "H"
+  },
+  {
+   "label": "F17.3",
+   "form": "2",
+   "b": -0.11,
+   "disc": 1.54,
+   "tier": "easy",
+   "key": "D"
+  },
+  {
+   "label": "F18.5",
+   "form": "2",
+   "b": 0.81,
+   "disc": 1.23,
+   "tier": "mid",
+   "key": "G"
+  },
+  {
+   "label": "F2.3",
+   "form": "2",
+   "b": 0.57,
+   "disc": 1.16,
+   "tier": "easy",
+   "key": "E"
+  },
+  {
+   "label": "F5.NEW2",
+   "form": "2",
+   "b": 3.55,
+   "disc": 0.6,
+   "tier": "hard",
+   "key": "G"
+  },
+  {
+   "label": "F10.4",
+   "form": "2",
+   "b": 1.58,
+   "disc": 0.68,
+   "tier": "hard",
+   "key": "B"
+  },
+  {
+   "label": "F12.1",
+   "form": "2",
+   "b": 0.21,
+   "disc": 1.12,
+   "tier": "easy",
+   "key": "A"
+  },
+  {
+   "label": "F10.1",
+   "form": "2",
+   "b": 1.51,
+   "disc": 0.65,
+   "tier": "hard",
+   "key": "D"
+  },
+  {
+   "label": "F1.3",
+   "form": "2",
+   "b": 1.81,
+   "disc": 1.1,
+   "tier": "hard",
+   "key": "C"
+  },
+  {
+   "label": "F13.NEW1",
+   "form": "2",
+   "b": 1.37,
+   "disc": 1.01,
+   "tier": "hard",
+   "key": "F"
+  },
+  {
+   "label": "F14.NEW2",
+   "form": "2",
+   "b": 1.91,
+   "disc": 0.69,
+   "tier": "hard",
+   "key": "F"
+  },
+  {
+   "label": "F2.4",
+   "form": "2",
+   "b": -0.24,
+   "disc": 0.78,
+   "tier": "easy",
+   "key": "B"
+  },
+  {
+   "label": "F1.5",
+   "form": "2",
+   "b": 2.25,
+   "disc": 0.58,
+   "tier": "hard",
+   "key": "E"
+  },
+  {
+   "label": "F2.1",
+   "form": "2",
+   "b": -0.03,
+   "disc": 1.53,
+   "tier": "easy",
+   "key": "D"
+  },
+  {
+   "label": "F4.1",
+   "form": "2",
+   "b": -0.87,
+   "disc": 0.79,
+   "tier": "easy",
+   "key": "E"
+  },
+  {
+   "label": "F8.NEW2",
+   "form": "2",
+   "b": 1.33,
+   "disc": 0.96,
+   "tier": "mid",
+   "key": "G"
+  },
+  {
+   "label": "F3.1",
+   "form": "2",
+   "b": -0.81,
+   "disc": 1.84,
+   "tier": "easy",
+   "key": "A"
+  },
+  {
+   "label": "F15.3",
+   "form": "2",
+   "b": 0.61,
+   "disc": 1.29,
+   "tier": "mid",
+   "key": "B"
+  },
+  {
+   "label": "F9.NEW1",
+   "form": "2",
+   "b": 2.6,
+   "disc": 0.59,
+   "tier": "hard",
+   "key": "F"
+  },
+  {
+   "label": "F7.5",
+   "form": "2",
+   "b": 0.06,
+   "disc": 0.53,
+   "tier": "easy",
+   "key": "H"
+  },
+  {
+   "label": "F9.3",
+   "form": "2",
+   "b": 0.74,
+   "disc": 1.27,
+   "tier": "mid",
+   "key": "D"
+  },
+  {
+   "label": "F13.4",
+   "form": "2",
+   "b": 1.78,
+   "disc": 0.73,
+   "tier": "hard",
+   "key": "H"
   }
  ]
 };
