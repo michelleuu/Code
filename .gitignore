@@ -1,6 +1,6 @@
 reports/
 stimuli/iqa/
-stimuli/mitre/
-stimuli/rot/
 .DS_Store
+# stimuli/iqa_pilot/ is intentionally NOT ignored — contains the 198 images used by the experiment for pilot testing
+# stimuli/rot/ and stimuli/mitre/ are tracked directly (34 MB + 6.7 MB is within GitHub limits)
 

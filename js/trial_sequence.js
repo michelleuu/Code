@@ -101,9 +101,6 @@ export function buildTrialSequence(selectionFn) {
     },
     on_finish: function (data) {
       stopStageTracking();
-      stageData.prime.eye = extractWebgazerPoints(data, "prime");
-      data.prime_eye_moves_raw = J(stageData.prime.eye);
-      data.prime_eye_count = stageData.prime.eye.length;
     },
     data: function () {
       return {
@@ -192,8 +189,6 @@ export function buildTrialSequence(selectionFn) {
     on_finish: function (data) {
       stopStageTracking();
       stopKeyTracking();
-      stageData.task.eye = extractWebgazerPoints(data, "task");
-
       const task = currentTask();
       const key = task?.stimulus?.item?.key ?? null;
       const answer = (data.response?.task_answer || "").trim();
@@ -230,9 +225,6 @@ export function buildTrialSequence(selectionFn) {
         trial.responseTracker.cleanup();
         trial.responseTracker = null;
       }
-
-      data.task_eye_moves_raw = J(stageData.task.eye);
-      data.task_eye_count = stageData.task.eye.length;
     },
     data: function () {
       return {
@@ -297,8 +289,6 @@ export function buildTrialSequence(selectionFn) {
     on_finish: function (data) {
       stopStageTracking();
       stopKeyTracking();
-      stageData.task.eye = extractWebgazerPoints(data, "task");
-
       const task = currentTask();
       const item = task?.stimulus?.item;
       const chosenDir = data.response != null ? DIRS[data.response] : null;
@@ -336,9 +326,6 @@ export function buildTrialSequence(selectionFn) {
         trial.responseTracker.cleanup();
         trial.responseTracker = null;
       }
-
-      data.task_eye_moves_raw = J(stageData.task.eye);
-      data.task_eye_count = stageData.task.eye.length;
     },
     data: function () {
       return {
@@ -397,7 +384,6 @@ export function buildTrialSequence(selectionFn) {
           },
         ],
     on_finish: function (data) {
-      stageData.task.eye.push(...extractWebgazerPoints(data, "task"));
       const refs = currentTask()?.stimulus?.block?.stimulusRefs || [];
       const ref = refs[trial.currentBlockItem];
       const answer = data.response === "b" ? "same" : "different";
@@ -495,10 +481,13 @@ export function buildTrialSequence(selectionFn) {
     },
   };
 
-  // The KADID images live in stimuli/iqa/kadid/images/ but the bank records them
-  // as stimuli/iqa/kadid/*.png — patch the missing subfolder at render time.
+  // The bank records paths as stimuli/iqa/kadid/*.png but the committed pilot
+  // images live in stimuli/iqa_pilot/ (only the 198 used files, git-tracked).
   function iqaImgPath(p) {
-    return (p || "").replace("stimuli/iqa/kadid/", "stimuli/iqa/kadid/images/");
+    return (p || "").replace(
+      /^stimuli\/iqa\/kadid\/(?:images\/)?/,
+      "stimuli/iqa_pilot/",
+    );
   }
 
   const iqaItemNode = {
@@ -537,7 +526,6 @@ export function buildTrialSequence(selectionFn) {
           },
         ],
     on_finish: function (data) {
-      stageData.task.eye.push(...extractWebgazerPoints(data, "task"));
       const pairs = currentTask()?.stimulus?.block?.pairs || [];
       const pair = pairs[trial.currentBlockItem];
       const answer = data.response === 0 ? "left" : "right";
@@ -683,16 +671,9 @@ export function buildTrialSequence(selectionFn) {
       const total = perf?.total ?? 1;
       const scoreHtml = `<div class="feedback-score">${correct} / ${total}</div>`;
 
-      // Calibration: show real score with brief encouraging note
+      // If during callibration phase, display the score only
       if (isCalib) {
-        const pct = total > 0 ? Math.round((correct / total) * 100) : 0;
-        const note =
-          pct >= 75
-            ? `<div class="feedback-text pos">Good work — you're on track.</div>`
-            : pct >= 50
-              ? `<div class="feedback-text">Keep going — the main tasks work the same way.</div>`
-              : `<div class="feedback-text">The main tasks work the same way.</div>`;
-        return `<div id="feedback-screen">${scoreHtml}${note}</div>`;
+        return `<div id="feedback-screen">${scoreHtml}</div>`;
       }
 
       // Fallback: controller couldn't produce framed feedback
@@ -702,8 +683,7 @@ export function buildTrialSequence(selectionFn) {
       }
 
       // Normal induction path: score + emotion-framed text
-      const isPos = isPositiveEmotion(d.emotionShown);
-      return `<div id="feedback-screen">${scoreHtml}<div class="feedback-text ${isPos ? "pos" : "neg"}">${d.framedText}</div></div>`;
+      return `<div id="feedback-screen">${scoreHtml}<div class="feedback-text">${d.framedText}</div></div>`;
     },
     choices: ["Continue"],
     extensions: SKIP_WEBGAZER
@@ -721,6 +701,7 @@ export function buildTrialSequence(selectionFn) {
         stageData.feedback.moves,
         stageData.feedback.clicks,
       );
+      session.videoStartPerfMs = performance.now();
       startCapture(
         `${session.participant.participantId}_t${session.trialOrdinal}_feedback`,
       );
@@ -736,6 +717,8 @@ export function buildTrialSequence(selectionFn) {
       data.pct = trial.currentDisplayed?.pct || null;
       data.pct_ref = trial.currentDisplayed?.pctRef || null;
       data.attribution = trial.currentDisplayed?.attribution || null;
+      data.video_filename = `${session.participant.participantId}_t${session.trialOrdinal}_feedback.webm`;
+      data.video_start_perf_ms = session.videoStartPerfMs;
       data.feedback_eye_moves_raw = J(stageData.feedback.eye);
       data.feedback_eye_count = stageData.feedback.eye.length;
     },
@@ -757,39 +740,63 @@ export function buildTrialSequence(selectionFn) {
     stimulus: function () {
       window._probeValues = {};
       const probeList = currentTask()?.response?.probes || PROBES;
-      let rows = "";
-      for (const em of probeList) {
-        if (em === "none") {
-          rows += `
-            <div class="probe-row" style="margin-top:10px">
-              <div class="probe-label">none of the above</div>
-              <div class="probe-radios">
-                <label style="font-size:14px;color:#555;cursor:pointer">
-                  <input type="checkbox" id="probe_none"
-                    onchange="window._probeValues['none']=this.checked?1:0">
-                  &nbsp;I am not feeling any of these
-                </label>
-              </div>
-            </div>`;
-        } else {
-          rows += `
-            <div class="probe-row">
-              <div class="probe-label">${em}</div>
-              <div class="probe-radios">
-                <div class="probe-radio-options">
-                  ${[1, 2, 3, 4, 5, 6, 7]
-                    .map(
-                      (v) =>
-                        `<label class="probe-radio-label"><input type="radio" name="probe_${em}" value="${v}" onchange="window._probeValues['${em}']=parseInt(this.value)"><span>${v}</span></label>`,
-                    )
-                    .join("")}
-                </div>
-                <div class="probe-anchors"><span>Not at all</span><span>Extremely</span></div>
-              </div>
-            </div>`;
-        }
-      }
-      return `<div id="probe-screen"><h3>How are you feeling right now?</h3>${rows}</div>`;
+      const emotions = probeList.filter((em) => em !== "none");
+      const hasNone = probeList.includes("none");
+
+      const SCALE_LABELS = [
+        "Not at all",
+        "Slightly",
+        "Somewhat",
+        "Moderately",
+        "Fairly",
+        "Very",
+        "Extremely",
+      ];
+
+      const headerCols = SCALE_LABELS.map(
+        (lbl, i) => `
+        <th class="probe-th-col">
+          <span class="probe-num">${i + 1}</span>
+          <span class="probe-lbl">${lbl}</span>
+        </th>`,
+      ).join("");
+
+      const bodyRows = emotions
+        .map((em) => {
+          const cells = [1, 2, 3, 4, 5, 6, 7]
+            .map(
+              (v) =>
+                `<td><input type="radio" name="probe_${em}" value="${v}"
+            onchange="window._probeValues['${em}']=parseInt(this.value)"></td>`,
+            )
+            .join("");
+          return `<tr><td class="probe-em-label">${em}</td>${cells}</tr>`;
+        })
+        .join("");
+
+      const noneRow = hasNone
+        ? `
+        <div class="probe-none-row">
+          <label>
+            <input type="checkbox" id="probe_none"
+              onchange="window._probeValues['none']=this.checked?1:0">
+            None of the above
+          </label>
+        </div>`
+        : "";
+
+      return `
+        <div id="probe-screen">
+          <h3>How strongly are you feeling each emotion right now?</h3>
+          <table class="probe-table">
+            <thead><tr>
+              <th class="probe-th-emotion"></th>
+              ${headerCols}
+            </tr></thead>
+            <tbody>${bodyRows}</tbody>
+          </table>
+          ${noneRow}
+        </div>`;
     },
     choices: ["Submit"],
     extensions: SKIP_WEBGAZER
@@ -809,8 +816,6 @@ export function buildTrialSequence(selectionFn) {
     },
     on_finish: function (data) {
       stopStageTracking();
-      stageData.probe.eye = extractWebgazerPoints(data, "probe");
-
       const probeList = currentTask()?.response?.probes || PROBES;
       const selfReport = {};
       for (const em of probeList)
@@ -854,9 +859,6 @@ export function buildTrialSequence(selectionFn) {
       data.cumNegLoad = session.participant.ledger.cumNegLoad;
       data.phase_at_finish = session.participant.phase;
       data.controller_reason = J(trial.currentSelection?.reason || {});
-
-      data.probe_eye_moves_raw = J(stageData.probe.eye);
-      data.probe_eye_count = stageData.probe.eye.length;
 
       const trialMs = performance.now() - session.trialStartMs;
       const med = session.participant.ledger.medianTrialMs;

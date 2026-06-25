@@ -73,10 +73,6 @@
           .ignore([
             "stimulus",
             "internal_node_id",
-            "prime_eye_moves_raw",
-            "task_eye_moves_raw",
-            "feedback_eye_moves_raw",
-            "probe_eye_moves_raw",
           ])
           .csv();
         downloadFile(cleanCSV, `emotion_study_summary_${pid}.csv`, "text/csv");
@@ -130,53 +126,104 @@
       type: jsPsychHtmlButtonResponse,
       stimulus: function () {
         window.intakeSurveyValues = {};
-        const scaleHtml = (name, lo, hi) => {
-          let h = `<div class="scale-row">`;
-          for (let v = 1; v <= 7; v++) {
-            h += `<label>
-              <span>${v}</span>
-              <input type="radio" name="${name}" value="${v}"
-                onchange="intakeSurveyValues['${name}']=parseInt(this.value)">
-            </label>`;
-          }
-          h += `</div><div style="display:flex;justify-content:space-between;font-size:12px;color:#aaa;margin:2px 0 8px">
-            <span>${lo}</span><span>${hi}</span></div>`;
-          return h;
-        };
+
+        function makeTable(labels, rows) {
+          const headerCols = labels
+            .map(
+              (lbl, i) => `
+            <th class="probe-th-col">
+              <span class="probe-num">${i + 1}</span>
+              <span class="probe-lbl">${lbl}</span>
+            </th>`,
+            )
+            .join("");
+          const bodyRows = rows
+            .map(({ label, name }) => {
+              const cells = [1, 2, 3, 4, 5, 6, 7]
+                .map(
+                  (v) =>
+                    `<td><input type="radio" name="${name}" value="${v}"
+                onchange="intakeSurveyValues['${name}']=parseInt(this.value)"></td>`,
+                )
+                .join("");
+              return `<tr><td class="probe-em-label">${label}</td>${cells}</tr>`;
+            })
+            .join("");
+          return `
+            <table class="probe-table">
+              <thead><tr><th class="probe-th-emotion"></th>${headerCols}</tr></thead>
+              <tbody>${bodyRows}</tbody>
+            </table>`;
+        }
+
         return `
-          <div class="box" style="text-align:left;max-width:640px">
+          <div class="box" style="max-width:820px;text-align:left">
             <h2>About You</h2>
-            <p style="font-size:15px;color:#555;margin-bottom:22px">Please answer each question honestly. There are no right or wrong answers.</p>
+            <p style="font-size:15px;color:#555;margin-bottom:28px">Please answer each question honestly. There are no right or wrong answers.</p>
 
-            <div class="intake-row">
-              <label>How much does <strong>Design</strong> feel like a core part of who you are? (1 = not at all, 7 = very much)</label>
-              ${scaleHtml("val_design", "Not at all", "Very much")}
-            </div>
-            <div class="intake-row">
-              <label>How much does <strong>Computing</strong> feel like a core part of who you are?</label>
-              ${scaleHtml("val_computing", "Not at all", "Very much")}
-            </div>
-            <div class="intake-row">
-              <label>How much does <strong>Media</strong> feel like a core part of who you are?</label>
-              ${scaleHtml("val_media", "Not at all", "Very much")}
-            </div>
-
-            <div class="intake-row" style="margin-top:28px">
-              <label>How well do you expect to perform on <strong>Design</strong> tasks today? (1 = poorly, 7 = very well)</label>
-              ${scaleHtml("exp_design", "Poorly", "Very well")}
-            </div>
-            <div class="intake-row">
-              <label>How well do you expect to perform on <strong>Computing</strong> tasks today?</label>
-              ${scaleHtml("exp_computing", "Poorly", "Very well")}
-            </div>
-            <div class="intake-row">
-              <label>How well do you expect to perform on <strong>Media</strong> tasks today?</label>
-              ${scaleHtml("exp_media", "Poorly", "Very well")}
+            <div class="intake-section">
+              <div class="intake-section-title">Identity</div>
+              <div class="intake-section-sub">How much does each area feel like a core part of who you are?</div>
+              ${makeTable(
+                [
+                  "Not at all",
+                  "Slightly",
+                  "A little",
+                  "Neutral",
+                  "Somewhat",
+                  "Very",
+                  "Very much",
+                ],
+                [
+                  { label: "Design", name: "val_design" },
+                  { label: "Computing", name: "val_computing" },
+                  { label: "Media", name: "val_media" },
+                ],
+              )}
             </div>
 
-            <div class="intake-row" style="margin-top:28px">
-              <label>I often compare how I am doing with how others are doing. (1 = strongly disagree, 7 = strongly agree)</label>
-              ${scaleHtml("sco", "Strongly disagree", "Strongly agree")}
+            <div class="intake-section">
+              <div class="intake-section-title">Performance Expectations</div>
+              <div class="intake-section-sub">How well do you expect to perform today?</div>
+              ${makeTable(
+                [
+                  "Very poorly",
+                  "Poorly",
+                  "Below average",
+                  "Average",
+                  "Above average",
+                  "Well",
+                  "Very well",
+                ],
+                [
+                  { label: "Design tasks", name: "exp_design" },
+                  { label: "Computing tasks", name: "exp_computing" },
+                  { label: "Media tasks", name: "exp_media" },
+                ],
+              )}
+            </div>
+
+            <div class="intake-section">
+              <div class="intake-section-title">Self-Perception</div>
+              <div class="intake-section-sub">Please indicate how much you agree with the following statement.</div>
+              ${makeTable(
+                [
+                  "Strongly disagree",
+                  "Disagree",
+                  "Slightly disagree",
+                  "Neutral",
+                  "Slightly agree",
+                  "Agree",
+                  "Strongly agree",
+                ],
+                [
+                  {
+                    label:
+                      "I often compare how I am doing with how others are doing.",
+                    name: "sco",
+                  },
+                ],
+              )}
             </div>
           </div>`;
       },

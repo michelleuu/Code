@@ -65,8 +65,8 @@ body {
   margin: 20px 0;
 }
 .rot-pair img {
-  max-height: 380px;
-  max-width: 480px;
+  max-height: 520px;
+  max-width: 640px;
   border: 1px solid #ddd;
   border-radius: 4px;
 }
@@ -132,7 +132,7 @@ body {
 
 /* ---- Emotion probe ---- */
 #probe-screen {
-  max-width: 680px;
+  max-width: 780px;
   margin: 40px auto;
   padding: 28px 32px;
   background: #fff;
@@ -143,6 +143,70 @@ body {
   margin-bottom: 18px;
   color: #333;
 }
+
+/* Table layout for emotion probe */
+.probe-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 8px;
+}
+.probe-th-emotion {
+  width: 160px;
+}
+.probe-th-col {
+  text-align: center;
+  padding: 4px 6px 10px;
+  min-width: 72px;
+}
+.probe-num {
+  display: block;
+  font-size: 15px;
+  font-weight: 600;
+  color: #222;
+}
+.probe-lbl {
+  display: block;
+  font-size: 11px;
+  color: #888;
+  margin-top: 3px;
+  white-space: nowrap;
+}
+.probe-table tbody tr td {
+  text-align: center;
+  padding: 9px 6px;
+  border-top: 1px solid #f0f0f0;
+}
+.probe-em-label {
+  text-align: left !important;
+  font-size: 15px;
+  color: #333;
+  padding-left: 4px !important;
+  padding-right: 12px !important;
+}
+.probe-table tbody tr:hover {
+  background: #f7f9ff;
+}
+.probe-table input[type="radio"] {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  accent-color: #4a90d9;
+}
+.probe-none-row {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid #eee;
+  font-size: 14px;
+  color: #555;
+}
+.probe-none-row label {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Legacy row layout — used by post-study survey */
 .probe-row {
   display: flex;
   align-items: center;
@@ -191,8 +255,8 @@ body {
 
 /* ---- Webcam preview ---- */
 .webcam-preview {
-  width: 320px;
-  height: 240px;
+  width: 560px;
+  height: 420px;
   display: block;
   margin: 18px auto 6px;
   border-radius: 8px;
@@ -244,8 +308,8 @@ body {
   align-items: center;
 }
 .iqa-img {
-  max-width: 340px;
-  max-height: 280px;
+  max-width: 440px;
+  max-height: 380px;
   border: 2px solid #ddd;
   border-radius: 4px;
   display: block;
@@ -256,45 +320,20 @@ body {
   margin-top: 6px;
 }
 
-/* ---- Feedback valence colours ---- */
-.feedback-text.pos {
-  color: #1a6e2e;
-}
-.feedback-text.neg {
-  color: #8b1a1a;
-}
 
 /* ---- Survey intake ---- */
-.intake-row {
-  margin: 18px 0;
-  text-align: left;
-  max-width: 560px;
+.intake-section {
+  margin-bottom: 36px;
 }
-.intake-row label {
-  display: block;
-  font-size: 16px;
-  margin-bottom: 6px;
-  color: #333;
+.intake-section-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 5px;
 }
-.intake-row select {
-  font-size: 15px;
-  padding: 6px 10px;
-  border-radius: 4px;
-  border: 1px solid #bbb;
-  width: 100%;
-}
-.scale-row {
-  display: flex;
-  gap: 8px;
-}
-.scale-row label {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-size: 12px;
-  gap: 4px;
-  cursor: pointer;
-}
-.scale-row input[type="radio"] {
-  cursor: pointer;
+.intake-section-sub {
+  font-size: 14px;
+  font-weight: 600;
+  color: #444;
+  margin-bottom: 10px;
 }
