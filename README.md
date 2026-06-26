@@ -13,7 +13,7 @@ video_position_ms = gaze_t - (video_start_perf_ms - webgazer_trial_start_perf_ms
 
 For each eye-tracking sample, subtract the offset to get the correct frame in the webcam.
 
-## Which field to use
+### Which field to use
 
 - `feedback_eye_moves_raw` contains `{x, y, t}` samples with real timestamps captured by a custom listener.
 - `webgazer_data` is jsPsych's own internal collection and always has `t: null` because WebGazer 3.3.0 does not provide timestamps in its predictions.
