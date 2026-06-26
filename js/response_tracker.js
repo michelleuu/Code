@@ -4,16 +4,17 @@
  * getSummary(type, finalResponse) — type: "input" | "choice" */
 export function makeResponseTracker(taskT0) {
   const elapsed = () => Math.round(performance.now() - taskT0);
-  const history = [];
+  const history = []; // ordered log of every interaction event this trial
   let firstResponse = null, timeToFirst = null, changeCount = 0;
   let erases = 0, focusBlurs = 0;
   let firstChoice = null, finalChoice = null;
   let changedChoice = false, choiceChangeCount = 0;
-  const cleanups = [];
+  const cleanups = []; // listener teardown fns collected so cleanup() can remove them all at once
 
   function attachToInput(el) {
     const onInput = function () {
       const val = el.value, t = elapsed();
+      // First keystroke sets the baseline; every subsequent one counts as a change
       if (firstResponse === null) { firstResponse = val; timeToFirst = t; }
       else changeCount++;
       history.push({ event_type: "input", value: val, key: null, t_ms: t });
@@ -40,6 +41,7 @@ export function makeResponseTracker(taskT0) {
     radios.forEach((radio) => {
       const onChange = function () {
         const val = this.value, t = elapsed();
+        // Mirror firstResponse/timeToFirst so getSummary has a unified baseline regardless of input type
         if (firstChoice === null) { firstChoice = val; firstResponse = val; timeToFirst = t; }
         else { changedChoice = true; choiceChangeCount++; changeCount++; }
         finalChoice = val;
@@ -50,6 +52,7 @@ export function makeResponseTracker(taskT0) {
     });
   }
 
+  // Called by the keydown handler in the parent; Backspace and Delete both increment erases
   function trackKey(key, value) {
     erases++;
     history.push({
@@ -64,6 +67,8 @@ export function makeResponseTracker(taskT0) {
 
   function cleanup() { cleanups.forEach((fn) => fn()); }
 
+  // response_changed uses erase_count for text inputs (any deletion = changed) but changedChoice
+  // for radios (changing selection after first pick = changed)
   function getSummary(type, finalResponse) {
     const base = {
       final_response: finalResponse,

@@ -4,7 +4,7 @@ body {
   background: #f5f5f5;
 }
 .box {
-  max-width: 760px;
+  max-width: 820px;
   margin: auto;
   padding: 35px;
   text-align: center;
@@ -19,8 +19,27 @@ body {
   margin-bottom: 14px;
 }
 .box h2 {
-  font-size: 22px;
+  font-size: 26px;
   margin-bottom: 12px;
+}
+/* Muted fine-print below main content (consent notice, disclaimers) */
+.note {
+  font-size: 14px;
+  color: #888;
+  margin-top: 18px;
+}
+/* Subtitle below a heading before survey sections */
+.survey-intro {
+  color: #555;
+  margin-bottom: 46px;
+}
+/* Left-aligned variant of .box for survey/form screens */
+.box-left {
+  text-align: left;
+}
+/* Blank buffer between task and feedback screens */
+.settle {
+  min-height: 80px;
 }
 
 /* ---- Prime screen ---- */
@@ -113,8 +132,6 @@ body {
   max-width: 620px;
   margin: 80px auto;
   padding: 36px 44px;
-  background: #fff;
-  border-radius: 8px;
   text-align: center;
 }
 .feedback-score {
@@ -137,6 +154,7 @@ body {
   padding: 28px 32px;
   background: #fff;
   border-radius: 8px;
+  text-align: left;
 }
 #probe-screen h3 {
   font-size: 17px;
@@ -168,13 +186,14 @@ body {
   display: block;
   font-size: 11px;
   color: #888;
+  font-weight: 400;
   margin-top: 3px;
   white-space: nowrap;
 }
 .probe-table tbody tr td {
   text-align: center;
   padding: 9px 6px;
-  border-top: 1px solid #f0f0f0;
+  border-top: 1px solid #e4e4e4;
 }
 .probe-em-label {
   text-align: left !important;
@@ -182,9 +201,6 @@ body {
   color: #333;
   padding-left: 4px !important;
   padding-right: 12px !important;
-}
-.probe-table tbody tr:hover {
-  background: #f7f9ff;
 }
 .probe-table input[type="radio"] {
   width: 16px;
@@ -254,6 +270,11 @@ body {
 }
 
 /* ---- Webcam preview ---- */
+#webcam-status {
+  color: #aaa;
+  font-size: 13px;
+  margin-top: 8px;
+}
 .webcam-preview {
   width: 560px;
   height: 420px;
@@ -320,20 +341,19 @@ body {
   margin-top: 6px;
 }
 
-
 /* ---- Survey intake ---- */
 .intake-section {
-  margin-bottom: 36px;
+  margin-bottom: 46px;
+  text-align: left;
 }
-.intake-section-title {
+.intake-section h3 {
   font-size: 20px;
   font-weight: 700;
   color: #111;
   margin-bottom: 5px;
 }
-.intake-section-sub {
-  font-size: 14px;
-  font-weight: 600;
+.intake-section p {
+  font-size: 17px;
   color: #444;
   margin-bottom: 10px;
 }

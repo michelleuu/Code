@@ -1,5 +1,6 @@
 import { trial, stageData, activeTracking } from "./state.js";
 
+// Starts recording mouse moves and clicks for a named stage into the provided arrays.
 export function startStageTracking(stageName, movesArr, clicksArr) {
   stopStageTracking();
   activeTracking.stage = stageName;
@@ -10,6 +11,7 @@ export function startStageTracking(stageName, movesArr, clicksArr) {
   document.addEventListener("click", onMouseClick);
 }
 
+// Removes mouse listeners and clears the active stage so no further events are recorded.
 export function stopStageTracking() {
   document.removeEventListener("mousemove", onMouseMove);
   document.removeEventListener("click", onMouseClick);
@@ -18,6 +20,7 @@ export function stopStageTracking() {
   activeTracking.clicks = null;
 }
 
+// Appends a timestamped {stage, x, y, t} entry to the active moves array.
 function onMouseMove(e) {
   if (!activeTracking.moves) return;
   activeTracking.moves.push({
@@ -27,6 +30,7 @@ function onMouseMove(e) {
   });
 }
 
+// Appends a timestamped {stage, x, y, t, target} entry to the active clicks array.
 function onMouseClick(e) {
   if (!activeTracking.clicks) return;
   activeTracking.clicks.push({
@@ -37,16 +41,19 @@ function onMouseClick(e) {
   });
 }
 
+// Resets keypress log and backspace counter, then starts listening for keydown events.
 export function startKeyTracking() {
   trial.keypressLog = [];
   trial.backspaceCount = 0;
   document.addEventListener("keydown", onKeyDown);
 }
 
+// Removes the keydown listener.
 export function stopKeyTracking() {
   document.removeEventListener("keydown", onKeyDown);
 }
 
+// Logs the key and elapsed time; increments backspaceCount and notifies responseTracker on deletions.
 function onKeyDown(e) {
   trial.keypressLog.push({ key: e.key, t: Math.round(performance.now() - activeTracking.t0) });
   if (e.key === "Backspace" || e.key === "Delete") trial.backspaceCount++;
@@ -56,6 +63,7 @@ function onKeyDown(e) {
   }
 }
 
+// Clears all per-trial buffers (moves, clicks, eye, keypresses) and resets counters/trackers.
 export function resetTrialBuffers() {
   stageData.prime.moves    = []; stageData.prime.clicks    = []; stageData.prime.eye    = [];
   stageData.task.moves     = []; stageData.task.clicks     = []; stageData.task.eye     = [];

@@ -60,7 +60,7 @@
     } from "./trial_schema.js";
     import { TRIAL_BANK, CALIBRATION_BANK } from "./trial_bank.js";
 
-    /* ---- Trial bank — all tasks + calibration tasks accessible by trial_sequence.js ---- */
+    /* ---- Trial bank — merged onto window so trial_sequence.js can reach it as a global ---- */
     window.TRIAL_BANK_FULL = [...TRIAL_BANK, ...CALIBRATION_BANK];
 
     /* ---- jsPsych init ---- */
@@ -70,10 +70,7 @@
         const pid = jsPsych.data.get().values()[0]?.participant_id || "unknown";
         const cleanCSV = jsPsych.data
           .get()
-          .ignore([
-            "stimulus",
-            "internal_node_id",
-          ])
+          .ignore(["stimulus", "internal_node_id"]) // stimulus is the raw HTML blob; internal_node_id is jsPsych-internal — both bloat the CSV
           .csv();
         downloadFile(cleanCSV, `emotion_study_summary_${pid}.csv`, "text/csv");
         downloadFile(
@@ -86,6 +83,7 @@
     });
 
     /* ---- Session setup ---- */
+    // Deep-clone the templates so mutations during the session never corrupt the originals
     session.participant = JSON.parse(
       JSON.stringify(PARTICIPANT_STATE_TEMPLATE),
     );
@@ -112,10 +110,10 @@
       type: jsPsychHtmlButtonResponse,
       stimulus: `
         <div class="box">
-          <h1>Feedback Study</h1>
-          <p>This study examines how people respond to performance feedback while preforming specific tasks. The session takes about 10–20 minutes. You will complete several short tasks and answer a few questions after each one.</p>
-          <p>Your responses, response stimes, eye movements, and mouse movements will be recorded. Webcam recordings will capture your reactions throughout the study.</p>
-          <p style="margin-top:24px;font-size:15px;color:#666">By clicking "I Agree," you confirm that you consent to participate and will proceed to the study.</p>
+          <h1>Student Performance and Feedback Study</h1>
+          <p>This study examines how people respond to performance feedback while performing a series of short tasks. The session takes approximately 10–20 minutes. You will complete several tasks and answer a few questions after each one.</p>
+          <p>Data including your responses, response times, and eye movement will be recorded. Webcam recordings will capture your reactions throughout the study.</p>
+          <p class="note">By clicking "I Agree," you confirm that you consent to participate and will proceed to the study.</p>
         </div>`,
       choices: ["I Agree"],
       data: { phase: "consent" },
@@ -125,6 +123,7 @@
     timeline.push({
       type: jsPsychHtmlButtonResponse,
       stimulus: function () {
+        // window scope required: inline onchange handlers in the returned HTML string can't close over module variables
         window.intakeSurveyValues = {};
 
         function makeTable(labels, rows) {
@@ -157,13 +156,13 @@
         }
 
         return `
-          <div class="box" style="max-width:820px;text-align:left">
+          <div class="box box-left">
             <h2>About You</h2>
-            <p style="font-size:15px;color:#555;margin-bottom:28px">Please answer each question honestly. There are no right or wrong answers.</p>
+            <p class="survey-intro">Please answer each question honestly.</p>
 
             <div class="intake-section">
-              <div class="intake-section-title">Identity</div>
-              <div class="intake-section-sub">How much does each area feel like a core part of who you are?</div>
+              <h3>Identity</h3>
+              <p>How much does each area feel like a core part of who you are?</p>
               ${makeTable(
                 [
                   "Not at all",
@@ -183,8 +182,8 @@
             </div>
 
             <div class="intake-section">
-              <div class="intake-section-title">Performance Expectations</div>
-              <div class="intake-section-sub">How well do you expect to perform today?</div>
+              <h3>Performance Expectations</h3>
+              <p>How well do you expect to perform today?</p>
               ${makeTable(
                 [
                   "Very poorly",
@@ -204,8 +203,8 @@
             </div>
 
             <div class="intake-section">
-              <div class="intake-section-title">Self-Perception</div>
-              <div class="intake-section-sub">Please indicate how much you agree with the following statement.</div>
+              <h3>Self-Perception</h3>
+              <p>Please indicate how much you agree with the following statement.</p>
               ${makeTable(
                 [
                   "Strongly disagree",
@@ -228,8 +227,21 @@
           </div>`;
       },
       choices: ["Continue"],
+      on_load: function () {
+        document.querySelectorAll('input[type="radio"]').forEach((radio) => {
+          radio.addEventListener("mousedown", function () {
+            this._wasChecked = this.checked;
+          });
+          radio.addEventListener("click", function () {
+            if (this._wasChecked) {
+              this.checked = false;
+              delete window.intakeSurveyValues[this.name];
+            }
+          });
+        });
+      },
       on_finish: function () {
-        const rv = (name) => window.intakeSurveyValues[name] ?? 4;
+        const rv = (name) => window.intakeSurveyValues[name] ?? 4; // 4 = midpoint of 1–7 scale; used when participant skipped a question
         session.participant.domainValue = {
           design: rv("val_design"),
           computing: rv("val_computing"),
@@ -261,8 +273,8 @@
       stimulus: `
         <div class="box">
           <h2>Camera Setup</h2>
-          <p>This study records brief video clips of your facial expressions when you receive feedback.</p>
-          <p>Please sit comfortably in a well-lit room and keep your face in frame. Click <strong>Enable Camera</strong> and allow access when your browser asks.</p>
+          <p>This study records brief video clips of your facial expressions when you receive feedback. Please sit comfortably in a well-lit room and keep your face in frame.</p>
+          <p>Click <strong>Enable Camera</strong> and <strong>allow access</strong> when your browser asks.</p>
         </div>`,
       choices: ["Enable Camera"],
       on_finish: function () {
@@ -278,10 +290,10 @@
       stimulus: `
         <div class="box">
           <h2>Check Your Position</h2>
-          <p>Make sure your face is fully visible and the room is well-lit. When you're ready, click <strong>OK</strong>.</p>
+          <p>Make sure your face is fully visible and the room is well-lit. Please proceed when you are ready.</p>
           <video id="webcam-preview" autoplay playsinline muted
             class="webcam-preview"></video>
-          <p id="webcam-status" style="color:#aaa;font-size:13px;margin-top:8px">Connecting to camera…</p>
+          <p id="webcam-status">Connecting to camera…</p>
         </div>`,
       choices: ["OK, looks good"],
       on_load: async function () {
@@ -367,7 +379,7 @@
         : `<div class="box"><h2>All Set</h2><p>Eye tracking is calibrated. You are about to begin the study.</p><p>You will complete a short practice round first.</p></div>`,
       choices: ["Begin Study"],
       on_start: function () {
-        clock.start();
+        clock.start(); // on_start fires before the slide renders, so the clock begins before the participant sees the button
       },
       data: { phase: "calibration_complete" },
     });
@@ -393,6 +405,7 @@
       }),
       loop_function: function () {
         calibTrialIndex++;
+        // Loop continues until the participant passes a calibration task OR maxTasks is reached
         return (
           calibTrialIndex < CONFIG.calibration.maxTasks &&
           session.participant.ledger.lastCalibrationOk === false
@@ -418,7 +431,7 @@
     });
 
     /* 6. Main adaptive loop */
-    // var mainTrialCount = 0;
+    // var mainTrialCount = 0; // dev guard — uncomment the lines below to cap trials during testing
     timeline.push({
       timeline: buildTrialSequence(function () {
         return selectNextTrial(session.participant, session.pool, clock);
@@ -435,15 +448,10 @@
       type: jsPsychHtmlButtonResponse,
       stimulus: `
         <div class="box">
-          <h2>Study Complete — Important Information</h2>
-          <p>Thank you for completing the study.</p>
-          <p><strong>Some of the feedback you received during the study was adjusted.</strong>
-          This was done as part of the research design to study emotional responses to performance feedback.
-          It does not reflect your actual ability.</p>
-          <p>The feedback did not indicate your true skill level. Your real performance was
-          recorded separately and will remain confidential.</p>
-          <p>If you feel uncomfortable with any aspect of the study, please let the researcher know.</p>
-          <p style="margin-top:22px;font-size:15px">You may withdraw your data at any time. To withdraw,
+          <h2>Thank You for Completing the Study!</h2>
+          <p>Some of the feedback you received during the study was adjusted.
+          This was done as part of the research design to study emotional responses to performance feedback and may not reflect your actual ability. Your real performance was recorded separately and will remain confidential.</p>
+          <p class="note">You may withdraw your data. To withdraw,
           click "Withdraw My Data" below and speak with the researcher.</p>
         </div>`,
       choices: ["I Understand", "Withdraw My Data"],
@@ -465,9 +473,8 @@
         <div class="box">
           <h2>A Few Final Questions</h2>
           <p>During the study, did you ever feel that the feedback you received was inaccurate or unfair?</p>
-          <p style="font-size:14px;color:#888">Your answer will not affect your participation or compensation.</p>
         </div>`,
-      choices: ["No — the feedback seemed fair", "Yes — something felt off"],
+      choices: ["No, the feedback seemed fair", "Yes, something felt off"],
       on_finish: function (data) {
         jsPsych.data.addProperties({
           manipulation_check_suspicious: data.response === 1,
@@ -480,36 +487,66 @@
     timeline.push({
       type: jsPsychHtmlButtonResponse,
       stimulus: function () {
+        // Same window-scope pattern as intake: inline onchange handlers need a global target
         window._postSurveyValues = {};
-        const qs = [
-          {
-            id: "ps_stress",
-            label: "How stressed did you feel during the tasks?",
-          },
-          { id: "ps_effort", label: "How much effort did you put in?" },
-          {
-            id: "ps_engagement",
-            label: "How engaged were you with the tasks?",
-          },
+        const SCALE_LABELS = [
+          "Not at all",
+          "Very little",
+          "A little",
+          "Somewhat",
+          "Quite a bit",
+          "Very much",
+          "Extremely",
         ];
-        let rows = "";
-        for (const q of qs) {
-          rows += `
-            <div class="probe-row">
-              <div class="probe-label" style="width:260px;text-align:left;font-size:13px">${q.label}</div>
-              <div class="probe-radios">
-                <div class="probe-radio-options">
-                  ${[1, 2, 3, 4, 5, 6, 7].map((v) => `<label class="probe-radio-label"><input type="radio" name="${q.id}" value="${v}" onchange="window._postSurveyValues['${q.id}']=parseInt(this.value)"><span>${v}</span></label>`).join("")}
-                </div>
-                <div class="probe-anchors"><span>Not at all</span><span>Extremely</span></div>
-              </div>
-            </div>`;
-        }
-        return `<div id="probe-screen"><h3>Overall experience</h3>${rows}</div>`;
+        const qs = [
+          { id: "ps_stress", label: "Stress" },
+          { id: "ps_effort", label: "Effort" },
+          { id: "ps_engagement", label: "Engagement" },
+        ];
+        const headerCols = SCALE_LABELS.map(
+          (lbl, i) => `
+          <th class="probe-th-col">
+            <span class="probe-num">${i + 1}</span>
+            <span class="probe-lbl">${lbl}</span>
+          </th>`,
+        ).join("");
+        const bodyRows = qs
+          .map(({ id, label }) => {
+            const cells = [1, 2, 3, 4, 5, 6, 7]
+              .map(
+                (v) =>
+                  `<td><input type="radio" name="${id}" value="${v}"
+             onchange="window._postSurveyValues['${id}']=parseInt(this.value)"></td>`,
+              )
+              .join("");
+            return `<tr><td class="probe-em-label">${label}</td>${cells}</tr>`;
+          })
+          .join("");
+        return `
+          <div id="probe-screen">
+            <h3>Rate your overall experience</h3>
+            <table class="probe-table">
+              <thead><tr><th class="probe-th-emotion"></th>${headerCols}</tr></thead>
+              <tbody>${bodyRows}</tbody>
+            </table>
+          </div>`;
       },
       choices: ["Finish"],
+      on_load: function () {
+        document.querySelectorAll('input[type="radio"]').forEach((radio) => {
+          radio.addEventListener("mousedown", function () {
+            this._wasChecked = this.checked;
+          });
+          radio.addEventListener("click", function () {
+            if (this._wasChecked) {
+              this.checked = false;
+              delete window._postSurveyValues[this.name];
+            }
+          });
+        });
+      },
       on_finish: function () {
-        const get = (id) => window._postSurveyValues?.[id] ?? 4;
+        const get = (id) => window._postSurveyValues?.[id] ?? 4; // 4 = midpoint fallback if skipped
         jsPsych.data.addProperties({
           post_stress: get("ps_stress"),
           post_effort: get("ps_effort"),

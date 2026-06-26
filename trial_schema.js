@@ -54,16 +54,35 @@
  * ========================================================================== */
 
 /* ---- Controlled vocabularies ------------------------------------------- */
-export const EMOTIONS    = ["pride", "relief", "disappointment", "shame", "guilt"];
-export const PROBES      = [...EMOTIONS, "anxiety", "confusion", "boredom", "none"]; // sliders shown each round
-export const DOMAINS     = ["design", "media", "computing"];
-export const MODALITIES  = ["visuospatial", "numeric", "logic", "perceptual", "verbal_creative"];
-export const ATTRIBUTION = ["ability", "effort", "ability_effort", "task_difficulty", "none"]; // Weiner cause
-export const COMPARISON  = ["individuating", "normative_shared", "none"]; // feedback MECHANISM tag
-export const EXPECTANCY  = ["low", "high", "none"];
-export const OUTCOME     = ["correct", "incorrect", "any"];              // variant.requiresOutcome (v3)
-export const PCTREF      = ["self_score", "self_speed", "peer_success"]; // what variant.pct refers to (v3)
-export const SIGNALS     = ["face_au", "head_pose", "posture", "gaze", "gsr", "hrv"]; // post-hoc study only
+export const EMOTIONS = ["pride", "relief", "disappointment", "shame", "guilt"];
+export const PROBES = [...EMOTIONS, "anxiety", "confusion", "boredom", "none"]; // sliders shown each round
+export const DOMAINS = ["design", "media", "computing"];
+export const MODALITIES = [
+  "visuospatial",
+  "numeric",
+  "logic",
+  "perceptual",
+  "verbal_creative",
+];
+export const ATTRIBUTION = [
+  "ability",
+  "effort",
+  "ability_effort",
+  "task_difficulty",
+  "none",
+]; // Weiner cause
+export const COMPARISON = ["individuating", "normative_shared", "none"]; // feedback MECHANISM tag
+export const EXPECTANCY = ["low", "high", "none"];
+export const OUTCOME = ["correct", "incorrect", "any"]; // variant.requiresOutcome (v3)
+export const PCTREF = ["self_score", "self_speed", "peer_success"]; // what variant.pct refers to (v3)
+export const SIGNALS = [
+  "face_au",
+  "head_pose",
+  "posture",
+  "gaze",
+  "gsr",
+  "hrv",
+]; // post-hoc study only
 
 /* ---- Emotion profile (controller reads; ethics + sequencing live here) ----
  * cost                     : affective/ethical load -> caps + no-two-negatives-in-a-row
@@ -72,21 +91,30 @@ export const SIGNALS     = ["face_au", "head_pose", "posture", "gaze", "gsr", "h
  *                            expectancy then failure. Others fire single-round.
  * priority                 : oversample + monitor (shame: detrimental in education) */
 export const EMOTION_PROFILE = {
-  pride:          { valence: "pos", cost: 0, requiresExpectancyViolation: null  },
-  relief:         { valence: "pos", cost: 0, requiresExpectancyViolation: "low" },
-  disappointment: { valence: "neg", cost: 1, requiresExpectancyViolation: "high" },
-  guilt:          { valence: "neg", cost: 2, requiresExpectancyViolation: null  },
-  shame:          { valence: "neg", cost: 3, requiresExpectancyViolation: null, priority: true },
+  pride: { valence: "pos", cost: 0, requiresExpectancyViolation: null },
+  relief: { valence: "pos", cost: 0, requiresExpectancyViolation: "low" },
+  disappointment: {
+    valence: "neg",
+    cost: 1,
+    requiresExpectancyViolation: "high",
+  },
+  guilt: { valence: "neg", cost: 2, requiresExpectancyViolation: null },
+  shame: {
+    valence: "neg",
+    cost: 3,
+    requiresExpectancyViolation: null,
+    priority: true,
+  },
 };
 
 /* ---- Global rig / delivery config (same every trial) ------------------- */
 export const RIG = {
-  delivery: "screen_only",            // no researcher commentary, ever
-  captureWindowMs: 10000,             // generous container; the labeled instance is a SEGMENT of this
-  baselinePreMs: 2000,                // neutral pre-reveal baseline inside the clip
+  delivery: "screen_only", // no researcher commentary, ever
+  captureWindowMs: 10000, // generous container; the labeled instance is a SEGMENT of this
+  baselinePreMs: 2000, // neutral pre-reveal baseline inside the clip
   onsetMarkers: ["gaze_offset_text", "au_va_change"], // pro eye-tracker -> reliable reading-offset t0
-  signals: [...SIGNALS],              // record all; signalsPresent re-logged per clip
-  settleDelayMs: 800,                 // beat between task-end and result reveal (task arousal decays)
+  signals: [...SIGNALS], // record all; signalsPresent re-logged per clip
+  settleDelayMs: 800, // beat between task-end and result reveal (task arousal decays)
 };
 
 /* ---- Anti-stacking (replaces per-task cooldown) ------------------------ *
@@ -105,7 +133,7 @@ export const ANTI_STACK = { sameModalityCooldown: 2, sameDomainCooldown: 1 };
  *   referent        : in-group a fabricated norm invokes (string, or true -> fill
  *                     from the routed domain). Used by peer_success variants.       */
 export const framingForDomains = (domains, framing) =>
-  Object.fromEntries(domains.map(d => [d, framing]));
+  Object.fromEntries(domains.map((d) => [d, framing]));
 
 /* ============================================================================
  * TRIAL BANK — assembled in trial_bank.js, NOT here.
@@ -137,35 +165,53 @@ export const framingForDomains = (domains, framing) =>
  * ========================================================================== */
 export const PARTICIPANT_STATE_TEMPLATE = {
   participantId: null,
-  sco: null,                                                   // 1-7 social-comparison orientation (INCOM)
-  domainValue:      { design: null, media: null, computing: null }, // 1-7 identity / "this is me"
+  sco: null, // 1-7 social-comparison orientation (INCOM)
+  domainValue: { design: null, media: null, computing: null }, // 1-7 identity / "this is me"
   domainExpectancy: { design: null, media: null, computing: null }, // 1-7 expected performance (intake + calibration)
-  calibration: {},                                              // per-task real pSuccess + median RT from warm-up
+  calibration: {}, // per-task real pSuccess + median RT from warm-up
   ledger: {
     // CREDIT + ethics key on the FELT dominant emotion (v3), not the target.
-    confirmed:      { pride: 0, relief: 0, disappointment: 0, shame: 0, guilt: 0 }, // any confirmed (incl. multi-label)
-    confirmedClean: { pride: 0, relief: 0, disappointment: 0, shame: 0, guilt: 0 }, // single-dominant spine
-    attempts:       { pride: 0, relief: 0, disappointment: 0, shame: 0, guilt: 0 }, // keyed on TARGET (what we aimed at)
-    lastEmotion: null,                                         // last FELT emotion (null if induction failed)
+    confirmed: { pride: 0, relief: 0, disappointment: 0, shame: 0, guilt: 0 }, // any confirmed (incl. multi-label)
+    confirmedClean: {
+      pride: 0,
+      relief: 0,
+      disappointment: 0,
+      shame: 0,
+      guilt: 0,
+    }, // single-dominant spine
+    attempts: { pride: 0, relief: 0, disappointment: 0, shame: 0, guilt: 0 }, // keyed on TARGET (what we aimed at)
+    lastEmotion: null, // last FELT emotion (null if induction failed)
     prevForConsec: null,
     consecutiveNeg: 0,
-    consecutiveNegContext: 0,                                  // # negatives actually FELT so far (shame ramp guard)
-    cumNegLoad: 0,                                             // sum of cost over FELT negatives
-    recentModalities: [],                                      // for ANTI_STACK
-    recentDomains: [],                                         // for ANTI_STACK
-    usedStimulusIds: [],                                       // single-shot enforcement (on STIMULUS, not framing id)
-    referentClaims: {},                                        // {referent: "competent"|"weak"} norm-coherence (OPEN DECISION)
-    negLoadAtClose: null,                                      // snapshot of cap usage at the main->close boundary
+    consecutiveNegContext: 0, // # negatives actually FELT so far (shame ramp guard)
+    cumNegLoad: 0, // sum of cost over FELT negatives
+    recentModalities: [], // for ANTI_STACK
+    recentDomains: [], // for ANTI_STACK
+    usedStimulusIds: [], // single-shot enforcement (on STIMULUS, not framing id)
+    referentClaims: {}, // {referent: "competent"|"weak"} norm-coherence (OPEN DECISION)
+    negLoadAtClose: null, // snapshot of cap usage at the main->close boundary
   },
   flags: { distress: false, suspicious: false },
-  phase: "intake",  // intake -> calibration -> induction -> positive_close -> debrief
+  phase: "intake", // intake -> calibration -> induction -> positive_close -> debrief
 };
 
 /* ---- POOL STATE — global; drives the deficit push across participants ---- */
 export const POOL_STATE_TEMPLATE = {
-  target:         { pride: 200, relief: 200, disappointment: 200, shame: 200, guilt: 200 }, // clean-core quotas
-  confirmedClean: { pride: 0,   relief: 0,   disappointment: 0,   shame: 0,   guilt: 0   },  // BALANCING SPINE -> deficit
-  confirmed:      { pride: 0,   relief: 0,   disappointment: 0,   shame: 0,   guilt: 0   },  // all-confirmed (bonus volume)
+  target: {
+    pride: 200,
+    relief: 200,
+    disappointment: 200,
+    shame: 200,
+    guilt: 200,
+  }, // clean-core quotas
+  confirmedClean: {
+    pride: 0,
+    relief: 0,
+    disappointment: 0,
+    shame: 0,
+    guilt: 0,
+  }, // BALANCING SPINE -> deficit
+  confirmed: { pride: 0, relief: 0, disappointment: 0, shame: 0, guilt: 0 }, // all-confirmed (bonus volume)
   // deficit(e) = (target-confirmedClean)/target -> priority weight. Off-target/multi-label
   // confirmations add to `confirmed` only. Capped emotions (shame, guilt) are pushed via
   // yield-per-attempt + recruitment, not attempt rate.
@@ -185,45 +231,78 @@ export const REALIZED_TRIAL_EXAMPLE = {
   selection: {
     targetEmotion: "shame",
     domainUsed: "computing",
-    primeId: "p_abilityDiag",      // optional shame amplifier (no success promise -> avoids disap. blend)
-    feedbackId: "shame_mild",      // softened variant chosen given cumNegLoad
+    primeId: "p_abilityDiag", // optional shame amplifier (no success promise -> avoids disap. blend)
+    feedbackId: "shame_mild", // softened variant chosen given cumNegLoad
     comparisonUsed: "individuating",
-    pct: 12,                       // drawn from variant.pct ∩ task.plausiblePct
+    pct: 12, // drawn from variant.pct ∩ task.plausiblePct
     reason: {
-      poolDeficit: { shame: 0.71, disappointment: 0.44, guilt: 0.30 },     // at decision time
-      snapshot: { sco: 5, cumNegLoad: 2, consecutiveNeg: 0, lastEmotion: "relief",
-                  domainValue: { design: 4, media: 3, computing: 6 },
-                  domainExpectancy: { design: 4, media: 3, computing: 5 } },
-      gatesPassed: ["credibility", "value_threshold", "no_consecutive_neg",
-                    "negload_under_cap", "modality_not_stacked", "not_distressed"],
-      variantChoiceBy: "support_only",  // would be "sco" where both comparison variants exist
+      poolDeficit: { shame: 0.71, disappointment: 0.44, guilt: 0.3 }, // at decision time
+      snapshot: {
+        sco: 5,
+        cumNegLoad: 2,
+        consecutiveNeg: 0,
+        lastEmotion: "relief",
+        domainValue: { design: 4, media: 3, computing: 6 },
+        domainExpectancy: { design: 4, media: 3, computing: 5 },
+      },
+      gatesPassed: [
+        "credibility",
+        "value_threshold",
+        "no_consecutive_neg",
+        "negload_under_cap",
+        "modality_not_stacked",
+        "not_distressed",
+      ],
+      variantChoiceBy: "support_only", // would be "sco" where both comparison variants exist
     },
   },
 
-  realPerformance: { correct: 1, total: 6, rtMs: 21800 },                  // logged, NOT shown
+  realPerformance: { correct: 1, total: 6, rtMs: 21800 }, // logged, NOT shown
   // feedback variant RESOLVED post-task from realPerformance (incorrect here):
-  displayed: { pct: 12, framedText: "You're in the bottom 12% — logical sequencing may not be your strength.",
-               attribution: "ability", comparison: "individuating",
-               requiresOutcome: "incorrect", pctRef: "self_score", referent: null },
+  displayed: {
+    pct: 12,
+    framedText:
+      "You're in the bottom 12% — logical sequencing may not be your strength.",
+    attribution: "ability",
+    comparison: "individuating",
+    requiresOutcome: "incorrect",
+    pctRef: "self_score",
+    referent: null,
+  },
 
   capture: {
     files: { face: "P017_t08_face.mp4", scene: "P017_t08_scene.mp4" },
     revealTsMs: 0,
-    onset: { gaze_offset_text_ms: 2150, au_va_change_ms: 2600 },           // reading-offset vs expression-onset
+    onset: { gaze_offset_text_ms: 2150, au_va_change_ms: 2600 }, // reading-offset vs expression-onset
     signalsPresent: ["face_au", "head_pose", "posture", "gaze", "gsr", "hrv"], // provenance for per-signal study
     baselineWindowMs: [-2000, 0],
-    expressionSegmentMs: [2150, 9000],                                     // DERIVED labeled instance (onset->offset)
+    expressionSegmentMs: [2150, 9000], // DERIVED labeled instance (onset->offset)
   },
 
-  selfReport: { shame: 6, guilt: 3, disappointment: 4, pride: 1, relief: 1,
-                anxiety: 2, confusion: 1, boredom: 1, none: 1 },           // the FER ground truth
+  selfReport: {
+    shame: 6,
+    guilt: 3,
+    disappointment: 4,
+    pride: 1,
+    relief: 1,
+    anxiety: 2,
+    confusion: 1,
+    boredom: 1,
+    none: 1,
+  }, // the FER ground truth
   // LABEL = felt dominant, not target. Here target===felt (on-target). If we had targeted
   // relief and the participant rated pride 6 / others low, derived would instead read:
   //   { confirmed: true, feltDominant: "pride", target: "relief", cleanCore: true, offTarget: true, inductionFailed: false }
   // -> credited to PRIDE on the clean spine, ethics keyed on pride (cost 0). A failed
   //    induction (no rating >= dominantMin) -> { confirmed: false, inductionFailed: true }.
-  derived: { confirmed: true, feltDominant: "shame", target: "shame", cleanCore: true,
-             offTarget: false, inductionFailed: false },
+  derived: {
+    confirmed: true,
+    feltDominant: "shame",
+    target: "shame",
+    cleanCore: true,
+    offTarget: false,
+    inductionFailed: false,
+  },
 
   postHoc: { suspicion: false },
 };

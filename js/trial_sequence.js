@@ -421,6 +421,7 @@ export function buildTrialSequence(selectionFn) {
     },
   };
 
+  // Loops rotItemNode until all stimulusRefs have been shown.
   const rotBlockLoop = {
     timeline: [rotItemNode],
     loop_function: function () {
@@ -467,6 +468,7 @@ export function buildTrialSequence(selectionFn) {
    * Items come from task.stimulus.block.pairs (each has .left, .right, .correctResp).
    * ==================================================================== */
 
+  // iqaBlockStart: invisible node that starts tracking before the first image pair.
   const iqaBlockStart = {
     type: jsPsychHtmlKeyboardResponse,
     stimulus: "",
@@ -490,6 +492,7 @@ export function buildTrialSequence(selectionFn) {
     );
   }
 
+  // iqaItemNode: shows one left/right image pair — participant clicks which looks lower quality.
   const iqaItemNode = {
     type: jsPsychHtmlButtonResponse,
     stimulus: function () {
@@ -507,11 +510,11 @@ export function buildTrialSequence(selectionFn) {
           <div class="iqa-pair">
             <div class="iqa-side">
               <img class="iqa-img" src="${iqaImgPath(pair.left)}" alt="Left image">
-              <div class="iqa-img-label">Left</div>
+              <p class="iqa-img-label">Left</p>
             </div>
             <div class="iqa-side">
               <img class="iqa-img" src="${iqaImgPath(pair.right)}" alt="Right image">
-              <div class="iqa-img-label">Right</div>
+              <p class="iqa-img-label">Right</p>
             </div>
           </div>
         </div>`;
@@ -562,6 +565,7 @@ export function buildTrialSequence(selectionFn) {
     },
   };
 
+  // Loops iqaItemNode until all image pairs have been judged.
   const iqaBlockLoop = {
     timeline: [iqaItemNode],
     loop_function: function () {
@@ -653,7 +657,7 @@ export function buildTrialSequence(selectionFn) {
   /* ---- 3. Settle delay ---- */
   const settle = {
     type: jsPsychHtmlKeyboardResponse,
-    stimulus: `<div class="box" style="min-height:80px"></div>`,
+    stimulus: `<div class="box settle"></div>`,
     choices: "NO_KEYS",
     trial_duration: 800,
     data: function () {
@@ -669,7 +673,7 @@ export function buildTrialSequence(selectionFn) {
       const perf = trial.currentRealPerf;
       const correct = perf?.correct ?? 0;
       const total = perf?.total ?? 1;
-      const scoreHtml = `<div class="feedback-score">${correct} / ${total}</div>`;
+      const scoreHtml = `<div class="feedback-score">You scored ${correct}/${total}</div>`;
 
       // If during callibration phase, display the score only
       if (isCalib) {
@@ -696,11 +700,23 @@ export function buildTrialSequence(selectionFn) {
         ],
     on_load: function () {
       session.revealTsMs = performance.now();
+      session.webgazerTrialStartPerfMs = performance.now();
       startStageTracking(
         "feedback",
         stageData.feedback.moves,
         stageData.feedback.clicks,
       );
+      if (!SKIP_WEBGAZER) {
+        const t0 = session.webgazerTrialStartPerfMs;
+        session._cancelFeedbackGaze = window.jsPsych.extensions.webgazer.onGazeUpdate((pred) => {
+          stageData.feedback.eye.push({
+            stage: "feedback",
+            x: Math.round(pred.x),
+            y: Math.round(pred.y),
+            t: Math.round(performance.now() - t0),
+          });
+        });
+      }
       session.videoStartPerfMs = performance.now();
       startCapture(
         `${session.participant.participantId}_t${session.trialOrdinal}_feedback`,
@@ -709,7 +725,10 @@ export function buildTrialSequence(selectionFn) {
     on_finish: function (data) {
       stopStageTracking();
       stopCapture();
-      stageData.feedback.eye = extractWebgazerPoints(data, "feedback");
+      if (session._cancelFeedbackGaze) {
+        session._cancelFeedbackGaze();
+        session._cancelFeedbackGaze = null;
+      }
       data.framed_text = trial.currentDisplayed?.framedText || null;
       data.emotion_shown = trial.currentDisplayed?.emotionShown || null;
       data.pivoted_to = trial.currentDisplayed?.pivotedTo || null;
@@ -719,6 +738,7 @@ export function buildTrialSequence(selectionFn) {
       data.attribution = trial.currentDisplayed?.attribution || null;
       data.video_filename = `${session.participant.participantId}_t${session.trialOrdinal}_feedback.webm`;
       data.video_start_perf_ms = session.videoStartPerfMs;
+      data.webgazer_trial_start_perf_ms = session.webgazerTrialStartPerfMs;
       data.feedback_eye_moves_raw = J(stageData.feedback.eye);
       data.feedback_eye_count = stageData.feedback.eye.length;
     },
@@ -785,9 +805,16 @@ export function buildTrialSequence(selectionFn) {
         </div>`
         : "";
 
+      const perf = trial.currentRealPerf;
+      const scoreHtml = perf
+        ? `<p>Score: ${perf.correct ?? 0} / ${perf.total ?? 1}</p>`
+        : "";
+
       return `
         <div id="probe-screen">
+          ${scoreHtml}
           <h3>How strongly are you feeling each emotion right now?</h3>
+          <p class="note">If you leave an emotion unselected, it will be recorded as 1 (Not at all).</p>
           <table class="probe-table">
             <thead><tr>
               <th class="probe-th-emotion"></th>
@@ -813,6 +840,17 @@ export function buildTrialSequence(selectionFn) {
         stageData.probe.moves,
         stageData.probe.clicks,
       );
+      document.querySelectorAll('input[type="radio"][name^="probe_"]').forEach(radio => {
+        radio.addEventListener("mousedown", function () {
+          this._wasChecked = this.checked;
+        });
+        radio.addEventListener("click", function () {
+          if (this._wasChecked) {
+            this.checked = false;
+            delete window._probeValues[this.name.replace(/^probe_/, "")];
+          }
+        });
+      });
     },
     on_finish: function (data) {
       stopStageTracking();
@@ -860,6 +898,7 @@ export function buildTrialSequence(selectionFn) {
       data.phase_at_finish = session.participant.phase;
       data.controller_reason = J(trial.currentSelection?.reason || {});
 
+      // Exponential moving average (α=0.15) to track typical trial duration without storing all values.
       const trialMs = performance.now() - session.trialStartMs;
       const med = session.participant.ledger.medianTrialMs;
       session.participant.ledger.medianTrialMs = med
