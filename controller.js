@@ -31,13 +31,10 @@ import { TRIAL_BANK, CALIBRATION_BANK } from "./trial_bank.js"; // assembled fro
 
 /* ---- Tunables — SET FROM PILOT (placeholders) -------------------------- */
 export const CONFIG = {
-  //totalBudgetMs: 45 * 60 * 1000, // TODO pilot: whole-session wall-clock budget
-
-  totalBudgetMs: 2 * 60 * 1000,
+  totalBudgetMs: 45 * 60 * 1000, // TODO pilot: whole-session wall-clock budget
   closing: { nTrials: 4, lastEmotion: "pride" },
   // reserve is dynamic: nTrials * observed median trial time (fallback fixed below)
-  //closingReserveFallbackMs: 8 * 60 * 1000, // TODO pilot
-  closingReserveFallbackMs: 1 * 60 * 1000, // TODO pilot
+  closingReserveFallbackMs: 8 * 60 * 1000, // TODO pilot
 
   calibration: { maxTasks: 3, startTier: "easy" },
   caps: {
