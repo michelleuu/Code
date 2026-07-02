@@ -1,5 +1,9 @@
 /* DEV TOGGLE: set true to skip WebGazer calibration during testing */
-export const SKIP_WEBGAZER = false;
+export const SKIP_WEBGAZER = true;
+
+/* DEV TOGGLE: set false to hide the trial-info debug panel on prime/feedback
+   screens before running real participants. */
+export const SHOW_DEBUG_INFO = true;
 
 /* Session-level state — persists across trials */
 export const session = {
