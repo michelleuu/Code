@@ -29,6 +29,7 @@ export function createPrimeScreen() {
           ["targetEmotion", trial.currentSelection?.targetEmotion ?? ""],
           ["primeId", trial.currentSelection?.primeId ?? ""],
         ],
+        [["controller_reason", JSON.stringify(trial.currentSelection?.reason ?? {})]],
       ]);
       return `
         <div id="prime-screen">

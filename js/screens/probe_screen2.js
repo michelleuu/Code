@@ -242,6 +242,7 @@ export function createProbeScreen() {
       onTrialFinish(realized, session.participant, session.pool, clock);
       advancePhase(session.participant, session.pool, clock);
 
+      trial.currentDerived = realized.derived;
       data.self_report = J(selfReport);
       data.derived = J(realized.derived);
       data.felt_dominant = realized.derived?.feltDominant || null;

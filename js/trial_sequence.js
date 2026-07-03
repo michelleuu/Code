@@ -9,12 +9,14 @@ import { createRotationBlock } from "./tasks/task_rotation.js";
 import { createIqaBlock } from "./tasks/task_iqa.js";
 import { createPrimeScreen } from "./screens/prime_screen.js";
 import { createFeedbackScreen } from "./screens/feedback_screen.js";
-// import { createProbeScreen } from "./screens/probe_screen.js";
-import { createProbeScreen } from "./screens/probe_screen2.js"; // was probe_screen.js
+import { createProbeScreen } from "./screens/probe_screen.js";
+// import { createProbeScreen } from "./screens/probe_screen2.js";
+// import { createProbeScreen } from "./screens/probe_screen3.js";
+import { createDerivedDebugScreen } from "./screens/derived_debug_screen.js";
 
 /* ============================================================================
  * Builds one full jsPsych trial sequence:
- *   setup → prime → task (dispatched) → settle → feedback → probe
+ *   setup → prime → task (dispatched) → settle → feedback → probe → derived debug (dev only)
  * selectionFn(): called at the start of each iteration to pick the next trial.
  *
  * Prime/feedback/probe each live in their own file under ./screens/, and the
@@ -117,5 +119,8 @@ export function buildTrialSequence(selectionFn) {
   /* ---- 5. Emotion probe ---- */
   const probe = createProbeScreen();
 
-  return [setup, prime, ...taskDispatch, settle, feedback, probe];
+  /* ---- 6. Derived debug screen (dev only — see derived_debug_screen.js) ---- */
+  const derivedDebug = createDerivedDebugScreen();
+
+  return [setup, prime, ...taskDispatch, settle, feedback, probe, derivedDebug];
 }

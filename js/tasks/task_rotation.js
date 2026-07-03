@@ -54,8 +54,7 @@ export function createRotationBlock() {
       if (!ref) return `<div id="task-screen"><p>—</p></div>`;
       return `
         <div id="task-screen">
-          <div class="task-label">Mental Rotation</div>
-          <div class="rot-progress">Item ${trial.currentBlockItem + 1} / ${refs.length}</div>
+          <div class="task-label">Mental Rotation - Item ${trial.currentBlockItem + 1}/${refs.length}</div>
           <div class="rot-pair"><img src="${ref.file}" alt="Rotation pair"></div>
           <p class="task-instructions">Same shape or mirror image?</p>
         </div>`;

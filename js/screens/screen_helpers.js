@@ -7,7 +7,8 @@ import { SHOW_DEBUG_INFO } from "../state.js";
 
 // How long the prime/feedback "Continue"-style button stays hidden before
 // appearing, forcing participants to spend at least this long on the screen.
-export const CONTINUE_DELAY_MS = 10000;
+// export const CONTINUE_DELAY_MS = 10000; // display for 10 sec
+export const CONTINUE_DELAY_MS = 200;
 
 // Disables the jsPsych button-response button (pale/muted via the
 // .jspsych-btn:disabled override in experiment.css, cursor: not-allowed)

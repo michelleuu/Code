@@ -5,270 +5,229 @@
 
 export const REASONING_BANK = [
   {
-    "id": "ns_easy_01",
-    "stimulusId": "ns_easy_01",
-    "name": "Number series — easy (MITRE NS; item nn_f06i10)",
-    "domains": [
-      "computing",
-      "design"
-    ],
-    "modality": "numeric",
-    "languageLoad": "low",
-    "difficultyTier": "easy",
-    "unit": "single",
-    "instructions": "What number comes next? Type your answer.",
-    "stimulus": {
-      "component": "numberSeries",
-      "scoreFn": "scoreNumberInput",
-      "response": "input",
-      "measures": [
-        "correct",
-        "rtMs"
-      ],
-      "item": {
-        "ref": "nn_f06i10",
-        "form": "2",
-        "b": -1.1,
-        "stem": [
-          81,
-          72,
-          63,
-          54,
-          45,
-          36,
-          27,
-          18
-        ],
-        "key": 9
-      }
-    },
-    "calibration": {
-      "realPSuccess": 0.85,
-      "medianRtMs": 35000,
-      "plausiblePct": [
-        60,
-        99
-      ],
-      "plausiblePctSpeed": [
-        60,
-        99
-      ],
-      "b": -1.1,
-      "itemRef": "nn_f06i10"
-    },
-    "timer": {
-      "mode": "hidden"
-    },
-    "framing": {
-      "computing": {
-        "primes": [
-          {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This one is a clean read of logical sequencing."
-          },
-          {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "Heads-up — plenty of students on the computing track slip on the last step here."
-          },
-          {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward a careful read rather than a snap answer."
-          }
-        ],
-        "feedback": {
-          "pride": [
-            {
-              "id": "pride_ind",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                85,
-                98
-              ],
-              "template": "${pct}th percentile — a real marker of logical sequencing, and the care shows."
-            },
-            {
-              "id": "pride_speed",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_speed",
-              "referent": "students on the computing track",
-              "pct": [
-                85,
-                98
-              ],
-              "template": "Top ${pct}th percentile for speed — fast, accurate logical sequencing, the strongest kind."
-            }
-          ],
-          "relief": [
-            {
-              "id": "relief_self",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                62,
-                85
-              ],
-              "template": "${pct}th percentile — you cleared the one students on the computing track usually find slow going."
-            }
-          ],
-          "shame": [
-            {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "students on the computing track",
-              "pct": [
-                76,
-                92
-              ],
-              "template": "${pct}% of students on the computing track got this one — you didn't."
-            }
-          ],
-          "guilt": [
-            {
-              "id": "guilt_norm",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "students on the computing track",
-              "pct": [
-                76,
-                92
-              ],
-              "template": "${pct}% get this one — you clearly have it, you just went too fast."
-            }
-          ]
-        }
+    id: "ns_easy_01",
+    stimulusId: "ns_easy_01",
+    name: "Number series — easy (MITRE NS; item nn_f06i10)",
+    domains: ["computing", "design"],
+    modality: "numeric",
+    languageLoad: "low",
+    difficultyTier: "easy",
+    unit: "single",
+    instructions: "What number comes next? Type your answer.",
+    stimulus: {
+      component: "numberSeries",
+      scoreFn: "scoreNumberInput",
+      response: "input",
+      measures: ["correct", "rtMs"],
+      item: {
+        ref: "nn_f06i10",
+        form: "2",
+        b: -1.1,
+        stem: [81, 72, 63, 54, 45, 36, 27, 18],
+        key: 9,
       },
-      "design": {
-        "primes": [
+    },
+    calibration: {
+      realPSuccess: 0.85,
+      medianRtMs: 35000,
+      plausiblePct: [60, 99],
+      plausiblePctSpeed: [60, 99],
+      b: -1.1,
+      itemRef: "nn_f06i10",
+    },
+    timer: {
+      mode: "hidden",
+    },
+    framing: {
+      computing: {
+        primes: [
           {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This one is a clean read of the rule-finding side of design reasoning."
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This one is a clean read of logical sequencing.",
           },
           {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "Heads-up — plenty of people who identified as designers slip on the last step here."
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "Heads-up — plenty of students on the computing track slip on the last step here.",
           },
           {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward a careful read rather than a snap answer."
-          }
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward a careful read rather than a snap answer.",
+          },
         ],
-        "feedback": {
-          "pride": [
+        feedback: {
+          pride: [
             {
-              "id": "pride_ind",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                85,
-                98
-              ],
-              "template": "${pct}th percentile — a real marker of the rule-finding side of design reasoning, and the care shows."
+              id: "pride_ind",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [85, 98],
+              template:
+                "${pct}th percentile — a real marker of logical sequencing, and the care shows.",
             },
             {
-              "id": "pride_speed",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_speed",
-              "referent": "people who identified as designers",
-              "pct": [
-                85,
-                98
-              ],
-              "template": "Top ${pct}th percentile for speed — fast, accurate the rule-finding side of design reasoning, the strongest kind."
-            }
+              id: "pride_speed",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_speed",
+              referent: "students on the computing track",
+              pct: [85, 98],
+              template:
+                "Top ${pct}th percentile for speed — fast, accurate logical sequencing, the strongest kind.",
+            },
           ],
-          "relief": [
+          relief: [
             {
-              "id": "relief_self",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                62,
-                85
-              ],
-              "template": "${pct}th percentile — you cleared the one people who identified as designers usually find slow going."
-            }
+              id: "relief_self",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [62, 85],
+              template:
+                "${pct}th percentile — you cleared the one students on the computing track usually find slow going.",
+            },
           ],
-          "shame": [
+          shame: [
             {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "people who identified as designers",
-              "pct": [
-                76,
-                92
-              ],
-              "template": "${pct}% of people who identified as designers got this one — you didn't."
-            }
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "students on the computing track",
+              pct: [76, 92],
+              template:
+                "${pct}% of students on the computing track got this one — you didn't.",
+            },
           ],
-          "guilt": [
+          guilt: [
             {
-              "id": "guilt_norm",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "people who identified as designers",
-              "pct": [
-                76,
-                92
-              ],
-              "template": "${pct}% get this one — you clearly have it, you just went too fast."
-            }
-          ]
-        }
-      }
+              id: "guilt_norm",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "students on the computing track",
+              pct: [76, 92],
+              template:
+                "${pct}% get this one — you clearly have it, you just went too fast.",
+            },
+          ],
+        },
+      },
+      design: {
+        primes: [
+          {
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This one is a clean read of the rule-finding side of design reasoning.",
+          },
+          {
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "Heads-up — plenty of people who identified as designers slip on the last step here.",
+          },
+          {
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward a careful read rather than a snap answer.",
+          },
+        ],
+        feedback: {
+          pride: [
+            {
+              id: "pride_ind",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [85, 98],
+              template:
+                "${pct}th percentile — a real marker of the rule-finding side of design reasoning, and the care shows.",
+            },
+            {
+              id: "pride_speed",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_speed",
+              referent: "people who identified as designers",
+              pct: [85, 98],
+              template:
+                "Top ${pct}th percentile for speed — fast, accurate the rule-finding side of design reasoning, the strongest kind.",
+            },
+          ],
+          relief: [
+            {
+              id: "relief_self",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [62, 85],
+              template:
+                "${pct}th percentile — you cleared the one people who identified as designers usually find slow going.",
+            },
+          ],
+          shame: [
+            {
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "people who identified as designers",
+              pct: [76, 92],
+              template:
+                "${pct}% of people who identified as designers got this one — you didn't.",
+            },
+          ],
+          guilt: [
+            {
+              id: "guilt_norm",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "people who identified as designers",
+              pct: [76, 92],
+              template:
+                "${pct}% get this one — you clearly have it, you just went too fast.",
+            },
+          ],
+        },
+      },
     },
-    "response": {
-      "probes": [
+    response: {
+      probes: [
         "pride",
         "relief",
         "disappointment",
@@ -277,284 +236,243 @@ export const REASONING_BANK = [
         "anxiety",
         "confusion",
         "boredom",
-        "none"
+        "none",
       ],
-      "scale": {
-        "type": "likert",
-        "min": 1,
-        "max": 7
+      scale: {
+        type: "likert",
+        min: 1,
+        max: 7,
       },
-      "cleanCore": {
-        "dominantMin": 5,
-        "othersMax": 3
-      }
-    }
+      cleanCore: {
+        dominantMin: 5,
+        othersMax: 3,
+      },
+    },
   },
   {
-    "id": "ns_easy_02",
-    "stimulusId": "ns_easy_02",
-    "name": "Number series — easy (MITRE NS; item nst_f01i1)",
-    "domains": [
-      "computing",
-      "design"
-    ],
-    "modality": "numeric",
-    "languageLoad": "low",
-    "difficultyTier": "easy",
-    "unit": "single",
-    "instructions": "What number comes next? Type your answer.",
-    "stimulus": {
-      "component": "numberSeries",
-      "scoreFn": "scoreNumberInput",
-      "response": "input",
-      "measures": [
-        "correct",
-        "rtMs"
-      ],
-      "item": {
-        "ref": "nst_f01i1",
-        "form": "1",
-        "b": -0.15,
-        "stem": [
-          10,
-          11,
-          13,
-          17,
-          25,
-          32,
-          37,
-          47
-        ],
-        "key": 58
-      }
-    },
-    "calibration": {
-      "realPSuccess": 0.85,
-      "medianRtMs": 35000,
-      "plausiblePct": [
-        60,
-        99
-      ],
-      "plausiblePctSpeed": [
-        60,
-        99
-      ],
-      "b": -0.15,
-      "itemRef": "nst_f01i1"
-    },
-    "timer": {
-      "mode": "hidden"
-    },
-    "framing": {
-      "computing": {
-        "primes": [
-          {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This one is a clean read of logical sequencing."
-          },
-          {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "Heads-up — plenty of students on the computing track slip on the last step here."
-          },
-          {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward a careful read rather than a snap answer."
-          }
-        ],
-        "feedback": {
-          "pride": [
-            {
-              "id": "pride_ind",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                85,
-                98
-              ],
-              "template": "${pct}th percentile — a real marker of logical sequencing, and the care shows."
-            },
-            {
-              "id": "pride_speed",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_speed",
-              "referent": "students on the computing track",
-              "pct": [
-                85,
-                98
-              ],
-              "template": "Top ${pct}th percentile for speed — fast, accurate logical sequencing, the strongest kind."
-            }
-          ],
-          "relief": [
-            {
-              "id": "relief_self",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                62,
-                85
-              ],
-              "template": "${pct}th percentile — you cleared the one students on the computing track usually find slow going."
-            }
-          ],
-          "shame": [
-            {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "students on the computing track",
-              "pct": [
-                76,
-                92
-              ],
-              "template": "${pct}% of students on the computing track got this one — you didn't."
-            }
-          ],
-          "guilt": [
-            {
-              "id": "guilt_norm",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "students on the computing track",
-              "pct": [
-                76,
-                92
-              ],
-              "template": "${pct}% get this one — you clearly have it, you just went too fast."
-            }
-          ]
-        }
+    id: "ns_easy_02",
+    stimulusId: "ns_easy_02",
+    name: "Number series — easy (MITRE NS; item nst_f01i1)",
+    domains: ["computing", "design"],
+    modality: "numeric",
+    languageLoad: "low",
+    difficultyTier: "easy",
+    unit: "single",
+    instructions: "What number comes next? Type your answer.",
+    stimulus: {
+      component: "numberSeries",
+      scoreFn: "scoreNumberInput",
+      response: "input",
+      measures: ["correct", "rtMs"],
+      item: {
+        ref: "nst_f01i1",
+        form: "1",
+        b: -0.15,
+        stem: [10, 11, 13, 17, 25, 32, 37, 47],
+        key: 58,
       },
-      "design": {
-        "primes": [
+    },
+    calibration: {
+      realPSuccess: 0.85,
+      medianRtMs: 35000,
+      plausiblePct: [60, 99],
+      plausiblePctSpeed: [60, 99],
+      b: -0.15,
+      itemRef: "nst_f01i1",
+    },
+    timer: {
+      mode: "hidden",
+    },
+    framing: {
+      computing: {
+        primes: [
           {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This one is a clean read of the rule-finding side of design reasoning."
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This one is a clean read of logical sequencing.",
           },
           {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "Heads-up — plenty of people who identified as designers slip on the last step here."
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "Heads-up — plenty of students on the computing track slip on the last step here.",
           },
           {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward a careful read rather than a snap answer."
-          }
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward a careful read rather than a snap answer.",
+          },
         ],
-        "feedback": {
-          "pride": [
+        feedback: {
+          pride: [
             {
-              "id": "pride_ind",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                85,
-                98
-              ],
-              "template": "${pct}th percentile — a real marker of the rule-finding side of design reasoning, and the care shows."
+              id: "pride_ind",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [85, 98],
+              template:
+                "${pct}th percentile — a real marker of logical sequencing, and the care shows.",
             },
             {
-              "id": "pride_speed",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_speed",
-              "referent": "people who identified as designers",
-              "pct": [
-                85,
-                98
-              ],
-              "template": "Top ${pct}th percentile for speed — fast, accurate the rule-finding side of design reasoning, the strongest kind."
-            }
+              id: "pride_speed",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_speed",
+              referent: "students on the computing track",
+              pct: [85, 98],
+              template:
+                "Top ${pct}th percentile for speed — fast, accurate logical sequencing, the strongest kind.",
+            },
           ],
-          "relief": [
+          relief: [
             {
-              "id": "relief_self",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                62,
-                85
-              ],
-              "template": "${pct}th percentile — you cleared the one people who identified as designers usually find slow going."
-            }
+              id: "relief_self",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [62, 85],
+              template:
+                "${pct}th percentile — you cleared the one students on the computing track usually find slow going.",
+            },
           ],
-          "shame": [
+          shame: [
             {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "people who identified as designers",
-              "pct": [
-                76,
-                92
-              ],
-              "template": "${pct}% of people who identified as designers got this one — you didn't."
-            }
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "students on the computing track",
+              pct: [76, 92],
+              template:
+                "${pct}% of students on the computing track got this one — you didn't.",
+            },
           ],
-          "guilt": [
+          guilt: [
             {
-              "id": "guilt_norm",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "people who identified as designers",
-              "pct": [
-                76,
-                92
-              ],
-              "template": "${pct}% get this one — you clearly have it, you just went too fast."
-            }
-          ]
-        }
-      }
+              id: "guilt_norm",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "students on the computing track",
+              pct: [76, 92],
+              template:
+                "${pct}% get this one — you clearly have it, you just went too fast.",
+            },
+          ],
+        },
+      },
+      design: {
+        primes: [
+          {
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This one is a clean read of the rule-finding side of design reasoning.",
+          },
+          {
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "Heads-up — plenty of people who identified as designers slip on the last step here.",
+          },
+          {
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward a careful read rather than a snap answer.",
+          },
+        ],
+        feedback: {
+          pride: [
+            {
+              id: "pride_ind",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [85, 98],
+              template:
+                "${pct}th percentile — a real marker of the rule-finding side of design reasoning, and the care shows.",
+            },
+            {
+              id: "pride_speed",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_speed",
+              referent: "people who identified as designers",
+              pct: [85, 98],
+              template:
+                "Top ${pct}th percentile for speed — fast, accurate the rule-finding side of design reasoning, the strongest kind.",
+            },
+          ],
+          relief: [
+            {
+              id: "relief_self",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [62, 85],
+              template:
+                "${pct}th percentile — you cleared the one people who identified as designers usually find slow going.",
+            },
+          ],
+          shame: [
+            {
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "people who identified as designers",
+              pct: [76, 92],
+              template:
+                "${pct}% of people who identified as designers got this one — you didn't.",
+            },
+          ],
+          guilt: [
+            {
+              id: "guilt_norm",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "people who identified as designers",
+              pct: [76, 92],
+              template:
+                "${pct}% get this one — you clearly have it, you just went too fast.",
+            },
+          ],
+        },
+      },
     },
-    "response": {
-      "probes": [
+    response: {
+      probes: [
         "pride",
         "relief",
         "disappointment",
@@ -563,284 +481,243 @@ export const REASONING_BANK = [
         "anxiety",
         "confusion",
         "boredom",
-        "none"
+        "none",
       ],
-      "scale": {
-        "type": "likert",
-        "min": 1,
-        "max": 7
+      scale: {
+        type: "likert",
+        min: 1,
+        max: 7,
       },
-      "cleanCore": {
-        "dominantMin": 5,
-        "othersMax": 3
-      }
-    }
+      cleanCore: {
+        dominantMin: 5,
+        othersMax: 3,
+      },
+    },
   },
   {
-    "id": "ns_easy_03",
-    "stimulusId": "ns_easy_03",
-    "name": "Number series — easy (MITRE NS; item nst_f01i2)",
-    "domains": [
-      "computing",
-      "design"
-    ],
-    "modality": "numeric",
-    "languageLoad": "low",
-    "difficultyTier": "easy",
-    "unit": "single",
-    "instructions": "What number comes next? Type your answer.",
-    "stimulus": {
-      "component": "numberSeries",
-      "scoreFn": "scoreNumberInput",
-      "response": "input",
-      "measures": [
-        "correct",
-        "rtMs"
-      ],
-      "item": {
-        "ref": "nst_f01i2",
-        "form": "2",
-        "b": 0.89,
-        "stem": [
-          8,
-          16,
-          23,
-          28,
-          38,
-          49,
-          62,
-          70
-        ],
-        "key": 77
-      }
-    },
-    "calibration": {
-      "realPSuccess": 0.85,
-      "medianRtMs": 35000,
-      "plausiblePct": [
-        60,
-        99
-      ],
-      "plausiblePctSpeed": [
-        60,
-        99
-      ],
-      "b": 0.89,
-      "itemRef": "nst_f01i2"
-    },
-    "timer": {
-      "mode": "hidden"
-    },
-    "framing": {
-      "computing": {
-        "primes": [
-          {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This one is a clean read of logical sequencing."
-          },
-          {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "Heads-up — plenty of students on the computing track slip on the last step here."
-          },
-          {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward a careful read rather than a snap answer."
-          }
-        ],
-        "feedback": {
-          "pride": [
-            {
-              "id": "pride_ind",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                85,
-                98
-              ],
-              "template": "${pct}th percentile — a real marker of logical sequencing, and the care shows."
-            },
-            {
-              "id": "pride_speed",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_speed",
-              "referent": "students on the computing track",
-              "pct": [
-                85,
-                98
-              ],
-              "template": "Top ${pct}th percentile for speed — fast, accurate logical sequencing, the strongest kind."
-            }
-          ],
-          "relief": [
-            {
-              "id": "relief_self",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                62,
-                85
-              ],
-              "template": "${pct}th percentile — you cleared the one students on the computing track usually find slow going."
-            }
-          ],
-          "shame": [
-            {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "students on the computing track",
-              "pct": [
-                76,
-                92
-              ],
-              "template": "${pct}% of students on the computing track got this one — you didn't."
-            }
-          ],
-          "guilt": [
-            {
-              "id": "guilt_norm",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "students on the computing track",
-              "pct": [
-                76,
-                92
-              ],
-              "template": "${pct}% get this one — you clearly have it, you just went too fast."
-            }
-          ]
-        }
+    id: "ns_easy_03",
+    stimulusId: "ns_easy_03",
+    name: "Number series — easy (MITRE NS; item nst_f01i2)",
+    domains: ["computing", "design"],
+    modality: "numeric",
+    languageLoad: "low",
+    difficultyTier: "easy",
+    unit: "single",
+    instructions: "What number comes next? Type your answer.",
+    stimulus: {
+      component: "numberSeries",
+      scoreFn: "scoreNumberInput",
+      response: "input",
+      measures: ["correct", "rtMs"],
+      item: {
+        ref: "nst_f01i2",
+        form: "2",
+        b: 0.89,
+        stem: [8, 16, 23, 28, 38, 49, 62, 70],
+        key: 77,
       },
-      "design": {
-        "primes": [
+    },
+    calibration: {
+      realPSuccess: 0.85,
+      medianRtMs: 35000,
+      plausiblePct: [60, 99],
+      plausiblePctSpeed: [60, 99],
+      b: 0.89,
+      itemRef: "nst_f01i2",
+    },
+    timer: {
+      mode: "hidden",
+    },
+    framing: {
+      computing: {
+        primes: [
           {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This one is a clean read of the rule-finding side of design reasoning."
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This one is a clean read of logical sequencing.",
           },
           {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "Heads-up — plenty of people who identified as designers slip on the last step here."
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "Heads-up — plenty of students on the computing track slip on the last step here.",
           },
           {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward a careful read rather than a snap answer."
-          }
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward a careful read rather than a snap answer.",
+          },
         ],
-        "feedback": {
-          "pride": [
+        feedback: {
+          pride: [
             {
-              "id": "pride_ind",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                85,
-                98
-              ],
-              "template": "${pct}th percentile — a real marker of the rule-finding side of design reasoning, and the care shows."
+              id: "pride_ind",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [85, 98],
+              template:
+                "${pct}th percentile — a real marker of logical sequencing, and the care shows.",
             },
             {
-              "id": "pride_speed",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_speed",
-              "referent": "people who identified as designers",
-              "pct": [
-                85,
-                98
-              ],
-              "template": "Top ${pct}th percentile for speed — fast, accurate the rule-finding side of design reasoning, the strongest kind."
-            }
+              id: "pride_speed",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_speed",
+              referent: "students on the computing track",
+              pct: [85, 98],
+              template:
+                "Top ${pct}th percentile for speed — fast, accurate logical sequencing, the strongest kind.",
+            },
           ],
-          "relief": [
+          relief: [
             {
-              "id": "relief_self",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                62,
-                85
-              ],
-              "template": "${pct}th percentile — you cleared the one people who identified as designers usually find slow going."
-            }
+              id: "relief_self",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [62, 85],
+              template:
+                "${pct}th percentile — you cleared the one students on the computing track usually find slow going.",
+            },
           ],
-          "shame": [
+          shame: [
             {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "people who identified as designers",
-              "pct": [
-                76,
-                92
-              ],
-              "template": "${pct}% of people who identified as designers got this one — you didn't."
-            }
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "students on the computing track",
+              pct: [76, 92],
+              template:
+                "${pct}% of students on the computing track got this one — you didn't.",
+            },
           ],
-          "guilt": [
+          guilt: [
             {
-              "id": "guilt_norm",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "people who identified as designers",
-              "pct": [
-                76,
-                92
-              ],
-              "template": "${pct}% get this one — you clearly have it, you just went too fast."
-            }
-          ]
-        }
-      }
+              id: "guilt_norm",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "students on the computing track",
+              pct: [76, 92],
+              template:
+                "${pct}% get this one — you clearly have it, you just went too fast.",
+            },
+          ],
+        },
+      },
+      design: {
+        primes: [
+          {
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This one is a clean read of the rule-finding side of design reasoning.",
+          },
+          {
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "Heads-up — plenty of people who identified as designers slip on the last step here.",
+          },
+          {
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward a careful read rather than a snap answer.",
+          },
+        ],
+        feedback: {
+          pride: [
+            {
+              id: "pride_ind",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [85, 98],
+              template:
+                "${pct}th percentile — a real marker of the rule-finding side of design reasoning, and the care shows.",
+            },
+            {
+              id: "pride_speed",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_speed",
+              referent: "people who identified as designers",
+              pct: [85, 98],
+              template:
+                "Top ${pct}th percentile for speed — fast, accurate the rule-finding side of design reasoning, the strongest kind.",
+            },
+          ],
+          relief: [
+            {
+              id: "relief_self",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [62, 85],
+              template:
+                "${pct}th percentile — you cleared the one people who identified as designers usually find slow going.",
+            },
+          ],
+          shame: [
+            {
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "people who identified as designers",
+              pct: [76, 92],
+              template:
+                "${pct}% of people who identified as designers got this one — you didn't.",
+            },
+          ],
+          guilt: [
+            {
+              id: "guilt_norm",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "people who identified as designers",
+              pct: [76, 92],
+              template:
+                "${pct}% get this one — you clearly have it, you just went too fast.",
+            },
+          ],
+        },
+      },
     },
-    "response": {
-      "probes": [
+    response: {
+      probes: [
         "pride",
         "relief",
         "disappointment",
@@ -849,302 +726,261 @@ export const REASONING_BANK = [
         "anxiety",
         "confusion",
         "boredom",
-        "none"
+        "none",
       ],
-      "scale": {
-        "type": "likert",
-        "min": 1,
-        "max": 7
+      scale: {
+        type: "likert",
+        min: 1,
+        max: 7,
       },
-      "cleanCore": {
-        "dominantMin": 5,
-        "othersMax": 3
-      }
-    }
+      cleanCore: {
+        dominantMin: 5,
+        othersMax: 3,
+      },
+    },
   },
   {
-    "id": "ns_mid_01",
-    "stimulusId": "ns_mid_01",
-    "name": "Number series — mid (MITRE NS; item nst_f06i2)",
-    "domains": [
-      "computing",
-      "design"
-    ],
-    "modality": "numeric",
-    "languageLoad": "low",
-    "difficultyTier": "mid",
-    "unit": "single",
-    "instructions": "What number comes next? Type your answer.",
-    "stimulus": {
-      "component": "numberSeries",
-      "scoreFn": "scoreNumberInput",
-      "response": "input",
-      "measures": [
-        "correct",
-        "rtMs"
-      ],
-      "item": {
-        "ref": "nst_f06i2",
-        "form": "1",
-        "b": 1.46,
-        "stem": [
-          58,
-          43,
-          30,
-          23,
-          20,
-          15,
-          13,
-          7
-        ],
-        "key": 3
-      }
-    },
-    "calibration": {
-      "realPSuccess": 0.58,
-      "medianRtMs": 55000,
-      "plausiblePct": [
-        25,
-        80
-      ],
-      "plausiblePctSpeed": [
-        25,
-        78
-      ],
-      "b": 1.46,
-      "itemRef": "nst_f06i2"
-    },
-    "timer": {
-      "mode": "hidden"
-    },
-    "framing": {
-      "computing": {
-        "primes": [
-          {
-            "id": "p_expectHigh",
-            "setsExpectancy": "high",
-            "attributionFrame": "none",
-            "text": "Your earlier rounds point to logical sequencing clicking today."
-          },
-          {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "This one is a step up — most students on the computing track slow right down."
-          },
-          {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward working the rule through, not eyeballing it."
-          },
-          {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This set reads logical sequencing fairly cleanly."
-          }
-        ],
-        "feedback": {
-          "pride": [
-            {
-              "id": "pride_ind",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                72,
-                82
-              ],
-              "template": "${pct}th percentile — a real marker of logical sequencing, and the care shows."
-            }
-          ],
-          "guilt": [
-            {
-              "id": "guilt_effort",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                28,
-                45
-              ],
-              "template": "Bottom ${pct}% — you clearly have the head for logical sequencing; you just didn't work it through methodically."
-            }
-          ],
-          "disappointment": [
-            {
-              "id": "disap_ind",
-              "comparison": "individuating",
-              "attribution": "none",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "requiresExpectancy": "high",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                26,
-                46
-              ],
-              "template": "${pct}th percentile — short of what your earlier rounds pointed to."
-            }
-          ],
-          "relief": [
-            {
-              "id": "relief_self",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                55,
-                78
-              ],
-              "template": "${pct}th percentile — you cleared the one students on the computing track usually find slow going."
-            }
-          ],
-          "shame": [
-            {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "students on the computing track",
-              "pct": [
-                49,
-                65
-              ],
-              "template": "${pct}% of students on the computing track got this one — you didn't."
-            }
-          ]
-        }
+    id: "ns_mid_01",
+    stimulusId: "ns_mid_01",
+    name: "Number series — mid (MITRE NS; item nst_f06i2)",
+    domains: ["computing", "design"],
+    modality: "numeric",
+    languageLoad: "low",
+    difficultyTier: "mid",
+    unit: "single",
+    instructions: "What number comes next? Type your answer.",
+    stimulus: {
+      component: "numberSeries",
+      scoreFn: "scoreNumberInput",
+      response: "input",
+      measures: ["correct", "rtMs"],
+      item: {
+        ref: "nst_f06i2",
+        form: "1",
+        b: 1.46,
+        stem: [58, 43, 30, 23, 20, 15, 13, 7],
+        key: 3,
       },
-      "design": {
-        "primes": [
-          {
-            "id": "p_expectHigh",
-            "setsExpectancy": "high",
-            "attributionFrame": "none",
-            "text": "Your earlier rounds point to the rule-finding side of design reasoning clicking today."
-          },
-          {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "This one is a step up — most people who identified as designers slow right down."
-          },
-          {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward working the rule through, not eyeballing it."
-          },
-          {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This set reads the rule-finding side of design reasoning fairly cleanly."
-          }
-        ],
-        "feedback": {
-          "pride": [
-            {
-              "id": "pride_ind",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                72,
-                82
-              ],
-              "template": "${pct}th percentile — a real marker of the rule-finding side of design reasoning, and the care shows."
-            }
-          ],
-          "guilt": [
-            {
-              "id": "guilt_effort",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                28,
-                45
-              ],
-              "template": "Bottom ${pct}% — you clearly have the head for the rule-finding side of design reasoning; you just didn't work it through methodically."
-            }
-          ],
-          "disappointment": [
-            {
-              "id": "disap_ind",
-              "comparison": "individuating",
-              "attribution": "none",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "requiresExpectancy": "high",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                26,
-                46
-              ],
-              "template": "${pct}th percentile — short of what your earlier rounds pointed to."
-            }
-          ],
-          "relief": [
-            {
-              "id": "relief_self",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                55,
-                78
-              ],
-              "template": "${pct}th percentile — you cleared the one people who identified as designers usually find slow going."
-            }
-          ],
-          "shame": [
-            {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "people who identified as designers",
-              "pct": [
-                49,
-                65
-              ],
-              "template": "${pct}% of people who identified as designers got this one — you didn't."
-            }
-          ]
-        }
-      }
     },
-    "response": {
-      "probes": [
+    calibration: {
+      realPSuccess: 0.58,
+      medianRtMs: 55000,
+      plausiblePct: [25, 80],
+      plausiblePctSpeed: [25, 78],
+      b: 1.46,
+      itemRef: "nst_f06i2",
+    },
+    timer: {
+      mode: "hidden",
+    },
+    framing: {
+      computing: {
+        primes: [
+          {
+            id: "p_expectHigh",
+            setsExpectancy: "high",
+            attributionFrame: "none",
+            text: "Your earlier rounds point to logical sequencing clicking today.",
+          },
+          {
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "This one is a step up — most students on the computing track slow right down.",
+          },
+          {
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward working the rule through, not eyeballing it.",
+          },
+          {
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This set reads logical sequencing fairly cleanly.",
+          },
+        ],
+        feedback: {
+          pride: [
+            {
+              id: "pride_ind",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [72, 82],
+              template:
+                "${pct}th percentile — a real marker of logical sequencing, and the care shows.",
+            },
+          ],
+          guilt: [
+            {
+              id: "guilt_effort",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [28, 45],
+              template:
+                "Bottom ${pct}% — you clearly have the head for logical sequencing; you just didn't work it through methodically.",
+            },
+          ],
+          disappointment: [
+            {
+              id: "disap_ind",
+              comparison: "individuating",
+              attribution: "none",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              requiresExpectancy: "high",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [26, 46],
+              template:
+                "${pct}th percentile — short of what your earlier rounds pointed to.",
+            },
+          ],
+          relief: [
+            {
+              id: "relief_self",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [55, 78],
+              template:
+                "${pct}th percentile — you cleared the one students on the computing track usually find slow going.",
+            },
+          ],
+          shame: [
+            {
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "students on the computing track",
+              pct: [49, 65],
+              template:
+                "${pct}% of students on the computing track got this one — you didn't.",
+            },
+          ],
+        },
+      },
+      design: {
+        primes: [
+          {
+            id: "p_expectHigh",
+            setsExpectancy: "high",
+            attributionFrame: "none",
+            text: "Your earlier rounds point to the rule-finding side of design reasoning clicking today.",
+          },
+          {
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "This one is a step up — most people who identified as designers slow right down.",
+          },
+          {
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward working the rule through, not eyeballing it.",
+          },
+          {
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This set reads the rule-finding side of design reasoning fairly cleanly.",
+          },
+        ],
+        feedback: {
+          pride: [
+            {
+              id: "pride_ind",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [72, 82],
+              template:
+                "${pct}th percentile — a real marker of the rule-finding side of design reasoning, and the care shows.",
+            },
+          ],
+          guilt: [
+            {
+              id: "guilt_effort",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [28, 45],
+              template:
+                "Bottom ${pct}% — you clearly have the head for the rule-finding side of design reasoning; you just didn't work it through methodically.",
+            },
+          ],
+          disappointment: [
+            {
+              id: "disap_ind",
+              comparison: "individuating",
+              attribution: "none",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              requiresExpectancy: "high",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [26, 46],
+              template:
+                "${pct}th percentile — short of what your earlier rounds pointed to.",
+            },
+          ],
+          relief: [
+            {
+              id: "relief_self",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [55, 78],
+              template:
+                "${pct}th percentile — you cleared the one people who identified as designers usually find slow going.",
+            },
+          ],
+          shame: [
+            {
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "people who identified as designers",
+              pct: [49, 65],
+              template:
+                "${pct}% of people who identified as designers got this one — you didn't.",
+            },
+          ],
+        },
+      },
+    },
+    response: {
+      probes: [
         "pride",
         "relief",
         "disappointment",
@@ -1153,302 +989,261 @@ export const REASONING_BANK = [
         "anxiety",
         "confusion",
         "boredom",
-        "none"
+        "none",
       ],
-      "scale": {
-        "type": "likert",
-        "min": 1,
-        "max": 7
+      scale: {
+        type: "likert",
+        min: 1,
+        max: 7,
       },
-      "cleanCore": {
-        "dominantMin": 5,
-        "othersMax": 3
-      }
-    }
+      cleanCore: {
+        dominantMin: 5,
+        othersMax: 3,
+      },
+    },
   },
   {
-    "id": "ns_mid_02",
-    "stimulusId": "ns_mid_02",
-    "name": "Number series — mid (MITRE NS; item nn_f08i7)",
-    "domains": [
-      "computing",
-      "design"
-    ],
-    "modality": "numeric",
-    "languageLoad": "low",
-    "difficultyTier": "mid",
-    "unit": "single",
-    "instructions": "What number comes next? Type your answer.",
-    "stimulus": {
-      "component": "numberSeries",
-      "scoreFn": "scoreNumberInput",
-      "response": "input",
-      "measures": [
-        "correct",
-        "rtMs"
-      ],
-      "item": {
-        "ref": "nn_f08i7",
-        "form": "2",
-        "b": 1.47,
-        "stem": [
-          14,
-          17,
-          22,
-          30,
-          34,
-          37,
-          44,
-          54
-        ],
-        "key": 62
-      }
-    },
-    "calibration": {
-      "realPSuccess": 0.58,
-      "medianRtMs": 55000,
-      "plausiblePct": [
-        25,
-        80
-      ],
-      "plausiblePctSpeed": [
-        25,
-        78
-      ],
-      "b": 1.47,
-      "itemRef": "nn_f08i7"
-    },
-    "timer": {
-      "mode": "hidden"
-    },
-    "framing": {
-      "computing": {
-        "primes": [
-          {
-            "id": "p_expectHigh",
-            "setsExpectancy": "high",
-            "attributionFrame": "none",
-            "text": "Your earlier rounds point to logical sequencing clicking today."
-          },
-          {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "This one is a step up — most students on the computing track slow right down."
-          },
-          {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward working the rule through, not eyeballing it."
-          },
-          {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This set reads logical sequencing fairly cleanly."
-          }
-        ],
-        "feedback": {
-          "pride": [
-            {
-              "id": "pride_ind",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                72,
-                82
-              ],
-              "template": "${pct}th percentile — a real marker of logical sequencing, and the care shows."
-            }
-          ],
-          "guilt": [
-            {
-              "id": "guilt_effort",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                28,
-                45
-              ],
-              "template": "Bottom ${pct}% — you clearly have the head for logical sequencing; you just didn't work it through methodically."
-            }
-          ],
-          "disappointment": [
-            {
-              "id": "disap_ind",
-              "comparison": "individuating",
-              "attribution": "none",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "requiresExpectancy": "high",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                26,
-                46
-              ],
-              "template": "${pct}th percentile — short of what your earlier rounds pointed to."
-            }
-          ],
-          "relief": [
-            {
-              "id": "relief_self",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                55,
-                78
-              ],
-              "template": "${pct}th percentile — you cleared the one students on the computing track usually find slow going."
-            }
-          ],
-          "shame": [
-            {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "students on the computing track",
-              "pct": [
-                49,
-                65
-              ],
-              "template": "${pct}% of students on the computing track got this one — you didn't."
-            }
-          ]
-        }
+    id: "ns_mid_02",
+    stimulusId: "ns_mid_02",
+    name: "Number series — mid (MITRE NS; item nn_f08i7)",
+    domains: ["computing", "design"],
+    modality: "numeric",
+    languageLoad: "low",
+    difficultyTier: "mid",
+    unit: "single",
+    instructions: "What number comes next? Type your answer.",
+    stimulus: {
+      component: "numberSeries",
+      scoreFn: "scoreNumberInput",
+      response: "input",
+      measures: ["correct", "rtMs"],
+      item: {
+        ref: "nn_f08i7",
+        form: "2",
+        b: 1.47,
+        stem: [14, 17, 22, 30, 34, 37, 44, 54],
+        key: 62,
       },
-      "design": {
-        "primes": [
-          {
-            "id": "p_expectHigh",
-            "setsExpectancy": "high",
-            "attributionFrame": "none",
-            "text": "Your earlier rounds point to the rule-finding side of design reasoning clicking today."
-          },
-          {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "This one is a step up — most people who identified as designers slow right down."
-          },
-          {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward working the rule through, not eyeballing it."
-          },
-          {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This set reads the rule-finding side of design reasoning fairly cleanly."
-          }
-        ],
-        "feedback": {
-          "pride": [
-            {
-              "id": "pride_ind",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                72,
-                82
-              ],
-              "template": "${pct}th percentile — a real marker of the rule-finding side of design reasoning, and the care shows."
-            }
-          ],
-          "guilt": [
-            {
-              "id": "guilt_effort",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                28,
-                45
-              ],
-              "template": "Bottom ${pct}% — you clearly have the head for the rule-finding side of design reasoning; you just didn't work it through methodically."
-            }
-          ],
-          "disappointment": [
-            {
-              "id": "disap_ind",
-              "comparison": "individuating",
-              "attribution": "none",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "requiresExpectancy": "high",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                26,
-                46
-              ],
-              "template": "${pct}th percentile — short of what your earlier rounds pointed to."
-            }
-          ],
-          "relief": [
-            {
-              "id": "relief_self",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                55,
-                78
-              ],
-              "template": "${pct}th percentile — you cleared the one people who identified as designers usually find slow going."
-            }
-          ],
-          "shame": [
-            {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "people who identified as designers",
-              "pct": [
-                49,
-                65
-              ],
-              "template": "${pct}% of people who identified as designers got this one — you didn't."
-            }
-          ]
-        }
-      }
     },
-    "response": {
-      "probes": [
+    calibration: {
+      realPSuccess: 0.58,
+      medianRtMs: 55000,
+      plausiblePct: [25, 80],
+      plausiblePctSpeed: [25, 78],
+      b: 1.47,
+      itemRef: "nn_f08i7",
+    },
+    timer: {
+      mode: "hidden",
+    },
+    framing: {
+      computing: {
+        primes: [
+          {
+            id: "p_expectHigh",
+            setsExpectancy: "high",
+            attributionFrame: "none",
+            text: "Your earlier rounds point to logical sequencing clicking today.",
+          },
+          {
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "This one is a step up — most students on the computing track slow right down.",
+          },
+          {
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward working the rule through, not eyeballing it.",
+          },
+          {
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This set reads logical sequencing fairly cleanly.",
+          },
+        ],
+        feedback: {
+          pride: [
+            {
+              id: "pride_ind",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [72, 82],
+              template:
+                "${pct}th percentile — a real marker of logical sequencing, and the care shows.",
+            },
+          ],
+          guilt: [
+            {
+              id: "guilt_effort",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [28, 45],
+              template:
+                "Bottom ${pct}% — you clearly have the head for logical sequencing; you just didn't work it through methodically.",
+            },
+          ],
+          disappointment: [
+            {
+              id: "disap_ind",
+              comparison: "individuating",
+              attribution: "none",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              requiresExpectancy: "high",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [26, 46],
+              template:
+                "${pct}th percentile — short of what your earlier rounds pointed to.",
+            },
+          ],
+          relief: [
+            {
+              id: "relief_self",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [55, 78],
+              template:
+                "${pct}th percentile — you cleared the one students on the computing track usually find slow going.",
+            },
+          ],
+          shame: [
+            {
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "students on the computing track",
+              pct: [49, 65],
+              template:
+                "${pct}% of students on the computing track got this one — you didn't.",
+            },
+          ],
+        },
+      },
+      design: {
+        primes: [
+          {
+            id: "p_expectHigh",
+            setsExpectancy: "high",
+            attributionFrame: "none",
+            text: "Your earlier rounds point to the rule-finding side of design reasoning clicking today.",
+          },
+          {
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "This one is a step up — most people who identified as designers slow right down.",
+          },
+          {
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward working the rule through, not eyeballing it.",
+          },
+          {
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This set reads the rule-finding side of design reasoning fairly cleanly.",
+          },
+        ],
+        feedback: {
+          pride: [
+            {
+              id: "pride_ind",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [72, 82],
+              template:
+                "${pct}th percentile — a real marker of the rule-finding side of design reasoning, and the care shows.",
+            },
+          ],
+          guilt: [
+            {
+              id: "guilt_effort",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [28, 45],
+              template:
+                "Bottom ${pct}% — you clearly have the head for the rule-finding side of design reasoning; you just didn't work it through methodically.",
+            },
+          ],
+          disappointment: [
+            {
+              id: "disap_ind",
+              comparison: "individuating",
+              attribution: "none",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              requiresExpectancy: "high",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [26, 46],
+              template:
+                "${pct}th percentile — short of what your earlier rounds pointed to.",
+            },
+          ],
+          relief: [
+            {
+              id: "relief_self",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [55, 78],
+              template:
+                "${pct}th percentile — you cleared the one people who identified as designers usually find slow going.",
+            },
+          ],
+          shame: [
+            {
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "people who identified as designers",
+              pct: [49, 65],
+              template:
+                "${pct}% of people who identified as designers got this one — you didn't.",
+            },
+          ],
+        },
+      },
+    },
+    response: {
+      probes: [
         "pride",
         "relief",
         "disappointment",
@@ -1457,302 +1252,261 @@ export const REASONING_BANK = [
         "anxiety",
         "confusion",
         "boredom",
-        "none"
+        "none",
       ],
-      "scale": {
-        "type": "likert",
-        "min": 1,
-        "max": 7
+      scale: {
+        type: "likert",
+        min: 1,
+        max: 7,
       },
-      "cleanCore": {
-        "dominantMin": 5,
-        "othersMax": 3
-      }
-    }
+      cleanCore: {
+        dominantMin: 5,
+        othersMax: 3,
+      },
+    },
   },
   {
-    "id": "ns_mid_03",
-    "stimulusId": "ns_mid_03",
-    "name": "Number series — mid (MITRE NS; item nst_f08i5)",
-    "domains": [
-      "computing",
-      "design"
-    ],
-    "modality": "numeric",
-    "languageLoad": "low",
-    "difficultyTier": "mid",
-    "unit": "single",
-    "instructions": "What number comes next? Type your answer.",
-    "stimulus": {
-      "component": "numberSeries",
-      "scoreFn": "scoreNumberInput",
-      "response": "input",
-      "measures": [
-        "correct",
-        "rtMs"
-      ],
-      "item": {
-        "ref": "nst_f08i5",
-        "form": "1",
-        "b": 1.5,
-        "stem": [
-          21,
-          28,
-          31,
-          41,
-          45,
-          50,
-          59,
-          64
-        ],
-        "key": 78
-      }
-    },
-    "calibration": {
-      "realPSuccess": 0.58,
-      "medianRtMs": 55000,
-      "plausiblePct": [
-        25,
-        80
-      ],
-      "plausiblePctSpeed": [
-        25,
-        78
-      ],
-      "b": 1.5,
-      "itemRef": "nst_f08i5"
-    },
-    "timer": {
-      "mode": "hidden"
-    },
-    "framing": {
-      "computing": {
-        "primes": [
-          {
-            "id": "p_expectHigh",
-            "setsExpectancy": "high",
-            "attributionFrame": "none",
-            "text": "Your earlier rounds point to logical sequencing clicking today."
-          },
-          {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "This one is a step up — most students on the computing track slow right down."
-          },
-          {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward working the rule through, not eyeballing it."
-          },
-          {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This set reads logical sequencing fairly cleanly."
-          }
-        ],
-        "feedback": {
-          "pride": [
-            {
-              "id": "pride_ind",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                72,
-                82
-              ],
-              "template": "${pct}th percentile — a real marker of logical sequencing, and the care shows."
-            }
-          ],
-          "guilt": [
-            {
-              "id": "guilt_effort",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                28,
-                45
-              ],
-              "template": "Bottom ${pct}% — you clearly have the head for logical sequencing; you just didn't work it through methodically."
-            }
-          ],
-          "disappointment": [
-            {
-              "id": "disap_ind",
-              "comparison": "individuating",
-              "attribution": "none",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "requiresExpectancy": "high",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                26,
-                46
-              ],
-              "template": "${pct}th percentile — short of what your earlier rounds pointed to."
-            }
-          ],
-          "relief": [
-            {
-              "id": "relief_self",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                55,
-                78
-              ],
-              "template": "${pct}th percentile — you cleared the one students on the computing track usually find slow going."
-            }
-          ],
-          "shame": [
-            {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "students on the computing track",
-              "pct": [
-                49,
-                65
-              ],
-              "template": "${pct}% of students on the computing track got this one — you didn't."
-            }
-          ]
-        }
+    id: "ns_mid_03",
+    stimulusId: "ns_mid_03",
+    name: "Number series — mid (MITRE NS; item nst_f08i5)",
+    domains: ["computing", "design"],
+    modality: "numeric",
+    languageLoad: "low",
+    difficultyTier: "mid",
+    unit: "single",
+    instructions: "What number comes next? Type your answer.",
+    stimulus: {
+      component: "numberSeries",
+      scoreFn: "scoreNumberInput",
+      response: "input",
+      measures: ["correct", "rtMs"],
+      item: {
+        ref: "nst_f08i5",
+        form: "1",
+        b: 1.5,
+        stem: [21, 28, 31, 41, 45, 50, 59, 64],
+        key: 78,
       },
-      "design": {
-        "primes": [
-          {
-            "id": "p_expectHigh",
-            "setsExpectancy": "high",
-            "attributionFrame": "none",
-            "text": "Your earlier rounds point to the rule-finding side of design reasoning clicking today."
-          },
-          {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "This one is a step up — most people who identified as designers slow right down."
-          },
-          {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward working the rule through, not eyeballing it."
-          },
-          {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This set reads the rule-finding side of design reasoning fairly cleanly."
-          }
-        ],
-        "feedback": {
-          "pride": [
-            {
-              "id": "pride_ind",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                72,
-                82
-              ],
-              "template": "${pct}th percentile — a real marker of the rule-finding side of design reasoning, and the care shows."
-            }
-          ],
-          "guilt": [
-            {
-              "id": "guilt_effort",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                28,
-                45
-              ],
-              "template": "Bottom ${pct}% — you clearly have the head for the rule-finding side of design reasoning; you just didn't work it through methodically."
-            }
-          ],
-          "disappointment": [
-            {
-              "id": "disap_ind",
-              "comparison": "individuating",
-              "attribution": "none",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "requiresExpectancy": "high",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                26,
-                46
-              ],
-              "template": "${pct}th percentile — short of what your earlier rounds pointed to."
-            }
-          ],
-          "relief": [
-            {
-              "id": "relief_self",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                55,
-                78
-              ],
-              "template": "${pct}th percentile — you cleared the one people who identified as designers usually find slow going."
-            }
-          ],
-          "shame": [
-            {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "people who identified as designers",
-              "pct": [
-                49,
-                65
-              ],
-              "template": "${pct}% of people who identified as designers got this one — you didn't."
-            }
-          ]
-        }
-      }
     },
-    "response": {
-      "probes": [
+    calibration: {
+      realPSuccess: 0.58,
+      medianRtMs: 55000,
+      plausiblePct: [25, 80],
+      plausiblePctSpeed: [25, 78],
+      b: 1.5,
+      itemRef: "nst_f08i5",
+    },
+    timer: {
+      mode: "hidden",
+    },
+    framing: {
+      computing: {
+        primes: [
+          {
+            id: "p_expectHigh",
+            setsExpectancy: "high",
+            attributionFrame: "none",
+            text: "Your earlier rounds point to logical sequencing clicking today.",
+          },
+          {
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "This one is a step up — most students on the computing track slow right down.",
+          },
+          {
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward working the rule through, not eyeballing it.",
+          },
+          {
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This set reads logical sequencing fairly cleanly.",
+          },
+        ],
+        feedback: {
+          pride: [
+            {
+              id: "pride_ind",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [72, 82],
+              template:
+                "${pct}th percentile — a real marker of logical sequencing, and the care shows.",
+            },
+          ],
+          guilt: [
+            {
+              id: "guilt_effort",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [28, 45],
+              template:
+                "Bottom ${pct}% — you clearly have the head for logical sequencing; you just didn't work it through methodically.",
+            },
+          ],
+          disappointment: [
+            {
+              id: "disap_ind",
+              comparison: "individuating",
+              attribution: "none",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              requiresExpectancy: "high",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [26, 46],
+              template:
+                "${pct}th percentile — short of what your earlier rounds pointed to.",
+            },
+          ],
+          relief: [
+            {
+              id: "relief_self",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [55, 78],
+              template:
+                "${pct}th percentile — you cleared the one students on the computing track usually find slow going.",
+            },
+          ],
+          shame: [
+            {
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "students on the computing track",
+              pct: [49, 65],
+              template:
+                "${pct}% of students on the computing track got this one — you didn't.",
+            },
+          ],
+        },
+      },
+      design: {
+        primes: [
+          {
+            id: "p_expectHigh",
+            setsExpectancy: "high",
+            attributionFrame: "none",
+            text: "Your earlier rounds point to the rule-finding side of design reasoning clicking today.",
+          },
+          {
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "This one is a step up — most people who identified as designers slow right down.",
+          },
+          {
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward working the rule through, not eyeballing it.",
+          },
+          {
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This set reads the rule-finding side of design reasoning fairly cleanly.",
+          },
+        ],
+        feedback: {
+          pride: [
+            {
+              id: "pride_ind",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [72, 82],
+              template:
+                "${pct}th percentile — a real marker of the rule-finding side of design reasoning, and the care shows.",
+            },
+          ],
+          guilt: [
+            {
+              id: "guilt_effort",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [28, 45],
+              template:
+                "Bottom ${pct}% — you clearly have the head for the rule-finding side of design reasoning; you just didn't work it through methodically.",
+            },
+          ],
+          disappointment: [
+            {
+              id: "disap_ind",
+              comparison: "individuating",
+              attribution: "none",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              requiresExpectancy: "high",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [26, 46],
+              template:
+                "${pct}th percentile — short of what your earlier rounds pointed to.",
+            },
+          ],
+          relief: [
+            {
+              id: "relief_self",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [55, 78],
+              template:
+                "${pct}th percentile — you cleared the one people who identified as designers usually find slow going.",
+            },
+          ],
+          shame: [
+            {
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "people who identified as designers",
+              pct: [49, 65],
+              template:
+                "${pct}% of people who identified as designers got this one — you didn't.",
+            },
+          ],
+        },
+      },
+    },
+    response: {
+      probes: [
         "pride",
         "relief",
         "disappointment",
@@ -1761,326 +1515,281 @@ export const REASONING_BANK = [
         "anxiety",
         "confusion",
         "boredom",
-        "none"
+        "none",
       ],
-      "scale": {
-        "type": "likert",
-        "min": 1,
-        "max": 7
+      scale: {
+        type: "likert",
+        min: 1,
+        max: 7,
       },
-      "cleanCore": {
-        "dominantMin": 5,
-        "othersMax": 3
-      }
-    }
+      cleanCore: {
+        dominantMin: 5,
+        othersMax: 3,
+      },
+    },
   },
   {
-    "id": "ns_hard_01",
-    "stimulusId": "ns_hard_01",
-    "name": "Number series — hard (MITRE NS; item nst_f10i3)",
-    "domains": [
-      "computing",
-      "design"
-    ],
-    "modality": "numeric",
-    "languageLoad": "low",
-    "difficultyTier": "hard",
-    "unit": "single",
-    "instructions": "What number comes next? Type your answer.",
-    "stimulus": {
-      "component": "numberSeries",
-      "scoreFn": "scoreNumberInput",
-      "response": "input",
-      "measures": [
-        "correct",
-        "rtMs"
-      ],
-      "item": {
-        "ref": "nst_f10i3",
-        "form": "2",
-        "b": 3.09,
-        "stem": [
-          76,
-          68,
-          57,
-          45,
-          35,
-          28,
-          22,
-          14
-        ],
-        "key": 12
-      }
-    },
-    "calibration": {
-      "realPSuccess": 0.22,
-      "medianRtMs": 85000,
-      "plausiblePct": [
-        2,
-        45
-      ],
-      "plausiblePctSpeed": [
-        2,
-        42
-      ],
-      "b": 3.09,
-      "itemRef": "nst_f10i3"
-    },
-    "timer": {
-      "mode": "hidden"
-    },
-    "framing": {
-      "computing": {
-        "primes": [
-          {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This set is diagnostic of core logical sequencing."
-          },
-          {
-            "id": "p_expectHigh",
-            "setsExpectancy": "high",
-            "attributionFrame": "none",
-            "text": "Given your run so far, this should be within reach."
-          },
-          {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "Heads-up — most students on the computing track miss this one."
-          },
-          {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward grinding the rule through methodically."
-          }
-        ],
-        "feedback": {
-          "shame": [
-            {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                3,
-                18
-              ],
-              "template": "You came out in the bottom ${pct}% — logical sequencing may not be where your strength lies."
-            },
-            {
-              "id": "shame_hard",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 3,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                2,
-                10
-              ],
-              "template": "Bottom ${pct}% again — others at your level are well ahead; logical sequencing may just not be your area."
-            },
-            {
-              "id": "shame_speed",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "correct",
-              "pctRef": "self_speed",
-              "referent": "students on the computing track",
-              "pct": [
-                4,
-                20
-              ],
-              "template": "You got it — but among students on the computing track who solved it you were in the bottom ${pct}% for speed, and quick logical sequencing is what counts here."
-            }
-          ],
-          "guilt": [
-            {
-              "id": "guilt_effort",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                8,
-                28
-              ],
-              "template": "Bottom ${pct}% — you clearly have the head for logical sequencing; you just didn't work it through methodically."
-            }
-          ],
-          "disappointment": [
-            {
-              "id": "disap_ind",
-              "comparison": "individuating",
-              "attribution": "none",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "requiresExpectancy": "high",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                12,
-                42
-              ],
-              "template": "${pct}th percentile — short of what your earlier rounds pointed to."
-            }
-          ],
-          "relief": [
-            {
-              "id": "relief_norm",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "peer_success",
-              "referent": "students on the computing track",
-              "pct": [
-                13,
-                29
-              ],
-              "template": "Only ${pct}% of students on the computing track solve this one — you're one of them."
-            }
-          ]
-        }
+    id: "ns_hard_01",
+    stimulusId: "ns_hard_01",
+    name: "Number series — hard (MITRE NS; item nst_f10i3)",
+    domains: ["computing", "design"],
+    modality: "numeric",
+    languageLoad: "low",
+    difficultyTier: "hard",
+    unit: "single",
+    instructions: "What number comes next? Type your answer.",
+    stimulus: {
+      component: "numberSeries",
+      scoreFn: "scoreNumberInput",
+      response: "input",
+      measures: ["correct", "rtMs"],
+      item: {
+        ref: "nst_f10i3",
+        form: "2",
+        b: 3.09,
+        stem: [76, 68, 57, 45, 35, 28, 22, 14],
+        key: 12,
       },
-      "design": {
-        "primes": [
-          {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This set is diagnostic of core the rule-finding side of design reasoning."
-          },
-          {
-            "id": "p_expectHigh",
-            "setsExpectancy": "high",
-            "attributionFrame": "none",
-            "text": "Given your run so far, this should be within reach."
-          },
-          {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "Heads-up — most people who identified as designers miss this one."
-          },
-          {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward grinding the rule through methodically."
-          }
-        ],
-        "feedback": {
-          "shame": [
-            {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                3,
-                18
-              ],
-              "template": "You came out in the bottom ${pct}% — the rule-finding side of design reasoning may not be where your strength lies."
-            },
-            {
-              "id": "shame_hard",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 3,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                2,
-                10
-              ],
-              "template": "Bottom ${pct}% again — others at your level are well ahead; the rule-finding side of design reasoning may just not be your area."
-            },
-            {
-              "id": "shame_speed",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "correct",
-              "pctRef": "self_speed",
-              "referent": "people who identified as designers",
-              "pct": [
-                4,
-                20
-              ],
-              "template": "You got it — but among people who identified as designers who solved it you were in the bottom ${pct}% for speed, and quick the rule-finding side of design reasoning is what counts here."
-            }
-          ],
-          "guilt": [
-            {
-              "id": "guilt_effort",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                8,
-                28
-              ],
-              "template": "Bottom ${pct}% — you clearly have the head for the rule-finding side of design reasoning; you just didn't work it through methodically."
-            }
-          ],
-          "disappointment": [
-            {
-              "id": "disap_ind",
-              "comparison": "individuating",
-              "attribution": "none",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "requiresExpectancy": "high",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                12,
-                42
-              ],
-              "template": "${pct}th percentile — short of what your earlier rounds pointed to."
-            }
-          ],
-          "relief": [
-            {
-              "id": "relief_norm",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "peer_success",
-              "referent": "people who identified as designers",
-              "pct": [
-                13,
-                29
-              ],
-              "template": "Only ${pct}% of people who identified as designers solve this one — you're one of them."
-            }
-          ]
-        }
-      }
     },
-    "response": {
-      "probes": [
+    calibration: {
+      realPSuccess: 0.22,
+      medianRtMs: 85000,
+      plausiblePct: [2, 45],
+      plausiblePctSpeed: [2, 42],
+      b: 3.09,
+      itemRef: "nst_f10i3",
+    },
+    timer: {
+      mode: "hidden",
+    },
+    framing: {
+      computing: {
+        primes: [
+          {
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This set is diagnostic of core logical sequencing.",
+          },
+          {
+            id: "p_expectHigh",
+            setsExpectancy: "high",
+            attributionFrame: "none",
+            text: "Given your run so far, this should be within reach.",
+          },
+          {
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "Heads-up — most students on the computing track miss this one.",
+          },
+          {
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward grinding the rule through methodically.",
+          },
+        ],
+        feedback: {
+          shame: [
+            {
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [3, 18],
+              template:
+                "You came out in the bottom ${pct}% — logical sequencing may not be where your strength lies.",
+            },
+            {
+              id: "shame_hard",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 3,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [2, 10],
+              template:
+                "Bottom ${pct}% again — others at your level are well ahead; logical sequencing may just not be your area.",
+            },
+            {
+              id: "shame_speed",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "correct",
+              pctRef: "self_speed",
+              referent: "students on the computing track",
+              pct: [4, 20],
+              template:
+                "You got it — but among students on the computing track who solved it you were in the bottom ${pct}% for speed, and quick logical sequencing is what counts here.",
+            },
+          ],
+          guilt: [
+            {
+              id: "guilt_effort",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [8, 28],
+              template:
+                "Bottom ${pct}% — you clearly have the head for logical sequencing; you just didn't work it through methodically.",
+            },
+          ],
+          disappointment: [
+            {
+              id: "disap_ind",
+              comparison: "individuating",
+              attribution: "none",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              requiresExpectancy: "high",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [12, 42],
+              template:
+                "${pct}th percentile — short of what your earlier rounds pointed to.",
+            },
+          ],
+          relief: [
+            {
+              id: "relief_norm",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "peer_success",
+              referent: "students on the computing track",
+              pct: [13, 29],
+              template:
+                "Only ${pct}% of students on the computing track solve this one — you're one of them.",
+            },
+          ],
+        },
+      },
+      design: {
+        primes: [
+          {
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This set is diagnostic of core the rule-finding side of design reasoning.",
+          },
+          {
+            id: "p_expectHigh",
+            setsExpectancy: "high",
+            attributionFrame: "none",
+            text: "Given your run so far, this should be within reach.",
+          },
+          {
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "Heads-up — most people who identified as designers miss this one.",
+          },
+          {
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward grinding the rule through methodically.",
+          },
+        ],
+        feedback: {
+          shame: [
+            {
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [3, 18],
+              template:
+                "You came out in the bottom ${pct}% — the rule-finding side of design reasoning may not be where your strength lies.",
+            },
+            {
+              id: "shame_hard",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 3,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [2, 10],
+              template:
+                "Bottom ${pct}% again — others at your level are well ahead; the rule-finding side of design reasoning may just not be your area.",
+            },
+            {
+              id: "shame_speed",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "correct",
+              pctRef: "self_speed",
+              referent: "people who identified as designers",
+              pct: [4, 20],
+              template:
+                "You got it — but among people who identified as designers who solved it you were in the bottom ${pct}% for speed, and quick the rule-finding side of design reasoning is what counts here.",
+            },
+          ],
+          guilt: [
+            {
+              id: "guilt_effort",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [8, 28],
+              template:
+                "Bottom ${pct}% — you clearly have the head for the rule-finding side of design reasoning; you just didn't work it through methodically.",
+            },
+          ],
+          disappointment: [
+            {
+              id: "disap_ind",
+              comparison: "individuating",
+              attribution: "none",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              requiresExpectancy: "high",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [12, 42],
+              template:
+                "${pct}th percentile — short of what your earlier rounds pointed to.",
+            },
+          ],
+          relief: [
+            {
+              id: "relief_norm",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "peer_success",
+              referent: "people who identified as designers",
+              pct: [13, 29],
+              template:
+                "Only ${pct}% of people who identified as designers solve this one — you're one of them.",
+            },
+          ],
+        },
+      },
+    },
+    response: {
+      probes: [
         "pride",
         "relief",
         "disappointment",
@@ -2089,326 +1798,281 @@ export const REASONING_BANK = [
         "anxiety",
         "confusion",
         "boredom",
-        "none"
+        "none",
       ],
-      "scale": {
-        "type": "likert",
-        "min": 1,
-        "max": 7
+      scale: {
+        type: "likert",
+        min: 1,
+        max: 7,
       },
-      "cleanCore": {
-        "dominantMin": 5,
-        "othersMax": 3
-      }
-    }
+      cleanCore: {
+        dominantMin: 5,
+        othersMax: 3,
+      },
+    },
   },
   {
-    "id": "ns_hard_02",
-    "stimulusId": "ns_hard_02",
-    "name": "Number series — hard (MITRE NS; item nst_f03i3)",
-    "domains": [
-      "computing",
-      "design"
-    ],
-    "modality": "numeric",
-    "languageLoad": "low",
-    "difficultyTier": "hard",
-    "unit": "single",
-    "instructions": "What number comes next? Type your answer.",
-    "stimulus": {
-      "component": "numberSeries",
-      "scoreFn": "scoreNumberInput",
-      "response": "input",
-      "measures": [
-        "correct",
-        "rtMs"
-      ],
-      "item": {
-        "ref": "nst_f03i3",
-        "form": "1",
-        "b": 3.19,
-        "stem": [
-          10,
-          12,
-          12,
-          14,
-          16,
-          20,
-          26,
-          36
-        ],
-        "key": 52
-      }
-    },
-    "calibration": {
-      "realPSuccess": 0.22,
-      "medianRtMs": 85000,
-      "plausiblePct": [
-        2,
-        45
-      ],
-      "plausiblePctSpeed": [
-        2,
-        42
-      ],
-      "b": 3.19,
-      "itemRef": "nst_f03i3"
-    },
-    "timer": {
-      "mode": "hidden"
-    },
-    "framing": {
-      "computing": {
-        "primes": [
-          {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This set is diagnostic of core logical sequencing."
-          },
-          {
-            "id": "p_expectHigh",
-            "setsExpectancy": "high",
-            "attributionFrame": "none",
-            "text": "Given your run so far, this should be within reach."
-          },
-          {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "Heads-up — most students on the computing track miss this one."
-          },
-          {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward grinding the rule through methodically."
-          }
-        ],
-        "feedback": {
-          "shame": [
-            {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                3,
-                18
-              ],
-              "template": "You came out in the bottom ${pct}% — logical sequencing may not be where your strength lies."
-            },
-            {
-              "id": "shame_hard",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 3,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                2,
-                10
-              ],
-              "template": "Bottom ${pct}% again — others at your level are well ahead; logical sequencing may just not be your area."
-            },
-            {
-              "id": "shame_speed",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "correct",
-              "pctRef": "self_speed",
-              "referent": "students on the computing track",
-              "pct": [
-                4,
-                20
-              ],
-              "template": "You got it — but among students on the computing track who solved it you were in the bottom ${pct}% for speed, and quick logical sequencing is what counts here."
-            }
-          ],
-          "guilt": [
-            {
-              "id": "guilt_effort",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                8,
-                28
-              ],
-              "template": "Bottom ${pct}% — you clearly have the head for logical sequencing; you just didn't work it through methodically."
-            }
-          ],
-          "disappointment": [
-            {
-              "id": "disap_ind",
-              "comparison": "individuating",
-              "attribution": "none",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "requiresExpectancy": "high",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                12,
-                42
-              ],
-              "template": "${pct}th percentile — short of what your earlier rounds pointed to."
-            }
-          ],
-          "relief": [
-            {
-              "id": "relief_norm",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "peer_success",
-              "referent": "students on the computing track",
-              "pct": [
-                13,
-                29
-              ],
-              "template": "Only ${pct}% of students on the computing track solve this one — you're one of them."
-            }
-          ]
-        }
+    id: "ns_hard_02",
+    stimulusId: "ns_hard_02",
+    name: "Number series — hard (MITRE NS; item nst_f03i3)",
+    domains: ["computing", "design"],
+    modality: "numeric",
+    languageLoad: "low",
+    difficultyTier: "hard",
+    unit: "single",
+    instructions: "What number comes next? Type your answer.",
+    stimulus: {
+      component: "numberSeries",
+      scoreFn: "scoreNumberInput",
+      response: "input",
+      measures: ["correct", "rtMs"],
+      item: {
+        ref: "nst_f03i3",
+        form: "1",
+        b: 3.19,
+        stem: [10, 12, 12, 14, 16, 20, 26, 36],
+        key: 52,
       },
-      "design": {
-        "primes": [
-          {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This set is diagnostic of core the rule-finding side of design reasoning."
-          },
-          {
-            "id": "p_expectHigh",
-            "setsExpectancy": "high",
-            "attributionFrame": "none",
-            "text": "Given your run so far, this should be within reach."
-          },
-          {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "Heads-up — most people who identified as designers miss this one."
-          },
-          {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward grinding the rule through methodically."
-          }
-        ],
-        "feedback": {
-          "shame": [
-            {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                3,
-                18
-              ],
-              "template": "You came out in the bottom ${pct}% — the rule-finding side of design reasoning may not be where your strength lies."
-            },
-            {
-              "id": "shame_hard",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 3,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                2,
-                10
-              ],
-              "template": "Bottom ${pct}% again — others at your level are well ahead; the rule-finding side of design reasoning may just not be your area."
-            },
-            {
-              "id": "shame_speed",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "correct",
-              "pctRef": "self_speed",
-              "referent": "people who identified as designers",
-              "pct": [
-                4,
-                20
-              ],
-              "template": "You got it — but among people who identified as designers who solved it you were in the bottom ${pct}% for speed, and quick the rule-finding side of design reasoning is what counts here."
-            }
-          ],
-          "guilt": [
-            {
-              "id": "guilt_effort",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                8,
-                28
-              ],
-              "template": "Bottom ${pct}% — you clearly have the head for the rule-finding side of design reasoning; you just didn't work it through methodically."
-            }
-          ],
-          "disappointment": [
-            {
-              "id": "disap_ind",
-              "comparison": "individuating",
-              "attribution": "none",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "requiresExpectancy": "high",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                12,
-                42
-              ],
-              "template": "${pct}th percentile — short of what your earlier rounds pointed to."
-            }
-          ],
-          "relief": [
-            {
-              "id": "relief_norm",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "peer_success",
-              "referent": "people who identified as designers",
-              "pct": [
-                13,
-                29
-              ],
-              "template": "Only ${pct}% of people who identified as designers solve this one — you're one of them."
-            }
-          ]
-        }
-      }
     },
-    "response": {
-      "probes": [
+    calibration: {
+      realPSuccess: 0.22,
+      medianRtMs: 85000,
+      plausiblePct: [2, 45],
+      plausiblePctSpeed: [2, 42],
+      b: 3.19,
+      itemRef: "nst_f03i3",
+    },
+    timer: {
+      mode: "hidden",
+    },
+    framing: {
+      computing: {
+        primes: [
+          {
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This set is diagnostic of core logical sequencing.",
+          },
+          {
+            id: "p_expectHigh",
+            setsExpectancy: "high",
+            attributionFrame: "none",
+            text: "Given your run so far, this should be within reach.",
+          },
+          {
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "Heads-up — most students on the computing track miss this one.",
+          },
+          {
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward grinding the rule through methodically.",
+          },
+        ],
+        feedback: {
+          shame: [
+            {
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [3, 18],
+              template:
+                "You came out in the bottom ${pct}% — logical sequencing may not be where your strength lies.",
+            },
+            {
+              id: "shame_hard",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 3,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [2, 10],
+              template:
+                "Bottom ${pct}% again — others at your level are well ahead; logical sequencing may just not be your area.",
+            },
+            {
+              id: "shame_speed",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "correct",
+              pctRef: "self_speed",
+              referent: "students on the computing track",
+              pct: [4, 20],
+              template:
+                "You got it — but among students on the computing track who solved it you were in the bottom ${pct}% for speed, and quick logical sequencing is what counts here.",
+            },
+          ],
+          guilt: [
+            {
+              id: "guilt_effort",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [8, 28],
+              template:
+                "Bottom ${pct}% — you clearly have the head for logical sequencing; you just didn't work it through methodically.",
+            },
+          ],
+          disappointment: [
+            {
+              id: "disap_ind",
+              comparison: "individuating",
+              attribution: "none",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              requiresExpectancy: "high",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [12, 42],
+              template:
+                "${pct}th percentile — short of what your earlier rounds pointed to.",
+            },
+          ],
+          relief: [
+            {
+              id: "relief_norm",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "peer_success",
+              referent: "students on the computing track",
+              pct: [13, 29],
+              template:
+                "Only ${pct}% of students on the computing track solve this one — you're one of them.",
+            },
+          ],
+        },
+      },
+      design: {
+        primes: [
+          {
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This set is diagnostic of core the rule-finding side of design reasoning.",
+          },
+          {
+            id: "p_expectHigh",
+            setsExpectancy: "high",
+            attributionFrame: "none",
+            text: "Given your run so far, this should be within reach.",
+          },
+          {
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "Heads-up — most people who identified as designers miss this one.",
+          },
+          {
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward grinding the rule through methodically.",
+          },
+        ],
+        feedback: {
+          shame: [
+            {
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [3, 18],
+              template:
+                "You came out in the bottom ${pct}% — the rule-finding side of design reasoning may not be where your strength lies.",
+            },
+            {
+              id: "shame_hard",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 3,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [2, 10],
+              template:
+                "Bottom ${pct}% again — others at your level are well ahead; the rule-finding side of design reasoning may just not be your area.",
+            },
+            {
+              id: "shame_speed",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "correct",
+              pctRef: "self_speed",
+              referent: "people who identified as designers",
+              pct: [4, 20],
+              template:
+                "You got it — but among people who identified as designers who solved it you were in the bottom ${pct}% for speed, and quick the rule-finding side of design reasoning is what counts here.",
+            },
+          ],
+          guilt: [
+            {
+              id: "guilt_effort",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [8, 28],
+              template:
+                "Bottom ${pct}% — you clearly have the head for the rule-finding side of design reasoning; you just didn't work it through methodically.",
+            },
+          ],
+          disappointment: [
+            {
+              id: "disap_ind",
+              comparison: "individuating",
+              attribution: "none",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              requiresExpectancy: "high",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [12, 42],
+              template:
+                "${pct}th percentile — short of what your earlier rounds pointed to.",
+            },
+          ],
+          relief: [
+            {
+              id: "relief_norm",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "peer_success",
+              referent: "people who identified as designers",
+              pct: [13, 29],
+              template:
+                "Only ${pct}% of people who identified as designers solve this one — you're one of them.",
+            },
+          ],
+        },
+      },
+    },
+    response: {
+      probes: [
         "pride",
         "relief",
         "disappointment",
@@ -2417,326 +2081,281 @@ export const REASONING_BANK = [
         "anxiety",
         "confusion",
         "boredom",
-        "none"
+        "none",
       ],
-      "scale": {
-        "type": "likert",
-        "min": 1,
-        "max": 7
+      scale: {
+        type: "likert",
+        min: 1,
+        max: 7,
       },
-      "cleanCore": {
-        "dominantMin": 5,
-        "othersMax": 3
-      }
-    }
+      cleanCore: {
+        dominantMin: 5,
+        othersMax: 3,
+      },
+    },
   },
   {
-    "id": "ns_hard_03",
-    "stimulusId": "ns_hard_03",
-    "name": "Number series — hard (MITRE NS; item nst_f07i2)",
-    "domains": [
-      "computing",
-      "design"
-    ],
-    "modality": "numeric",
-    "languageLoad": "low",
-    "difficultyTier": "hard",
-    "unit": "single",
-    "instructions": "What number comes next? Type your answer.",
-    "stimulus": {
-      "component": "numberSeries",
-      "scoreFn": "scoreNumberInput",
-      "response": "input",
-      "measures": [
-        "correct",
-        "rtMs"
-      ],
-      "item": {
-        "ref": "nst_f07i2",
-        "form": "2",
-        "b": 3.22,
-        "stem": [
-          14,
-          16,
-          12,
-          10,
-          4,
-          5,
-          9,
-          14
-        ],
-        "key": 14
-      }
-    },
-    "calibration": {
-      "realPSuccess": 0.22,
-      "medianRtMs": 85000,
-      "plausiblePct": [
-        2,
-        45
-      ],
-      "plausiblePctSpeed": [
-        2,
-        42
-      ],
-      "b": 3.22,
-      "itemRef": "nst_f07i2"
-    },
-    "timer": {
-      "mode": "hidden"
-    },
-    "framing": {
-      "computing": {
-        "primes": [
-          {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This set is diagnostic of core logical sequencing."
-          },
-          {
-            "id": "p_expectHigh",
-            "setsExpectancy": "high",
-            "attributionFrame": "none",
-            "text": "Given your run so far, this should be within reach."
-          },
-          {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "Heads-up — most students on the computing track miss this one."
-          },
-          {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward grinding the rule through methodically."
-          }
-        ],
-        "feedback": {
-          "shame": [
-            {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                3,
-                18
-              ],
-              "template": "You came out in the bottom ${pct}% — logical sequencing may not be where your strength lies."
-            },
-            {
-              "id": "shame_hard",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 3,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                2,
-                10
-              ],
-              "template": "Bottom ${pct}% again — others at your level are well ahead; logical sequencing may just not be your area."
-            },
-            {
-              "id": "shame_speed",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "correct",
-              "pctRef": "self_speed",
-              "referent": "students on the computing track",
-              "pct": [
-                4,
-                20
-              ],
-              "template": "You got it — but among students on the computing track who solved it you were in the bottom ${pct}% for speed, and quick logical sequencing is what counts here."
-            }
-          ],
-          "guilt": [
-            {
-              "id": "guilt_effort",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                8,
-                28
-              ],
-              "template": "Bottom ${pct}% — you clearly have the head for logical sequencing; you just didn't work it through methodically."
-            }
-          ],
-          "disappointment": [
-            {
-              "id": "disap_ind",
-              "comparison": "individuating",
-              "attribution": "none",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "requiresExpectancy": "high",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                12,
-                42
-              ],
-              "template": "${pct}th percentile — short of what your earlier rounds pointed to."
-            }
-          ],
-          "relief": [
-            {
-              "id": "relief_norm",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "peer_success",
-              "referent": "students on the computing track",
-              "pct": [
-                13,
-                29
-              ],
-              "template": "Only ${pct}% of students on the computing track solve this one — you're one of them."
-            }
-          ]
-        }
+    id: "ns_hard_03",
+    stimulusId: "ns_hard_03",
+    name: "Number series — hard (MITRE NS; item nst_f07i2)",
+    domains: ["computing", "design"],
+    modality: "numeric",
+    languageLoad: "low",
+    difficultyTier: "hard",
+    unit: "single",
+    instructions: "What number comes next? Type your answer.",
+    stimulus: {
+      component: "numberSeries",
+      scoreFn: "scoreNumberInput",
+      response: "input",
+      measures: ["correct", "rtMs"],
+      item: {
+        ref: "nst_f07i2",
+        form: "2",
+        b: 3.22,
+        stem: [14, 16, 12, 10, 4, 5, 9, 14],
+        key: 14,
       },
-      "design": {
-        "primes": [
-          {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This set is diagnostic of core the rule-finding side of design reasoning."
-          },
-          {
-            "id": "p_expectHigh",
-            "setsExpectancy": "high",
-            "attributionFrame": "none",
-            "text": "Given your run so far, this should be within reach."
-          },
-          {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "Heads-up — most people who identified as designers miss this one."
-          },
-          {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward grinding the rule through methodically."
-          }
-        ],
-        "feedback": {
-          "shame": [
-            {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                3,
-                18
-              ],
-              "template": "You came out in the bottom ${pct}% — the rule-finding side of design reasoning may not be where your strength lies."
-            },
-            {
-              "id": "shame_hard",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 3,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                2,
-                10
-              ],
-              "template": "Bottom ${pct}% again — others at your level are well ahead; the rule-finding side of design reasoning may just not be your area."
-            },
-            {
-              "id": "shame_speed",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "correct",
-              "pctRef": "self_speed",
-              "referent": "people who identified as designers",
-              "pct": [
-                4,
-                20
-              ],
-              "template": "You got it — but among people who identified as designers who solved it you were in the bottom ${pct}% for speed, and quick the rule-finding side of design reasoning is what counts here."
-            }
-          ],
-          "guilt": [
-            {
-              "id": "guilt_effort",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                8,
-                28
-              ],
-              "template": "Bottom ${pct}% — you clearly have the head for the rule-finding side of design reasoning; you just didn't work it through methodically."
-            }
-          ],
-          "disappointment": [
-            {
-              "id": "disap_ind",
-              "comparison": "individuating",
-              "attribution": "none",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "requiresExpectancy": "high",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                12,
-                42
-              ],
-              "template": "${pct}th percentile — short of what your earlier rounds pointed to."
-            }
-          ],
-          "relief": [
-            {
-              "id": "relief_norm",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "peer_success",
-              "referent": "people who identified as designers",
-              "pct": [
-                13,
-                29
-              ],
-              "template": "Only ${pct}% of people who identified as designers solve this one — you're one of them."
-            }
-          ]
-        }
-      }
     },
-    "response": {
-      "probes": [
+    calibration: {
+      realPSuccess: 0.22,
+      medianRtMs: 85000,
+      plausiblePct: [2, 45],
+      plausiblePctSpeed: [2, 42],
+      b: 3.22,
+      itemRef: "nst_f07i2",
+    },
+    timer: {
+      mode: "hidden",
+    },
+    framing: {
+      computing: {
+        primes: [
+          {
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This set is diagnostic of core logical sequencing.",
+          },
+          {
+            id: "p_expectHigh",
+            setsExpectancy: "high",
+            attributionFrame: "none",
+            text: "Given your run so far, this should be within reach.",
+          },
+          {
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "Heads-up — most students on the computing track miss this one.",
+          },
+          {
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward grinding the rule through methodically.",
+          },
+        ],
+        feedback: {
+          shame: [
+            {
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [3, 18],
+              template:
+                "You came out in the bottom ${pct}% — logical sequencing may not be where your strength lies.",
+            },
+            {
+              id: "shame_hard",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 3,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [2, 10],
+              template:
+                "Bottom ${pct}% again — others at your level are well ahead; logical sequencing may just not be your area.",
+            },
+            {
+              id: "shame_speed",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "correct",
+              pctRef: "self_speed",
+              referent: "students on the computing track",
+              pct: [4, 20],
+              template:
+                "You got it — but among students on the computing track who solved it you were in the bottom ${pct}% for speed, and quick logical sequencing is what counts here.",
+            },
+          ],
+          guilt: [
+            {
+              id: "guilt_effort",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [8, 28],
+              template:
+                "Bottom ${pct}% — you clearly have the head for logical sequencing; you just didn't work it through methodically.",
+            },
+          ],
+          disappointment: [
+            {
+              id: "disap_ind",
+              comparison: "individuating",
+              attribution: "none",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              requiresExpectancy: "high",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [12, 42],
+              template:
+                "${pct}th percentile — short of what your earlier rounds pointed to.",
+            },
+          ],
+          relief: [
+            {
+              id: "relief_norm",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "peer_success",
+              referent: "students on the computing track",
+              pct: [13, 29],
+              template:
+                "Only ${pct}% of students on the computing track solve this one — you're one of them.",
+            },
+          ],
+        },
+      },
+      design: {
+        primes: [
+          {
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This set is diagnostic of core the rule-finding side of design reasoning.",
+          },
+          {
+            id: "p_expectHigh",
+            setsExpectancy: "high",
+            attributionFrame: "none",
+            text: "Given your run so far, this should be within reach.",
+          },
+          {
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "Heads-up — most people who identified as designers miss this one.",
+          },
+          {
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward grinding the rule through methodically.",
+          },
+        ],
+        feedback: {
+          shame: [
+            {
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [3, 18],
+              template:
+                "You came out in the bottom ${pct}% — the rule-finding side of design reasoning may not be where your strength lies.",
+            },
+            {
+              id: "shame_hard",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 3,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [2, 10],
+              template:
+                "Bottom ${pct}% again — others at your level are well ahead; the rule-finding side of design reasoning may just not be your area.",
+            },
+            {
+              id: "shame_speed",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "correct",
+              pctRef: "self_speed",
+              referent: "people who identified as designers",
+              pct: [4, 20],
+              template:
+                "You got it — but among people who identified as designers who solved it you were in the bottom ${pct}% for speed, and quick the rule-finding side of design reasoning is what counts here.",
+            },
+          ],
+          guilt: [
+            {
+              id: "guilt_effort",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [8, 28],
+              template:
+                "Bottom ${pct}% — you clearly have the head for the rule-finding side of design reasoning; you just didn't work it through methodically.",
+            },
+          ],
+          disappointment: [
+            {
+              id: "disap_ind",
+              comparison: "individuating",
+              attribution: "none",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              requiresExpectancy: "high",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [12, 42],
+              template:
+                "${pct}th percentile — short of what your earlier rounds pointed to.",
+            },
+          ],
+          relief: [
+            {
+              id: "relief_norm",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "peer_success",
+              referent: "people who identified as designers",
+              pct: [13, 29],
+              template:
+                "Only ${pct}% of people who identified as designers solve this one — you're one of them.",
+            },
+          ],
+        },
+      },
+    },
+    response: {
+      probes: [
         "pride",
         "relief",
         "disappointment",
@@ -2745,326 +2364,281 @@ export const REASONING_BANK = [
         "anxiety",
         "confusion",
         "boredom",
-        "none"
+        "none",
       ],
-      "scale": {
-        "type": "likert",
-        "min": 1,
-        "max": 7
+      scale: {
+        type: "likert",
+        min: 1,
+        max: 7,
       },
-      "cleanCore": {
-        "dominantMin": 5,
-        "othersMax": 3
-      }
-    }
+      cleanCore: {
+        dominantMin: 5,
+        othersMax: 3,
+      },
+    },
   },
   {
-    "id": "ns_hard_04",
-    "stimulusId": "ns_hard_04",
-    "name": "Number series — hard (MITRE NS; item nn_f07i8)",
-    "domains": [
-      "computing",
-      "design"
-    ],
-    "modality": "numeric",
-    "languageLoad": "low",
-    "difficultyTier": "hard",
-    "unit": "single",
-    "instructions": "What number comes next? Type your answer.",
-    "stimulus": {
-      "component": "numberSeries",
-      "scoreFn": "scoreNumberInput",
-      "response": "input",
-      "measures": [
-        "correct",
-        "rtMs"
-      ],
-      "item": {
-        "ref": "nn_f07i8",
-        "form": "1",
-        "b": 3.25,
-        "stem": [
-          11,
-          10,
-          3,
-          4,
-          7,
-          11,
-          9,
-          11
-        ],
-        "key": 11
-      }
-    },
-    "calibration": {
-      "realPSuccess": 0.22,
-      "medianRtMs": 85000,
-      "plausiblePct": [
-        2,
-        45
-      ],
-      "plausiblePctSpeed": [
-        2,
-        42
-      ],
-      "b": 3.25,
-      "itemRef": "nn_f07i8"
-    },
-    "timer": {
-      "mode": "hidden"
-    },
-    "framing": {
-      "computing": {
-        "primes": [
-          {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This set is diagnostic of core logical sequencing."
-          },
-          {
-            "id": "p_expectHigh",
-            "setsExpectancy": "high",
-            "attributionFrame": "none",
-            "text": "Given your run so far, this should be within reach."
-          },
-          {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "Heads-up — most students on the computing track miss this one."
-          },
-          {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward grinding the rule through methodically."
-          }
-        ],
-        "feedback": {
-          "shame": [
-            {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                3,
-                18
-              ],
-              "template": "You came out in the bottom ${pct}% — logical sequencing may not be where your strength lies."
-            },
-            {
-              "id": "shame_hard",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 3,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                2,
-                10
-              ],
-              "template": "Bottom ${pct}% again — others at your level are well ahead; logical sequencing may just not be your area."
-            },
-            {
-              "id": "shame_speed",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "correct",
-              "pctRef": "self_speed",
-              "referent": "students on the computing track",
-              "pct": [
-                4,
-                20
-              ],
-              "template": "You got it — but among students on the computing track who solved it you were in the bottom ${pct}% for speed, and quick logical sequencing is what counts here."
-            }
-          ],
-          "guilt": [
-            {
-              "id": "guilt_effort",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                8,
-                28
-              ],
-              "template": "Bottom ${pct}% — you clearly have the head for logical sequencing; you just didn't work it through methodically."
-            }
-          ],
-          "disappointment": [
-            {
-              "id": "disap_ind",
-              "comparison": "individuating",
-              "attribution": "none",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "requiresExpectancy": "high",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                12,
-                42
-              ],
-              "template": "${pct}th percentile — short of what your earlier rounds pointed to."
-            }
-          ],
-          "relief": [
-            {
-              "id": "relief_norm",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "peer_success",
-              "referent": "students on the computing track",
-              "pct": [
-                13,
-                29
-              ],
-              "template": "Only ${pct}% of students on the computing track solve this one — you're one of them."
-            }
-          ]
-        }
+    id: "ns_hard_04",
+    stimulusId: "ns_hard_04",
+    name: "Number series — hard (MITRE NS; item nn_f07i8)",
+    domains: ["computing", "design"],
+    modality: "numeric",
+    languageLoad: "low",
+    difficultyTier: "hard",
+    unit: "single",
+    instructions: "What number comes next? Type your answer.",
+    stimulus: {
+      component: "numberSeries",
+      scoreFn: "scoreNumberInput",
+      response: "input",
+      measures: ["correct", "rtMs"],
+      item: {
+        ref: "nn_f07i8",
+        form: "1",
+        b: 3.25,
+        stem: [11, 10, 3, 4, 7, 11, 9, 11],
+        key: 11,
       },
-      "design": {
-        "primes": [
-          {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This set is diagnostic of core the rule-finding side of design reasoning."
-          },
-          {
-            "id": "p_expectHigh",
-            "setsExpectancy": "high",
-            "attributionFrame": "none",
-            "text": "Given your run so far, this should be within reach."
-          },
-          {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "Heads-up — most people who identified as designers miss this one."
-          },
-          {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward grinding the rule through methodically."
-          }
-        ],
-        "feedback": {
-          "shame": [
-            {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                3,
-                18
-              ],
-              "template": "You came out in the bottom ${pct}% — the rule-finding side of design reasoning may not be where your strength lies."
-            },
-            {
-              "id": "shame_hard",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 3,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                2,
-                10
-              ],
-              "template": "Bottom ${pct}% again — others at your level are well ahead; the rule-finding side of design reasoning may just not be your area."
-            },
-            {
-              "id": "shame_speed",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "correct",
-              "pctRef": "self_speed",
-              "referent": "people who identified as designers",
-              "pct": [
-                4,
-                20
-              ],
-              "template": "You got it — but among people who identified as designers who solved it you were in the bottom ${pct}% for speed, and quick the rule-finding side of design reasoning is what counts here."
-            }
-          ],
-          "guilt": [
-            {
-              "id": "guilt_effort",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                8,
-                28
-              ],
-              "template": "Bottom ${pct}% — you clearly have the head for the rule-finding side of design reasoning; you just didn't work it through methodically."
-            }
-          ],
-          "disappointment": [
-            {
-              "id": "disap_ind",
-              "comparison": "individuating",
-              "attribution": "none",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "requiresExpectancy": "high",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                12,
-                42
-              ],
-              "template": "${pct}th percentile — short of what your earlier rounds pointed to."
-            }
-          ],
-          "relief": [
-            {
-              "id": "relief_norm",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "peer_success",
-              "referent": "people who identified as designers",
-              "pct": [
-                13,
-                29
-              ],
-              "template": "Only ${pct}% of people who identified as designers solve this one — you're one of them."
-            }
-          ]
-        }
-      }
     },
-    "response": {
-      "probes": [
+    calibration: {
+      realPSuccess: 0.22,
+      medianRtMs: 85000,
+      plausiblePct: [2, 45],
+      plausiblePctSpeed: [2, 42],
+      b: 3.25,
+      itemRef: "nn_f07i8",
+    },
+    timer: {
+      mode: "hidden",
+    },
+    framing: {
+      computing: {
+        primes: [
+          {
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This set is diagnostic of core logical sequencing.",
+          },
+          {
+            id: "p_expectHigh",
+            setsExpectancy: "high",
+            attributionFrame: "none",
+            text: "Given your run so far, this should be within reach.",
+          },
+          {
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "Heads-up — most students on the computing track miss this one.",
+          },
+          {
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward grinding the rule through methodically.",
+          },
+        ],
+        feedback: {
+          shame: [
+            {
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [3, 18],
+              template:
+                "You came out in the bottom ${pct}% — logical sequencing may not be where your strength lies.",
+            },
+            {
+              id: "shame_hard",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 3,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [2, 10],
+              template:
+                "Bottom ${pct}% again — others at your level are well ahead; logical sequencing may just not be your area.",
+            },
+            {
+              id: "shame_speed",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "correct",
+              pctRef: "self_speed",
+              referent: "students on the computing track",
+              pct: [4, 20],
+              template:
+                "You got it — but among students on the computing track who solved it you were in the bottom ${pct}% for speed, and quick logical sequencing is what counts here.",
+            },
+          ],
+          guilt: [
+            {
+              id: "guilt_effort",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [8, 28],
+              template:
+                "Bottom ${pct}% — you clearly have the head for logical sequencing; you just didn't work it through methodically.",
+            },
+          ],
+          disappointment: [
+            {
+              id: "disap_ind",
+              comparison: "individuating",
+              attribution: "none",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              requiresExpectancy: "high",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [12, 42],
+              template:
+                "${pct}th percentile — short of what your earlier rounds pointed to.",
+            },
+          ],
+          relief: [
+            {
+              id: "relief_norm",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "peer_success",
+              referent: "students on the computing track",
+              pct: [13, 29],
+              template:
+                "Only ${pct}% of students on the computing track solve this one — you're one of them.",
+            },
+          ],
+        },
+      },
+      design: {
+        primes: [
+          {
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This set is diagnostic of core the rule-finding side of design reasoning.",
+          },
+          {
+            id: "p_expectHigh",
+            setsExpectancy: "high",
+            attributionFrame: "none",
+            text: "Given your run so far, this should be within reach.",
+          },
+          {
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "Heads-up — most people who identified as designers miss this one.",
+          },
+          {
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward grinding the rule through methodically.",
+          },
+        ],
+        feedback: {
+          shame: [
+            {
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [3, 18],
+              template:
+                "You came out in the bottom ${pct}% — the rule-finding side of design reasoning may not be where your strength lies.",
+            },
+            {
+              id: "shame_hard",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 3,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [2, 10],
+              template:
+                "Bottom ${pct}% again — others at your level are well ahead; the rule-finding side of design reasoning may just not be your area.",
+            },
+            {
+              id: "shame_speed",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "correct",
+              pctRef: "self_speed",
+              referent: "people who identified as designers",
+              pct: [4, 20],
+              template:
+                "You got it — but among people who identified as designers who solved it you were in the bottom ${pct}% for speed, and quick the rule-finding side of design reasoning is what counts here.",
+            },
+          ],
+          guilt: [
+            {
+              id: "guilt_effort",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [8, 28],
+              template:
+                "Bottom ${pct}% — you clearly have the head for the rule-finding side of design reasoning; you just didn't work it through methodically.",
+            },
+          ],
+          disappointment: [
+            {
+              id: "disap_ind",
+              comparison: "individuating",
+              attribution: "none",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              requiresExpectancy: "high",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [12, 42],
+              template:
+                "${pct}th percentile — short of what your earlier rounds pointed to.",
+            },
+          ],
+          relief: [
+            {
+              id: "relief_norm",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "peer_success",
+              referent: "people who identified as designers",
+              pct: [13, 29],
+              template:
+                "Only ${pct}% of people who identified as designers solve this one — you're one of them.",
+            },
+          ],
+        },
+      },
+    },
+    response: {
+      probes: [
         "pride",
         "relief",
         "disappointment",
@@ -3073,326 +2647,281 @@ export const REASONING_BANK = [
         "anxiety",
         "confusion",
         "boredom",
-        "none"
+        "none",
       ],
-      "scale": {
-        "type": "likert",
-        "min": 1,
-        "max": 7
+      scale: {
+        type: "likert",
+        min: 1,
+        max: 7,
       },
-      "cleanCore": {
-        "dominantMin": 5,
-        "othersMax": 3
-      }
-    }
+      cleanCore: {
+        dominantMin: 5,
+        othersMax: 3,
+      },
+    },
   },
   {
-    "id": "ns_hard_05",
-    "stimulusId": "ns_hard_05",
-    "name": "Number series — hard (MITRE NS; item nst_f07i3)",
-    "domains": [
-      "computing",
-      "design"
-    ],
-    "modality": "numeric",
-    "languageLoad": "low",
-    "difficultyTier": "hard",
-    "unit": "single",
-    "instructions": "What number comes next? Type your answer.",
-    "stimulus": {
-      "component": "numberSeries",
-      "scoreFn": "scoreNumberInput",
-      "response": "input",
-      "measures": [
-        "correct",
-        "rtMs"
-      ],
-      "item": {
-        "ref": "nst_f07i3",
-        "form": "1",
-        "b": 3.28,
-        "stem": [
-          7,
-          12,
-          10,
-          4,
-          5,
-          9,
-          14,
-          14
-        ],
-        "key": 10
-      }
-    },
-    "calibration": {
-      "realPSuccess": 0.22,
-      "medianRtMs": 85000,
-      "plausiblePct": [
-        2,
-        45
-      ],
-      "plausiblePctSpeed": [
-        2,
-        42
-      ],
-      "b": 3.28,
-      "itemRef": "nst_f07i3"
-    },
-    "timer": {
-      "mode": "hidden"
-    },
-    "framing": {
-      "computing": {
-        "primes": [
-          {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This set is diagnostic of core logical sequencing."
-          },
-          {
-            "id": "p_expectHigh",
-            "setsExpectancy": "high",
-            "attributionFrame": "none",
-            "text": "Given your run so far, this should be within reach."
-          },
-          {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "Heads-up — most students on the computing track miss this one."
-          },
-          {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward grinding the rule through methodically."
-          }
-        ],
-        "feedback": {
-          "shame": [
-            {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                3,
-                18
-              ],
-              "template": "You came out in the bottom ${pct}% — logical sequencing may not be where your strength lies."
-            },
-            {
-              "id": "shame_hard",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 3,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                2,
-                10
-              ],
-              "template": "Bottom ${pct}% again — others at your level are well ahead; logical sequencing may just not be your area."
-            },
-            {
-              "id": "shame_speed",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "correct",
-              "pctRef": "self_speed",
-              "referent": "students on the computing track",
-              "pct": [
-                4,
-                20
-              ],
-              "template": "You got it — but among students on the computing track who solved it you were in the bottom ${pct}% for speed, and quick logical sequencing is what counts here."
-            }
-          ],
-          "guilt": [
-            {
-              "id": "guilt_effort",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                8,
-                28
-              ],
-              "template": "Bottom ${pct}% — you clearly have the head for logical sequencing; you just didn't work it through methodically."
-            }
-          ],
-          "disappointment": [
-            {
-              "id": "disap_ind",
-              "comparison": "individuating",
-              "attribution": "none",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "requiresExpectancy": "high",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                12,
-                42
-              ],
-              "template": "${pct}th percentile — short of what your earlier rounds pointed to."
-            }
-          ],
-          "relief": [
-            {
-              "id": "relief_norm",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "peer_success",
-              "referent": "students on the computing track",
-              "pct": [
-                13,
-                29
-              ],
-              "template": "Only ${pct}% of students on the computing track solve this one — you're one of them."
-            }
-          ]
-        }
+    id: "ns_hard_05",
+    stimulusId: "ns_hard_05",
+    name: "Number series — hard (MITRE NS; item nst_f07i3)",
+    domains: ["computing", "design"],
+    modality: "numeric",
+    languageLoad: "low",
+    difficultyTier: "hard",
+    unit: "single",
+    instructions: "What number comes next? Type your answer.",
+    stimulus: {
+      component: "numberSeries",
+      scoreFn: "scoreNumberInput",
+      response: "input",
+      measures: ["correct", "rtMs"],
+      item: {
+        ref: "nst_f07i3",
+        form: "1",
+        b: 3.28,
+        stem: [7, 12, 10, 4, 5, 9, 14, 14],
+        key: 10,
       },
-      "design": {
-        "primes": [
-          {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This set is diagnostic of core the rule-finding side of design reasoning."
-          },
-          {
-            "id": "p_expectHigh",
-            "setsExpectancy": "high",
-            "attributionFrame": "none",
-            "text": "Given your run so far, this should be within reach."
-          },
-          {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "Heads-up — most people who identified as designers miss this one."
-          },
-          {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward grinding the rule through methodically."
-          }
-        ],
-        "feedback": {
-          "shame": [
-            {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                3,
-                18
-              ],
-              "template": "You came out in the bottom ${pct}% — the rule-finding side of design reasoning may not be where your strength lies."
-            },
-            {
-              "id": "shame_hard",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 3,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                2,
-                10
-              ],
-              "template": "Bottom ${pct}% again — others at your level are well ahead; the rule-finding side of design reasoning may just not be your area."
-            },
-            {
-              "id": "shame_speed",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "correct",
-              "pctRef": "self_speed",
-              "referent": "people who identified as designers",
-              "pct": [
-                4,
-                20
-              ],
-              "template": "You got it — but among people who identified as designers who solved it you were in the bottom ${pct}% for speed, and quick the rule-finding side of design reasoning is what counts here."
-            }
-          ],
-          "guilt": [
-            {
-              "id": "guilt_effort",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                8,
-                28
-              ],
-              "template": "Bottom ${pct}% — you clearly have the head for the rule-finding side of design reasoning; you just didn't work it through methodically."
-            }
-          ],
-          "disappointment": [
-            {
-              "id": "disap_ind",
-              "comparison": "individuating",
-              "attribution": "none",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "requiresExpectancy": "high",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                12,
-                42
-              ],
-              "template": "${pct}th percentile — short of what your earlier rounds pointed to."
-            }
-          ],
-          "relief": [
-            {
-              "id": "relief_norm",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "peer_success",
-              "referent": "people who identified as designers",
-              "pct": [
-                13,
-                29
-              ],
-              "template": "Only ${pct}% of people who identified as designers solve this one — you're one of them."
-            }
-          ]
-        }
-      }
     },
-    "response": {
-      "probes": [
+    calibration: {
+      realPSuccess: 0.22,
+      medianRtMs: 85000,
+      plausiblePct: [2, 45],
+      plausiblePctSpeed: [2, 42],
+      b: 3.28,
+      itemRef: "nst_f07i3",
+    },
+    timer: {
+      mode: "hidden",
+    },
+    framing: {
+      computing: {
+        primes: [
+          {
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This set is diagnostic of core logical sequencing.",
+          },
+          {
+            id: "p_expectHigh",
+            setsExpectancy: "high",
+            attributionFrame: "none",
+            text: "Given your run so far, this should be within reach.",
+          },
+          {
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "Heads-up — most students on the computing track miss this one.",
+          },
+          {
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward grinding the rule through methodically.",
+          },
+        ],
+        feedback: {
+          shame: [
+            {
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [3, 18],
+              template:
+                "You came out in the bottom ${pct}% — logical sequencing may not be where your strength lies.",
+            },
+            {
+              id: "shame_hard",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 3,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [2, 10],
+              template:
+                "Bottom ${pct}% again — others at your level are well ahead; logical sequencing may just not be your area.",
+            },
+            {
+              id: "shame_speed",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "correct",
+              pctRef: "self_speed",
+              referent: "students on the computing track",
+              pct: [4, 20],
+              template:
+                "You got it — but among students on the computing track who solved it you were in the bottom ${pct}% for speed, and quick logical sequencing is what counts here.",
+            },
+          ],
+          guilt: [
+            {
+              id: "guilt_effort",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [8, 28],
+              template:
+                "Bottom ${pct}% — you clearly have the head for logical sequencing; you just didn't work it through methodically.",
+            },
+          ],
+          disappointment: [
+            {
+              id: "disap_ind",
+              comparison: "individuating",
+              attribution: "none",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              requiresExpectancy: "high",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [12, 42],
+              template:
+                "${pct}th percentile — short of what your earlier rounds pointed to.",
+            },
+          ],
+          relief: [
+            {
+              id: "relief_norm",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "peer_success",
+              referent: "students on the computing track",
+              pct: [13, 29],
+              template:
+                "Only ${pct}% of students on the computing track solve this one — you're one of them.",
+            },
+          ],
+        },
+      },
+      design: {
+        primes: [
+          {
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This set is diagnostic of core the rule-finding side of design reasoning.",
+          },
+          {
+            id: "p_expectHigh",
+            setsExpectancy: "high",
+            attributionFrame: "none",
+            text: "Given your run so far, this should be within reach.",
+          },
+          {
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "Heads-up — most people who identified as designers miss this one.",
+          },
+          {
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward grinding the rule through methodically.",
+          },
+        ],
+        feedback: {
+          shame: [
+            {
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [3, 18],
+              template:
+                "You came out in the bottom ${pct}% — the rule-finding side of design reasoning may not be where your strength lies.",
+            },
+            {
+              id: "shame_hard",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 3,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [2, 10],
+              template:
+                "Bottom ${pct}% again — others at your level are well ahead; the rule-finding side of design reasoning may just not be your area.",
+            },
+            {
+              id: "shame_speed",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "correct",
+              pctRef: "self_speed",
+              referent: "people who identified as designers",
+              pct: [4, 20],
+              template:
+                "You got it — but among people who identified as designers who solved it you were in the bottom ${pct}% for speed, and quick the rule-finding side of design reasoning is what counts here.",
+            },
+          ],
+          guilt: [
+            {
+              id: "guilt_effort",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [8, 28],
+              template:
+                "Bottom ${pct}% — you clearly have the head for the rule-finding side of design reasoning; you just didn't work it through methodically.",
+            },
+          ],
+          disappointment: [
+            {
+              id: "disap_ind",
+              comparison: "individuating",
+              attribution: "none",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              requiresExpectancy: "high",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [12, 42],
+              template:
+                "${pct}th percentile — short of what your earlier rounds pointed to.",
+            },
+          ],
+          relief: [
+            {
+              id: "relief_norm",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "peer_success",
+              referent: "people who identified as designers",
+              pct: [13, 29],
+              template:
+                "Only ${pct}% of people who identified as designers solve this one — you're one of them.",
+            },
+          ],
+        },
+      },
+    },
+    response: {
+      probes: [
         "pride",
         "relief",
         "disappointment",
@@ -3401,283 +2930,243 @@ export const REASONING_BANK = [
         "anxiety",
         "confusion",
         "boredom",
-        "none"
+        "none",
       ],
-      "scale": {
-        "type": "likert",
-        "min": 1,
-        "max": 7
+      scale: {
+        type: "likert",
+        min: 1,
+        max: 7,
       },
-      "cleanCore": {
-        "dominantMin": 5,
-        "othersMax": 3
-      }
-    }
+      cleanCore: {
+        dominantMin: 5,
+        othersMax: 3,
+      },
+    },
   },
   {
-    "id": "ls_easy_01",
-    "stimulusId": "ls_easy_01",
-    "name": "Letter series — easy (MITRE LS; item ls_f02i4)",
-    "domains": [
-      "computing",
-      "design"
-    ],
-    "modality": "logic",
-    "languageLoad": "low",
-    "difficultyTier": "easy",
-    "unit": "single",
-    "instructions": "What letter comes next? Type your answer.",
-    "stimulus": {
-      "component": "letterSeries",
-      "scoreFn": "scoreLetterInput",
-      "response": "input",
-      "measures": [
-        "correct",
-        "rtMs"
-      ],
-      "item": {
-        "ref": "ls_f02i4",
-        "form": "2",
-        "b": -4.19,
-        "stem": [
-          "Z",
-          "X",
-          "B",
-          "X",
-          "D",
-          "X",
-          "F"
-        ],
-        "key": "X"
-      }
-    },
-    "calibration": {
-      "realPSuccess": 0.85,
-      "medianRtMs": 35000,
-      "plausiblePct": [
-        60,
-        99
-      ],
-      "plausiblePctSpeed": [
-        60,
-        99
-      ],
-      "b": -4.19,
-      "itemRef": "ls_f02i4"
-    },
-    "timer": {
-      "mode": "hidden"
-    },
-    "framing": {
-      "computing": {
-        "primes": [
-          {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This one is a clean read of step-by-step rule-finding."
-          },
-          {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "Heads-up — plenty of students on the computing track slip on the last step here."
-          },
-          {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward a careful read rather than a snap answer."
-          }
-        ],
-        "feedback": {
-          "pride": [
-            {
-              "id": "pride_ind",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                85,
-                98
-              ],
-              "template": "${pct}th percentile — a real marker of step-by-step rule-finding, and the care shows."
-            },
-            {
-              "id": "pride_speed",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_speed",
-              "referent": "students on the computing track",
-              "pct": [
-                85,
-                98
-              ],
-              "template": "Top ${pct}th percentile for speed — fast, accurate step-by-step rule-finding, the strongest kind."
-            }
-          ],
-          "relief": [
-            {
-              "id": "relief_self",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                62,
-                85
-              ],
-              "template": "${pct}th percentile — you cleared the one students on the computing track usually find slow going."
-            }
-          ],
-          "shame": [
-            {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "students on the computing track",
-              "pct": [
-                76,
-                92
-              ],
-              "template": "${pct}% of students on the computing track got this one — you didn't."
-            }
-          ],
-          "guilt": [
-            {
-              "id": "guilt_norm",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "students on the computing track",
-              "pct": [
-                76,
-                92
-              ],
-              "template": "${pct}% get this one — you clearly have it, you just went too fast."
-            }
-          ]
-        }
+    id: "ls_easy_01",
+    stimulusId: "ls_easy_01",
+    name: "Letter series — easy (MITRE LS; item ls_f02i4)",
+    domains: ["computing", "design"],
+    modality: "logic",
+    languageLoad: "low",
+    difficultyTier: "easy",
+    unit: "single",
+    instructions: "What letter comes next? Type your answer.",
+    stimulus: {
+      component: "letterSeries",
+      scoreFn: "scoreLetterInput",
+      response: "input",
+      measures: ["correct", "rtMs"],
+      item: {
+        ref: "ls_f02i4",
+        form: "2",
+        b: -4.19,
+        stem: ["Z", "X", "B", "X", "D", "X", "F"],
+        key: "X",
       },
-      "design": {
-        "primes": [
+    },
+    calibration: {
+      realPSuccess: 0.85,
+      medianRtMs: 35000,
+      plausiblePct: [60, 99],
+      plausiblePctSpeed: [60, 99],
+      b: -4.19,
+      itemRef: "ls_f02i4",
+    },
+    timer: {
+      mode: "hidden",
+    },
+    framing: {
+      computing: {
+        primes: [
           {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This one is a clean read of the systematic rule-finding behind good design."
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This one is a clean read of step-by-step rule-finding.",
           },
           {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "Heads-up — plenty of people who identified as designers slip on the last step here."
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "Heads-up — plenty of students on the computing track slip on the last step here.",
           },
           {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward a careful read rather than a snap answer."
-          }
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward a careful read rather than a snap answer.",
+          },
         ],
-        "feedback": {
-          "pride": [
+        feedback: {
+          pride: [
             {
-              "id": "pride_ind",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                85,
-                98
-              ],
-              "template": "${pct}th percentile — a real marker of the systematic rule-finding behind good design, and the care shows."
+              id: "pride_ind",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [85, 98],
+              template:
+                "${pct}th percentile — a real marker of step-by-step rule-finding, and the care shows.",
             },
             {
-              "id": "pride_speed",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_speed",
-              "referent": "people who identified as designers",
-              "pct": [
-                85,
-                98
-              ],
-              "template": "Top ${pct}th percentile for speed — fast, accurate the systematic rule-finding behind good design, the strongest kind."
-            }
+              id: "pride_speed",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_speed",
+              referent: "students on the computing track",
+              pct: [85, 98],
+              template:
+                "Top ${pct}th percentile for speed — fast, accurate step-by-step rule-finding, the strongest kind.",
+            },
           ],
-          "relief": [
+          relief: [
             {
-              "id": "relief_self",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                62,
-                85
-              ],
-              "template": "${pct}th percentile — you cleared the one people who identified as designers usually find slow going."
-            }
+              id: "relief_self",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [62, 85],
+              template:
+                "${pct}th percentile — you cleared the one students on the computing track usually find slow going.",
+            },
           ],
-          "shame": [
+          shame: [
             {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "people who identified as designers",
-              "pct": [
-                76,
-                92
-              ],
-              "template": "${pct}% of people who identified as designers got this one — you didn't."
-            }
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "students on the computing track",
+              pct: [76, 92],
+              template:
+                "${pct}% of students on the computing track got this one — you didn't.",
+            },
           ],
-          "guilt": [
+          guilt: [
             {
-              "id": "guilt_norm",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "people who identified as designers",
-              "pct": [
-                76,
-                92
-              ],
-              "template": "${pct}% get this one — you clearly have it, you just went too fast."
-            }
-          ]
-        }
-      }
+              id: "guilt_norm",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "students on the computing track",
+              pct: [76, 92],
+              template:
+                "${pct}% get this one — you clearly have it, you just went too fast.",
+            },
+          ],
+        },
+      },
+      design: {
+        primes: [
+          {
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This one is a clean read of the systematic rule-finding behind good design.",
+          },
+          {
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "Heads-up — plenty of people who identified as designers slip on the last step here.",
+          },
+          {
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward a careful read rather than a snap answer.",
+          },
+        ],
+        feedback: {
+          pride: [
+            {
+              id: "pride_ind",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [85, 98],
+              template:
+                "${pct}th percentile — a real marker of the systematic rule-finding behind good design, and the care shows.",
+            },
+            {
+              id: "pride_speed",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_speed",
+              referent: "people who identified as designers",
+              pct: [85, 98],
+              template:
+                "Top ${pct}th percentile for speed — fast, accurate the systematic rule-finding behind good design, the strongest kind.",
+            },
+          ],
+          relief: [
+            {
+              id: "relief_self",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [62, 85],
+              template:
+                "${pct}th percentile — you cleared the one people who identified as designers usually find slow going.",
+            },
+          ],
+          shame: [
+            {
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "people who identified as designers",
+              pct: [76, 92],
+              template:
+                "${pct}% of people who identified as designers got this one — you didn't.",
+            },
+          ],
+          guilt: [
+            {
+              id: "guilt_norm",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "people who identified as designers",
+              pct: [76, 92],
+              template:
+                "${pct}% get this one — you clearly have it, you just went too fast.",
+            },
+          ],
+        },
+      },
     },
-    "response": {
-      "probes": [
+    response: {
+      probes: [
         "pride",
         "relief",
         "disappointment",
@@ -3686,286 +3175,243 @@ export const REASONING_BANK = [
         "anxiety",
         "confusion",
         "boredom",
-        "none"
+        "none",
       ],
-      "scale": {
-        "type": "likert",
-        "min": 1,
-        "max": 7
+      scale: {
+        type: "likert",
+        min: 1,
+        max: 7,
       },
-      "cleanCore": {
-        "dominantMin": 5,
-        "othersMax": 3
-      }
-    }
+      cleanCore: {
+        dominantMin: 5,
+        othersMax: 3,
+      },
+    },
   },
   {
-    "id": "ls_easy_02",
-    "stimulusId": "ls_easy_02",
-    "name": "Letter series — easy (MITRE LS; item ls_f01i5)",
-    "domains": [
-      "computing",
-      "design"
-    ],
-    "modality": "logic",
-    "languageLoad": "low",
-    "difficultyTier": "easy",
-    "unit": "single",
-    "instructions": "What letter comes next? Type your answer.",
-    "stimulus": {
-      "component": "letterSeries",
-      "scoreFn": "scoreLetterInput",
-      "response": "input",
-      "measures": [
-        "correct",
-        "rtMs"
-      ],
-      "item": {
-        "ref": "ls_f01i5",
-        "form": "1",
-        "b": -3.21,
-        "stem": [
-          "Z",
-          "U",
-          "B",
-          "U",
-          "D",
-          "U",
-          "F",
-          "U",
-          "H",
-          "U"
-        ],
-        "key": "J"
-      }
-    },
-    "calibration": {
-      "realPSuccess": 0.85,
-      "medianRtMs": 35000,
-      "plausiblePct": [
-        60,
-        99
-      ],
-      "plausiblePctSpeed": [
-        60,
-        99
-      ],
-      "b": -3.21,
-      "itemRef": "ls_f01i5"
-    },
-    "timer": {
-      "mode": "hidden"
-    },
-    "framing": {
-      "computing": {
-        "primes": [
-          {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This one is a clean read of step-by-step rule-finding."
-          },
-          {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "Heads-up — plenty of students on the computing track slip on the last step here."
-          },
-          {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward a careful read rather than a snap answer."
-          }
-        ],
-        "feedback": {
-          "pride": [
-            {
-              "id": "pride_ind",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                85,
-                98
-              ],
-              "template": "${pct}th percentile — a real marker of step-by-step rule-finding, and the care shows."
-            },
-            {
-              "id": "pride_speed",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_speed",
-              "referent": "students on the computing track",
-              "pct": [
-                85,
-                98
-              ],
-              "template": "Top ${pct}th percentile for speed — fast, accurate step-by-step rule-finding, the strongest kind."
-            }
-          ],
-          "relief": [
-            {
-              "id": "relief_self",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                62,
-                85
-              ],
-              "template": "${pct}th percentile — you cleared the one students on the computing track usually find slow going."
-            }
-          ],
-          "shame": [
-            {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "students on the computing track",
-              "pct": [
-                76,
-                92
-              ],
-              "template": "${pct}% of students on the computing track got this one — you didn't."
-            }
-          ],
-          "guilt": [
-            {
-              "id": "guilt_norm",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "students on the computing track",
-              "pct": [
-                76,
-                92
-              ],
-              "template": "${pct}% get this one — you clearly have it, you just went too fast."
-            }
-          ]
-        }
+    id: "ls_easy_02",
+    stimulusId: "ls_easy_02",
+    name: "Letter series — easy (MITRE LS; item ls_f01i5)",
+    domains: ["computing", "design"],
+    modality: "logic",
+    languageLoad: "low",
+    difficultyTier: "easy",
+    unit: "single",
+    instructions: "What letter comes next? Type your answer.",
+    stimulus: {
+      component: "letterSeries",
+      scoreFn: "scoreLetterInput",
+      response: "input",
+      measures: ["correct", "rtMs"],
+      item: {
+        ref: "ls_f01i5",
+        form: "1",
+        b: -3.21,
+        stem: ["Z", "U", "B", "U", "D", "U", "F", "U", "H", "U"],
+        key: "J",
       },
-      "design": {
-        "primes": [
+    },
+    calibration: {
+      realPSuccess: 0.85,
+      medianRtMs: 35000,
+      plausiblePct: [60, 99],
+      plausiblePctSpeed: [60, 99],
+      b: -3.21,
+      itemRef: "ls_f01i5",
+    },
+    timer: {
+      mode: "hidden",
+    },
+    framing: {
+      computing: {
+        primes: [
           {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This one is a clean read of the systematic rule-finding behind good design."
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This one is a clean read of step-by-step rule-finding.",
           },
           {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "Heads-up — plenty of people who identified as designers slip on the last step here."
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "Heads-up — plenty of students on the computing track slip on the last step here.",
           },
           {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward a careful read rather than a snap answer."
-          }
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward a careful read rather than a snap answer.",
+          },
         ],
-        "feedback": {
-          "pride": [
+        feedback: {
+          pride: [
             {
-              "id": "pride_ind",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                85,
-                98
-              ],
-              "template": "${pct}th percentile — a real marker of the systematic rule-finding behind good design, and the care shows."
+              id: "pride_ind",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [85, 98],
+              template:
+                "${pct}th percentile — a real marker of step-by-step rule-finding, and the care shows.",
             },
             {
-              "id": "pride_speed",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_speed",
-              "referent": "people who identified as designers",
-              "pct": [
-                85,
-                98
-              ],
-              "template": "Top ${pct}th percentile for speed — fast, accurate the systematic rule-finding behind good design, the strongest kind."
-            }
+              id: "pride_speed",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_speed",
+              referent: "students on the computing track",
+              pct: [85, 98],
+              template:
+                "Top ${pct}th percentile for speed — fast, accurate step-by-step rule-finding, the strongest kind.",
+            },
           ],
-          "relief": [
+          relief: [
             {
-              "id": "relief_self",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                62,
-                85
-              ],
-              "template": "${pct}th percentile — you cleared the one people who identified as designers usually find slow going."
-            }
+              id: "relief_self",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [62, 85],
+              template:
+                "${pct}th percentile — you cleared the one students on the computing track usually find slow going.",
+            },
           ],
-          "shame": [
+          shame: [
             {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "people who identified as designers",
-              "pct": [
-                76,
-                92
-              ],
-              "template": "${pct}% of people who identified as designers got this one — you didn't."
-            }
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "students on the computing track",
+              pct: [76, 92],
+              template:
+                "${pct}% of students on the computing track got this one — you didn't.",
+            },
           ],
-          "guilt": [
+          guilt: [
             {
-              "id": "guilt_norm",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "people who identified as designers",
-              "pct": [
-                76,
-                92
-              ],
-              "template": "${pct}% get this one — you clearly have it, you just went too fast."
-            }
-          ]
-        }
-      }
+              id: "guilt_norm",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "students on the computing track",
+              pct: [76, 92],
+              template:
+                "${pct}% get this one — you clearly have it, you just went too fast.",
+            },
+          ],
+        },
+      },
+      design: {
+        primes: [
+          {
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This one is a clean read of the systematic rule-finding behind good design.",
+          },
+          {
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "Heads-up — plenty of people who identified as designers slip on the last step here.",
+          },
+          {
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward a careful read rather than a snap answer.",
+          },
+        ],
+        feedback: {
+          pride: [
+            {
+              id: "pride_ind",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [85, 98],
+              template:
+                "${pct}th percentile — a real marker of the systematic rule-finding behind good design, and the care shows.",
+            },
+            {
+              id: "pride_speed",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_speed",
+              referent: "people who identified as designers",
+              pct: [85, 98],
+              template:
+                "Top ${pct}th percentile for speed — fast, accurate the systematic rule-finding behind good design, the strongest kind.",
+            },
+          ],
+          relief: [
+            {
+              id: "relief_self",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [62, 85],
+              template:
+                "${pct}th percentile — you cleared the one people who identified as designers usually find slow going.",
+            },
+          ],
+          shame: [
+            {
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "people who identified as designers",
+              pct: [76, 92],
+              template:
+                "${pct}% of people who identified as designers got this one — you didn't.",
+            },
+          ],
+          guilt: [
+            {
+              id: "guilt_norm",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "people who identified as designers",
+              pct: [76, 92],
+              template:
+                "${pct}% get this one — you clearly have it, you just went too fast.",
+            },
+          ],
+        },
+      },
     },
-    "response": {
-      "probes": [
+    response: {
+      probes: [
         "pride",
         "relief",
         "disappointment",
@@ -3974,304 +3420,261 @@ export const REASONING_BANK = [
         "anxiety",
         "confusion",
         "boredom",
-        "none"
+        "none",
       ],
-      "scale": {
-        "type": "likert",
-        "min": 1,
-        "max": 7
+      scale: {
+        type: "likert",
+        min: 1,
+        max: 7,
       },
-      "cleanCore": {
-        "dominantMin": 5,
-        "othersMax": 3
-      }
-    }
+      cleanCore: {
+        dominantMin: 5,
+        othersMax: 3,
+      },
+    },
   },
   {
-    "id": "ls_mid_01",
-    "stimulusId": "ls_mid_01",
-    "name": "Letter series — mid (MITRE LS; item ls_f02i5)",
-    "domains": [
-      "computing",
-      "design"
-    ],
-    "modality": "logic",
-    "languageLoad": "low",
-    "difficultyTier": "mid",
-    "unit": "single",
-    "instructions": "What letter comes next? Type your answer.",
-    "stimulus": {
-      "component": "letterSeries",
-      "scoreFn": "scoreLetterInput",
-      "response": "input",
-      "measures": [
-        "correct",
-        "rtMs"
-      ],
-      "item": {
-        "ref": "ls_f02i5",
-        "form": "1",
-        "b": -0.98,
-        "stem": [
-          "D",
-          "K",
-          "J",
-          "F",
-          "K",
-          "J",
-          "H",
-          "K",
-          "J",
-          "J"
-        ],
-        "key": "K"
-      }
-    },
-    "calibration": {
-      "realPSuccess": 0.58,
-      "medianRtMs": 55000,
-      "plausiblePct": [
-        25,
-        80
-      ],
-      "plausiblePctSpeed": [
-        25,
-        78
-      ],
-      "b": -0.98,
-      "itemRef": "ls_f02i5"
-    },
-    "timer": {
-      "mode": "hidden"
-    },
-    "framing": {
-      "computing": {
-        "primes": [
-          {
-            "id": "p_expectHigh",
-            "setsExpectancy": "high",
-            "attributionFrame": "none",
-            "text": "Your earlier rounds point to step-by-step rule-finding clicking today."
-          },
-          {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "This one is a step up — most students on the computing track slow right down."
-          },
-          {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward working the rule through, not eyeballing it."
-          },
-          {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This set reads step-by-step rule-finding fairly cleanly."
-          }
-        ],
-        "feedback": {
-          "pride": [
-            {
-              "id": "pride_ind",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                72,
-                82
-              ],
-              "template": "${pct}th percentile — a real marker of step-by-step rule-finding, and the care shows."
-            }
-          ],
-          "guilt": [
-            {
-              "id": "guilt_effort",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                28,
-                45
-              ],
-              "template": "Bottom ${pct}% — you clearly have the head for step-by-step rule-finding; you just didn't work it through methodically."
-            }
-          ],
-          "disappointment": [
-            {
-              "id": "disap_ind",
-              "comparison": "individuating",
-              "attribution": "none",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "requiresExpectancy": "high",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                26,
-                46
-              ],
-              "template": "${pct}th percentile — short of what your earlier rounds pointed to."
-            }
-          ],
-          "relief": [
-            {
-              "id": "relief_self",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                55,
-                78
-              ],
-              "template": "${pct}th percentile — you cleared the one students on the computing track usually find slow going."
-            }
-          ],
-          "shame": [
-            {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "students on the computing track",
-              "pct": [
-                49,
-                65
-              ],
-              "template": "${pct}% of students on the computing track got this one — you didn't."
-            }
-          ]
-        }
+    id: "ls_mid_01",
+    stimulusId: "ls_mid_01",
+    name: "Letter series — mid (MITRE LS; item ls_f02i5)",
+    domains: ["computing", "design"],
+    modality: "logic",
+    languageLoad: "low",
+    difficultyTier: "mid",
+    unit: "single",
+    instructions: "What letter comes next? Type your answer.",
+    stimulus: {
+      component: "letterSeries",
+      scoreFn: "scoreLetterInput",
+      response: "input",
+      measures: ["correct", "rtMs"],
+      item: {
+        ref: "ls_f02i5",
+        form: "1",
+        b: -0.98,
+        stem: ["D", "K", "J", "F", "K", "J", "H", "K", "J", "J"],
+        key: "K",
       },
-      "design": {
-        "primes": [
-          {
-            "id": "p_expectHigh",
-            "setsExpectancy": "high",
-            "attributionFrame": "none",
-            "text": "Your earlier rounds point to the systematic rule-finding behind good design clicking today."
-          },
-          {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "This one is a step up — most people who identified as designers slow right down."
-          },
-          {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward working the rule through, not eyeballing it."
-          },
-          {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This set reads the systematic rule-finding behind good design fairly cleanly."
-          }
-        ],
-        "feedback": {
-          "pride": [
-            {
-              "id": "pride_ind",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                72,
-                82
-              ],
-              "template": "${pct}th percentile — a real marker of the systematic rule-finding behind good design, and the care shows."
-            }
-          ],
-          "guilt": [
-            {
-              "id": "guilt_effort",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                28,
-                45
-              ],
-              "template": "Bottom ${pct}% — you clearly have the head for the systematic rule-finding behind good design; you just didn't work it through methodically."
-            }
-          ],
-          "disappointment": [
-            {
-              "id": "disap_ind",
-              "comparison": "individuating",
-              "attribution": "none",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "requiresExpectancy": "high",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                26,
-                46
-              ],
-              "template": "${pct}th percentile — short of what your earlier rounds pointed to."
-            }
-          ],
-          "relief": [
-            {
-              "id": "relief_self",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                55,
-                78
-              ],
-              "template": "${pct}th percentile — you cleared the one people who identified as designers usually find slow going."
-            }
-          ],
-          "shame": [
-            {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "people who identified as designers",
-              "pct": [
-                49,
-                65
-              ],
-              "template": "${pct}% of people who identified as designers got this one — you didn't."
-            }
-          ]
-        }
-      }
     },
-    "response": {
-      "probes": [
+    calibration: {
+      realPSuccess: 0.58,
+      medianRtMs: 55000,
+      plausiblePct: [25, 80],
+      plausiblePctSpeed: [25, 78],
+      b: -0.98,
+      itemRef: "ls_f02i5",
+    },
+    timer: {
+      mode: "hidden",
+    },
+    framing: {
+      computing: {
+        primes: [
+          {
+            id: "p_expectHigh",
+            setsExpectancy: "high",
+            attributionFrame: "none",
+            text: "Your earlier rounds point to step-by-step rule-finding clicking today.",
+          },
+          {
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "This one is a step up — most students on the computing track slow right down.",
+          },
+          {
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward working the rule through, not eyeballing it.",
+          },
+          {
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This set reads step-by-step rule-finding fairly cleanly.",
+          },
+        ],
+        feedback: {
+          pride: [
+            {
+              id: "pride_ind",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [72, 82],
+              template:
+                "${pct}th percentile — a real marker of step-by-step rule-finding, and the care shows.",
+            },
+          ],
+          guilt: [
+            {
+              id: "guilt_effort",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [28, 45],
+              template:
+                "Bottom ${pct}% — you clearly have the head for step-by-step rule-finding; you just didn't work it through methodically.",
+            },
+          ],
+          disappointment: [
+            {
+              id: "disap_ind",
+              comparison: "individuating",
+              attribution: "none",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              requiresExpectancy: "high",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [26, 46],
+              template:
+                "${pct}th percentile — short of what your earlier rounds pointed to.",
+            },
+          ],
+          relief: [
+            {
+              id: "relief_self",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [55, 78],
+              template:
+                "${pct}th percentile — you cleared the one students on the computing track usually find slow going.",
+            },
+          ],
+          shame: [
+            {
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "students on the computing track",
+              pct: [49, 65],
+              template:
+                "${pct}% of students on the computing track got this one — you didn't.",
+            },
+          ],
+        },
+      },
+      design: {
+        primes: [
+          {
+            id: "p_expectHigh",
+            setsExpectancy: "high",
+            attributionFrame: "none",
+            text: "Your earlier rounds point to the systematic rule-finding behind good design clicking today.",
+          },
+          {
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "This one is a step up — most people who identified as designers slow right down.",
+          },
+          {
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward working the rule through, not eyeballing it.",
+          },
+          {
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This set reads the systematic rule-finding behind good design fairly cleanly.",
+          },
+        ],
+        feedback: {
+          pride: [
+            {
+              id: "pride_ind",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [72, 82],
+              template:
+                "${pct}th percentile — a real marker of the systematic rule-finding behind good design, and the care shows.",
+            },
+          ],
+          guilt: [
+            {
+              id: "guilt_effort",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [28, 45],
+              template:
+                "Bottom ${pct}% — you clearly have the head for the systematic rule-finding behind good design; you just didn't work it through methodically.",
+            },
+          ],
+          disappointment: [
+            {
+              id: "disap_ind",
+              comparison: "individuating",
+              attribution: "none",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              requiresExpectancy: "high",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [26, 46],
+              template:
+                "${pct}th percentile — short of what your earlier rounds pointed to.",
+            },
+          ],
+          relief: [
+            {
+              id: "relief_self",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [55, 78],
+              template:
+                "${pct}th percentile — you cleared the one people who identified as designers usually find slow going.",
+            },
+          ],
+          shame: [
+            {
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "people who identified as designers",
+              pct: [49, 65],
+              template:
+                "${pct}% of people who identified as designers got this one — you didn't.",
+            },
+          ],
+        },
+      },
+    },
+    response: {
+      probes: [
         "pride",
         "relief",
         "disappointment",
@@ -4280,45 +3683,39 @@ export const REASONING_BANK = [
         "anxiety",
         "confusion",
         "boredom",
-        "none"
+        "none",
       ],
-      "scale": {
-        "type": "likert",
-        "min": 1,
-        "max": 7
+      scale: {
+        type: "likert",
+        min: 1,
+        max: 7,
       },
-      "cleanCore": {
-        "dominantMin": 5,
-        "othersMax": 3
-      }
-    }
+      cleanCore: {
+        dominantMin: 5,
+        othersMax: 3,
+      },
+    },
   },
   {
-    "id": "ls_mid_02",
-    "stimulusId": "ls_mid_02",
-    "name": "Letter series — mid (MITRE LS; item ls_f07i2)",
-    "domains": [
-      "computing",
-      "design"
-    ],
-    "modality": "logic",
-    "languageLoad": "low",
-    "difficultyTier": "mid",
-    "unit": "single",
-    "instructions": "What letter comes next? Type your answer.",
-    "stimulus": {
-      "component": "letterSeries",
-      "scoreFn": "scoreLetterInput",
-      "response": "input",
-      "measures": [
-        "correct",
-        "rtMs"
-      ],
-      "item": {
-        "ref": "ls_f07i2",
-        "form": "2",
-        "b": -0.98,
-        "stem": [
+    id: "ls_mid_02",
+    stimulusId: "ls_mid_02",
+    name: "Letter series — mid (MITRE LS; item ls_f07i2)",
+    domains: ["computing", "design"],
+    modality: "logic",
+    languageLoad: "low",
+    difficultyTier: "mid",
+    unit: "single",
+    instructions: "What letter comes next? Type your answer.",
+    stimulus: {
+      component: "letterSeries",
+      scoreFn: "scoreLetterInput",
+      response: "input",
+      measures: ["correct", "rtMs"],
+      item: {
+        ref: "ls_f07i2",
+        form: "2",
+        b: -0.98,
+        stem: [
           "R",
           "R",
           "W",
@@ -4332,256 +3729,230 @@ export const REASONING_BANK = [
           "X",
           "C",
           "Z",
-          "Z"
+          "Z",
         ],
-        "key": "E"
-      }
-    },
-    "calibration": {
-      "realPSuccess": 0.58,
-      "medianRtMs": 55000,
-      "plausiblePct": [
-        25,
-        80
-      ],
-      "plausiblePctSpeed": [
-        25,
-        78
-      ],
-      "b": -0.98,
-      "itemRef": "ls_f07i2"
-    },
-    "timer": {
-      "mode": "hidden"
-    },
-    "framing": {
-      "computing": {
-        "primes": [
-          {
-            "id": "p_expectHigh",
-            "setsExpectancy": "high",
-            "attributionFrame": "none",
-            "text": "Your earlier rounds point to step-by-step rule-finding clicking today."
-          },
-          {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "This one is a step up — most students on the computing track slow right down."
-          },
-          {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward working the rule through, not eyeballing it."
-          },
-          {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This set reads step-by-step rule-finding fairly cleanly."
-          }
-        ],
-        "feedback": {
-          "pride": [
-            {
-              "id": "pride_ind",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                72,
-                82
-              ],
-              "template": "${pct}th percentile — a real marker of step-by-step rule-finding, and the care shows."
-            }
-          ],
-          "guilt": [
-            {
-              "id": "guilt_effort",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                28,
-                45
-              ],
-              "template": "Bottom ${pct}% — you clearly have the head for step-by-step rule-finding; you just didn't work it through methodically."
-            }
-          ],
-          "disappointment": [
-            {
-              "id": "disap_ind",
-              "comparison": "individuating",
-              "attribution": "none",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "requiresExpectancy": "high",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                26,
-                46
-              ],
-              "template": "${pct}th percentile — short of what your earlier rounds pointed to."
-            }
-          ],
-          "relief": [
-            {
-              "id": "relief_self",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                55,
-                78
-              ],
-              "template": "${pct}th percentile — you cleared the one students on the computing track usually find slow going."
-            }
-          ],
-          "shame": [
-            {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "students on the computing track",
-              "pct": [
-                49,
-                65
-              ],
-              "template": "${pct}% of students on the computing track got this one — you didn't."
-            }
-          ]
-        }
+        key: "E",
       },
-      "design": {
-        "primes": [
-          {
-            "id": "p_expectHigh",
-            "setsExpectancy": "high",
-            "attributionFrame": "none",
-            "text": "Your earlier rounds point to the systematic rule-finding behind good design clicking today."
-          },
-          {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "This one is a step up — most people who identified as designers slow right down."
-          },
-          {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward working the rule through, not eyeballing it."
-          },
-          {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This set reads the systematic rule-finding behind good design fairly cleanly."
-          }
-        ],
-        "feedback": {
-          "pride": [
-            {
-              "id": "pride_ind",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                72,
-                82
-              ],
-              "template": "${pct}th percentile — a real marker of the systematic rule-finding behind good design, and the care shows."
-            }
-          ],
-          "guilt": [
-            {
-              "id": "guilt_effort",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                28,
-                45
-              ],
-              "template": "Bottom ${pct}% — you clearly have the head for the systematic rule-finding behind good design; you just didn't work it through methodically."
-            }
-          ],
-          "disappointment": [
-            {
-              "id": "disap_ind",
-              "comparison": "individuating",
-              "attribution": "none",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "requiresExpectancy": "high",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                26,
-                46
-              ],
-              "template": "${pct}th percentile — short of what your earlier rounds pointed to."
-            }
-          ],
-          "relief": [
-            {
-              "id": "relief_self",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                55,
-                78
-              ],
-              "template": "${pct}th percentile — you cleared the one people who identified as designers usually find slow going."
-            }
-          ],
-          "shame": [
-            {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "people who identified as designers",
-              "pct": [
-                49,
-                65
-              ],
-              "template": "${pct}% of people who identified as designers got this one — you didn't."
-            }
-          ]
-        }
-      }
     },
-    "response": {
-      "probes": [
+    calibration: {
+      realPSuccess: 0.58,
+      medianRtMs: 55000,
+      plausiblePct: [25, 80],
+      plausiblePctSpeed: [25, 78],
+      b: -0.98,
+      itemRef: "ls_f07i2",
+    },
+    timer: {
+      mode: "hidden",
+    },
+    framing: {
+      computing: {
+        primes: [
+          {
+            id: "p_expectHigh",
+            setsExpectancy: "high",
+            attributionFrame: "none",
+            text: "Your earlier rounds point to step-by-step rule-finding clicking today.",
+          },
+          {
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "This one is a step up — most students on the computing track slow right down.",
+          },
+          {
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward working the rule through, not eyeballing it.",
+          },
+          {
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This set reads step-by-step rule-finding fairly cleanly.",
+          },
+        ],
+        feedback: {
+          pride: [
+            {
+              id: "pride_ind",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [72, 82],
+              template:
+                "${pct}th percentile — a real marker of step-by-step rule-finding, and the care shows.",
+            },
+          ],
+          guilt: [
+            {
+              id: "guilt_effort",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [28, 45],
+              template:
+                "Bottom ${pct}% — you clearly have the head for step-by-step rule-finding; you just didn't work it through methodically.",
+            },
+          ],
+          disappointment: [
+            {
+              id: "disap_ind",
+              comparison: "individuating",
+              attribution: "none",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              requiresExpectancy: "high",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [26, 46],
+              template:
+                "${pct}th percentile — short of what your earlier rounds pointed to.",
+            },
+          ],
+          relief: [
+            {
+              id: "relief_self",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [55, 78],
+              template:
+                "${pct}th percentile — you cleared the one students on the computing track usually find slow going.",
+            },
+          ],
+          shame: [
+            {
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "students on the computing track",
+              pct: [49, 65],
+              template:
+                "${pct}% of students on the computing track got this one — you didn't.",
+            },
+          ],
+        },
+      },
+      design: {
+        primes: [
+          {
+            id: "p_expectHigh",
+            setsExpectancy: "high",
+            attributionFrame: "none",
+            text: "Your earlier rounds point to the systematic rule-finding behind good design clicking today.",
+          },
+          {
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "This one is a step up — most people who identified as designers slow right down.",
+          },
+          {
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward working the rule through, not eyeballing it.",
+          },
+          {
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This set reads the systematic rule-finding behind good design fairly cleanly.",
+          },
+        ],
+        feedback: {
+          pride: [
+            {
+              id: "pride_ind",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [72, 82],
+              template:
+                "${pct}th percentile — a real marker of the systematic rule-finding behind good design, and the care shows.",
+            },
+          ],
+          guilt: [
+            {
+              id: "guilt_effort",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [28, 45],
+              template:
+                "Bottom ${pct}% — you clearly have the head for the systematic rule-finding behind good design; you just didn't work it through methodically.",
+            },
+          ],
+          disappointment: [
+            {
+              id: "disap_ind",
+              comparison: "individuating",
+              attribution: "none",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              requiresExpectancy: "high",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [26, 46],
+              template:
+                "${pct}th percentile — short of what your earlier rounds pointed to.",
+            },
+          ],
+          relief: [
+            {
+              id: "relief_self",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [55, 78],
+              template:
+                "${pct}th percentile — you cleared the one people who identified as designers usually find slow going.",
+            },
+          ],
+          shame: [
+            {
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "people who identified as designers",
+              pct: [49, 65],
+              template:
+                "${pct}% of people who identified as designers got this one — you didn't.",
+            },
+          ],
+        },
+      },
+    },
+    response: {
+      probes: [
         "pride",
         "relief",
         "disappointment",
@@ -4590,45 +3961,39 @@ export const REASONING_BANK = [
         "anxiety",
         "confusion",
         "boredom",
-        "none"
+        "none",
       ],
-      "scale": {
-        "type": "likert",
-        "min": 1,
-        "max": 7
+      scale: {
+        type: "likert",
+        min: 1,
+        max: 7,
       },
-      "cleanCore": {
-        "dominantMin": 5,
-        "othersMax": 3
-      }
-    }
+      cleanCore: {
+        dominantMin: 5,
+        othersMax: 3,
+      },
+    },
   },
   {
-    "id": "ls_mid_03",
-    "stimulusId": "ls_mid_03",
-    "name": "Letter series — mid (MITRE LS; item ls_f07i1)",
-    "domains": [
-      "computing",
-      "design"
-    ],
-    "modality": "logic",
-    "languageLoad": "low",
-    "difficultyTier": "mid",
-    "unit": "single",
-    "instructions": "What letter comes next? Type your answer.",
-    "stimulus": {
-      "component": "letterSeries",
-      "scoreFn": "scoreLetterInput",
-      "response": "input",
-      "measures": [
-        "correct",
-        "rtMs"
-      ],
-      "item": {
-        "ref": "ls_f07i1",
-        "form": "1",
-        "b": -0.95,
-        "stem": [
+    id: "ls_mid_03",
+    stimulusId: "ls_mid_03",
+    name: "Letter series — mid (MITRE LS; item ls_f07i1)",
+    domains: ["computing", "design"],
+    modality: "logic",
+    languageLoad: "low",
+    difficultyTier: "mid",
+    unit: "single",
+    instructions: "What letter comes next? Type your answer.",
+    stimulus: {
+      component: "letterSeries",
+      scoreFn: "scoreLetterInput",
+      response: "input",
+      measures: ["correct", "rtMs"],
+      item: {
+        ref: "ls_f07i1",
+        form: "1",
+        b: -0.95,
+        stem: [
           "V",
           "V",
           "F",
@@ -4642,256 +4007,230 @@ export const REASONING_BANK = [
           "B",
           "L",
           "D",
-          "D"
+          "D",
         ],
-        "key": "N"
-      }
-    },
-    "calibration": {
-      "realPSuccess": 0.58,
-      "medianRtMs": 55000,
-      "plausiblePct": [
-        25,
-        80
-      ],
-      "plausiblePctSpeed": [
-        25,
-        78
-      ],
-      "b": -0.95,
-      "itemRef": "ls_f07i1"
-    },
-    "timer": {
-      "mode": "hidden"
-    },
-    "framing": {
-      "computing": {
-        "primes": [
-          {
-            "id": "p_expectHigh",
-            "setsExpectancy": "high",
-            "attributionFrame": "none",
-            "text": "Your earlier rounds point to step-by-step rule-finding clicking today."
-          },
-          {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "This one is a step up — most students on the computing track slow right down."
-          },
-          {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward working the rule through, not eyeballing it."
-          },
-          {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This set reads step-by-step rule-finding fairly cleanly."
-          }
-        ],
-        "feedback": {
-          "pride": [
-            {
-              "id": "pride_ind",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                72,
-                82
-              ],
-              "template": "${pct}th percentile — a real marker of step-by-step rule-finding, and the care shows."
-            }
-          ],
-          "guilt": [
-            {
-              "id": "guilt_effort",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                28,
-                45
-              ],
-              "template": "Bottom ${pct}% — you clearly have the head for step-by-step rule-finding; you just didn't work it through methodically."
-            }
-          ],
-          "disappointment": [
-            {
-              "id": "disap_ind",
-              "comparison": "individuating",
-              "attribution": "none",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "requiresExpectancy": "high",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                26,
-                46
-              ],
-              "template": "${pct}th percentile — short of what your earlier rounds pointed to."
-            }
-          ],
-          "relief": [
-            {
-              "id": "relief_self",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                55,
-                78
-              ],
-              "template": "${pct}th percentile — you cleared the one students on the computing track usually find slow going."
-            }
-          ],
-          "shame": [
-            {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "students on the computing track",
-              "pct": [
-                49,
-                65
-              ],
-              "template": "${pct}% of students on the computing track got this one — you didn't."
-            }
-          ]
-        }
+        key: "N",
       },
-      "design": {
-        "primes": [
-          {
-            "id": "p_expectHigh",
-            "setsExpectancy": "high",
-            "attributionFrame": "none",
-            "text": "Your earlier rounds point to the systematic rule-finding behind good design clicking today."
-          },
-          {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "This one is a step up — most people who identified as designers slow right down."
-          },
-          {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward working the rule through, not eyeballing it."
-          },
-          {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This set reads the systematic rule-finding behind good design fairly cleanly."
-          }
-        ],
-        "feedback": {
-          "pride": [
-            {
-              "id": "pride_ind",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                72,
-                82
-              ],
-              "template": "${pct}th percentile — a real marker of the systematic rule-finding behind good design, and the care shows."
-            }
-          ],
-          "guilt": [
-            {
-              "id": "guilt_effort",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                28,
-                45
-              ],
-              "template": "Bottom ${pct}% — you clearly have the head for the systematic rule-finding behind good design; you just didn't work it through methodically."
-            }
-          ],
-          "disappointment": [
-            {
-              "id": "disap_ind",
-              "comparison": "individuating",
-              "attribution": "none",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "requiresExpectancy": "high",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                26,
-                46
-              ],
-              "template": "${pct}th percentile — short of what your earlier rounds pointed to."
-            }
-          ],
-          "relief": [
-            {
-              "id": "relief_self",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                55,
-                78
-              ],
-              "template": "${pct}th percentile — you cleared the one people who identified as designers usually find slow going."
-            }
-          ],
-          "shame": [
-            {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "people who identified as designers",
-              "pct": [
-                49,
-                65
-              ],
-              "template": "${pct}% of people who identified as designers got this one — you didn't."
-            }
-          ]
-        }
-      }
     },
-    "response": {
-      "probes": [
+    calibration: {
+      realPSuccess: 0.58,
+      medianRtMs: 55000,
+      plausiblePct: [25, 80],
+      plausiblePctSpeed: [25, 78],
+      b: -0.95,
+      itemRef: "ls_f07i1",
+    },
+    timer: {
+      mode: "hidden",
+    },
+    framing: {
+      computing: {
+        primes: [
+          {
+            id: "p_expectHigh",
+            setsExpectancy: "high",
+            attributionFrame: "none",
+            text: "Your earlier rounds point to step-by-step rule-finding clicking today.",
+          },
+          {
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "This one is a step up — most students on the computing track slow right down.",
+          },
+          {
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward working the rule through, not eyeballing it.",
+          },
+          {
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This set reads step-by-step rule-finding fairly cleanly.",
+          },
+        ],
+        feedback: {
+          pride: [
+            {
+              id: "pride_ind",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [72, 82],
+              template:
+                "${pct}th percentile — a real marker of step-by-step rule-finding, and the care shows.",
+            },
+          ],
+          guilt: [
+            {
+              id: "guilt_effort",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [28, 45],
+              template:
+                "Bottom ${pct}% — you clearly have the head for step-by-step rule-finding; you just didn't work it through methodically.",
+            },
+          ],
+          disappointment: [
+            {
+              id: "disap_ind",
+              comparison: "individuating",
+              attribution: "none",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              requiresExpectancy: "high",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [26, 46],
+              template:
+                "${pct}th percentile — short of what your earlier rounds pointed to.",
+            },
+          ],
+          relief: [
+            {
+              id: "relief_self",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [55, 78],
+              template:
+                "${pct}th percentile — you cleared the one students on the computing track usually find slow going.",
+            },
+          ],
+          shame: [
+            {
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "students on the computing track",
+              pct: [49, 65],
+              template:
+                "${pct}% of students on the computing track got this one — you didn't.",
+            },
+          ],
+        },
+      },
+      design: {
+        primes: [
+          {
+            id: "p_expectHigh",
+            setsExpectancy: "high",
+            attributionFrame: "none",
+            text: "Your earlier rounds point to the systematic rule-finding behind good design clicking today.",
+          },
+          {
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "This one is a step up — most people who identified as designers slow right down.",
+          },
+          {
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward working the rule through, not eyeballing it.",
+          },
+          {
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This set reads the systematic rule-finding behind good design fairly cleanly.",
+          },
+        ],
+        feedback: {
+          pride: [
+            {
+              id: "pride_ind",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [72, 82],
+              template:
+                "${pct}th percentile — a real marker of the systematic rule-finding behind good design, and the care shows.",
+            },
+          ],
+          guilt: [
+            {
+              id: "guilt_effort",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [28, 45],
+              template:
+                "Bottom ${pct}% — you clearly have the head for the systematic rule-finding behind good design; you just didn't work it through methodically.",
+            },
+          ],
+          disappointment: [
+            {
+              id: "disap_ind",
+              comparison: "individuating",
+              attribution: "none",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              requiresExpectancy: "high",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [26, 46],
+              template:
+                "${pct}th percentile — short of what your earlier rounds pointed to.",
+            },
+          ],
+          relief: [
+            {
+              id: "relief_self",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [55, 78],
+              template:
+                "${pct}th percentile — you cleared the one people who identified as designers usually find slow going.",
+            },
+          ],
+          shame: [
+            {
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "people who identified as designers",
+              pct: [49, 65],
+              template:
+                "${pct}% of people who identified as designers got this one — you didn't.",
+            },
+          ],
+        },
+      },
+    },
+    response: {
+      probes: [
         "pride",
         "relief",
         "disappointment",
@@ -4900,45 +4239,39 @@ export const REASONING_BANK = [
         "anxiety",
         "confusion",
         "boredom",
-        "none"
+        "none",
       ],
-      "scale": {
-        "type": "likert",
-        "min": 1,
-        "max": 7
+      scale: {
+        type: "likert",
+        min: 1,
+        max: 7,
       },
-      "cleanCore": {
-        "dominantMin": 5,
-        "othersMax": 3
-      }
-    }
+      cleanCore: {
+        dominantMin: 5,
+        othersMax: 3,
+      },
+    },
   },
   {
-    "id": "ls_hard_01",
-    "stimulusId": "ls_hard_01",
-    "name": "Letter series — hard (MITRE LS; item ls_f06i1)",
-    "domains": [
-      "computing",
-      "design"
-    ],
-    "modality": "logic",
-    "languageLoad": "low",
-    "difficultyTier": "hard",
-    "unit": "single",
-    "instructions": "What letter comes next? Type your answer.",
-    "stimulus": {
-      "component": "letterSeries",
-      "scoreFn": "scoreLetterInput",
-      "response": "input",
-      "measures": [
-        "correct",
-        "rtMs"
-      ],
-      "item": {
-        "ref": "ls_f06i1",
-        "form": "1",
-        "b": 0.18,
-        "stem": [
+    id: "ls_hard_01",
+    stimulusId: "ls_hard_01",
+    name: "Letter series — hard (MITRE LS; item ls_f06i1)",
+    domains: ["computing", "design"],
+    modality: "logic",
+    languageLoad: "low",
+    difficultyTier: "hard",
+    unit: "single",
+    instructions: "What letter comes next? Type your answer.",
+    stimulus: {
+      component: "letterSeries",
+      scoreFn: "scoreLetterInput",
+      response: "input",
+      measures: ["correct", "rtMs"],
+      item: {
+        ref: "ls_f06i1",
+        form: "1",
+        b: 0.18,
+        stem: [
           "N",
           "I",
           "B",
@@ -4952,280 +4285,250 @@ export const REASONING_BANK = [
           "F",
           "I",
           "T",
-          "I"
+          "I",
         ],
-        "key": "H"
-      }
-    },
-    "calibration": {
-      "realPSuccess": 0.22,
-      "medianRtMs": 85000,
-      "plausiblePct": [
-        2,
-        45
-      ],
-      "plausiblePctSpeed": [
-        2,
-        42
-      ],
-      "b": 0.18,
-      "itemRef": "ls_f06i1"
-    },
-    "timer": {
-      "mode": "hidden"
-    },
-    "framing": {
-      "computing": {
-        "primes": [
-          {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This set is diagnostic of core step-by-step rule-finding."
-          },
-          {
-            "id": "p_expectHigh",
-            "setsExpectancy": "high",
-            "attributionFrame": "none",
-            "text": "Given your run so far, this should be within reach."
-          },
-          {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "Heads-up — most students on the computing track miss this one."
-          },
-          {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward grinding the rule through methodically."
-          }
-        ],
-        "feedback": {
-          "shame": [
-            {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                3,
-                18
-              ],
-              "template": "You came out in the bottom ${pct}% — step-by-step rule-finding may not be where your strength lies."
-            },
-            {
-              "id": "shame_hard",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 3,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                2,
-                10
-              ],
-              "template": "Bottom ${pct}% again — others at your level are well ahead; step-by-step rule-finding may just not be your area."
-            },
-            {
-              "id": "shame_speed",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "correct",
-              "pctRef": "self_speed",
-              "referent": "students on the computing track",
-              "pct": [
-                4,
-                20
-              ],
-              "template": "You got it — but among students on the computing track who solved it you were in the bottom ${pct}% for speed, and quick step-by-step rule-finding is what counts here."
-            }
-          ],
-          "guilt": [
-            {
-              "id": "guilt_effort",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                8,
-                28
-              ],
-              "template": "Bottom ${pct}% — you clearly have the head for step-by-step rule-finding; you just didn't work it through methodically."
-            }
-          ],
-          "disappointment": [
-            {
-              "id": "disap_ind",
-              "comparison": "individuating",
-              "attribution": "none",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "requiresExpectancy": "high",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                12,
-                42
-              ],
-              "template": "${pct}th percentile — short of what your earlier rounds pointed to."
-            }
-          ],
-          "relief": [
-            {
-              "id": "relief_norm",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "peer_success",
-              "referent": "students on the computing track",
-              "pct": [
-                13,
-                29
-              ],
-              "template": "Only ${pct}% of students on the computing track solve this one — you're one of them."
-            }
-          ]
-        }
+        key: "H",
       },
-      "design": {
-        "primes": [
-          {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This set is diagnostic of core the systematic rule-finding behind good design."
-          },
-          {
-            "id": "p_expectHigh",
-            "setsExpectancy": "high",
-            "attributionFrame": "none",
-            "text": "Given your run so far, this should be within reach."
-          },
-          {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "Heads-up — most people who identified as designers miss this one."
-          },
-          {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward grinding the rule through methodically."
-          }
-        ],
-        "feedback": {
-          "shame": [
-            {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                3,
-                18
-              ],
-              "template": "You came out in the bottom ${pct}% — the systematic rule-finding behind good design may not be where your strength lies."
-            },
-            {
-              "id": "shame_hard",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 3,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                2,
-                10
-              ],
-              "template": "Bottom ${pct}% again — others at your level are well ahead; the systematic rule-finding behind good design may just not be your area."
-            },
-            {
-              "id": "shame_speed",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "correct",
-              "pctRef": "self_speed",
-              "referent": "people who identified as designers",
-              "pct": [
-                4,
-                20
-              ],
-              "template": "You got it — but among people who identified as designers who solved it you were in the bottom ${pct}% for speed, and quick the systematic rule-finding behind good design is what counts here."
-            }
-          ],
-          "guilt": [
-            {
-              "id": "guilt_effort",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                8,
-                28
-              ],
-              "template": "Bottom ${pct}% — you clearly have the head for the systematic rule-finding behind good design; you just didn't work it through methodically."
-            }
-          ],
-          "disappointment": [
-            {
-              "id": "disap_ind",
-              "comparison": "individuating",
-              "attribution": "none",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "requiresExpectancy": "high",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                12,
-                42
-              ],
-              "template": "${pct}th percentile — short of what your earlier rounds pointed to."
-            }
-          ],
-          "relief": [
-            {
-              "id": "relief_norm",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "peer_success",
-              "referent": "people who identified as designers",
-              "pct": [
-                13,
-                29
-              ],
-              "template": "Only ${pct}% of people who identified as designers solve this one — you're one of them."
-            }
-          ]
-        }
-      }
     },
-    "response": {
-      "probes": [
+    calibration: {
+      realPSuccess: 0.22,
+      medianRtMs: 85000,
+      plausiblePct: [2, 45],
+      plausiblePctSpeed: [2, 42],
+      b: 0.18,
+      itemRef: "ls_f06i1",
+    },
+    timer: {
+      mode: "hidden",
+    },
+    framing: {
+      computing: {
+        primes: [
+          {
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This set is diagnostic of core step-by-step rule-finding.",
+          },
+          {
+            id: "p_expectHigh",
+            setsExpectancy: "high",
+            attributionFrame: "none",
+            text: "Given your run so far, this should be within reach.",
+          },
+          {
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "Heads-up — most students on the computing track miss this one.",
+          },
+          {
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward grinding the rule through methodically.",
+          },
+        ],
+        feedback: {
+          shame: [
+            {
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [3, 18],
+              template:
+                "You came out in the bottom ${pct}% — step-by-step rule-finding may not be where your strength lies.",
+            },
+            {
+              id: "shame_hard",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 3,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [2, 10],
+              template:
+                "Bottom ${pct}% again — others at your level are well ahead; step-by-step rule-finding may just not be your area.",
+            },
+            {
+              id: "shame_speed",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "correct",
+              pctRef: "self_speed",
+              referent: "students on the computing track",
+              pct: [4, 20],
+              template:
+                "You got it — but among students on the computing track who solved it you were in the bottom ${pct}% for speed, and quick step-by-step rule-finding is what counts here.",
+            },
+          ],
+          guilt: [
+            {
+              id: "guilt_effort",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [8, 28],
+              template:
+                "Bottom ${pct}% — you clearly have the head for step-by-step rule-finding; you just didn't work it through methodically.",
+            },
+          ],
+          disappointment: [
+            {
+              id: "disap_ind",
+              comparison: "individuating",
+              attribution: "none",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              requiresExpectancy: "high",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [12, 42],
+              template:
+                "${pct}th percentile — short of what your earlier rounds pointed to.",
+            },
+          ],
+          relief: [
+            {
+              id: "relief_norm",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "peer_success",
+              referent: "students on the computing track",
+              pct: [13, 29],
+              template:
+                "Only ${pct}% of students on the computing track solve this one — you're one of them.",
+            },
+          ],
+        },
+      },
+      design: {
+        primes: [
+          {
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This set is diagnostic of core the systematic rule-finding behind good design.",
+          },
+          {
+            id: "p_expectHigh",
+            setsExpectancy: "high",
+            attributionFrame: "none",
+            text: "Given your run so far, this should be within reach.",
+          },
+          {
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "Heads-up — most people who identified as designers miss this one.",
+          },
+          {
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward grinding the rule through methodically.",
+          },
+        ],
+        feedback: {
+          shame: [
+            {
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [3, 18],
+              template:
+                "You came out in the bottom ${pct}% — the systematic rule-finding behind good design may not be where your strength lies.",
+            },
+            {
+              id: "shame_hard",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 3,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [2, 10],
+              template:
+                "Bottom ${pct}% again — others at your level are well ahead; the systematic rule-finding behind good design may just not be your area.",
+            },
+            {
+              id: "shame_speed",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "correct",
+              pctRef: "self_speed",
+              referent: "people who identified as designers",
+              pct: [4, 20],
+              template:
+                "You got it — but among people who identified as designers who solved it you were in the bottom ${pct}% for speed, and quick the systematic rule-finding behind good design is what counts here.",
+            },
+          ],
+          guilt: [
+            {
+              id: "guilt_effort",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [8, 28],
+              template:
+                "Bottom ${pct}% — you clearly have the head for the systematic rule-finding behind good design; you just didn't work it through methodically.",
+            },
+          ],
+          disappointment: [
+            {
+              id: "disap_ind",
+              comparison: "individuating",
+              attribution: "none",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              requiresExpectancy: "high",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [12, 42],
+              template:
+                "${pct}th percentile — short of what your earlier rounds pointed to.",
+            },
+          ],
+          relief: [
+            {
+              id: "relief_norm",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "peer_success",
+              referent: "people who identified as designers",
+              pct: [13, 29],
+              template:
+                "Only ${pct}% of people who identified as designers solve this one — you're one of them.",
+            },
+          ],
+        },
+      },
+    },
+    response: {
+      probes: [
         "pride",
         "relief",
         "disappointment",
@@ -5234,45 +4537,39 @@ export const REASONING_BANK = [
         "anxiety",
         "confusion",
         "boredom",
-        "none"
+        "none",
       ],
-      "scale": {
-        "type": "likert",
-        "min": 1,
-        "max": 7
+      scale: {
+        type: "likert",
+        min: 1,
+        max: 7,
       },
-      "cleanCore": {
-        "dominantMin": 5,
-        "othersMax": 3
-      }
-    }
+      cleanCore: {
+        dominantMin: 5,
+        othersMax: 3,
+      },
+    },
   },
   {
-    "id": "ls_hard_02",
-    "stimulusId": "ls_hard_02",
-    "name": "Letter series — hard (MITRE LS; item ls_f06i3)",
-    "domains": [
-      "computing",
-      "design"
-    ],
-    "modality": "logic",
-    "languageLoad": "low",
-    "difficultyTier": "hard",
-    "unit": "single",
-    "instructions": "What letter comes next? Type your answer.",
-    "stimulus": {
-      "component": "letterSeries",
-      "scoreFn": "scoreLetterInput",
-      "response": "input",
-      "measures": [
-        "correct",
-        "rtMs"
-      ],
-      "item": {
-        "ref": "ls_f06i3",
-        "form": "2",
-        "b": 0.2,
-        "stem": [
+    id: "ls_hard_02",
+    stimulusId: "ls_hard_02",
+    name: "Letter series — hard (MITRE LS; item ls_f06i3)",
+    domains: ["computing", "design"],
+    modality: "logic",
+    languageLoad: "low",
+    difficultyTier: "hard",
+    unit: "single",
+    instructions: "What letter comes next? Type your answer.",
+    stimulus: {
+      component: "letterSeries",
+      scoreFn: "scoreLetterInput",
+      response: "input",
+      measures: ["correct", "rtMs"],
+      item: {
+        ref: "ls_f06i3",
+        form: "2",
+        b: 0.2,
+        stem: [
           "Y",
           "W",
           "H",
@@ -5286,610 +4583,250 @@ export const REASONING_BANK = [
           "L",
           "W",
           "E",
-          "W"
-        ],
-        "key": "N"
-      }
-    },
-    "calibration": {
-      "realPSuccess": 0.22,
-      "medianRtMs": 85000,
-      "plausiblePct": [
-        2,
-        45
-      ],
-      "plausiblePctSpeed": [
-        2,
-        42
-      ],
-      "b": 0.2,
-      "itemRef": "ls_f06i3"
-    },
-    "timer": {
-      "mode": "hidden"
-    },
-    "framing": {
-      "computing": {
-        "primes": [
-          {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This set is diagnostic of core step-by-step rule-finding."
-          },
-          {
-            "id": "p_expectHigh",
-            "setsExpectancy": "high",
-            "attributionFrame": "none",
-            "text": "Given your run so far, this should be within reach."
-          },
-          {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "Heads-up — most students on the computing track miss this one."
-          },
-          {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward grinding the rule through methodically."
-          }
-        ],
-        "feedback": {
-          "shame": [
-            {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                3,
-                18
-              ],
-              "template": "You came out in the bottom ${pct}% — step-by-step rule-finding may not be where your strength lies."
-            },
-            {
-              "id": "shame_hard",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 3,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                2,
-                10
-              ],
-              "template": "Bottom ${pct}% again — others at your level are well ahead; step-by-step rule-finding may just not be your area."
-            },
-            {
-              "id": "shame_speed",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "correct",
-              "pctRef": "self_speed",
-              "referent": "students on the computing track",
-              "pct": [
-                4,
-                20
-              ],
-              "template": "You got it — but among students on the computing track who solved it you were in the bottom ${pct}% for speed, and quick step-by-step rule-finding is what counts here."
-            }
-          ],
-          "guilt": [
-            {
-              "id": "guilt_effort",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                8,
-                28
-              ],
-              "template": "Bottom ${pct}% — you clearly have the head for step-by-step rule-finding; you just didn't work it through methodically."
-            }
-          ],
-          "disappointment": [
-            {
-              "id": "disap_ind",
-              "comparison": "individuating",
-              "attribution": "none",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "requiresExpectancy": "high",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                12,
-                42
-              ],
-              "template": "${pct}th percentile — short of what your earlier rounds pointed to."
-            }
-          ],
-          "relief": [
-            {
-              "id": "relief_norm",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "peer_success",
-              "referent": "students on the computing track",
-              "pct": [
-                13,
-                29
-              ],
-              "template": "Only ${pct}% of students on the computing track solve this one — you're one of them."
-            }
-          ]
-        }
-      },
-      "design": {
-        "primes": [
-          {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This set is diagnostic of core the systematic rule-finding behind good design."
-          },
-          {
-            "id": "p_expectHigh",
-            "setsExpectancy": "high",
-            "attributionFrame": "none",
-            "text": "Given your run so far, this should be within reach."
-          },
-          {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "Heads-up — most people who identified as designers miss this one."
-          },
-          {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward grinding the rule through methodically."
-          }
-        ],
-        "feedback": {
-          "shame": [
-            {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                3,
-                18
-              ],
-              "template": "You came out in the bottom ${pct}% — the systematic rule-finding behind good design may not be where your strength lies."
-            },
-            {
-              "id": "shame_hard",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 3,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                2,
-                10
-              ],
-              "template": "Bottom ${pct}% again — others at your level are well ahead; the systematic rule-finding behind good design may just not be your area."
-            },
-            {
-              "id": "shame_speed",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "correct",
-              "pctRef": "self_speed",
-              "referent": "people who identified as designers",
-              "pct": [
-                4,
-                20
-              ],
-              "template": "You got it — but among people who identified as designers who solved it you were in the bottom ${pct}% for speed, and quick the systematic rule-finding behind good design is what counts here."
-            }
-          ],
-          "guilt": [
-            {
-              "id": "guilt_effort",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                8,
-                28
-              ],
-              "template": "Bottom ${pct}% — you clearly have the head for the systematic rule-finding behind good design; you just didn't work it through methodically."
-            }
-          ],
-          "disappointment": [
-            {
-              "id": "disap_ind",
-              "comparison": "individuating",
-              "attribution": "none",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "requiresExpectancy": "high",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                12,
-                42
-              ],
-              "template": "${pct}th percentile — short of what your earlier rounds pointed to."
-            }
-          ],
-          "relief": [
-            {
-              "id": "relief_norm",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "peer_success",
-              "referent": "people who identified as designers",
-              "pct": [
-                13,
-                29
-              ],
-              "template": "Only ${pct}% of people who identified as designers solve this one — you're one of them."
-            }
-          ]
-        }
-      }
-    },
-    "response": {
-      "probes": [
-        "pride",
-        "relief",
-        "disappointment",
-        "shame",
-        "guilt",
-        "anxiety",
-        "confusion",
-        "boredom",
-        "none"
-      ],
-      "scale": {
-        "type": "likert",
-        "min": 1,
-        "max": 7
-      },
-      "cleanCore": {
-        "dominantMin": 5,
-        "othersMax": 3
-      }
-    }
-  },
-  {
-    "id": "ls_hard_03",
-    "stimulusId": "ls_hard_03",
-    "name": "Letter series — hard (MITRE LS; item ls_f15i4)",
-    "domains": [
-      "computing",
-      "design"
-    ],
-    "modality": "logic",
-    "languageLoad": "low",
-    "difficultyTier": "hard",
-    "unit": "single",
-    "instructions": "What letter comes next? Type your answer.",
-    "stimulus": {
-      "component": "letterSeries",
-      "scoreFn": "scoreLetterInput",
-      "response": "input",
-      "measures": [
-        "correct",
-        "rtMs"
-      ],
-      "item": {
-        "ref": "ls_f15i4",
-        "form": "2",
-        "b": 0.2,
-        "stem": [
-          "G",
           "W",
-          "A",
-          "I",
-          "Y",
-          "C",
-          "K",
-          "A",
-          "E",
-          "M"
         ],
-        "key": "C"
-      }
-    },
-    "calibration": {
-      "realPSuccess": 0.22,
-      "medianRtMs": 85000,
-      "plausiblePct": [
-        2,
-        45
-      ],
-      "plausiblePctSpeed": [
-        2,
-        42
-      ],
-      "b": 0.2,
-      "itemRef": "ls_f15i4"
-    },
-    "timer": {
-      "mode": "hidden"
-    },
-    "framing": {
-      "computing": {
-        "primes": [
-          {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This set is diagnostic of core step-by-step rule-finding."
-          },
-          {
-            "id": "p_expectHigh",
-            "setsExpectancy": "high",
-            "attributionFrame": "none",
-            "text": "Given your run so far, this should be within reach."
-          },
-          {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "Heads-up — most students on the computing track miss this one."
-          },
-          {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward grinding the rule through methodically."
-          }
-        ],
-        "feedback": {
-          "shame": [
-            {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                3,
-                18
-              ],
-              "template": "You came out in the bottom ${pct}% — step-by-step rule-finding may not be where your strength lies."
-            },
-            {
-              "id": "shame_hard",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 3,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                2,
-                10
-              ],
-              "template": "Bottom ${pct}% again — others at your level are well ahead; step-by-step rule-finding may just not be your area."
-            },
-            {
-              "id": "shame_speed",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "correct",
-              "pctRef": "self_speed",
-              "referent": "students on the computing track",
-              "pct": [
-                4,
-                20
-              ],
-              "template": "You got it — but among students on the computing track who solved it you were in the bottom ${pct}% for speed, and quick step-by-step rule-finding is what counts here."
-            }
-          ],
-          "guilt": [
-            {
-              "id": "guilt_effort",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                8,
-                28
-              ],
-              "template": "Bottom ${pct}% — you clearly have the head for step-by-step rule-finding; you just didn't work it through methodically."
-            }
-          ],
-          "disappointment": [
-            {
-              "id": "disap_ind",
-              "comparison": "individuating",
-              "attribution": "none",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "requiresExpectancy": "high",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                12,
-                42
-              ],
-              "template": "${pct}th percentile — short of what your earlier rounds pointed to."
-            }
-          ],
-          "relief": [
-            {
-              "id": "relief_norm",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "peer_success",
-              "referent": "students on the computing track",
-              "pct": [
-                13,
-                29
-              ],
-              "template": "Only ${pct}% of students on the computing track solve this one — you're one of them."
-            }
-          ]
-        }
+        key: "N",
       },
-      "design": {
-        "primes": [
-          {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This set is diagnostic of core the systematic rule-finding behind good design."
-          },
-          {
-            "id": "p_expectHigh",
-            "setsExpectancy": "high",
-            "attributionFrame": "none",
-            "text": "Given your run so far, this should be within reach."
-          },
-          {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "Heads-up — most people who identified as designers miss this one."
-          },
-          {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward grinding the rule through methodically."
-          }
-        ],
-        "feedback": {
-          "shame": [
-            {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                3,
-                18
-              ],
-              "template": "You came out in the bottom ${pct}% — the systematic rule-finding behind good design may not be where your strength lies."
-            },
-            {
-              "id": "shame_hard",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 3,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                2,
-                10
-              ],
-              "template": "Bottom ${pct}% again — others at your level are well ahead; the systematic rule-finding behind good design may just not be your area."
-            },
-            {
-              "id": "shame_speed",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "correct",
-              "pctRef": "self_speed",
-              "referent": "people who identified as designers",
-              "pct": [
-                4,
-                20
-              ],
-              "template": "You got it — but among people who identified as designers who solved it you were in the bottom ${pct}% for speed, and quick the systematic rule-finding behind good design is what counts here."
-            }
-          ],
-          "guilt": [
-            {
-              "id": "guilt_effort",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                8,
-                28
-              ],
-              "template": "Bottom ${pct}% — you clearly have the head for the systematic rule-finding behind good design; you just didn't work it through methodically."
-            }
-          ],
-          "disappointment": [
-            {
-              "id": "disap_ind",
-              "comparison": "individuating",
-              "attribution": "none",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "requiresExpectancy": "high",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                12,
-                42
-              ],
-              "template": "${pct}th percentile — short of what your earlier rounds pointed to."
-            }
-          ],
-          "relief": [
-            {
-              "id": "relief_norm",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "peer_success",
-              "referent": "people who identified as designers",
-              "pct": [
-                13,
-                29
-              ],
-              "template": "Only ${pct}% of people who identified as designers solve this one — you're one of them."
-            }
-          ]
-        }
-      }
     },
-    "response": {
-      "probes": [
+    calibration: {
+      realPSuccess: 0.22,
+      medianRtMs: 85000,
+      plausiblePct: [2, 45],
+      plausiblePctSpeed: [2, 42],
+      b: 0.2,
+      itemRef: "ls_f06i3",
+    },
+    timer: {
+      mode: "hidden",
+    },
+    framing: {
+      computing: {
+        primes: [
+          {
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This set is diagnostic of core step-by-step rule-finding.",
+          },
+          {
+            id: "p_expectHigh",
+            setsExpectancy: "high",
+            attributionFrame: "none",
+            text: "Given your run so far, this should be within reach.",
+          },
+          {
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "Heads-up — most students on the computing track miss this one.",
+          },
+          {
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward grinding the rule through methodically.",
+          },
+        ],
+        feedback: {
+          shame: [
+            {
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [3, 18],
+              template:
+                "You came out in the bottom ${pct}% — step-by-step rule-finding may not be where your strength lies.",
+            },
+            {
+              id: "shame_hard",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 3,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [2, 10],
+              template:
+                "Bottom ${pct}% again — others at your level are well ahead; step-by-step rule-finding may just not be your area.",
+            },
+            {
+              id: "shame_speed",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "correct",
+              pctRef: "self_speed",
+              referent: "students on the computing track",
+              pct: [4, 20],
+              template:
+                "You got it — but among students on the computing track who solved it you were in the bottom ${pct}% for speed, and quick step-by-step rule-finding is what counts here.",
+            },
+          ],
+          guilt: [
+            {
+              id: "guilt_effort",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [8, 28],
+              template:
+                "Bottom ${pct}% — you clearly have the head for step-by-step rule-finding; you just didn't work it through methodically.",
+            },
+          ],
+          disappointment: [
+            {
+              id: "disap_ind",
+              comparison: "individuating",
+              attribution: "none",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              requiresExpectancy: "high",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [12, 42],
+              template:
+                "${pct}th percentile — short of what your earlier rounds pointed to.",
+            },
+          ],
+          relief: [
+            {
+              id: "relief_norm",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "peer_success",
+              referent: "students on the computing track",
+              pct: [13, 29],
+              template:
+                "Only ${pct}% of students on the computing track solve this one — you're one of them.",
+            },
+          ],
+        },
+      },
+      design: {
+        primes: [
+          {
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This set is diagnostic of core the systematic rule-finding behind good design.",
+          },
+          {
+            id: "p_expectHigh",
+            setsExpectancy: "high",
+            attributionFrame: "none",
+            text: "Given your run so far, this should be within reach.",
+          },
+          {
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "Heads-up — most people who identified as designers miss this one.",
+          },
+          {
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward grinding the rule through methodically.",
+          },
+        ],
+        feedback: {
+          shame: [
+            {
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [3, 18],
+              template:
+                "You came out in the bottom ${pct}% — the systematic rule-finding behind good design may not be where your strength lies.",
+            },
+            {
+              id: "shame_hard",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 3,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [2, 10],
+              template:
+                "Bottom ${pct}% again — others at your level are well ahead; the systematic rule-finding behind good design may just not be your area.",
+            },
+            {
+              id: "shame_speed",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "correct",
+              pctRef: "self_speed",
+              referent: "people who identified as designers",
+              pct: [4, 20],
+              template:
+                "You got it — but among people who identified as designers who solved it you were in the bottom ${pct}% for speed, and quick the systematic rule-finding behind good design is what counts here.",
+            },
+          ],
+          guilt: [
+            {
+              id: "guilt_effort",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [8, 28],
+              template:
+                "Bottom ${pct}% — you clearly have the head for the systematic rule-finding behind good design; you just didn't work it through methodically.",
+            },
+          ],
+          disappointment: [
+            {
+              id: "disap_ind",
+              comparison: "individuating",
+              attribution: "none",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              requiresExpectancy: "high",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [12, 42],
+              template:
+                "${pct}th percentile — short of what your earlier rounds pointed to.",
+            },
+          ],
+          relief: [
+            {
+              id: "relief_norm",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "peer_success",
+              referent: "people who identified as designers",
+              pct: [13, 29],
+              template:
+                "Only ${pct}% of people who identified as designers solve this one — you're one of them.",
+            },
+          ],
+        },
+      },
+    },
+    response: {
+      probes: [
         "pride",
         "relief",
         "disappointment",
@@ -5898,45 +4835,322 @@ export const REASONING_BANK = [
         "anxiety",
         "confusion",
         "boredom",
-        "none"
+        "none",
       ],
-      "scale": {
-        "type": "likert",
-        "min": 1,
-        "max": 7
+      scale: {
+        type: "likert",
+        min: 1,
+        max: 7,
       },
-      "cleanCore": {
-        "dominantMin": 5,
-        "othersMax": 3
-      }
-    }
+      cleanCore: {
+        dominantMin: 5,
+        othersMax: 3,
+      },
+    },
   },
   {
-    "id": "ls_hard_04",
-    "stimulusId": "ls_hard_04",
-    "name": "Letter series — hard (MITRE LS; item ls_f07i3)",
-    "domains": [
-      "computing",
-      "design"
-    ],
-    "modality": "logic",
-    "languageLoad": "low",
-    "difficultyTier": "hard",
-    "unit": "single",
-    "instructions": "What letter comes next? Type your answer.",
-    "stimulus": {
-      "component": "letterSeries",
-      "scoreFn": "scoreLetterInput",
-      "response": "input",
-      "measures": [
-        "correct",
-        "rtMs"
+    id: "ls_hard_03",
+    stimulusId: "ls_hard_03",
+    name: "Letter series — hard (MITRE LS; item ls_f15i4)",
+    domains: ["computing", "design"],
+    modality: "logic",
+    languageLoad: "low",
+    difficultyTier: "hard",
+    unit: "single",
+    instructions: "What letter comes next? Type your answer.",
+    stimulus: {
+      component: "letterSeries",
+      scoreFn: "scoreLetterInput",
+      response: "input",
+      measures: ["correct", "rtMs"],
+      item: {
+        ref: "ls_f15i4",
+        form: "2",
+        b: 0.2,
+        stem: ["G", "W", "A", "I", "Y", "C", "K", "A", "E", "M"],
+        key: "C",
+      },
+    },
+    calibration: {
+      realPSuccess: 0.22,
+      medianRtMs: 85000,
+      plausiblePct: [2, 45],
+      plausiblePctSpeed: [2, 42],
+      b: 0.2,
+      itemRef: "ls_f15i4",
+    },
+    timer: {
+      mode: "hidden",
+    },
+    framing: {
+      computing: {
+        primes: [
+          {
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This set is diagnostic of core step-by-step rule-finding.",
+          },
+          {
+            id: "p_expectHigh",
+            setsExpectancy: "high",
+            attributionFrame: "none",
+            text: "Given your run so far, this should be within reach.",
+          },
+          {
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "Heads-up — most students on the computing track miss this one.",
+          },
+          {
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward grinding the rule through methodically.",
+          },
+        ],
+        feedback: {
+          shame: [
+            {
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [3, 18],
+              template:
+                "You came out in the bottom ${pct}% — step-by-step rule-finding may not be where your strength lies.",
+            },
+            {
+              id: "shame_hard",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 3,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [2, 10],
+              template:
+                "Bottom ${pct}% again — others at your level are well ahead; step-by-step rule-finding may just not be your area.",
+            },
+            {
+              id: "shame_speed",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "correct",
+              pctRef: "self_speed",
+              referent: "students on the computing track",
+              pct: [4, 20],
+              template:
+                "You got it — but among students on the computing track who solved it you were in the bottom ${pct}% for speed, and quick step-by-step rule-finding is what counts here.",
+            },
+          ],
+          guilt: [
+            {
+              id: "guilt_effort",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [8, 28],
+              template:
+                "Bottom ${pct}% — you clearly have the head for step-by-step rule-finding; you just didn't work it through methodically.",
+            },
+          ],
+          disappointment: [
+            {
+              id: "disap_ind",
+              comparison: "individuating",
+              attribution: "none",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              requiresExpectancy: "high",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [12, 42],
+              template:
+                "${pct}th percentile — short of what your earlier rounds pointed to.",
+            },
+          ],
+          relief: [
+            {
+              id: "relief_norm",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "peer_success",
+              referent: "students on the computing track",
+              pct: [13, 29],
+              template:
+                "Only ${pct}% of students on the computing track solve this one — you're one of them.",
+            },
+          ],
+        },
+      },
+      design: {
+        primes: [
+          {
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This set is diagnostic of core the systematic rule-finding behind good design.",
+          },
+          {
+            id: "p_expectHigh",
+            setsExpectancy: "high",
+            attributionFrame: "none",
+            text: "Given your run so far, this should be within reach.",
+          },
+          {
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "Heads-up — most people who identified as designers miss this one.",
+          },
+          {
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward grinding the rule through methodically.",
+          },
+        ],
+        feedback: {
+          shame: [
+            {
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [3, 18],
+              template:
+                "You came out in the bottom ${pct}% — the systematic rule-finding behind good design may not be where your strength lies.",
+            },
+            {
+              id: "shame_hard",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 3,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [2, 10],
+              template:
+                "Bottom ${pct}% again — others at your level are well ahead; the systematic rule-finding behind good design may just not be your area.",
+            },
+            {
+              id: "shame_speed",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "correct",
+              pctRef: "self_speed",
+              referent: "people who identified as designers",
+              pct: [4, 20],
+              template:
+                "You got it — but among people who identified as designers who solved it you were in the bottom ${pct}% for speed, and quick the systematic rule-finding behind good design is what counts here.",
+            },
+          ],
+          guilt: [
+            {
+              id: "guilt_effort",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [8, 28],
+              template:
+                "Bottom ${pct}% — you clearly have the head for the systematic rule-finding behind good design; you just didn't work it through methodically.",
+            },
+          ],
+          disappointment: [
+            {
+              id: "disap_ind",
+              comparison: "individuating",
+              attribution: "none",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              requiresExpectancy: "high",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [12, 42],
+              template:
+                "${pct}th percentile — short of what your earlier rounds pointed to.",
+            },
+          ],
+          relief: [
+            {
+              id: "relief_norm",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "peer_success",
+              referent: "people who identified as designers",
+              pct: [13, 29],
+              template:
+                "Only ${pct}% of people who identified as designers solve this one — you're one of them.",
+            },
+          ],
+        },
+      },
+    },
+    response: {
+      probes: [
+        "pride",
+        "relief",
+        "disappointment",
+        "shame",
+        "guilt",
+        "anxiety",
+        "confusion",
+        "boredom",
+        "none",
       ],
-      "item": {
-        "ref": "ls_f07i3",
-        "form": "2",
-        "b": 0.24,
-        "stem": [
+      scale: {
+        type: "likert",
+        min: 1,
+        max: 7,
+      },
+      cleanCore: {
+        dominantMin: 5,
+        othersMax: 3,
+      },
+    },
+  },
+  {
+    id: "ls_hard_04",
+    stimulusId: "ls_hard_04",
+    name: "Letter series — hard (MITRE LS; item ls_f07i3)",
+    domains: ["computing", "design"],
+    modality: "logic",
+    languageLoad: "low",
+    difficultyTier: "hard",
+    unit: "single",
+    instructions: "What letter comes next? Type your answer.",
+    stimulus: {
+      component: "letterSeries",
+      scoreFn: "scoreLetterInput",
+      response: "input",
+      measures: ["correct", "rtMs"],
+      item: {
+        ref: "ls_f07i3",
+        form: "2",
+        b: 0.24,
+        stem: [
           "I",
           "E",
           "B",
@@ -5950,280 +5164,250 @@ export const REASONING_BANK = [
           "F",
           "E",
           "O",
-          "E"
+          "E",
         ],
-        "key": "H"
-      }
-    },
-    "calibration": {
-      "realPSuccess": 0.22,
-      "medianRtMs": 85000,
-      "plausiblePct": [
-        2,
-        45
-      ],
-      "plausiblePctSpeed": [
-        2,
-        42
-      ],
-      "b": 0.24,
-      "itemRef": "ls_f07i3"
-    },
-    "timer": {
-      "mode": "hidden"
-    },
-    "framing": {
-      "computing": {
-        "primes": [
-          {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This set is diagnostic of core step-by-step rule-finding."
-          },
-          {
-            "id": "p_expectHigh",
-            "setsExpectancy": "high",
-            "attributionFrame": "none",
-            "text": "Given your run so far, this should be within reach."
-          },
-          {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "Heads-up — most students on the computing track miss this one."
-          },
-          {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward grinding the rule through methodically."
-          }
-        ],
-        "feedback": {
-          "shame": [
-            {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                3,
-                18
-              ],
-              "template": "You came out in the bottom ${pct}% — step-by-step rule-finding may not be where your strength lies."
-            },
-            {
-              "id": "shame_hard",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 3,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                2,
-                10
-              ],
-              "template": "Bottom ${pct}% again — others at your level are well ahead; step-by-step rule-finding may just not be your area."
-            },
-            {
-              "id": "shame_speed",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "correct",
-              "pctRef": "self_speed",
-              "referent": "students on the computing track",
-              "pct": [
-                4,
-                20
-              ],
-              "template": "You got it — but among students on the computing track who solved it you were in the bottom ${pct}% for speed, and quick step-by-step rule-finding is what counts here."
-            }
-          ],
-          "guilt": [
-            {
-              "id": "guilt_effort",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                8,
-                28
-              ],
-              "template": "Bottom ${pct}% — you clearly have the head for step-by-step rule-finding; you just didn't work it through methodically."
-            }
-          ],
-          "disappointment": [
-            {
-              "id": "disap_ind",
-              "comparison": "individuating",
-              "attribution": "none",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "requiresExpectancy": "high",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                12,
-                42
-              ],
-              "template": "${pct}th percentile — short of what your earlier rounds pointed to."
-            }
-          ],
-          "relief": [
-            {
-              "id": "relief_norm",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "peer_success",
-              "referent": "students on the computing track",
-              "pct": [
-                13,
-                29
-              ],
-              "template": "Only ${pct}% of students on the computing track solve this one — you're one of them."
-            }
-          ]
-        }
+        key: "H",
       },
-      "design": {
-        "primes": [
-          {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This set is diagnostic of core the systematic rule-finding behind good design."
-          },
-          {
-            "id": "p_expectHigh",
-            "setsExpectancy": "high",
-            "attributionFrame": "none",
-            "text": "Given your run so far, this should be within reach."
-          },
-          {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "Heads-up — most people who identified as designers miss this one."
-          },
-          {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward grinding the rule through methodically."
-          }
-        ],
-        "feedback": {
-          "shame": [
-            {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                3,
-                18
-              ],
-              "template": "You came out in the bottom ${pct}% — the systematic rule-finding behind good design may not be where your strength lies."
-            },
-            {
-              "id": "shame_hard",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 3,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                2,
-                10
-              ],
-              "template": "Bottom ${pct}% again — others at your level are well ahead; the systematic rule-finding behind good design may just not be your area."
-            },
-            {
-              "id": "shame_speed",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "correct",
-              "pctRef": "self_speed",
-              "referent": "people who identified as designers",
-              "pct": [
-                4,
-                20
-              ],
-              "template": "You got it — but among people who identified as designers who solved it you were in the bottom ${pct}% for speed, and quick the systematic rule-finding behind good design is what counts here."
-            }
-          ],
-          "guilt": [
-            {
-              "id": "guilt_effort",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                8,
-                28
-              ],
-              "template": "Bottom ${pct}% — you clearly have the head for the systematic rule-finding behind good design; you just didn't work it through methodically."
-            }
-          ],
-          "disappointment": [
-            {
-              "id": "disap_ind",
-              "comparison": "individuating",
-              "attribution": "none",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "requiresExpectancy": "high",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                12,
-                42
-              ],
-              "template": "${pct}th percentile — short of what your earlier rounds pointed to."
-            }
-          ],
-          "relief": [
-            {
-              "id": "relief_norm",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "peer_success",
-              "referent": "people who identified as designers",
-              "pct": [
-                13,
-                29
-              ],
-              "template": "Only ${pct}% of people who identified as designers solve this one — you're one of them."
-            }
-          ]
-        }
-      }
     },
-    "response": {
-      "probes": [
+    calibration: {
+      realPSuccess: 0.22,
+      medianRtMs: 85000,
+      plausiblePct: [2, 45],
+      plausiblePctSpeed: [2, 42],
+      b: 0.24,
+      itemRef: "ls_f07i3",
+    },
+    timer: {
+      mode: "hidden",
+    },
+    framing: {
+      computing: {
+        primes: [
+          {
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This set is diagnostic of core step-by-step rule-finding.",
+          },
+          {
+            id: "p_expectHigh",
+            setsExpectancy: "high",
+            attributionFrame: "none",
+            text: "Given your run so far, this should be within reach.",
+          },
+          {
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "Heads-up — most students on the computing track miss this one.",
+          },
+          {
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward grinding the rule through methodically.",
+          },
+        ],
+        feedback: {
+          shame: [
+            {
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [3, 18],
+              template:
+                "You came out in the bottom ${pct}% — step-by-step rule-finding may not be where your strength lies.",
+            },
+            {
+              id: "shame_hard",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 3,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [2, 10],
+              template:
+                "Bottom ${pct}% again — others at your level are well ahead; step-by-step rule-finding may just not be your area.",
+            },
+            {
+              id: "shame_speed",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "correct",
+              pctRef: "self_speed",
+              referent: "students on the computing track",
+              pct: [4, 20],
+              template:
+                "You got it — but among students on the computing track who solved it you were in the bottom ${pct}% for speed, and quick step-by-step rule-finding is what counts here.",
+            },
+          ],
+          guilt: [
+            {
+              id: "guilt_effort",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [8, 28],
+              template:
+                "Bottom ${pct}% — you clearly have the head for step-by-step rule-finding; you just didn't work it through methodically.",
+            },
+          ],
+          disappointment: [
+            {
+              id: "disap_ind",
+              comparison: "individuating",
+              attribution: "none",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              requiresExpectancy: "high",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [12, 42],
+              template:
+                "${pct}th percentile — short of what your earlier rounds pointed to.",
+            },
+          ],
+          relief: [
+            {
+              id: "relief_norm",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "peer_success",
+              referent: "students on the computing track",
+              pct: [13, 29],
+              template:
+                "Only ${pct}% of students on the computing track solve this one — you're one of them.",
+            },
+          ],
+        },
+      },
+      design: {
+        primes: [
+          {
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This set is diagnostic of core the systematic rule-finding behind good design.",
+          },
+          {
+            id: "p_expectHigh",
+            setsExpectancy: "high",
+            attributionFrame: "none",
+            text: "Given your run so far, this should be within reach.",
+          },
+          {
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "Heads-up — most people who identified as designers miss this one.",
+          },
+          {
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward grinding the rule through methodically.",
+          },
+        ],
+        feedback: {
+          shame: [
+            {
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [3, 18],
+              template:
+                "You came out in the bottom ${pct}% — the systematic rule-finding behind good design may not be where your strength lies.",
+            },
+            {
+              id: "shame_hard",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 3,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [2, 10],
+              template:
+                "Bottom ${pct}% again — others at your level are well ahead; the systematic rule-finding behind good design may just not be your area.",
+            },
+            {
+              id: "shame_speed",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "correct",
+              pctRef: "self_speed",
+              referent: "people who identified as designers",
+              pct: [4, 20],
+              template:
+                "You got it — but among people who identified as designers who solved it you were in the bottom ${pct}% for speed, and quick the systematic rule-finding behind good design is what counts here.",
+            },
+          ],
+          guilt: [
+            {
+              id: "guilt_effort",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [8, 28],
+              template:
+                "Bottom ${pct}% — you clearly have the head for the systematic rule-finding behind good design; you just didn't work it through methodically.",
+            },
+          ],
+          disappointment: [
+            {
+              id: "disap_ind",
+              comparison: "individuating",
+              attribution: "none",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              requiresExpectancy: "high",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [12, 42],
+              template:
+                "${pct}th percentile — short of what your earlier rounds pointed to.",
+            },
+          ],
+          relief: [
+            {
+              id: "relief_norm",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "peer_success",
+              referent: "people who identified as designers",
+              pct: [13, 29],
+              template:
+                "Only ${pct}% of people who identified as designers solve this one — you're one of them.",
+            },
+          ],
+        },
+      },
+    },
+    response: {
+      probes: [
         "pride",
         "relief",
         "disappointment",
@@ -6232,287 +5416,245 @@ export const REASONING_BANK = [
         "anxiety",
         "confusion",
         "boredom",
-        "none"
+        "none",
       ],
-      "scale": {
-        "type": "likert",
-        "min": 1,
-        "max": 7
+      scale: {
+        type: "likert",
+        min: 1,
+        max: 7,
       },
-      "cleanCore": {
-        "dominantMin": 5,
-        "othersMax": 3
-      }
-    }
+      cleanCore: {
+        dominantMin: 5,
+        othersMax: 3,
+      },
+    },
   },
   {
-    "id": "fs_easy_01",
-    "stimulusId": "fs_easy_01",
-    "name": "Figure series — easy (MITRE FS; item as_b4i4)",
-    "domains": [
-      "design",
-      "media"
-    ],
-    "modality": "perceptual",
-    "languageLoad": "low",
-    "difficultyTier": "easy",
-    "unit": "single",
-    "instructions": "Which arrow comes next? Click your answer.",
-    "stimulus": {
-      "component": "figureSeries",
-      "scoreFn": "scoreChoice",
-      "response": "choice",
-      "optionCount": 8,
-      "answerSet": "N|NE|E|SE|S|SW|W|NW",
-      "measures": [
-        "correct",
-        "rtMs"
-      ],
-      "item": {
-        "ref": "as_b4i4",
-        "form": "2",
-        "b": -4.48,
-        "stem": [
-          "NE",
-          "E",
-          "SE",
-          "S",
-          "SW",
-          "W",
-          "NW",
-          "N",
-          "NE"
-        ],
-        "key": "E"
-      }
-    },
-    "calibration": {
-      "realPSuccess": 0.85,
-      "medianRtMs": 35000,
-      "plausiblePct": [
-        60,
-        99
-      ],
-      "plausiblePctSpeed": [
-        60,
-        99
-      ],
-      "b": -4.48,
-      "itemRef": "as_b4i4"
-    },
-    "timer": {
-      "mode": "hidden"
-    },
-    "framing": {
-      "design": {
-        "primes": [
-          {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This one is a clean read of visual-pattern sense."
-          },
-          {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "Heads-up — plenty of people who identified as designers slip on the last step here."
-          },
-          {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward a careful read rather than a snap answer."
-          }
-        ],
-        "feedback": {
-          "pride": [
-            {
-              "id": "pride_ind",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                85,
-                98
-              ],
-              "template": "${pct}th percentile — a real marker of visual-pattern sense, and the care shows."
-            },
-            {
-              "id": "pride_speed",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_speed",
-              "referent": "people who identified as designers",
-              "pct": [
-                85,
-                98
-              ],
-              "template": "Top ${pct}th percentile for speed — fast, accurate visual-pattern sense, the strongest kind."
-            }
-          ],
-          "relief": [
-            {
-              "id": "relief_self",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                62,
-                85
-              ],
-              "template": "${pct}th percentile — you cleared the one people who identified as designers usually find slow going."
-            }
-          ],
-          "shame": [
-            {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "people who identified as designers",
-              "pct": [
-                76,
-                92
-              ],
-              "template": "${pct}% of people who identified as designers got this one — you didn't."
-            }
-          ],
-          "guilt": [
-            {
-              "id": "guilt_norm",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "people who identified as designers",
-              "pct": [
-                76,
-                92
-              ],
-              "template": "${pct}% get this one — you clearly have it, you just went too fast."
-            }
-          ]
-        }
+    id: "fs_easy_01",
+    stimulusId: "fs_easy_01",
+    name: "Figure series — easy (MITRE FS; item as_b4i4)",
+    domains: ["design", "media"],
+    modality: "perceptual",
+    languageLoad: "low",
+    difficultyTier: "easy",
+    unit: "single",
+    instructions: "Which arrow comes next? Click your answer.",
+    stimulus: {
+      component: "figureSeries",
+      scoreFn: "scoreChoice",
+      response: "choice",
+      optionCount: 8,
+      answerSet: "N|NE|E|SE|S|SW|W|NW",
+      measures: ["correct", "rtMs"],
+      item: {
+        ref: "as_b4i4",
+        form: "2",
+        b: -4.48,
+        stem: ["NE", "E", "SE", "S", "SW", "W", "NW", "N", "NE"],
+        key: "E",
       },
-      "media": {
-        "primes": [
+    },
+    calibration: {
+      realPSuccess: 0.85,
+      medianRtMs: 35000,
+      plausiblePct: [60, 99],
+      plausiblePctSpeed: [60, 99],
+      b: -4.48,
+      itemRef: "as_b4i4",
+    },
+    timer: {
+      mode: "hidden",
+    },
+    framing: {
+      design: {
+        primes: [
           {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This one is a clean read of visual sequencing."
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This one is a clean read of visual-pattern sense.",
           },
           {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "Heads-up — plenty of students in media slip on the last step here."
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "Heads-up — plenty of people who identified as designers slip on the last step here.",
           },
           {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward a careful read rather than a snap answer."
-          }
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward a careful read rather than a snap answer.",
+          },
         ],
-        "feedback": {
-          "pride": [
+        feedback: {
+          pride: [
             {
-              "id": "pride_ind",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_score",
-              "referent": "students in media",
-              "pct": [
-                85,
-                98
-              ],
-              "template": "${pct}th percentile — a real marker of visual sequencing, and the care shows."
+              id: "pride_ind",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [85, 98],
+              template:
+                "${pct}th percentile — a real marker of visual-pattern sense, and the care shows.",
             },
             {
-              "id": "pride_speed",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_speed",
-              "referent": "students in media",
-              "pct": [
-                85,
-                98
-              ],
-              "template": "Top ${pct}th percentile for speed — fast, accurate visual sequencing, the strongest kind."
-            }
+              id: "pride_speed",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_speed",
+              referent: "people who identified as designers",
+              pct: [85, 98],
+              template:
+                "Top ${pct}th percentile for speed — fast, accurate visual-pattern sense, the strongest kind.",
+            },
           ],
-          "relief": [
+          relief: [
             {
-              "id": "relief_self",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "self_score",
-              "referent": "students in media",
-              "pct": [
-                62,
-                85
-              ],
-              "template": "${pct}th percentile — you cleared the one students in media usually find slow going."
-            }
+              id: "relief_self",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [62, 85],
+              template:
+                "${pct}th percentile — you cleared the one people who identified as designers usually find slow going.",
+            },
           ],
-          "shame": [
+          shame: [
             {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "students in media",
-              "pct": [
-                76,
-                92
-              ],
-              "template": "${pct}% of students in media got this one — you didn't."
-            }
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "people who identified as designers",
+              pct: [76, 92],
+              template:
+                "${pct}% of people who identified as designers got this one — you didn't.",
+            },
           ],
-          "guilt": [
+          guilt: [
             {
-              "id": "guilt_norm",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "students in media",
-              "pct": [
-                76,
-                92
-              ],
-              "template": "${pct}% get this one — you clearly have it, you just went too fast."
-            }
-          ]
-        }
-      }
+              id: "guilt_norm",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "people who identified as designers",
+              pct: [76, 92],
+              template:
+                "${pct}% get this one — you clearly have it, you just went too fast.",
+            },
+          ],
+        },
+      },
+      media: {
+        primes: [
+          {
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This one is a clean read of visual sequencing.",
+          },
+          {
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "Heads-up — plenty of students in media slip on the last step here.",
+          },
+          {
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward a careful read rather than a snap answer.",
+          },
+        ],
+        feedback: {
+          pride: [
+            {
+              id: "pride_ind",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_score",
+              referent: "students in media",
+              pct: [85, 98],
+              template:
+                "${pct}th percentile — a real marker of visual sequencing, and the care shows.",
+            },
+            {
+              id: "pride_speed",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_speed",
+              referent: "students in media",
+              pct: [85, 98],
+              template:
+                "Top ${pct}th percentile for speed — fast, accurate visual sequencing, the strongest kind.",
+            },
+          ],
+          relief: [
+            {
+              id: "relief_self",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "self_score",
+              referent: "students in media",
+              pct: [62, 85],
+              template:
+                "${pct}th percentile — you cleared the one students in media usually find slow going.",
+            },
+          ],
+          shame: [
+            {
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "students in media",
+              pct: [76, 92],
+              template:
+                "${pct}% of students in media got this one — you didn't.",
+            },
+          ],
+          guilt: [
+            {
+              id: "guilt_norm",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "students in media",
+              pct: [76, 92],
+              template:
+                "${pct}% get this one — you clearly have it, you just went too fast.",
+            },
+          ],
+        },
+      },
     },
-    "response": {
-      "probes": [
+    response: {
+      probes: [
         "pride",
         "relief",
         "disappointment",
@@ -6521,286 +5663,245 @@ export const REASONING_BANK = [
         "anxiety",
         "confusion",
         "boredom",
-        "none"
+        "none",
       ],
-      "scale": {
-        "type": "likert",
-        "min": 1,
-        "max": 7
+      scale: {
+        type: "likert",
+        min: 1,
+        max: 7,
       },
-      "cleanCore": {
-        "dominantMin": 5,
-        "othersMax": 3
-      }
-    }
+      cleanCore: {
+        dominantMin: 5,
+        othersMax: 3,
+      },
+    },
   },
   {
-    "id": "fs_easy_02",
-    "stimulusId": "fs_easy_02",
-    "name": "Figure series — easy (MITRE FS; item as_b2i1)",
-    "domains": [
-      "design",
-      "media"
-    ],
-    "modality": "perceptual",
-    "languageLoad": "low",
-    "difficultyTier": "easy",
-    "unit": "single",
-    "instructions": "Which arrow comes next? Click your answer.",
-    "stimulus": {
-      "component": "figureSeries",
-      "scoreFn": "scoreChoice",
-      "response": "choice",
-      "optionCount": 8,
-      "answerSet": "N|NE|E|SE|S|SW|W|NW",
-      "measures": [
-        "correct",
-        "rtMs"
-      ],
-      "item": {
-        "ref": "as_b2i1",
-        "form": "2",
-        "b": -2.5,
-        "stem": [
-          "S",
-          "E",
-          "W",
-          "E",
-          "N",
-          "E",
-          "E",
-          "E"
-        ],
-        "key": "S"
-      }
-    },
-    "calibration": {
-      "realPSuccess": 0.85,
-      "medianRtMs": 35000,
-      "plausiblePct": [
-        60,
-        99
-      ],
-      "plausiblePctSpeed": [
-        60,
-        99
-      ],
-      "b": -2.5,
-      "itemRef": "as_b2i1"
-    },
-    "timer": {
-      "mode": "hidden"
-    },
-    "framing": {
-      "design": {
-        "primes": [
-          {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This one is a clean read of visual-pattern sense."
-          },
-          {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "Heads-up — plenty of people who identified as designers slip on the last step here."
-          },
-          {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward a careful read rather than a snap answer."
-          }
-        ],
-        "feedback": {
-          "pride": [
-            {
-              "id": "pride_ind",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                85,
-                98
-              ],
-              "template": "${pct}th percentile — a real marker of visual-pattern sense, and the care shows."
-            },
-            {
-              "id": "pride_speed",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_speed",
-              "referent": "people who identified as designers",
-              "pct": [
-                85,
-                98
-              ],
-              "template": "Top ${pct}th percentile for speed — fast, accurate visual-pattern sense, the strongest kind."
-            }
-          ],
-          "relief": [
-            {
-              "id": "relief_self",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                62,
-                85
-              ],
-              "template": "${pct}th percentile — you cleared the one people who identified as designers usually find slow going."
-            }
-          ],
-          "shame": [
-            {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "people who identified as designers",
-              "pct": [
-                76,
-                92
-              ],
-              "template": "${pct}% of people who identified as designers got this one — you didn't."
-            }
-          ],
-          "guilt": [
-            {
-              "id": "guilt_norm",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "people who identified as designers",
-              "pct": [
-                76,
-                92
-              ],
-              "template": "${pct}% get this one — you clearly have it, you just went too fast."
-            }
-          ]
-        }
+    id: "fs_easy_02",
+    stimulusId: "fs_easy_02",
+    name: "Figure series — easy (MITRE FS; item as_b2i1)",
+    domains: ["design", "media"],
+    modality: "perceptual",
+    languageLoad: "low",
+    difficultyTier: "easy",
+    unit: "single",
+    instructions: "Which arrow comes next? Click your answer.",
+    stimulus: {
+      component: "figureSeries",
+      scoreFn: "scoreChoice",
+      response: "choice",
+      optionCount: 8,
+      answerSet: "N|NE|E|SE|S|SW|W|NW",
+      measures: ["correct", "rtMs"],
+      item: {
+        ref: "as_b2i1",
+        form: "2",
+        b: -2.5,
+        stem: ["S", "E", "W", "E", "N", "E", "E", "E"],
+        key: "S",
       },
-      "media": {
-        "primes": [
+    },
+    calibration: {
+      realPSuccess: 0.85,
+      medianRtMs: 35000,
+      plausiblePct: [60, 99],
+      plausiblePctSpeed: [60, 99],
+      b: -2.5,
+      itemRef: "as_b2i1",
+    },
+    timer: {
+      mode: "hidden",
+    },
+    framing: {
+      design: {
+        primes: [
           {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This one is a clean read of visual sequencing."
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This one is a clean read of visual-pattern sense.",
           },
           {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "Heads-up — plenty of students in media slip on the last step here."
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "Heads-up — plenty of people who identified as designers slip on the last step here.",
           },
           {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward a careful read rather than a snap answer."
-          }
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward a careful read rather than a snap answer.",
+          },
         ],
-        "feedback": {
-          "pride": [
+        feedback: {
+          pride: [
             {
-              "id": "pride_ind",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_score",
-              "referent": "students in media",
-              "pct": [
-                85,
-                98
-              ],
-              "template": "${pct}th percentile — a real marker of visual sequencing, and the care shows."
+              id: "pride_ind",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [85, 98],
+              template:
+                "${pct}th percentile — a real marker of visual-pattern sense, and the care shows.",
             },
             {
-              "id": "pride_speed",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_speed",
-              "referent": "students in media",
-              "pct": [
-                85,
-                98
-              ],
-              "template": "Top ${pct}th percentile for speed — fast, accurate visual sequencing, the strongest kind."
-            }
+              id: "pride_speed",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_speed",
+              referent: "people who identified as designers",
+              pct: [85, 98],
+              template:
+                "Top ${pct}th percentile for speed — fast, accurate visual-pattern sense, the strongest kind.",
+            },
           ],
-          "relief": [
+          relief: [
             {
-              "id": "relief_self",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "self_score",
-              "referent": "students in media",
-              "pct": [
-                62,
-                85
-              ],
-              "template": "${pct}th percentile — you cleared the one students in media usually find slow going."
-            }
+              id: "relief_self",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [62, 85],
+              template:
+                "${pct}th percentile — you cleared the one people who identified as designers usually find slow going.",
+            },
           ],
-          "shame": [
+          shame: [
             {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "students in media",
-              "pct": [
-                76,
-                92
-              ],
-              "template": "${pct}% of students in media got this one — you didn't."
-            }
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "people who identified as designers",
+              pct: [76, 92],
+              template:
+                "${pct}% of people who identified as designers got this one — you didn't.",
+            },
           ],
-          "guilt": [
+          guilt: [
             {
-              "id": "guilt_norm",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "students in media",
-              "pct": [
-                76,
-                92
-              ],
-              "template": "${pct}% get this one — you clearly have it, you just went too fast."
-            }
-          ]
-        }
-      }
+              id: "guilt_norm",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "people who identified as designers",
+              pct: [76, 92],
+              template:
+                "${pct}% get this one — you clearly have it, you just went too fast.",
+            },
+          ],
+        },
+      },
+      media: {
+        primes: [
+          {
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This one is a clean read of visual sequencing.",
+          },
+          {
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "Heads-up — plenty of students in media slip on the last step here.",
+          },
+          {
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward a careful read rather than a snap answer.",
+          },
+        ],
+        feedback: {
+          pride: [
+            {
+              id: "pride_ind",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_score",
+              referent: "students in media",
+              pct: [85, 98],
+              template:
+                "${pct}th percentile — a real marker of visual sequencing, and the care shows.",
+            },
+            {
+              id: "pride_speed",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_speed",
+              referent: "students in media",
+              pct: [85, 98],
+              template:
+                "Top ${pct}th percentile for speed — fast, accurate visual sequencing, the strongest kind.",
+            },
+          ],
+          relief: [
+            {
+              id: "relief_self",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "self_score",
+              referent: "students in media",
+              pct: [62, 85],
+              template:
+                "${pct}th percentile — you cleared the one students in media usually find slow going.",
+            },
+          ],
+          shame: [
+            {
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "students in media",
+              pct: [76, 92],
+              template:
+                "${pct}% of students in media got this one — you didn't.",
+            },
+          ],
+          guilt: [
+            {
+              id: "guilt_norm",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "students in media",
+              pct: [76, 92],
+              template:
+                "${pct}% get this one — you clearly have it, you just went too fast.",
+            },
+          ],
+        },
+      },
     },
-    "response": {
-      "probes": [
+    response: {
+      probes: [
         "pride",
         "relief",
         "disappointment",
@@ -6809,287 +5910,245 @@ export const REASONING_BANK = [
         "anxiety",
         "confusion",
         "boredom",
-        "none"
+        "none",
       ],
-      "scale": {
-        "type": "likert",
-        "min": 1,
-        "max": 7
+      scale: {
+        type: "likert",
+        min: 1,
+        max: 7,
       },
-      "cleanCore": {
-        "dominantMin": 5,
-        "othersMax": 3
-      }
-    }
+      cleanCore: {
+        dominantMin: 5,
+        othersMax: 3,
+      },
+    },
   },
   {
-    "id": "fs_easy_03",
-    "stimulusId": "fs_easy_03",
-    "name": "Figure series — easy (MITRE FS; item as_b4i8)",
-    "domains": [
-      "design",
-      "media"
-    ],
-    "modality": "perceptual",
-    "languageLoad": "low",
-    "difficultyTier": "easy",
-    "unit": "single",
-    "instructions": "Which arrow comes next? Click your answer.",
-    "stimulus": {
-      "component": "figureSeries",
-      "scoreFn": "scoreChoice",
-      "response": "choice",
-      "optionCount": 8,
-      "answerSet": "N|NE|E|SE|S|SW|W|NW",
-      "measures": [
-        "correct",
-        "rtMs"
-      ],
-      "item": {
-        "ref": "as_b4i8",
-        "form": "2",
-        "b": -2.45,
-        "stem": [
-          "S",
-          "S",
-          "NE",
-          "W",
-          "W",
-          "SE",
-          "N",
-          "N",
-          "SW"
-        ],
-        "key": "E"
-      }
-    },
-    "calibration": {
-      "realPSuccess": 0.85,
-      "medianRtMs": 35000,
-      "plausiblePct": [
-        60,
-        99
-      ],
-      "plausiblePctSpeed": [
-        60,
-        99
-      ],
-      "b": -2.45,
-      "itemRef": "as_b4i8"
-    },
-    "timer": {
-      "mode": "hidden"
-    },
-    "framing": {
-      "design": {
-        "primes": [
-          {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This one is a clean read of visual-pattern sense."
-          },
-          {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "Heads-up — plenty of people who identified as designers slip on the last step here."
-          },
-          {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward a careful read rather than a snap answer."
-          }
-        ],
-        "feedback": {
-          "pride": [
-            {
-              "id": "pride_ind",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                85,
-                98
-              ],
-              "template": "${pct}th percentile — a real marker of visual-pattern sense, and the care shows."
-            },
-            {
-              "id": "pride_speed",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_speed",
-              "referent": "people who identified as designers",
-              "pct": [
-                85,
-                98
-              ],
-              "template": "Top ${pct}th percentile for speed — fast, accurate visual-pattern sense, the strongest kind."
-            }
-          ],
-          "relief": [
-            {
-              "id": "relief_self",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                62,
-                85
-              ],
-              "template": "${pct}th percentile — you cleared the one people who identified as designers usually find slow going."
-            }
-          ],
-          "shame": [
-            {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "people who identified as designers",
-              "pct": [
-                76,
-                92
-              ],
-              "template": "${pct}% of people who identified as designers got this one — you didn't."
-            }
-          ],
-          "guilt": [
-            {
-              "id": "guilt_norm",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "people who identified as designers",
-              "pct": [
-                76,
-                92
-              ],
-              "template": "${pct}% get this one — you clearly have it, you just went too fast."
-            }
-          ]
-        }
+    id: "fs_easy_03",
+    stimulusId: "fs_easy_03",
+    name: "Figure series — easy (MITRE FS; item as_b4i8)",
+    domains: ["design", "media"],
+    modality: "perceptual",
+    languageLoad: "low",
+    difficultyTier: "easy",
+    unit: "single",
+    instructions: "Which arrow comes next? Click your answer.",
+    stimulus: {
+      component: "figureSeries",
+      scoreFn: "scoreChoice",
+      response: "choice",
+      optionCount: 8,
+      answerSet: "N|NE|E|SE|S|SW|W|NW",
+      measures: ["correct", "rtMs"],
+      item: {
+        ref: "as_b4i8",
+        form: "2",
+        b: -2.45,
+        stem: ["S", "S", "NE", "W", "W", "SE", "N", "N", "SW"],
+        key: "E",
       },
-      "media": {
-        "primes": [
+    },
+    calibration: {
+      realPSuccess: 0.85,
+      medianRtMs: 35000,
+      plausiblePct: [60, 99],
+      plausiblePctSpeed: [60, 99],
+      b: -2.45,
+      itemRef: "as_b4i8",
+    },
+    timer: {
+      mode: "hidden",
+    },
+    framing: {
+      design: {
+        primes: [
           {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This one is a clean read of visual sequencing."
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This one is a clean read of visual-pattern sense.",
           },
           {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "Heads-up — plenty of students in media slip on the last step here."
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "Heads-up — plenty of people who identified as designers slip on the last step here.",
           },
           {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward a careful read rather than a snap answer."
-          }
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward a careful read rather than a snap answer.",
+          },
         ],
-        "feedback": {
-          "pride": [
+        feedback: {
+          pride: [
             {
-              "id": "pride_ind",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_score",
-              "referent": "students in media",
-              "pct": [
-                85,
-                98
-              ],
-              "template": "${pct}th percentile — a real marker of visual sequencing, and the care shows."
+              id: "pride_ind",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [85, 98],
+              template:
+                "${pct}th percentile — a real marker of visual-pattern sense, and the care shows.",
             },
             {
-              "id": "pride_speed",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_speed",
-              "referent": "students in media",
-              "pct": [
-                85,
-                98
-              ],
-              "template": "Top ${pct}th percentile for speed — fast, accurate visual sequencing, the strongest kind."
-            }
+              id: "pride_speed",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_speed",
+              referent: "people who identified as designers",
+              pct: [85, 98],
+              template:
+                "Top ${pct}th percentile for speed — fast, accurate visual-pattern sense, the strongest kind.",
+            },
           ],
-          "relief": [
+          relief: [
             {
-              "id": "relief_self",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "self_score",
-              "referent": "students in media",
-              "pct": [
-                62,
-                85
-              ],
-              "template": "${pct}th percentile — you cleared the one students in media usually find slow going."
-            }
+              id: "relief_self",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [62, 85],
+              template:
+                "${pct}th percentile — you cleared the one people who identified as designers usually find slow going.",
+            },
           ],
-          "shame": [
+          shame: [
             {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "students in media",
-              "pct": [
-                76,
-                92
-              ],
-              "template": "${pct}% of students in media got this one — you didn't."
-            }
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "people who identified as designers",
+              pct: [76, 92],
+              template:
+                "${pct}% of people who identified as designers got this one — you didn't.",
+            },
           ],
-          "guilt": [
+          guilt: [
             {
-              "id": "guilt_norm",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "students in media",
-              "pct": [
-                76,
-                92
-              ],
-              "template": "${pct}% get this one — you clearly have it, you just went too fast."
-            }
-          ]
-        }
-      }
+              id: "guilt_norm",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "people who identified as designers",
+              pct: [76, 92],
+              template:
+                "${pct}% get this one — you clearly have it, you just went too fast.",
+            },
+          ],
+        },
+      },
+      media: {
+        primes: [
+          {
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This one is a clean read of visual sequencing.",
+          },
+          {
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "Heads-up — plenty of students in media slip on the last step here.",
+          },
+          {
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward a careful read rather than a snap answer.",
+          },
+        ],
+        feedback: {
+          pride: [
+            {
+              id: "pride_ind",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_score",
+              referent: "students in media",
+              pct: [85, 98],
+              template:
+                "${pct}th percentile — a real marker of visual sequencing, and the care shows.",
+            },
+            {
+              id: "pride_speed",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_speed",
+              referent: "students in media",
+              pct: [85, 98],
+              template:
+                "Top ${pct}th percentile for speed — fast, accurate visual sequencing, the strongest kind.",
+            },
+          ],
+          relief: [
+            {
+              id: "relief_self",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "self_score",
+              referent: "students in media",
+              pct: [62, 85],
+              template:
+                "${pct}th percentile — you cleared the one students in media usually find slow going.",
+            },
+          ],
+          shame: [
+            {
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "students in media",
+              pct: [76, 92],
+              template:
+                "${pct}% of students in media got this one — you didn't.",
+            },
+          ],
+          guilt: [
+            {
+              id: "guilt_norm",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "students in media",
+              pct: [76, 92],
+              template:
+                "${pct}% get this one — you clearly have it, you just went too fast.",
+            },
+          ],
+        },
+      },
     },
-    "response": {
-      "probes": [
+    response: {
+      probes: [
         "pride",
         "relief",
         "disappointment",
@@ -7098,287 +6157,245 @@ export const REASONING_BANK = [
         "anxiety",
         "confusion",
         "boredom",
-        "none"
+        "none",
       ],
-      "scale": {
-        "type": "likert",
-        "min": 1,
-        "max": 7
+      scale: {
+        type: "likert",
+        min: 1,
+        max: 7,
       },
-      "cleanCore": {
-        "dominantMin": 5,
-        "othersMax": 3
-      }
-    }
+      cleanCore: {
+        dominantMin: 5,
+        othersMax: 3,
+      },
+    },
   },
   {
-    "id": "fs_easy_04",
-    "stimulusId": "fs_easy_04",
-    "name": "Figure series — easy (MITRE FS; item as_b5i8)",
-    "domains": [
-      "design",
-      "media"
-    ],
-    "modality": "perceptual",
-    "languageLoad": "low",
-    "difficultyTier": "easy",
-    "unit": "single",
-    "instructions": "Which arrow comes next? Click your answer.",
-    "stimulus": {
-      "component": "figureSeries",
-      "scoreFn": "scoreChoice",
-      "response": "choice",
-      "optionCount": 8,
-      "answerSet": "N|NE|E|SE|S|SW|W|NW",
-      "measures": [
-        "correct",
-        "rtMs"
-      ],
-      "item": {
-        "ref": "as_b5i8",
-        "form": "1",
-        "b": -2.43,
-        "stem": [
-          "E",
-          "E",
-          "W",
-          "S",
-          "S",
-          "N",
-          "W",
-          "W",
-          "E"
-        ],
-        "key": "N"
-      }
+    id: "fs_easy_04",
+    stimulusId: "fs_easy_04",
+    name: "Figure series — easy (MITRE FS; item as_b5i8)",
+    domains: ["design", "media"],
+    modality: "perceptual",
+    languageLoad: "low",
+    difficultyTier: "easy",
+    unit: "single",
+    instructions: "Which arrow comes next? Click your answer.",
+    stimulus: {
+      component: "figureSeries",
+      scoreFn: "scoreChoice",
+      response: "choice",
+      optionCount: 8,
+      answerSet: "N|NE|E|SE|S|SW|W|NW",
+      measures: ["correct", "rtMs"],
+      item: {
+        ref: "as_b5i8",
+        form: "1",
+        b: -2.43,
+        stem: ["E", "E", "W", "S", "S", "N", "W", "W", "E"],
+        key: "N",
+      },
     },
-    "calibration": {
-      "realPSuccess": 0.85,
-      "medianRtMs": 35000,
-      "plausiblePct": [
-        60,
-        99
-      ],
-      "plausiblePctSpeed": [
-        60,
-        99
-      ],
-      "b": -2.43,
-      "itemRef": "as_b5i8"
+    calibration: {
+      realPSuccess: 0.85,
+      medianRtMs: 35000,
+      plausiblePct: [60, 99],
+      plausiblePctSpeed: [60, 99],
+      b: -2.43,
+      itemRef: "as_b5i8",
     },
-    "timer": {
-      "mode": "hidden"
+    timer: {
+      mode: "hidden",
     },
-    "framing": {
-      "design": {
-        "primes": [
+    framing: {
+      design: {
+        primes: [
           {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This one is a clean read of visual-pattern sense."
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This one is a clean read of visual-pattern sense.",
           },
           {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "Heads-up — plenty of people who identified as designers slip on the last step here."
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "Heads-up — plenty of people who identified as designers slip on the last step here.",
           },
           {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward a careful read rather than a snap answer."
-          }
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward a careful read rather than a snap answer.",
+          },
         ],
-        "feedback": {
-          "pride": [
+        feedback: {
+          pride: [
             {
-              "id": "pride_ind",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                85,
-                98
-              ],
-              "template": "${pct}th percentile — a real marker of visual-pattern sense, and the care shows."
+              id: "pride_ind",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [85, 98],
+              template:
+                "${pct}th percentile — a real marker of visual-pattern sense, and the care shows.",
             },
             {
-              "id": "pride_speed",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_speed",
-              "referent": "people who identified as designers",
-              "pct": [
-                85,
-                98
-              ],
-              "template": "Top ${pct}th percentile for speed — fast, accurate visual-pattern sense, the strongest kind."
-            }
+              id: "pride_speed",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_speed",
+              referent: "people who identified as designers",
+              pct: [85, 98],
+              template:
+                "Top ${pct}th percentile for speed — fast, accurate visual-pattern sense, the strongest kind.",
+            },
           ],
-          "relief": [
+          relief: [
             {
-              "id": "relief_self",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                62,
-                85
-              ],
-              "template": "${pct}th percentile — you cleared the one people who identified as designers usually find slow going."
-            }
+              id: "relief_self",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [62, 85],
+              template:
+                "${pct}th percentile — you cleared the one people who identified as designers usually find slow going.",
+            },
           ],
-          "shame": [
+          shame: [
             {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "people who identified as designers",
-              "pct": [
-                76,
-                92
-              ],
-              "template": "${pct}% of people who identified as designers got this one — you didn't."
-            }
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "people who identified as designers",
+              pct: [76, 92],
+              template:
+                "${pct}% of people who identified as designers got this one — you didn't.",
+            },
           ],
-          "guilt": [
+          guilt: [
             {
-              "id": "guilt_norm",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "people who identified as designers",
-              "pct": [
-                76,
-                92
-              ],
-              "template": "${pct}% get this one — you clearly have it, you just went too fast."
-            }
-          ]
-        }
+              id: "guilt_norm",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "people who identified as designers",
+              pct: [76, 92],
+              template:
+                "${pct}% get this one — you clearly have it, you just went too fast.",
+            },
+          ],
+        },
       },
-      "media": {
-        "primes": [
+      media: {
+        primes: [
           {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This one is a clean read of visual sequencing."
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This one is a clean read of visual sequencing.",
           },
           {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "Heads-up — plenty of students in media slip on the last step here."
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "Heads-up — plenty of students in media slip on the last step here.",
           },
           {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward a careful read rather than a snap answer."
-          }
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward a careful read rather than a snap answer.",
+          },
         ],
-        "feedback": {
-          "pride": [
+        feedback: {
+          pride: [
             {
-              "id": "pride_ind",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_score",
-              "referent": "students in media",
-              "pct": [
-                85,
-                98
-              ],
-              "template": "${pct}th percentile — a real marker of visual sequencing, and the care shows."
+              id: "pride_ind",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_score",
+              referent: "students in media",
+              pct: [85, 98],
+              template:
+                "${pct}th percentile — a real marker of visual sequencing, and the care shows.",
             },
             {
-              "id": "pride_speed",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_speed",
-              "referent": "students in media",
-              "pct": [
-                85,
-                98
-              ],
-              "template": "Top ${pct}th percentile for speed — fast, accurate visual sequencing, the strongest kind."
-            }
+              id: "pride_speed",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_speed",
+              referent: "students in media",
+              pct: [85, 98],
+              template:
+                "Top ${pct}th percentile for speed — fast, accurate visual sequencing, the strongest kind.",
+            },
           ],
-          "relief": [
+          relief: [
             {
-              "id": "relief_self",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "self_score",
-              "referent": "students in media",
-              "pct": [
-                62,
-                85
-              ],
-              "template": "${pct}th percentile — you cleared the one students in media usually find slow going."
-            }
+              id: "relief_self",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "self_score",
+              referent: "students in media",
+              pct: [62, 85],
+              template:
+                "${pct}th percentile — you cleared the one students in media usually find slow going.",
+            },
           ],
-          "shame": [
+          shame: [
             {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "students in media",
-              "pct": [
-                76,
-                92
-              ],
-              "template": "${pct}% of students in media got this one — you didn't."
-            }
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "students in media",
+              pct: [76, 92],
+              template:
+                "${pct}% of students in media got this one — you didn't.",
+            },
           ],
-          "guilt": [
+          guilt: [
             {
-              "id": "guilt_norm",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "students in media",
-              "pct": [
-                76,
-                92
-              ],
-              "template": "${pct}% get this one — you clearly have it, you just went too fast."
-            }
-          ]
-        }
-      }
+              id: "guilt_norm",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "students in media",
+              pct: [76, 92],
+              template:
+                "${pct}% get this one — you clearly have it, you just went too fast.",
+            },
+          ],
+        },
+      },
     },
-    "response": {
-      "probes": [
+    response: {
+      probes: [
         "pride",
         "relief",
         "disappointment",
@@ -7387,305 +6404,263 @@ export const REASONING_BANK = [
         "anxiety",
         "confusion",
         "boredom",
-        "none"
+        "none",
       ],
-      "scale": {
-        "type": "likert",
-        "min": 1,
-        "max": 7
+      scale: {
+        type: "likert",
+        min: 1,
+        max: 7,
       },
-      "cleanCore": {
-        "dominantMin": 5,
-        "othersMax": 3
-      }
-    }
+      cleanCore: {
+        dominantMin: 5,
+        othersMax: 3,
+      },
+    },
   },
   {
-    "id": "fs_mid_01",
-    "stimulusId": "fs_mid_01",
-    "name": "Figure series — mid (MITRE FS; item as_b1i15)",
-    "domains": [
-      "design",
-      "media"
-    ],
-    "modality": "perceptual",
-    "languageLoad": "low",
-    "difficultyTier": "mid",
-    "unit": "single",
-    "instructions": "Which arrow comes next? Click your answer.",
-    "stimulus": {
-      "component": "figureSeries",
-      "scoreFn": "scoreChoice",
-      "response": "choice",
-      "optionCount": 8,
-      "answerSet": "N|NE|E|SE|S|SW|W|NW",
-      "measures": [
-        "correct",
-        "rtMs"
-      ],
-      "item": {
-        "ref": "as_b1i15",
-        "form": "1",
-        "b": -0.64,
-        "stem": [
-          "N",
-          "NE",
-          "W",
-          "E",
-          "SE",
-          "N",
-          "S",
-          "SW",
-          "E"
-        ],
-        "key": "W"
-      }
-    },
-    "calibration": {
-      "realPSuccess": 0.58,
-      "medianRtMs": 55000,
-      "plausiblePct": [
-        25,
-        80
-      ],
-      "plausiblePctSpeed": [
-        25,
-        78
-      ],
-      "b": -0.64,
-      "itemRef": "as_b1i15"
-    },
-    "timer": {
-      "mode": "hidden"
-    },
-    "framing": {
-      "design": {
-        "primes": [
-          {
-            "id": "p_expectHigh",
-            "setsExpectancy": "high",
-            "attributionFrame": "none",
-            "text": "Your earlier rounds point to visual-pattern sense clicking today."
-          },
-          {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "This one is a step up — most people who identified as designers slow right down."
-          },
-          {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward working the rule through, not eyeballing it."
-          },
-          {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This set reads visual-pattern sense fairly cleanly."
-          }
-        ],
-        "feedback": {
-          "pride": [
-            {
-              "id": "pride_ind",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                72,
-                82
-              ],
-              "template": "${pct}th percentile — a real marker of visual-pattern sense, and the care shows."
-            }
-          ],
-          "guilt": [
-            {
-              "id": "guilt_effort",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                28,
-                45
-              ],
-              "template": "Bottom ${pct}% — you clearly have the head for visual-pattern sense; you just didn't work it through methodically."
-            }
-          ],
-          "disappointment": [
-            {
-              "id": "disap_ind",
-              "comparison": "individuating",
-              "attribution": "none",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "requiresExpectancy": "high",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                26,
-                46
-              ],
-              "template": "${pct}th percentile — short of what your earlier rounds pointed to."
-            }
-          ],
-          "relief": [
-            {
-              "id": "relief_self",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                55,
-                78
-              ],
-              "template": "${pct}th percentile — you cleared the one people who identified as designers usually find slow going."
-            }
-          ],
-          "shame": [
-            {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "people who identified as designers",
-              "pct": [
-                49,
-                65
-              ],
-              "template": "${pct}% of people who identified as designers got this one — you didn't."
-            }
-          ]
-        }
+    id: "fs_mid_01",
+    stimulusId: "fs_mid_01",
+    name: "Figure series — mid (MITRE FS; item as_b1i15)",
+    domains: ["design", "media"],
+    modality: "perceptual",
+    languageLoad: "low",
+    difficultyTier: "mid",
+    unit: "single",
+    instructions: "Which arrow comes next? Click your answer.",
+    stimulus: {
+      component: "figureSeries",
+      scoreFn: "scoreChoice",
+      response: "choice",
+      optionCount: 8,
+      answerSet: "N|NE|E|SE|S|SW|W|NW",
+      measures: ["correct", "rtMs"],
+      item: {
+        ref: "as_b1i15",
+        form: "1",
+        b: -0.64,
+        stem: ["N", "NE", "W", "E", "SE", "N", "S", "SW", "E"],
+        key: "W",
       },
-      "media": {
-        "primes": [
-          {
-            "id": "p_expectHigh",
-            "setsExpectancy": "high",
-            "attributionFrame": "none",
-            "text": "Your earlier rounds point to visual sequencing clicking today."
-          },
-          {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "This one is a step up — most students in media slow right down."
-          },
-          {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward working the rule through, not eyeballing it."
-          },
-          {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This set reads visual sequencing fairly cleanly."
-          }
-        ],
-        "feedback": {
-          "pride": [
-            {
-              "id": "pride_ind",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_score",
-              "referent": "students in media",
-              "pct": [
-                72,
-                82
-              ],
-              "template": "${pct}th percentile — a real marker of visual sequencing, and the care shows."
-            }
-          ],
-          "guilt": [
-            {
-              "id": "guilt_effort",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "students in media",
-              "pct": [
-                28,
-                45
-              ],
-              "template": "Bottom ${pct}% — you clearly have the head for visual sequencing; you just didn't work it through methodically."
-            }
-          ],
-          "disappointment": [
-            {
-              "id": "disap_ind",
-              "comparison": "individuating",
-              "attribution": "none",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "requiresExpectancy": "high",
-              "pctRef": "self_score",
-              "referent": "students in media",
-              "pct": [
-                26,
-                46
-              ],
-              "template": "${pct}th percentile — short of what your earlier rounds pointed to."
-            }
-          ],
-          "relief": [
-            {
-              "id": "relief_self",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "self_score",
-              "referent": "students in media",
-              "pct": [
-                55,
-                78
-              ],
-              "template": "${pct}th percentile — you cleared the one students in media usually find slow going."
-            }
-          ],
-          "shame": [
-            {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "students in media",
-              "pct": [
-                49,
-                65
-              ],
-              "template": "${pct}% of students in media got this one — you didn't."
-            }
-          ]
-        }
-      }
     },
-    "response": {
-      "probes": [
+    calibration: {
+      realPSuccess: 0.58,
+      medianRtMs: 55000,
+      plausiblePct: [25, 80],
+      plausiblePctSpeed: [25, 78],
+      b: -0.64,
+      itemRef: "as_b1i15",
+    },
+    timer: {
+      mode: "hidden",
+    },
+    framing: {
+      design: {
+        primes: [
+          {
+            id: "p_expectHigh",
+            setsExpectancy: "high",
+            attributionFrame: "none",
+            text: "Your earlier rounds point to visual-pattern sense clicking today.",
+          },
+          {
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "This one is a step up — most people who identified as designers slow right down.",
+          },
+          {
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward working the rule through, not eyeballing it.",
+          },
+          {
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This set reads visual-pattern sense fairly cleanly.",
+          },
+        ],
+        feedback: {
+          pride: [
+            {
+              id: "pride_ind",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [72, 82],
+              template:
+                "${pct}th percentile — a real marker of visual-pattern sense, and the care shows.",
+            },
+          ],
+          guilt: [
+            {
+              id: "guilt_effort",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [28, 45],
+              template:
+                "Bottom ${pct}% — you clearly have the head for visual-pattern sense; you just didn't work it through methodically.",
+            },
+          ],
+          disappointment: [
+            {
+              id: "disap_ind",
+              comparison: "individuating",
+              attribution: "none",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              requiresExpectancy: "high",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [26, 46],
+              template:
+                "${pct}th percentile — short of what your earlier rounds pointed to.",
+            },
+          ],
+          relief: [
+            {
+              id: "relief_self",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [55, 78],
+              template:
+                "${pct}th percentile — you cleared the one people who identified as designers usually find slow going.",
+            },
+          ],
+          shame: [
+            {
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "people who identified as designers",
+              pct: [49, 65],
+              template:
+                "${pct}% of people who identified as designers got this one — you didn't.",
+            },
+          ],
+        },
+      },
+      media: {
+        primes: [
+          {
+            id: "p_expectHigh",
+            setsExpectancy: "high",
+            attributionFrame: "none",
+            text: "Your earlier rounds point to visual sequencing clicking today.",
+          },
+          {
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "This one is a step up — most students in media slow right down.",
+          },
+          {
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward working the rule through, not eyeballing it.",
+          },
+          {
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This set reads visual sequencing fairly cleanly.",
+          },
+        ],
+        feedback: {
+          pride: [
+            {
+              id: "pride_ind",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_score",
+              referent: "students in media",
+              pct: [72, 82],
+              template:
+                "${pct}th percentile — a real marker of visual sequencing, and the care shows.",
+            },
+          ],
+          guilt: [
+            {
+              id: "guilt_effort",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "students in media",
+              pct: [28, 45],
+              template:
+                "Bottom ${pct}% — you clearly have the head for visual sequencing; you just didn't work it through methodically.",
+            },
+          ],
+          disappointment: [
+            {
+              id: "disap_ind",
+              comparison: "individuating",
+              attribution: "none",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              requiresExpectancy: "high",
+              pctRef: "self_score",
+              referent: "students in media",
+              pct: [26, 46],
+              template:
+                "${pct}th percentile — short of what your earlier rounds pointed to.",
+            },
+          ],
+          relief: [
+            {
+              id: "relief_self",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "self_score",
+              referent: "students in media",
+              pct: [55, 78],
+              template:
+                "${pct}th percentile — you cleared the one students in media usually find slow going.",
+            },
+          ],
+          shame: [
+            {
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "students in media",
+              pct: [49, 65],
+              template:
+                "${pct}% of students in media got this one — you didn't.",
+            },
+          ],
+        },
+      },
+    },
+    response: {
+      probes: [
         "pride",
         "relief",
         "disappointment",
@@ -7694,305 +6669,263 @@ export const REASONING_BANK = [
         "anxiety",
         "confusion",
         "boredom",
-        "none"
+        "none",
       ],
-      "scale": {
-        "type": "likert",
-        "min": 1,
-        "max": 7
+      scale: {
+        type: "likert",
+        min: 1,
+        max: 7,
       },
-      "cleanCore": {
-        "dominantMin": 5,
-        "othersMax": 3
-      }
-    }
+      cleanCore: {
+        dominantMin: 5,
+        othersMax: 3,
+      },
+    },
   },
   {
-    "id": "fs_mid_02",
-    "stimulusId": "fs_mid_02",
-    "name": "Figure series — mid (MITRE FS; item as_b1i2)",
-    "domains": [
-      "design",
-      "media"
-    ],
-    "modality": "perceptual",
-    "languageLoad": "low",
-    "difficultyTier": "mid",
-    "unit": "single",
-    "instructions": "Which arrow comes next? Click your answer.",
-    "stimulus": {
-      "component": "figureSeries",
-      "scoreFn": "scoreChoice",
-      "response": "choice",
-      "optionCount": 8,
-      "answerSet": "N|NE|E|SE|S|SW|W|NW",
-      "measures": [
-        "correct",
-        "rtMs"
-      ],
-      "item": {
-        "ref": "as_b1i2",
-        "form": "1",
-        "b": -0.62,
-        "stem": [
-          "S",
-          "NW",
-          "SE",
-          "W",
-          "NW",
-          "SE",
-          "N",
-          "NW",
-          "SE"
-        ],
-        "key": "E"
-      }
-    },
-    "calibration": {
-      "realPSuccess": 0.58,
-      "medianRtMs": 55000,
-      "plausiblePct": [
-        25,
-        80
-      ],
-      "plausiblePctSpeed": [
-        25,
-        78
-      ],
-      "b": -0.62,
-      "itemRef": "as_b1i2"
-    },
-    "timer": {
-      "mode": "hidden"
-    },
-    "framing": {
-      "design": {
-        "primes": [
-          {
-            "id": "p_expectHigh",
-            "setsExpectancy": "high",
-            "attributionFrame": "none",
-            "text": "Your earlier rounds point to visual-pattern sense clicking today."
-          },
-          {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "This one is a step up — most people who identified as designers slow right down."
-          },
-          {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward working the rule through, not eyeballing it."
-          },
-          {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This set reads visual-pattern sense fairly cleanly."
-          }
-        ],
-        "feedback": {
-          "pride": [
-            {
-              "id": "pride_ind",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                72,
-                82
-              ],
-              "template": "${pct}th percentile — a real marker of visual-pattern sense, and the care shows."
-            }
-          ],
-          "guilt": [
-            {
-              "id": "guilt_effort",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                28,
-                45
-              ],
-              "template": "Bottom ${pct}% — you clearly have the head for visual-pattern sense; you just didn't work it through methodically."
-            }
-          ],
-          "disappointment": [
-            {
-              "id": "disap_ind",
-              "comparison": "individuating",
-              "attribution": "none",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "requiresExpectancy": "high",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                26,
-                46
-              ],
-              "template": "${pct}th percentile — short of what your earlier rounds pointed to."
-            }
-          ],
-          "relief": [
-            {
-              "id": "relief_self",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                55,
-                78
-              ],
-              "template": "${pct}th percentile — you cleared the one people who identified as designers usually find slow going."
-            }
-          ],
-          "shame": [
-            {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "people who identified as designers",
-              "pct": [
-                49,
-                65
-              ],
-              "template": "${pct}% of people who identified as designers got this one — you didn't."
-            }
-          ]
-        }
+    id: "fs_mid_02",
+    stimulusId: "fs_mid_02",
+    name: "Figure series — mid (MITRE FS; item as_b1i2)",
+    domains: ["design", "media"],
+    modality: "perceptual",
+    languageLoad: "low",
+    difficultyTier: "mid",
+    unit: "single",
+    instructions: "Which arrow comes next? Click your answer.",
+    stimulus: {
+      component: "figureSeries",
+      scoreFn: "scoreChoice",
+      response: "choice",
+      optionCount: 8,
+      answerSet: "N|NE|E|SE|S|SW|W|NW",
+      measures: ["correct", "rtMs"],
+      item: {
+        ref: "as_b1i2",
+        form: "1",
+        b: -0.62,
+        stem: ["S", "NW", "SE", "W", "NW", "SE", "N", "NW", "SE"],
+        key: "E",
       },
-      "media": {
-        "primes": [
-          {
-            "id": "p_expectHigh",
-            "setsExpectancy": "high",
-            "attributionFrame": "none",
-            "text": "Your earlier rounds point to visual sequencing clicking today."
-          },
-          {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "This one is a step up — most students in media slow right down."
-          },
-          {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward working the rule through, not eyeballing it."
-          },
-          {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This set reads visual sequencing fairly cleanly."
-          }
-        ],
-        "feedback": {
-          "pride": [
-            {
-              "id": "pride_ind",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_score",
-              "referent": "students in media",
-              "pct": [
-                72,
-                82
-              ],
-              "template": "${pct}th percentile — a real marker of visual sequencing, and the care shows."
-            }
-          ],
-          "guilt": [
-            {
-              "id": "guilt_effort",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "students in media",
-              "pct": [
-                28,
-                45
-              ],
-              "template": "Bottom ${pct}% — you clearly have the head for visual sequencing; you just didn't work it through methodically."
-            }
-          ],
-          "disappointment": [
-            {
-              "id": "disap_ind",
-              "comparison": "individuating",
-              "attribution": "none",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "requiresExpectancy": "high",
-              "pctRef": "self_score",
-              "referent": "students in media",
-              "pct": [
-                26,
-                46
-              ],
-              "template": "${pct}th percentile — short of what your earlier rounds pointed to."
-            }
-          ],
-          "relief": [
-            {
-              "id": "relief_self",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "self_score",
-              "referent": "students in media",
-              "pct": [
-                55,
-                78
-              ],
-              "template": "${pct}th percentile — you cleared the one students in media usually find slow going."
-            }
-          ],
-          "shame": [
-            {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "students in media",
-              "pct": [
-                49,
-                65
-              ],
-              "template": "${pct}% of students in media got this one — you didn't."
-            }
-          ]
-        }
-      }
     },
-    "response": {
-      "probes": [
+    calibration: {
+      realPSuccess: 0.58,
+      medianRtMs: 55000,
+      plausiblePct: [25, 80],
+      plausiblePctSpeed: [25, 78],
+      b: -0.62,
+      itemRef: "as_b1i2",
+    },
+    timer: {
+      mode: "hidden",
+    },
+    framing: {
+      design: {
+        primes: [
+          {
+            id: "p_expectHigh",
+            setsExpectancy: "high",
+            attributionFrame: "none",
+            text: "Your earlier rounds point to visual-pattern sense clicking today.",
+          },
+          {
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "This one is a step up — most people who identified as designers slow right down.",
+          },
+          {
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward working the rule through, not eyeballing it.",
+          },
+          {
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This set reads visual-pattern sense fairly cleanly.",
+          },
+        ],
+        feedback: {
+          pride: [
+            {
+              id: "pride_ind",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [72, 82],
+              template:
+                "${pct}th percentile — a real marker of visual-pattern sense, and the care shows.",
+            },
+          ],
+          guilt: [
+            {
+              id: "guilt_effort",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [28, 45],
+              template:
+                "Bottom ${pct}% — you clearly have the head for visual-pattern sense; you just didn't work it through methodically.",
+            },
+          ],
+          disappointment: [
+            {
+              id: "disap_ind",
+              comparison: "individuating",
+              attribution: "none",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              requiresExpectancy: "high",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [26, 46],
+              template:
+                "${pct}th percentile — short of what your earlier rounds pointed to.",
+            },
+          ],
+          relief: [
+            {
+              id: "relief_self",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [55, 78],
+              template:
+                "${pct}th percentile — you cleared the one people who identified as designers usually find slow going.",
+            },
+          ],
+          shame: [
+            {
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "people who identified as designers",
+              pct: [49, 65],
+              template:
+                "${pct}% of people who identified as designers got this one — you didn't.",
+            },
+          ],
+        },
+      },
+      media: {
+        primes: [
+          {
+            id: "p_expectHigh",
+            setsExpectancy: "high",
+            attributionFrame: "none",
+            text: "Your earlier rounds point to visual sequencing clicking today.",
+          },
+          {
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "This one is a step up — most students in media slow right down.",
+          },
+          {
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward working the rule through, not eyeballing it.",
+          },
+          {
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This set reads visual sequencing fairly cleanly.",
+          },
+        ],
+        feedback: {
+          pride: [
+            {
+              id: "pride_ind",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_score",
+              referent: "students in media",
+              pct: [72, 82],
+              template:
+                "${pct}th percentile — a real marker of visual sequencing, and the care shows.",
+            },
+          ],
+          guilt: [
+            {
+              id: "guilt_effort",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "students in media",
+              pct: [28, 45],
+              template:
+                "Bottom ${pct}% — you clearly have the head for visual sequencing; you just didn't work it through methodically.",
+            },
+          ],
+          disappointment: [
+            {
+              id: "disap_ind",
+              comparison: "individuating",
+              attribution: "none",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              requiresExpectancy: "high",
+              pctRef: "self_score",
+              referent: "students in media",
+              pct: [26, 46],
+              template:
+                "${pct}th percentile — short of what your earlier rounds pointed to.",
+            },
+          ],
+          relief: [
+            {
+              id: "relief_self",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "self_score",
+              referent: "students in media",
+              pct: [55, 78],
+              template:
+                "${pct}th percentile — you cleared the one students in media usually find slow going.",
+            },
+          ],
+          shame: [
+            {
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "students in media",
+              pct: [49, 65],
+              template:
+                "${pct}% of students in media got this one — you didn't.",
+            },
+          ],
+        },
+      },
+    },
+    response: {
+      probes: [
         "pride",
         "relief",
         "disappointment",
@@ -8001,47 +6934,41 @@ export const REASONING_BANK = [
         "anxiety",
         "confusion",
         "boredom",
-        "none"
+        "none",
       ],
-      "scale": {
-        "type": "likert",
-        "min": 1,
-        "max": 7
+      scale: {
+        type: "likert",
+        min: 1,
+        max: 7,
       },
-      "cleanCore": {
-        "dominantMin": 5,
-        "othersMax": 3
-      }
-    }
+      cleanCore: {
+        dominantMin: 5,
+        othersMax: 3,
+      },
+    },
   },
   {
-    "id": "fs_mid_03",
-    "stimulusId": "fs_mid_03",
-    "name": "Figure series — mid (MITRE FS; item as_b3i12)",
-    "domains": [
-      "design",
-      "media"
-    ],
-    "modality": "perceptual",
-    "languageLoad": "low",
-    "difficultyTier": "mid",
-    "unit": "single",
-    "instructions": "Which arrow comes next? Click your answer.",
-    "stimulus": {
-      "component": "figureSeries",
-      "scoreFn": "scoreChoice",
-      "response": "choice",
-      "optionCount": 8,
-      "answerSet": "N|NE|E|SE|S|SW|W|NW",
-      "measures": [
-        "correct",
-        "rtMs"
-      ],
-      "item": {
-        "ref": "as_b3i12",
-        "form": "2",
-        "b": -0.41,
-        "stem": [
+    id: "fs_mid_03",
+    stimulusId: "fs_mid_03",
+    name: "Figure series — mid (MITRE FS; item as_b3i12)",
+    domains: ["design", "media"],
+    modality: "perceptual",
+    languageLoad: "low",
+    difficultyTier: "mid",
+    unit: "single",
+    instructions: "Which arrow comes next? Click your answer.",
+    stimulus: {
+      component: "figureSeries",
+      scoreFn: "scoreChoice",
+      response: "choice",
+      optionCount: 8,
+      answerSet: "N|NE|E|SE|S|SW|W|NW",
+      measures: ["correct", "rtMs"],
+      item: {
+        ref: "as_b3i12",
+        form: "2",
+        b: -0.41,
+        stem: [
           "E",
           "E",
           "SE",
@@ -8055,256 +6982,230 @@ export const REASONING_BANK = [
           "NW",
           "S",
           "N",
-          "N"
+          "N",
         ],
-        "key": "NE"
-      }
-    },
-    "calibration": {
-      "realPSuccess": 0.58,
-      "medianRtMs": 55000,
-      "plausiblePct": [
-        25,
-        80
-      ],
-      "plausiblePctSpeed": [
-        25,
-        78
-      ],
-      "b": -0.41,
-      "itemRef": "as_b3i12"
-    },
-    "timer": {
-      "mode": "hidden"
-    },
-    "framing": {
-      "design": {
-        "primes": [
-          {
-            "id": "p_expectHigh",
-            "setsExpectancy": "high",
-            "attributionFrame": "none",
-            "text": "Your earlier rounds point to visual-pattern sense clicking today."
-          },
-          {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "This one is a step up — most people who identified as designers slow right down."
-          },
-          {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward working the rule through, not eyeballing it."
-          },
-          {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This set reads visual-pattern sense fairly cleanly."
-          }
-        ],
-        "feedback": {
-          "pride": [
-            {
-              "id": "pride_ind",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                72,
-                82
-              ],
-              "template": "${pct}th percentile — a real marker of visual-pattern sense, and the care shows."
-            }
-          ],
-          "guilt": [
-            {
-              "id": "guilt_effort",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                28,
-                45
-              ],
-              "template": "Bottom ${pct}% — you clearly have the head for visual-pattern sense; you just didn't work it through methodically."
-            }
-          ],
-          "disappointment": [
-            {
-              "id": "disap_ind",
-              "comparison": "individuating",
-              "attribution": "none",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "requiresExpectancy": "high",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                26,
-                46
-              ],
-              "template": "${pct}th percentile — short of what your earlier rounds pointed to."
-            }
-          ],
-          "relief": [
-            {
-              "id": "relief_self",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                55,
-                78
-              ],
-              "template": "${pct}th percentile — you cleared the one people who identified as designers usually find slow going."
-            }
-          ],
-          "shame": [
-            {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "people who identified as designers",
-              "pct": [
-                49,
-                65
-              ],
-              "template": "${pct}% of people who identified as designers got this one — you didn't."
-            }
-          ]
-        }
+        key: "NE",
       },
-      "media": {
-        "primes": [
-          {
-            "id": "p_expectHigh",
-            "setsExpectancy": "high",
-            "attributionFrame": "none",
-            "text": "Your earlier rounds point to visual sequencing clicking today."
-          },
-          {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "This one is a step up — most students in media slow right down."
-          },
-          {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward working the rule through, not eyeballing it."
-          },
-          {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This set reads visual sequencing fairly cleanly."
-          }
-        ],
-        "feedback": {
-          "pride": [
-            {
-              "id": "pride_ind",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_score",
-              "referent": "students in media",
-              "pct": [
-                72,
-                82
-              ],
-              "template": "${pct}th percentile — a real marker of visual sequencing, and the care shows."
-            }
-          ],
-          "guilt": [
-            {
-              "id": "guilt_effort",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "students in media",
-              "pct": [
-                28,
-                45
-              ],
-              "template": "Bottom ${pct}% — you clearly have the head for visual sequencing; you just didn't work it through methodically."
-            }
-          ],
-          "disappointment": [
-            {
-              "id": "disap_ind",
-              "comparison": "individuating",
-              "attribution": "none",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "requiresExpectancy": "high",
-              "pctRef": "self_score",
-              "referent": "students in media",
-              "pct": [
-                26,
-                46
-              ],
-              "template": "${pct}th percentile — short of what your earlier rounds pointed to."
-            }
-          ],
-          "relief": [
-            {
-              "id": "relief_self",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "self_score",
-              "referent": "students in media",
-              "pct": [
-                55,
-                78
-              ],
-              "template": "${pct}th percentile — you cleared the one students in media usually find slow going."
-            }
-          ],
-          "shame": [
-            {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "students in media",
-              "pct": [
-                49,
-                65
-              ],
-              "template": "${pct}% of students in media got this one — you didn't."
-            }
-          ]
-        }
-      }
     },
-    "response": {
-      "probes": [
+    calibration: {
+      realPSuccess: 0.58,
+      medianRtMs: 55000,
+      plausiblePct: [25, 80],
+      plausiblePctSpeed: [25, 78],
+      b: -0.41,
+      itemRef: "as_b3i12",
+    },
+    timer: {
+      mode: "hidden",
+    },
+    framing: {
+      design: {
+        primes: [
+          {
+            id: "p_expectHigh",
+            setsExpectancy: "high",
+            attributionFrame: "none",
+            text: "Your earlier rounds point to visual-pattern sense clicking today.",
+          },
+          {
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "This one is a step up — most people who identified as designers slow right down.",
+          },
+          {
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward working the rule through, not eyeballing it.",
+          },
+          {
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This set reads visual-pattern sense fairly cleanly.",
+          },
+        ],
+        feedback: {
+          pride: [
+            {
+              id: "pride_ind",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [72, 82],
+              template:
+                "${pct}th percentile — a real marker of visual-pattern sense, and the care shows.",
+            },
+          ],
+          guilt: [
+            {
+              id: "guilt_effort",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [28, 45],
+              template:
+                "Bottom ${pct}% — you clearly have the head for visual-pattern sense; you just didn't work it through methodically.",
+            },
+          ],
+          disappointment: [
+            {
+              id: "disap_ind",
+              comparison: "individuating",
+              attribution: "none",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              requiresExpectancy: "high",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [26, 46],
+              template:
+                "${pct}th percentile — short of what your earlier rounds pointed to.",
+            },
+          ],
+          relief: [
+            {
+              id: "relief_self",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [55, 78],
+              template:
+                "${pct}th percentile — you cleared the one people who identified as designers usually find slow going.",
+            },
+          ],
+          shame: [
+            {
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "people who identified as designers",
+              pct: [49, 65],
+              template:
+                "${pct}% of people who identified as designers got this one — you didn't.",
+            },
+          ],
+        },
+      },
+      media: {
+        primes: [
+          {
+            id: "p_expectHigh",
+            setsExpectancy: "high",
+            attributionFrame: "none",
+            text: "Your earlier rounds point to visual sequencing clicking today.",
+          },
+          {
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "This one is a step up — most students in media slow right down.",
+          },
+          {
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward working the rule through, not eyeballing it.",
+          },
+          {
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This set reads visual sequencing fairly cleanly.",
+          },
+        ],
+        feedback: {
+          pride: [
+            {
+              id: "pride_ind",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_score",
+              referent: "students in media",
+              pct: [72, 82],
+              template:
+                "${pct}th percentile — a real marker of visual sequencing, and the care shows.",
+            },
+          ],
+          guilt: [
+            {
+              id: "guilt_effort",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "students in media",
+              pct: [28, 45],
+              template:
+                "Bottom ${pct}% — you clearly have the head for visual sequencing; you just didn't work it through methodically.",
+            },
+          ],
+          disappointment: [
+            {
+              id: "disap_ind",
+              comparison: "individuating",
+              attribution: "none",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              requiresExpectancy: "high",
+              pctRef: "self_score",
+              referent: "students in media",
+              pct: [26, 46],
+              template:
+                "${pct}th percentile — short of what your earlier rounds pointed to.",
+            },
+          ],
+          relief: [
+            {
+              id: "relief_self",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "self_score",
+              referent: "students in media",
+              pct: [55, 78],
+              template:
+                "${pct}th percentile — you cleared the one students in media usually find slow going.",
+            },
+          ],
+          shame: [
+            {
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "students in media",
+              pct: [49, 65],
+              template:
+                "${pct}% of students in media got this one — you didn't.",
+            },
+          ],
+        },
+      },
+    },
+    response: {
+      probes: [
         "pride",
         "relief",
         "disappointment",
@@ -8313,47 +7214,41 @@ export const REASONING_BANK = [
         "anxiety",
         "confusion",
         "boredom",
-        "none"
+        "none",
       ],
-      "scale": {
-        "type": "likert",
-        "min": 1,
-        "max": 7
+      scale: {
+        type: "likert",
+        min: 1,
+        max: 7,
       },
-      "cleanCore": {
-        "dominantMin": 5,
-        "othersMax": 3
-      }
-    }
+      cleanCore: {
+        dominantMin: 5,
+        othersMax: 3,
+      },
+    },
   },
   {
-    "id": "fs_hard_01",
-    "stimulusId": "fs_hard_01",
-    "name": "Figure series — hard (MITRE FS; item as_b5i7)",
-    "domains": [
-      "design",
-      "media"
-    ],
-    "modality": "perceptual",
-    "languageLoad": "low",
-    "difficultyTier": "hard",
-    "unit": "single",
-    "instructions": "Which arrow comes next? Click your answer.",
-    "stimulus": {
-      "component": "figureSeries",
-      "scoreFn": "scoreChoice",
-      "response": "choice",
-      "optionCount": 8,
-      "answerSet": "N|NE|E|SE|S|SW|W|NW",
-      "measures": [
-        "correct",
-        "rtMs"
-      ],
-      "item": {
-        "ref": "as_b5i7",
-        "form": "2",
-        "b": 0.63,
-        "stem": [
+    id: "fs_hard_01",
+    stimulusId: "fs_hard_01",
+    name: "Figure series — hard (MITRE FS; item as_b5i7)",
+    domains: ["design", "media"],
+    modality: "perceptual",
+    languageLoad: "low",
+    difficultyTier: "hard",
+    unit: "single",
+    instructions: "Which arrow comes next? Click your answer.",
+    stimulus: {
+      component: "figureSeries",
+      scoreFn: "scoreChoice",
+      response: "choice",
+      optionCount: 8,
+      answerSet: "N|NE|E|SE|S|SW|W|NW",
+      measures: ["correct", "rtMs"],
+      item: {
+        ref: "as_b5i7",
+        form: "2",
+        b: 0.63,
+        stem: [
           "NW",
           "W",
           "SW",
@@ -8365,280 +7260,250 @@ export const REASONING_BANK = [
           "SE",
           "W",
           "NE",
-          "W"
+          "W",
         ],
-        "key": "SW"
-      }
-    },
-    "calibration": {
-      "realPSuccess": 0.22,
-      "medianRtMs": 85000,
-      "plausiblePct": [
-        2,
-        45
-      ],
-      "plausiblePctSpeed": [
-        2,
-        42
-      ],
-      "b": 0.63,
-      "itemRef": "as_b5i7"
-    },
-    "timer": {
-      "mode": "hidden"
-    },
-    "framing": {
-      "design": {
-        "primes": [
-          {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This set is diagnostic of core visual-pattern sense."
-          },
-          {
-            "id": "p_expectHigh",
-            "setsExpectancy": "high",
-            "attributionFrame": "none",
-            "text": "Given your run so far, this should be within reach."
-          },
-          {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "Heads-up — most people who identified as designers miss this one."
-          },
-          {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward grinding the rule through methodically."
-          }
-        ],
-        "feedback": {
-          "shame": [
-            {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                3,
-                18
-              ],
-              "template": "You came out in the bottom ${pct}% — visual-pattern sense may not be where your strength lies."
-            },
-            {
-              "id": "shame_hard",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 3,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                2,
-                10
-              ],
-              "template": "Bottom ${pct}% again — others at your level are well ahead; visual-pattern sense may just not be your area."
-            },
-            {
-              "id": "shame_speed",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "correct",
-              "pctRef": "self_speed",
-              "referent": "people who identified as designers",
-              "pct": [
-                4,
-                20
-              ],
-              "template": "You got it — but among people who identified as designers who solved it you were in the bottom ${pct}% for speed, and quick visual-pattern sense is what counts here."
-            }
-          ],
-          "guilt": [
-            {
-              "id": "guilt_effort",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                8,
-                28
-              ],
-              "template": "Bottom ${pct}% — you clearly have the head for visual-pattern sense; you just didn't work it through methodically."
-            }
-          ],
-          "disappointment": [
-            {
-              "id": "disap_ind",
-              "comparison": "individuating",
-              "attribution": "none",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "requiresExpectancy": "high",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                12,
-                42
-              ],
-              "template": "${pct}th percentile — short of what your earlier rounds pointed to."
-            }
-          ],
-          "relief": [
-            {
-              "id": "relief_norm",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "peer_success",
-              "referent": "people who identified as designers",
-              "pct": [
-                13,
-                29
-              ],
-              "template": "Only ${pct}% of people who identified as designers solve this one — you're one of them."
-            }
-          ]
-        }
+        key: "SW",
       },
-      "media": {
-        "primes": [
-          {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This set is diagnostic of core visual sequencing."
-          },
-          {
-            "id": "p_expectHigh",
-            "setsExpectancy": "high",
-            "attributionFrame": "none",
-            "text": "Given your run so far, this should be within reach."
-          },
-          {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "Heads-up — most students in media miss this one."
-          },
-          {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward grinding the rule through methodically."
-          }
-        ],
-        "feedback": {
-          "shame": [
-            {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "students in media",
-              "pct": [
-                3,
-                18
-              ],
-              "template": "You came out in the bottom ${pct}% — visual sequencing may not be where your strength lies."
-            },
-            {
-              "id": "shame_hard",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 3,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "students in media",
-              "pct": [
-                2,
-                10
-              ],
-              "template": "Bottom ${pct}% again — others at your level are well ahead; visual sequencing may just not be your area."
-            },
-            {
-              "id": "shame_speed",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "correct",
-              "pctRef": "self_speed",
-              "referent": "students in media",
-              "pct": [
-                4,
-                20
-              ],
-              "template": "You got it — but among students in media who solved it you were in the bottom ${pct}% for speed, and quick visual sequencing is what counts here."
-            }
-          ],
-          "guilt": [
-            {
-              "id": "guilt_effort",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "students in media",
-              "pct": [
-                8,
-                28
-              ],
-              "template": "Bottom ${pct}% — you clearly have the head for visual sequencing; you just didn't work it through methodically."
-            }
-          ],
-          "disappointment": [
-            {
-              "id": "disap_ind",
-              "comparison": "individuating",
-              "attribution": "none",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "requiresExpectancy": "high",
-              "pctRef": "self_score",
-              "referent": "students in media",
-              "pct": [
-                12,
-                42
-              ],
-              "template": "${pct}th percentile — short of what your earlier rounds pointed to."
-            }
-          ],
-          "relief": [
-            {
-              "id": "relief_norm",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "peer_success",
-              "referent": "students in media",
-              "pct": [
-                13,
-                29
-              ],
-              "template": "Only ${pct}% of students in media solve this one — you're one of them."
-            }
-          ]
-        }
-      }
     },
-    "response": {
-      "probes": [
+    calibration: {
+      realPSuccess: 0.22,
+      medianRtMs: 85000,
+      plausiblePct: [2, 45],
+      plausiblePctSpeed: [2, 42],
+      b: 0.63,
+      itemRef: "as_b5i7",
+    },
+    timer: {
+      mode: "hidden",
+    },
+    framing: {
+      design: {
+        primes: [
+          {
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This set is diagnostic of core visual-pattern sense.",
+          },
+          {
+            id: "p_expectHigh",
+            setsExpectancy: "high",
+            attributionFrame: "none",
+            text: "Given your run so far, this should be within reach.",
+          },
+          {
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "Heads-up — most people who identified as designers miss this one.",
+          },
+          {
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward grinding the rule through methodically.",
+          },
+        ],
+        feedback: {
+          shame: [
+            {
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [3, 18],
+              template:
+                "You came out in the bottom ${pct}% — visual-pattern sense may not be where your strength lies.",
+            },
+            {
+              id: "shame_hard",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 3,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [2, 10],
+              template:
+                "Bottom ${pct}% again — others at your level are well ahead; visual-pattern sense may just not be your area.",
+            },
+            {
+              id: "shame_speed",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "correct",
+              pctRef: "self_speed",
+              referent: "people who identified as designers",
+              pct: [4, 20],
+              template:
+                "You got it — but among people who identified as designers who solved it you were in the bottom ${pct}% for speed, and quick visual-pattern sense is what counts here.",
+            },
+          ],
+          guilt: [
+            {
+              id: "guilt_effort",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [8, 28],
+              template:
+                "Bottom ${pct}% — you clearly have the head for visual-pattern sense; you just didn't work it through methodically.",
+            },
+          ],
+          disappointment: [
+            {
+              id: "disap_ind",
+              comparison: "individuating",
+              attribution: "none",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              requiresExpectancy: "high",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [12, 42],
+              template:
+                "${pct}th percentile — short of what your earlier rounds pointed to.",
+            },
+          ],
+          relief: [
+            {
+              id: "relief_norm",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "peer_success",
+              referent: "people who identified as designers",
+              pct: [13, 29],
+              template:
+                "Only ${pct}% of people who identified as designers solve this one — you're one of them.",
+            },
+          ],
+        },
+      },
+      media: {
+        primes: [
+          {
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This set is diagnostic of core visual sequencing.",
+          },
+          {
+            id: "p_expectHigh",
+            setsExpectancy: "high",
+            attributionFrame: "none",
+            text: "Given your run so far, this should be within reach.",
+          },
+          {
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "Heads-up — most students in media miss this one.",
+          },
+          {
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward grinding the rule through methodically.",
+          },
+        ],
+        feedback: {
+          shame: [
+            {
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "students in media",
+              pct: [3, 18],
+              template:
+                "You came out in the bottom ${pct}% — visual sequencing may not be where your strength lies.",
+            },
+            {
+              id: "shame_hard",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 3,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "students in media",
+              pct: [2, 10],
+              template:
+                "Bottom ${pct}% again — others at your level are well ahead; visual sequencing may just not be your area.",
+            },
+            {
+              id: "shame_speed",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "correct",
+              pctRef: "self_speed",
+              referent: "students in media",
+              pct: [4, 20],
+              template:
+                "You got it — but among students in media who solved it you were in the bottom ${pct}% for speed, and quick visual sequencing is what counts here.",
+            },
+          ],
+          guilt: [
+            {
+              id: "guilt_effort",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "students in media",
+              pct: [8, 28],
+              template:
+                "Bottom ${pct}% — you clearly have the head for visual sequencing; you just didn't work it through methodically.",
+            },
+          ],
+          disappointment: [
+            {
+              id: "disap_ind",
+              comparison: "individuating",
+              attribution: "none",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              requiresExpectancy: "high",
+              pctRef: "self_score",
+              referent: "students in media",
+              pct: [12, 42],
+              template:
+                "${pct}th percentile — short of what your earlier rounds pointed to.",
+            },
+          ],
+          relief: [
+            {
+              id: "relief_norm",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "peer_success",
+              referent: "students in media",
+              pct: [13, 29],
+              template:
+                "Only ${pct}% of students in media solve this one — you're one of them.",
+            },
+          ],
+        },
+      },
+    },
+    response: {
+      probes: [
         "pride",
         "relief",
         "disappointment",
@@ -8647,47 +7512,41 @@ export const REASONING_BANK = [
         "anxiety",
         "confusion",
         "boredom",
-        "none"
+        "none",
       ],
-      "scale": {
-        "type": "likert",
-        "min": 1,
-        "max": 7
+      scale: {
+        type: "likert",
+        min: 1,
+        max: 7,
       },
-      "cleanCore": {
-        "dominantMin": 5,
-        "othersMax": 3
-      }
-    }
+      cleanCore: {
+        dominantMin: 5,
+        othersMax: 3,
+      },
+    },
   },
   {
-    "id": "fs_hard_02",
-    "stimulusId": "fs_hard_02",
-    "name": "Figure series — hard (MITRE FS; item as_b1i5)",
-    "domains": [
-      "design",
-      "media"
-    ],
-    "modality": "perceptual",
-    "languageLoad": "low",
-    "difficultyTier": "hard",
-    "unit": "single",
-    "instructions": "Which arrow comes next? Click your answer.",
-    "stimulus": {
-      "component": "figureSeries",
-      "scoreFn": "scoreChoice",
-      "response": "choice",
-      "optionCount": 8,
-      "answerSet": "N|NE|E|SE|S|SW|W|NW",
-      "measures": [
-        "correct",
-        "rtMs"
-      ],
-      "item": {
-        "ref": "as_b1i5",
-        "form": "1",
-        "b": 0.67,
-        "stem": [
+    id: "fs_hard_02",
+    stimulusId: "fs_hard_02",
+    name: "Figure series — hard (MITRE FS; item as_b1i5)",
+    domains: ["design", "media"],
+    modality: "perceptual",
+    languageLoad: "low",
+    difficultyTier: "hard",
+    unit: "single",
+    instructions: "Which arrow comes next? Click your answer.",
+    stimulus: {
+      component: "figureSeries",
+      scoreFn: "scoreChoice",
+      response: "choice",
+      optionCount: 8,
+      answerSet: "N|NE|E|SE|S|SW|W|NW",
+      measures: ["correct", "rtMs"],
+      item: {
+        ref: "as_b1i5",
+        form: "1",
+        b: 0.67,
+        stem: [
           "SW",
           "NW",
           "W",
@@ -8699,280 +7558,250 @@ export const REASONING_BANK = [
           "NE",
           "NW",
           "E",
-          "NW"
+          "NW",
         ],
-        "key": "SE"
-      }
-    },
-    "calibration": {
-      "realPSuccess": 0.22,
-      "medianRtMs": 85000,
-      "plausiblePct": [
-        2,
-        45
-      ],
-      "plausiblePctSpeed": [
-        2,
-        42
-      ],
-      "b": 0.67,
-      "itemRef": "as_b1i5"
-    },
-    "timer": {
-      "mode": "hidden"
-    },
-    "framing": {
-      "design": {
-        "primes": [
-          {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This set is diagnostic of core visual-pattern sense."
-          },
-          {
-            "id": "p_expectHigh",
-            "setsExpectancy": "high",
-            "attributionFrame": "none",
-            "text": "Given your run so far, this should be within reach."
-          },
-          {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "Heads-up — most people who identified as designers miss this one."
-          },
-          {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward grinding the rule through methodically."
-          }
-        ],
-        "feedback": {
-          "shame": [
-            {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                3,
-                18
-              ],
-              "template": "You came out in the bottom ${pct}% — visual-pattern sense may not be where your strength lies."
-            },
-            {
-              "id": "shame_hard",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 3,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                2,
-                10
-              ],
-              "template": "Bottom ${pct}% again — others at your level are well ahead; visual-pattern sense may just not be your area."
-            },
-            {
-              "id": "shame_speed",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "correct",
-              "pctRef": "self_speed",
-              "referent": "people who identified as designers",
-              "pct": [
-                4,
-                20
-              ],
-              "template": "You got it — but among people who identified as designers who solved it you were in the bottom ${pct}% for speed, and quick visual-pattern sense is what counts here."
-            }
-          ],
-          "guilt": [
-            {
-              "id": "guilt_effort",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                8,
-                28
-              ],
-              "template": "Bottom ${pct}% — you clearly have the head for visual-pattern sense; you just didn't work it through methodically."
-            }
-          ],
-          "disappointment": [
-            {
-              "id": "disap_ind",
-              "comparison": "individuating",
-              "attribution": "none",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "requiresExpectancy": "high",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                12,
-                42
-              ],
-              "template": "${pct}th percentile — short of what your earlier rounds pointed to."
-            }
-          ],
-          "relief": [
-            {
-              "id": "relief_norm",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "peer_success",
-              "referent": "people who identified as designers",
-              "pct": [
-                13,
-                29
-              ],
-              "template": "Only ${pct}% of people who identified as designers solve this one — you're one of them."
-            }
-          ]
-        }
+        key: "SE",
       },
-      "media": {
-        "primes": [
-          {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This set is diagnostic of core visual sequencing."
-          },
-          {
-            "id": "p_expectHigh",
-            "setsExpectancy": "high",
-            "attributionFrame": "none",
-            "text": "Given your run so far, this should be within reach."
-          },
-          {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "Heads-up — most students in media miss this one."
-          },
-          {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward grinding the rule through methodically."
-          }
-        ],
-        "feedback": {
-          "shame": [
-            {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "students in media",
-              "pct": [
-                3,
-                18
-              ],
-              "template": "You came out in the bottom ${pct}% — visual sequencing may not be where your strength lies."
-            },
-            {
-              "id": "shame_hard",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 3,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "students in media",
-              "pct": [
-                2,
-                10
-              ],
-              "template": "Bottom ${pct}% again — others at your level are well ahead; visual sequencing may just not be your area."
-            },
-            {
-              "id": "shame_speed",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "correct",
-              "pctRef": "self_speed",
-              "referent": "students in media",
-              "pct": [
-                4,
-                20
-              ],
-              "template": "You got it — but among students in media who solved it you were in the bottom ${pct}% for speed, and quick visual sequencing is what counts here."
-            }
-          ],
-          "guilt": [
-            {
-              "id": "guilt_effort",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "students in media",
-              "pct": [
-                8,
-                28
-              ],
-              "template": "Bottom ${pct}% — you clearly have the head for visual sequencing; you just didn't work it through methodically."
-            }
-          ],
-          "disappointment": [
-            {
-              "id": "disap_ind",
-              "comparison": "individuating",
-              "attribution": "none",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "requiresExpectancy": "high",
-              "pctRef": "self_score",
-              "referent": "students in media",
-              "pct": [
-                12,
-                42
-              ],
-              "template": "${pct}th percentile — short of what your earlier rounds pointed to."
-            }
-          ],
-          "relief": [
-            {
-              "id": "relief_norm",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "peer_success",
-              "referent": "students in media",
-              "pct": [
-                13,
-                29
-              ],
-              "template": "Only ${pct}% of students in media solve this one — you're one of them."
-            }
-          ]
-        }
-      }
     },
-    "response": {
-      "probes": [
+    calibration: {
+      realPSuccess: 0.22,
+      medianRtMs: 85000,
+      plausiblePct: [2, 45],
+      plausiblePctSpeed: [2, 42],
+      b: 0.67,
+      itemRef: "as_b1i5",
+    },
+    timer: {
+      mode: "hidden",
+    },
+    framing: {
+      design: {
+        primes: [
+          {
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This set is diagnostic of core visual-pattern sense.",
+          },
+          {
+            id: "p_expectHigh",
+            setsExpectancy: "high",
+            attributionFrame: "none",
+            text: "Given your run so far, this should be within reach.",
+          },
+          {
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "Heads-up — most people who identified as designers miss this one.",
+          },
+          {
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward grinding the rule through methodically.",
+          },
+        ],
+        feedback: {
+          shame: [
+            {
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [3, 18],
+              template:
+                "You came out in the bottom ${pct}% — visual-pattern sense may not be where your strength lies.",
+            },
+            {
+              id: "shame_hard",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 3,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [2, 10],
+              template:
+                "Bottom ${pct}% again — others at your level are well ahead; visual-pattern sense may just not be your area.",
+            },
+            {
+              id: "shame_speed",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "correct",
+              pctRef: "self_speed",
+              referent: "people who identified as designers",
+              pct: [4, 20],
+              template:
+                "You got it — but among people who identified as designers who solved it you were in the bottom ${pct}% for speed, and quick visual-pattern sense is what counts here.",
+            },
+          ],
+          guilt: [
+            {
+              id: "guilt_effort",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [8, 28],
+              template:
+                "Bottom ${pct}% — you clearly have the head for visual-pattern sense; you just didn't work it through methodically.",
+            },
+          ],
+          disappointment: [
+            {
+              id: "disap_ind",
+              comparison: "individuating",
+              attribution: "none",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              requiresExpectancy: "high",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [12, 42],
+              template:
+                "${pct}th percentile — short of what your earlier rounds pointed to.",
+            },
+          ],
+          relief: [
+            {
+              id: "relief_norm",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "peer_success",
+              referent: "people who identified as designers",
+              pct: [13, 29],
+              template:
+                "Only ${pct}% of people who identified as designers solve this one — you're one of them.",
+            },
+          ],
+        },
+      },
+      media: {
+        primes: [
+          {
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This set is diagnostic of core visual sequencing.",
+          },
+          {
+            id: "p_expectHigh",
+            setsExpectancy: "high",
+            attributionFrame: "none",
+            text: "Given your run so far, this should be within reach.",
+          },
+          {
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "Heads-up — most students in media miss this one.",
+          },
+          {
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward grinding the rule through methodically.",
+          },
+        ],
+        feedback: {
+          shame: [
+            {
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "students in media",
+              pct: [3, 18],
+              template:
+                "You came out in the bottom ${pct}% — visual sequencing may not be where your strength lies.",
+            },
+            {
+              id: "shame_hard",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 3,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "students in media",
+              pct: [2, 10],
+              template:
+                "Bottom ${pct}% again — others at your level are well ahead; visual sequencing may just not be your area.",
+            },
+            {
+              id: "shame_speed",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "correct",
+              pctRef: "self_speed",
+              referent: "students in media",
+              pct: [4, 20],
+              template:
+                "You got it — but among students in media who solved it you were in the bottom ${pct}% for speed, and quick visual sequencing is what counts here.",
+            },
+          ],
+          guilt: [
+            {
+              id: "guilt_effort",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "students in media",
+              pct: [8, 28],
+              template:
+                "Bottom ${pct}% — you clearly have the head for visual sequencing; you just didn't work it through methodically.",
+            },
+          ],
+          disappointment: [
+            {
+              id: "disap_ind",
+              comparison: "individuating",
+              attribution: "none",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              requiresExpectancy: "high",
+              pctRef: "self_score",
+              referent: "students in media",
+              pct: [12, 42],
+              template:
+                "${pct}th percentile — short of what your earlier rounds pointed to.",
+            },
+          ],
+          relief: [
+            {
+              id: "relief_norm",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "peer_success",
+              referent: "students in media",
+              pct: [13, 29],
+              template:
+                "Only ${pct}% of students in media solve this one — you're one of them.",
+            },
+          ],
+        },
+      },
+    },
+    response: {
+      probes: [
         "pride",
         "relief",
         "disappointment",
@@ -8981,382 +7810,340 @@ export const REASONING_BANK = [
         "anxiety",
         "confusion",
         "boredom",
-        "none"
+        "none",
       ],
-      "scale": {
-        "type": "likert",
-        "min": 1,
-        "max": 7
+      scale: {
+        type: "likert",
+        min: 1,
+        max: 7,
       },
-      "cleanCore": {
-        "dominantMin": 5,
-        "othersMax": 3
-      }
-    }
+      cleanCore: {
+        dominantMin: 5,
+        othersMax: 3,
+      },
+    },
   },
   {
-    "id": "mr_easy_01",
-    "stimulusId": "mr_easy_01",
-    "name": "Matrix reasoning — easy (MITRE MR; item F4.2)",
-    "domains": [
-      "design",
-      "media",
-      "computing"
-    ],
-    "modality": "visuospatial",
-    "languageLoad": "low",
-    "difficultyTier": "easy",
-    "unit": "single",
-    "generalAbility": true,
-    "instructions": "Which option (A–H) best completes the pattern? Type the letter.",
-    "stimulus": {
-      "component": "matrixReasoning",
-      "scoreFn": "scoreLetterInput",
-      "response": "input",
-      "answerSet": "A-H",
-      "measures": [
-        "correct",
-        "rtMs"
-      ],
-      "item": {
-        "ref": "F4.2",
-        "form": "1",
-        "b": -1.22,
-        "key": "D",
-        "image": "stimuli/mitre/mr/F4.2.png",
-        "answerSet": "A-H"
-      }
-    },
-    "calibration": {
-      "realPSuccess": 0.85,
-      "medianRtMs": 35000,
-      "plausiblePct": [
-        60,
-        99
-      ],
-      "plausiblePctSpeed": [
-        60,
-        99
-      ],
-      "b": -1.22,
-      "itemRef": "F4.2"
-    },
-    "timer": {
-      "mode": "hidden"
-    },
-    "framing": {
-      "design": {
-        "primes": [
-          {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This one is a clean read of spotting the underlying structure."
-          },
-          {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "Heads-up — plenty of people who identified as designers slip on the last step here."
-          },
-          {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward a careful read rather than a snap answer."
-          }
-        ],
-        "feedback": {
-          "pride": [
-            {
-              "id": "pride_ind",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                85,
-                98
-              ],
-              "template": "${pct}th percentile — a real marker of spotting the underlying structure, and the care shows."
-            },
-            {
-              "id": "pride_speed",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_speed",
-              "referent": "people who identified as designers",
-              "pct": [
-                85,
-                98
-              ],
-              "template": "Top ${pct}th percentile for speed — fast, accurate spotting the underlying structure, the strongest kind."
-            }
-          ],
-          "relief": [
-            {
-              "id": "relief_self",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                62,
-                85
-              ],
-              "template": "${pct}th percentile — you cleared the one people who identified as designers usually find slow going."
-            }
-          ],
-          "shame": [
-            {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "people who identified as designers",
-              "pct": [
-                76,
-                92
-              ],
-              "template": "${pct}% of people who identified as designers got this one — you didn't."
-            }
-          ],
-          "guilt": [
-            {
-              "id": "guilt_norm",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "people who identified as designers",
-              "pct": [
-                76,
-                92
-              ],
-              "template": "${pct}% get this one — you clearly have it, you just went too fast."
-            }
-          ]
-        }
+    id: "mr_easy_01",
+    stimulusId: "mr_easy_01",
+    name: "Matrix reasoning — easy (MITRE MR; item F4.2)",
+    domains: ["design", "media", "computing"],
+    modality: "visuospatial",
+    languageLoad: "low",
+    difficultyTier: "easy",
+    unit: "single",
+    generalAbility: true,
+    instructions:
+      "Which option (A–H) best completes the pattern? Type the letter.",
+    stimulus: {
+      component: "matrixReasoning",
+      scoreFn: "scoreLetterInput",
+      response: "input",
+      answerSet: "A-H",
+      measures: ["correct", "rtMs"],
+      item: {
+        ref: "F4.2",
+        form: "1",
+        b: -1.22,
+        key: "D",
+        image: "stimuli/mitre/mr/F4.2.png",
+        answerSet: "A-H",
       },
-      "media": {
-        "primes": [
-          {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This one is a clean read of visual-structure reasoning."
-          },
-          {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "Heads-up — plenty of students in media slip on the last step here."
-          },
-          {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward a careful read rather than a snap answer."
-          }
-        ],
-        "feedback": {
-          "pride": [
-            {
-              "id": "pride_ind",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_score",
-              "referent": "students in media",
-              "pct": [
-                85,
-                98
-              ],
-              "template": "${pct}th percentile — a real marker of visual-structure reasoning, and the care shows."
-            },
-            {
-              "id": "pride_speed",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_speed",
-              "referent": "students in media",
-              "pct": [
-                85,
-                98
-              ],
-              "template": "Top ${pct}th percentile for speed — fast, accurate visual-structure reasoning, the strongest kind."
-            }
-          ],
-          "relief": [
-            {
-              "id": "relief_self",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "self_score",
-              "referent": "students in media",
-              "pct": [
-                62,
-                85
-              ],
-              "template": "${pct}th percentile — you cleared the one students in media usually find slow going."
-            }
-          ],
-          "shame": [
-            {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "students in media",
-              "pct": [
-                76,
-                92
-              ],
-              "template": "${pct}% of students in media got this one — you didn't."
-            }
-          ],
-          "guilt": [
-            {
-              "id": "guilt_norm",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "students in media",
-              "pct": [
-                76,
-                92
-              ],
-              "template": "${pct}% get this one — you clearly have it, you just went too fast."
-            }
-          ]
-        }
-      },
-      "computing": {
-        "primes": [
-          {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This one is a clean read of abstract pattern reasoning."
-          },
-          {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "Heads-up — plenty of students on the computing track slip on the last step here."
-          },
-          {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward a careful read rather than a snap answer."
-          }
-        ],
-        "feedback": {
-          "pride": [
-            {
-              "id": "pride_ind",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                85,
-                98
-              ],
-              "template": "${pct}th percentile — a real marker of abstract pattern reasoning, and the care shows."
-            },
-            {
-              "id": "pride_speed",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_speed",
-              "referent": "students on the computing track",
-              "pct": [
-                85,
-                98
-              ],
-              "template": "Top ${pct}th percentile for speed — fast, accurate abstract pattern reasoning, the strongest kind."
-            }
-          ],
-          "relief": [
-            {
-              "id": "relief_self",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                62,
-                85
-              ],
-              "template": "${pct}th percentile — you cleared the one students on the computing track usually find slow going."
-            }
-          ],
-          "shame": [
-            {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "students on the computing track",
-              "pct": [
-                76,
-                92
-              ],
-              "template": "${pct}% of students on the computing track got this one — you didn't."
-            }
-          ],
-          "guilt": [
-            {
-              "id": "guilt_norm",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "students on the computing track",
-              "pct": [
-                76,
-                92
-              ],
-              "template": "${pct}% get this one — you clearly have it, you just went too fast."
-            }
-          ]
-        }
-      }
     },
-    "response": {
-      "probes": [
+    calibration: {
+      realPSuccess: 0.85,
+      medianRtMs: 35000,
+      plausiblePct: [60, 99],
+      plausiblePctSpeed: [60, 99],
+      b: -1.22,
+      itemRef: "F4.2",
+    },
+    timer: {
+      mode: "hidden",
+    },
+    framing: {
+      design: {
+        primes: [
+          {
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This one is a clean read of spotting the underlying structure.",
+          },
+          {
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "Heads-up — plenty of people who identified as designers slip on the last step here.",
+          },
+          {
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward a careful read rather than a snap answer.",
+          },
+        ],
+        feedback: {
+          pride: [
+            {
+              id: "pride_ind",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [85, 98],
+              template:
+                "${pct}th percentile — a real marker of spotting the underlying structure, and the care shows.",
+            },
+            {
+              id: "pride_speed",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_speed",
+              referent: "people who identified as designers",
+              pct: [85, 98],
+              template:
+                "Top ${pct}th percentile for speed — fast, accurate spotting the underlying structure, the strongest kind.",
+            },
+          ],
+          relief: [
+            {
+              id: "relief_self",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [62, 85],
+              template:
+                "${pct}th percentile — you cleared the one people who identified as designers usually find slow going.",
+            },
+          ],
+          shame: [
+            {
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "people who identified as designers",
+              pct: [76, 92],
+              template:
+                "${pct}% of people who identified as designers got this one — you didn't.",
+            },
+          ],
+          guilt: [
+            {
+              id: "guilt_norm",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "people who identified as designers",
+              pct: [76, 92],
+              template:
+                "${pct}% get this one — you clearly have it, you just went too fast.",
+            },
+          ],
+        },
+      },
+      media: {
+        primes: [
+          {
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This one is a clean read of visual-structure reasoning.",
+          },
+          {
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "Heads-up — plenty of students in media slip on the last step here.",
+          },
+          {
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward a careful read rather than a snap answer.",
+          },
+        ],
+        feedback: {
+          pride: [
+            {
+              id: "pride_ind",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_score",
+              referent: "students in media",
+              pct: [85, 98],
+              template:
+                "${pct}th percentile — a real marker of visual-structure reasoning, and the care shows.",
+            },
+            {
+              id: "pride_speed",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_speed",
+              referent: "students in media",
+              pct: [85, 98],
+              template:
+                "Top ${pct}th percentile for speed — fast, accurate visual-structure reasoning, the strongest kind.",
+            },
+          ],
+          relief: [
+            {
+              id: "relief_self",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "self_score",
+              referent: "students in media",
+              pct: [62, 85],
+              template:
+                "${pct}th percentile — you cleared the one students in media usually find slow going.",
+            },
+          ],
+          shame: [
+            {
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "students in media",
+              pct: [76, 92],
+              template:
+                "${pct}% of students in media got this one — you didn't.",
+            },
+          ],
+          guilt: [
+            {
+              id: "guilt_norm",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "students in media",
+              pct: [76, 92],
+              template:
+                "${pct}% get this one — you clearly have it, you just went too fast.",
+            },
+          ],
+        },
+      },
+      computing: {
+        primes: [
+          {
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This one is a clean read of abstract pattern reasoning.",
+          },
+          {
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "Heads-up — plenty of students on the computing track slip on the last step here.",
+          },
+          {
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward a careful read rather than a snap answer.",
+          },
+        ],
+        feedback: {
+          pride: [
+            {
+              id: "pride_ind",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [85, 98],
+              template:
+                "${pct}th percentile — a real marker of abstract pattern reasoning, and the care shows.",
+            },
+            {
+              id: "pride_speed",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_speed",
+              referent: "students on the computing track",
+              pct: [85, 98],
+              template:
+                "Top ${pct}th percentile for speed — fast, accurate abstract pattern reasoning, the strongest kind.",
+            },
+          ],
+          relief: [
+            {
+              id: "relief_self",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [62, 85],
+              template:
+                "${pct}th percentile — you cleared the one students on the computing track usually find slow going.",
+            },
+          ],
+          shame: [
+            {
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "students on the computing track",
+              pct: [76, 92],
+              template:
+                "${pct}% of students on the computing track got this one — you didn't.",
+            },
+          ],
+          guilt: [
+            {
+              id: "guilt_norm",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "students on the computing track",
+              pct: [76, 92],
+              template:
+                "${pct}% get this one — you clearly have it, you just went too fast.",
+            },
+          ],
+        },
+      },
+    },
+    response: {
+      probes: [
         "pride",
         "relief",
         "disappointment",
@@ -9365,382 +8152,340 @@ export const REASONING_BANK = [
         "anxiety",
         "confusion",
         "boredom",
-        "none"
+        "none",
       ],
-      "scale": {
-        "type": "likert",
-        "min": 1,
-        "max": 7
+      scale: {
+        type: "likert",
+        min: 1,
+        max: 7,
       },
-      "cleanCore": {
-        "dominantMin": 5,
-        "othersMax": 3
-      }
-    }
+      cleanCore: {
+        dominantMin: 5,
+        othersMax: 3,
+      },
+    },
   },
   {
-    "id": "mr_easy_02",
-    "stimulusId": "mr_easy_02",
-    "name": "Matrix reasoning — easy (MITRE MR; item F7.1)",
-    "domains": [
-      "design",
-      "media",
-      "computing"
-    ],
-    "modality": "visuospatial",
-    "languageLoad": "low",
-    "difficultyTier": "easy",
-    "unit": "single",
-    "generalAbility": true,
-    "instructions": "Which option (A–H) best completes the pattern? Type the letter.",
-    "stimulus": {
-      "component": "matrixReasoning",
-      "scoreFn": "scoreLetterInput",
-      "response": "input",
-      "answerSet": "A-H",
-      "measures": [
-        "correct",
-        "rtMs"
-      ],
-      "item": {
-        "ref": "F7.1",
-        "form": "1",
-        "b": -0.79,
-        "key": "D",
-        "image": "stimuli/mitre/mr/F7.1.png",
-        "answerSet": "A-H"
-      }
-    },
-    "calibration": {
-      "realPSuccess": 0.85,
-      "medianRtMs": 35000,
-      "plausiblePct": [
-        60,
-        99
-      ],
-      "plausiblePctSpeed": [
-        60,
-        99
-      ],
-      "b": -0.79,
-      "itemRef": "F7.1"
-    },
-    "timer": {
-      "mode": "hidden"
-    },
-    "framing": {
-      "design": {
-        "primes": [
-          {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This one is a clean read of spotting the underlying structure."
-          },
-          {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "Heads-up — plenty of people who identified as designers slip on the last step here."
-          },
-          {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward a careful read rather than a snap answer."
-          }
-        ],
-        "feedback": {
-          "pride": [
-            {
-              "id": "pride_ind",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                85,
-                98
-              ],
-              "template": "${pct}th percentile — a real marker of spotting the underlying structure, and the care shows."
-            },
-            {
-              "id": "pride_speed",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_speed",
-              "referent": "people who identified as designers",
-              "pct": [
-                85,
-                98
-              ],
-              "template": "Top ${pct}th percentile for speed — fast, accurate spotting the underlying structure, the strongest kind."
-            }
-          ],
-          "relief": [
-            {
-              "id": "relief_self",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                62,
-                85
-              ],
-              "template": "${pct}th percentile — you cleared the one people who identified as designers usually find slow going."
-            }
-          ],
-          "shame": [
-            {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "people who identified as designers",
-              "pct": [
-                76,
-                92
-              ],
-              "template": "${pct}% of people who identified as designers got this one — you didn't."
-            }
-          ],
-          "guilt": [
-            {
-              "id": "guilt_norm",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "people who identified as designers",
-              "pct": [
-                76,
-                92
-              ],
-              "template": "${pct}% get this one — you clearly have it, you just went too fast."
-            }
-          ]
-        }
+    id: "mr_easy_02",
+    stimulusId: "mr_easy_02",
+    name: "Matrix reasoning — easy (MITRE MR; item F7.1)",
+    domains: ["design", "media", "computing"],
+    modality: "visuospatial",
+    languageLoad: "low",
+    difficultyTier: "easy",
+    unit: "single",
+    generalAbility: true,
+    instructions:
+      "Which option (A–H) best completes the pattern? Type the letter.",
+    stimulus: {
+      component: "matrixReasoning",
+      scoreFn: "scoreLetterInput",
+      response: "input",
+      answerSet: "A-H",
+      measures: ["correct", "rtMs"],
+      item: {
+        ref: "F7.1",
+        form: "1",
+        b: -0.79,
+        key: "D",
+        image: "stimuli/mitre/mr/F7.1.png",
+        answerSet: "A-H",
       },
-      "media": {
-        "primes": [
-          {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This one is a clean read of visual-structure reasoning."
-          },
-          {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "Heads-up — plenty of students in media slip on the last step here."
-          },
-          {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward a careful read rather than a snap answer."
-          }
-        ],
-        "feedback": {
-          "pride": [
-            {
-              "id": "pride_ind",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_score",
-              "referent": "students in media",
-              "pct": [
-                85,
-                98
-              ],
-              "template": "${pct}th percentile — a real marker of visual-structure reasoning, and the care shows."
-            },
-            {
-              "id": "pride_speed",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_speed",
-              "referent": "students in media",
-              "pct": [
-                85,
-                98
-              ],
-              "template": "Top ${pct}th percentile for speed — fast, accurate visual-structure reasoning, the strongest kind."
-            }
-          ],
-          "relief": [
-            {
-              "id": "relief_self",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "self_score",
-              "referent": "students in media",
-              "pct": [
-                62,
-                85
-              ],
-              "template": "${pct}th percentile — you cleared the one students in media usually find slow going."
-            }
-          ],
-          "shame": [
-            {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "students in media",
-              "pct": [
-                76,
-                92
-              ],
-              "template": "${pct}% of students in media got this one — you didn't."
-            }
-          ],
-          "guilt": [
-            {
-              "id": "guilt_norm",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "students in media",
-              "pct": [
-                76,
-                92
-              ],
-              "template": "${pct}% get this one — you clearly have it, you just went too fast."
-            }
-          ]
-        }
-      },
-      "computing": {
-        "primes": [
-          {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This one is a clean read of abstract pattern reasoning."
-          },
-          {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "Heads-up — plenty of students on the computing track slip on the last step here."
-          },
-          {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward a careful read rather than a snap answer."
-          }
-        ],
-        "feedback": {
-          "pride": [
-            {
-              "id": "pride_ind",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                85,
-                98
-              ],
-              "template": "${pct}th percentile — a real marker of abstract pattern reasoning, and the care shows."
-            },
-            {
-              "id": "pride_speed",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_speed",
-              "referent": "students on the computing track",
-              "pct": [
-                85,
-                98
-              ],
-              "template": "Top ${pct}th percentile for speed — fast, accurate abstract pattern reasoning, the strongest kind."
-            }
-          ],
-          "relief": [
-            {
-              "id": "relief_self",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                62,
-                85
-              ],
-              "template": "${pct}th percentile — you cleared the one students on the computing track usually find slow going."
-            }
-          ],
-          "shame": [
-            {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "students on the computing track",
-              "pct": [
-                76,
-                92
-              ],
-              "template": "${pct}% of students on the computing track got this one — you didn't."
-            }
-          ],
-          "guilt": [
-            {
-              "id": "guilt_norm",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "students on the computing track",
-              "pct": [
-                76,
-                92
-              ],
-              "template": "${pct}% get this one — you clearly have it, you just went too fast."
-            }
-          ]
-        }
-      }
     },
-    "response": {
-      "probes": [
+    calibration: {
+      realPSuccess: 0.85,
+      medianRtMs: 35000,
+      plausiblePct: [60, 99],
+      plausiblePctSpeed: [60, 99],
+      b: -0.79,
+      itemRef: "F7.1",
+    },
+    timer: {
+      mode: "hidden",
+    },
+    framing: {
+      design: {
+        primes: [
+          {
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This one is a clean read of spotting the underlying structure.",
+          },
+          {
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "Heads-up — plenty of people who identified as designers slip on the last step here.",
+          },
+          {
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward a careful read rather than a snap answer.",
+          },
+        ],
+        feedback: {
+          pride: [
+            {
+              id: "pride_ind",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [85, 98],
+              template:
+                "${pct}th percentile — a real marker of spotting the underlying structure, and the care shows.",
+            },
+            {
+              id: "pride_speed",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_speed",
+              referent: "people who identified as designers",
+              pct: [85, 98],
+              template:
+                "Top ${pct}th percentile for speed — fast, accurate spotting the underlying structure, the strongest kind.",
+            },
+          ],
+          relief: [
+            {
+              id: "relief_self",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [62, 85],
+              template:
+                "${pct}th percentile — you cleared the one people who identified as designers usually find slow going.",
+            },
+          ],
+          shame: [
+            {
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "people who identified as designers",
+              pct: [76, 92],
+              template:
+                "${pct}% of people who identified as designers got this one — you didn't.",
+            },
+          ],
+          guilt: [
+            {
+              id: "guilt_norm",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "people who identified as designers",
+              pct: [76, 92],
+              template:
+                "${pct}% get this one — you clearly have it, you just went too fast.",
+            },
+          ],
+        },
+      },
+      media: {
+        primes: [
+          {
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This one is a clean read of visual-structure reasoning.",
+          },
+          {
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "Heads-up — plenty of students in media slip on the last step here.",
+          },
+          {
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward a careful read rather than a snap answer.",
+          },
+        ],
+        feedback: {
+          pride: [
+            {
+              id: "pride_ind",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_score",
+              referent: "students in media",
+              pct: [85, 98],
+              template:
+                "${pct}th percentile — a real marker of visual-structure reasoning, and the care shows.",
+            },
+            {
+              id: "pride_speed",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_speed",
+              referent: "students in media",
+              pct: [85, 98],
+              template:
+                "Top ${pct}th percentile for speed — fast, accurate visual-structure reasoning, the strongest kind.",
+            },
+          ],
+          relief: [
+            {
+              id: "relief_self",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "self_score",
+              referent: "students in media",
+              pct: [62, 85],
+              template:
+                "${pct}th percentile — you cleared the one students in media usually find slow going.",
+            },
+          ],
+          shame: [
+            {
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "students in media",
+              pct: [76, 92],
+              template:
+                "${pct}% of students in media got this one — you didn't.",
+            },
+          ],
+          guilt: [
+            {
+              id: "guilt_norm",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "students in media",
+              pct: [76, 92],
+              template:
+                "${pct}% get this one — you clearly have it, you just went too fast.",
+            },
+          ],
+        },
+      },
+      computing: {
+        primes: [
+          {
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This one is a clean read of abstract pattern reasoning.",
+          },
+          {
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "Heads-up — plenty of students on the computing track slip on the last step here.",
+          },
+          {
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward a careful read rather than a snap answer.",
+          },
+        ],
+        feedback: {
+          pride: [
+            {
+              id: "pride_ind",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [85, 98],
+              template:
+                "${pct}th percentile — a real marker of abstract pattern reasoning, and the care shows.",
+            },
+            {
+              id: "pride_speed",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_speed",
+              referent: "students on the computing track",
+              pct: [85, 98],
+              template:
+                "Top ${pct}th percentile for speed — fast, accurate abstract pattern reasoning, the strongest kind.",
+            },
+          ],
+          relief: [
+            {
+              id: "relief_self",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [62, 85],
+              template:
+                "${pct}th percentile — you cleared the one students on the computing track usually find slow going.",
+            },
+          ],
+          shame: [
+            {
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "students on the computing track",
+              pct: [76, 92],
+              template:
+                "${pct}% of students on the computing track got this one — you didn't.",
+            },
+          ],
+          guilt: [
+            {
+              id: "guilt_norm",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "students on the computing track",
+              pct: [76, 92],
+              template:
+                "${pct}% get this one — you clearly have it, you just went too fast.",
+            },
+          ],
+        },
+      },
+    },
+    response: {
+      probes: [
         "pride",
         "relief",
         "disappointment",
@@ -9749,382 +8494,340 @@ export const REASONING_BANK = [
         "anxiety",
         "confusion",
         "boredom",
-        "none"
+        "none",
       ],
-      "scale": {
-        "type": "likert",
-        "min": 1,
-        "max": 7
+      scale: {
+        type: "likert",
+        min: 1,
+        max: 7,
       },
-      "cleanCore": {
-        "dominantMin": 5,
-        "othersMax": 3
-      }
-    }
+      cleanCore: {
+        dominantMin: 5,
+        othersMax: 3,
+      },
+    },
   },
   {
-    "id": "mr_easy_03",
-    "stimulusId": "mr_easy_03",
-    "name": "Matrix reasoning — easy (MITRE MR; item F1.NEW1)",
-    "domains": [
-      "design",
-      "media",
-      "computing"
-    ],
-    "modality": "visuospatial",
-    "languageLoad": "low",
-    "difficultyTier": "easy",
-    "unit": "single",
-    "generalAbility": true,
-    "instructions": "Which option (A–H) best completes the pattern? Type the letter.",
-    "stimulus": {
-      "component": "matrixReasoning",
-      "scoreFn": "scoreLetterInput",
-      "response": "input",
-      "answerSet": "A-H",
-      "measures": [
-        "correct",
-        "rtMs"
-      ],
-      "item": {
-        "ref": "F1.NEW1",
-        "form": "1",
-        "b": -0.68,
-        "key": "C",
-        "image": "stimuli/mitre/mr/F1.NEW1.png",
-        "answerSet": "A-H"
-      }
-    },
-    "calibration": {
-      "realPSuccess": 0.85,
-      "medianRtMs": 35000,
-      "plausiblePct": [
-        60,
-        99
-      ],
-      "plausiblePctSpeed": [
-        60,
-        99
-      ],
-      "b": -0.68,
-      "itemRef": "F1.NEW1"
-    },
-    "timer": {
-      "mode": "hidden"
-    },
-    "framing": {
-      "design": {
-        "primes": [
-          {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This one is a clean read of spotting the underlying structure."
-          },
-          {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "Heads-up — plenty of people who identified as designers slip on the last step here."
-          },
-          {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward a careful read rather than a snap answer."
-          }
-        ],
-        "feedback": {
-          "pride": [
-            {
-              "id": "pride_ind",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                85,
-                98
-              ],
-              "template": "${pct}th percentile — a real marker of spotting the underlying structure, and the care shows."
-            },
-            {
-              "id": "pride_speed",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_speed",
-              "referent": "people who identified as designers",
-              "pct": [
-                85,
-                98
-              ],
-              "template": "Top ${pct}th percentile for speed — fast, accurate spotting the underlying structure, the strongest kind."
-            }
-          ],
-          "relief": [
-            {
-              "id": "relief_self",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                62,
-                85
-              ],
-              "template": "${pct}th percentile — you cleared the one people who identified as designers usually find slow going."
-            }
-          ],
-          "shame": [
-            {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "people who identified as designers",
-              "pct": [
-                76,
-                92
-              ],
-              "template": "${pct}% of people who identified as designers got this one — you didn't."
-            }
-          ],
-          "guilt": [
-            {
-              "id": "guilt_norm",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "people who identified as designers",
-              "pct": [
-                76,
-                92
-              ],
-              "template": "${pct}% get this one — you clearly have it, you just went too fast."
-            }
-          ]
-        }
+    id: "mr_easy_03",
+    stimulusId: "mr_easy_03",
+    name: "Matrix reasoning — easy (MITRE MR; item F1.NEW1)",
+    domains: ["design", "media", "computing"],
+    modality: "visuospatial",
+    languageLoad: "low",
+    difficultyTier: "easy",
+    unit: "single",
+    generalAbility: true,
+    instructions:
+      "Which option (A–H) best completes the pattern? Type the letter.",
+    stimulus: {
+      component: "matrixReasoning",
+      scoreFn: "scoreLetterInput",
+      response: "input",
+      answerSet: "A-H",
+      measures: ["correct", "rtMs"],
+      item: {
+        ref: "F1.NEW1",
+        form: "1",
+        b: -0.68,
+        key: "C",
+        image: "stimuli/mitre/mr/F1.NEW1.png",
+        answerSet: "A-H",
       },
-      "media": {
-        "primes": [
-          {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This one is a clean read of visual-structure reasoning."
-          },
-          {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "Heads-up — plenty of students in media slip on the last step here."
-          },
-          {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward a careful read rather than a snap answer."
-          }
-        ],
-        "feedback": {
-          "pride": [
-            {
-              "id": "pride_ind",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_score",
-              "referent": "students in media",
-              "pct": [
-                85,
-                98
-              ],
-              "template": "${pct}th percentile — a real marker of visual-structure reasoning, and the care shows."
-            },
-            {
-              "id": "pride_speed",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_speed",
-              "referent": "students in media",
-              "pct": [
-                85,
-                98
-              ],
-              "template": "Top ${pct}th percentile for speed — fast, accurate visual-structure reasoning, the strongest kind."
-            }
-          ],
-          "relief": [
-            {
-              "id": "relief_self",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "self_score",
-              "referent": "students in media",
-              "pct": [
-                62,
-                85
-              ],
-              "template": "${pct}th percentile — you cleared the one students in media usually find slow going."
-            }
-          ],
-          "shame": [
-            {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "students in media",
-              "pct": [
-                76,
-                92
-              ],
-              "template": "${pct}% of students in media got this one — you didn't."
-            }
-          ],
-          "guilt": [
-            {
-              "id": "guilt_norm",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "students in media",
-              "pct": [
-                76,
-                92
-              ],
-              "template": "${pct}% get this one — you clearly have it, you just went too fast."
-            }
-          ]
-        }
-      },
-      "computing": {
-        "primes": [
-          {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This one is a clean read of abstract pattern reasoning."
-          },
-          {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "Heads-up — plenty of students on the computing track slip on the last step here."
-          },
-          {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward a careful read rather than a snap answer."
-          }
-        ],
-        "feedback": {
-          "pride": [
-            {
-              "id": "pride_ind",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                85,
-                98
-              ],
-              "template": "${pct}th percentile — a real marker of abstract pattern reasoning, and the care shows."
-            },
-            {
-              "id": "pride_speed",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_speed",
-              "referent": "students on the computing track",
-              "pct": [
-                85,
-                98
-              ],
-              "template": "Top ${pct}th percentile for speed — fast, accurate abstract pattern reasoning, the strongest kind."
-            }
-          ],
-          "relief": [
-            {
-              "id": "relief_self",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                62,
-                85
-              ],
-              "template": "${pct}th percentile — you cleared the one students on the computing track usually find slow going."
-            }
-          ],
-          "shame": [
-            {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "students on the computing track",
-              "pct": [
-                76,
-                92
-              ],
-              "template": "${pct}% of students on the computing track got this one — you didn't."
-            }
-          ],
-          "guilt": [
-            {
-              "id": "guilt_norm",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "students on the computing track",
-              "pct": [
-                76,
-                92
-              ],
-              "template": "${pct}% get this one — you clearly have it, you just went too fast."
-            }
-          ]
-        }
-      }
     },
-    "response": {
-      "probes": [
+    calibration: {
+      realPSuccess: 0.85,
+      medianRtMs: 35000,
+      plausiblePct: [60, 99],
+      plausiblePctSpeed: [60, 99],
+      b: -0.68,
+      itemRef: "F1.NEW1",
+    },
+    timer: {
+      mode: "hidden",
+    },
+    framing: {
+      design: {
+        primes: [
+          {
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This one is a clean read of spotting the underlying structure.",
+          },
+          {
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "Heads-up — plenty of people who identified as designers slip on the last step here.",
+          },
+          {
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward a careful read rather than a snap answer.",
+          },
+        ],
+        feedback: {
+          pride: [
+            {
+              id: "pride_ind",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [85, 98],
+              template:
+                "${pct}th percentile — a real marker of spotting the underlying structure, and the care shows.",
+            },
+            {
+              id: "pride_speed",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_speed",
+              referent: "people who identified as designers",
+              pct: [85, 98],
+              template:
+                "Top ${pct}th percentile for speed — fast, accurate spotting the underlying structure, the strongest kind.",
+            },
+          ],
+          relief: [
+            {
+              id: "relief_self",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [62, 85],
+              template:
+                "${pct}th percentile — you cleared the one people who identified as designers usually find slow going.",
+            },
+          ],
+          shame: [
+            {
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "people who identified as designers",
+              pct: [76, 92],
+              template:
+                "${pct}% of people who identified as designers got this one — you didn't.",
+            },
+          ],
+          guilt: [
+            {
+              id: "guilt_norm",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "people who identified as designers",
+              pct: [76, 92],
+              template:
+                "${pct}% get this one — you clearly have it, you just went too fast.",
+            },
+          ],
+        },
+      },
+      media: {
+        primes: [
+          {
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This one is a clean read of visual-structure reasoning.",
+          },
+          {
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "Heads-up — plenty of students in media slip on the last step here.",
+          },
+          {
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward a careful read rather than a snap answer.",
+          },
+        ],
+        feedback: {
+          pride: [
+            {
+              id: "pride_ind",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_score",
+              referent: "students in media",
+              pct: [85, 98],
+              template:
+                "${pct}th percentile — a real marker of visual-structure reasoning, and the care shows.",
+            },
+            {
+              id: "pride_speed",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_speed",
+              referent: "students in media",
+              pct: [85, 98],
+              template:
+                "Top ${pct}th percentile for speed — fast, accurate visual-structure reasoning, the strongest kind.",
+            },
+          ],
+          relief: [
+            {
+              id: "relief_self",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "self_score",
+              referent: "students in media",
+              pct: [62, 85],
+              template:
+                "${pct}th percentile — you cleared the one students in media usually find slow going.",
+            },
+          ],
+          shame: [
+            {
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "students in media",
+              pct: [76, 92],
+              template:
+                "${pct}% of students in media got this one — you didn't.",
+            },
+          ],
+          guilt: [
+            {
+              id: "guilt_norm",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "students in media",
+              pct: [76, 92],
+              template:
+                "${pct}% get this one — you clearly have it, you just went too fast.",
+            },
+          ],
+        },
+      },
+      computing: {
+        primes: [
+          {
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This one is a clean read of abstract pattern reasoning.",
+          },
+          {
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "Heads-up — plenty of students on the computing track slip on the last step here.",
+          },
+          {
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward a careful read rather than a snap answer.",
+          },
+        ],
+        feedback: {
+          pride: [
+            {
+              id: "pride_ind",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [85, 98],
+              template:
+                "${pct}th percentile — a real marker of abstract pattern reasoning, and the care shows.",
+            },
+            {
+              id: "pride_speed",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_speed",
+              referent: "students on the computing track",
+              pct: [85, 98],
+              template:
+                "Top ${pct}th percentile for speed — fast, accurate abstract pattern reasoning, the strongest kind.",
+            },
+          ],
+          relief: [
+            {
+              id: "relief_self",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [62, 85],
+              template:
+                "${pct}th percentile — you cleared the one students on the computing track usually find slow going.",
+            },
+          ],
+          shame: [
+            {
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "students on the computing track",
+              pct: [76, 92],
+              template:
+                "${pct}% of students on the computing track got this one — you didn't.",
+            },
+          ],
+          guilt: [
+            {
+              id: "guilt_norm",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "students on the computing track",
+              pct: [76, 92],
+              template:
+                "${pct}% get this one — you clearly have it, you just went too fast.",
+            },
+          ],
+        },
+      },
+    },
+    response: {
+      probes: [
         "pride",
         "relief",
         "disappointment",
@@ -10133,409 +8836,367 @@ export const REASONING_BANK = [
         "anxiety",
         "confusion",
         "boredom",
-        "none"
+        "none",
       ],
-      "scale": {
-        "type": "likert",
-        "min": 1,
-        "max": 7
+      scale: {
+        type: "likert",
+        min: 1,
+        max: 7,
       },
-      "cleanCore": {
-        "dominantMin": 5,
-        "othersMax": 3
-      }
-    }
+      cleanCore: {
+        dominantMin: 5,
+        othersMax: 3,
+      },
+    },
   },
   {
-    "id": "mr_mid_01",
-    "stimulusId": "mr_mid_01",
-    "name": "Matrix reasoning — mid (MITRE MR; item F11.3)",
-    "domains": [
-      "design",
-      "media",
-      "computing"
-    ],
-    "modality": "visuospatial",
-    "languageLoad": "low",
-    "difficultyTier": "mid",
-    "unit": "single",
-    "generalAbility": true,
-    "instructions": "Which option (A–H) best completes the pattern? Type the letter.",
-    "stimulus": {
-      "component": "matrixReasoning",
-      "scoreFn": "scoreLetterInput",
-      "response": "input",
-      "answerSet": "A-H",
-      "measures": [
-        "correct",
-        "rtMs"
-      ],
-      "item": {
-        "ref": "F11.3",
-        "form": "1",
-        "b": 0.6,
-        "key": "G",
-        "image": "stimuli/mitre/mr/F11.3.png",
-        "answerSet": "A-H"
-      }
-    },
-    "calibration": {
-      "realPSuccess": 0.58,
-      "medianRtMs": 55000,
-      "plausiblePct": [
-        25,
-        80
-      ],
-      "plausiblePctSpeed": [
-        25,
-        78
-      ],
-      "b": 0.6,
-      "itemRef": "F11.3"
-    },
-    "timer": {
-      "mode": "hidden"
-    },
-    "framing": {
-      "design": {
-        "primes": [
-          {
-            "id": "p_expectHigh",
-            "setsExpectancy": "high",
-            "attributionFrame": "none",
-            "text": "Your earlier rounds point to spotting the underlying structure clicking today."
-          },
-          {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "This one is a step up — most people who identified as designers slow right down."
-          },
-          {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward working the rule through, not eyeballing it."
-          },
-          {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This set reads spotting the underlying structure fairly cleanly."
-          }
-        ],
-        "feedback": {
-          "pride": [
-            {
-              "id": "pride_ind",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                72,
-                82
-              ],
-              "template": "${pct}th percentile — a real marker of spotting the underlying structure, and the care shows."
-            }
-          ],
-          "guilt": [
-            {
-              "id": "guilt_effort",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                28,
-                45
-              ],
-              "template": "Bottom ${pct}% — you clearly have the head for spotting the underlying structure; you just didn't work it through methodically."
-            }
-          ],
-          "disappointment": [
-            {
-              "id": "disap_ind",
-              "comparison": "individuating",
-              "attribution": "none",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "requiresExpectancy": "high",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                26,
-                46
-              ],
-              "template": "${pct}th percentile — short of what your earlier rounds pointed to."
-            }
-          ],
-          "relief": [
-            {
-              "id": "relief_self",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                55,
-                78
-              ],
-              "template": "${pct}th percentile — you cleared the one people who identified as designers usually find slow going."
-            }
-          ],
-          "shame": [
-            {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "people who identified as designers",
-              "pct": [
-                49,
-                65
-              ],
-              "template": "${pct}% of people who identified as designers got this one — you didn't."
-            }
-          ]
-        }
+    id: "mr_mid_01",
+    stimulusId: "mr_mid_01",
+    name: "Matrix reasoning — mid (MITRE MR; item F11.3)",
+    domains: ["design", "media", "computing"],
+    modality: "visuospatial",
+    languageLoad: "low",
+    difficultyTier: "mid",
+    unit: "single",
+    generalAbility: true,
+    instructions:
+      "Which option (A–H) best completes the pattern? Type the letter.",
+    stimulus: {
+      component: "matrixReasoning",
+      scoreFn: "scoreLetterInput",
+      response: "input",
+      answerSet: "A-H",
+      measures: ["correct", "rtMs"],
+      item: {
+        ref: "F11.3",
+        form: "1",
+        b: 0.6,
+        key: "G",
+        image: "stimuli/mitre/mr/F11.3.png",
+        answerSet: "A-H",
       },
-      "media": {
-        "primes": [
-          {
-            "id": "p_expectHigh",
-            "setsExpectancy": "high",
-            "attributionFrame": "none",
-            "text": "Your earlier rounds point to visual-structure reasoning clicking today."
-          },
-          {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "This one is a step up — most students in media slow right down."
-          },
-          {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward working the rule through, not eyeballing it."
-          },
-          {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This set reads visual-structure reasoning fairly cleanly."
-          }
-        ],
-        "feedback": {
-          "pride": [
-            {
-              "id": "pride_ind",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_score",
-              "referent": "students in media",
-              "pct": [
-                72,
-                82
-              ],
-              "template": "${pct}th percentile — a real marker of visual-structure reasoning, and the care shows."
-            }
-          ],
-          "guilt": [
-            {
-              "id": "guilt_effort",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "students in media",
-              "pct": [
-                28,
-                45
-              ],
-              "template": "Bottom ${pct}% — you clearly have the head for visual-structure reasoning; you just didn't work it through methodically."
-            }
-          ],
-          "disappointment": [
-            {
-              "id": "disap_ind",
-              "comparison": "individuating",
-              "attribution": "none",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "requiresExpectancy": "high",
-              "pctRef": "self_score",
-              "referent": "students in media",
-              "pct": [
-                26,
-                46
-              ],
-              "template": "${pct}th percentile — short of what your earlier rounds pointed to."
-            }
-          ],
-          "relief": [
-            {
-              "id": "relief_self",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "self_score",
-              "referent": "students in media",
-              "pct": [
-                55,
-                78
-              ],
-              "template": "${pct}th percentile — you cleared the one students in media usually find slow going."
-            }
-          ],
-          "shame": [
-            {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "students in media",
-              "pct": [
-                49,
-                65
-              ],
-              "template": "${pct}% of students in media got this one — you didn't."
-            }
-          ]
-        }
-      },
-      "computing": {
-        "primes": [
-          {
-            "id": "p_expectHigh",
-            "setsExpectancy": "high",
-            "attributionFrame": "none",
-            "text": "Your earlier rounds point to abstract pattern reasoning clicking today."
-          },
-          {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "This one is a step up — most students on the computing track slow right down."
-          },
-          {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward working the rule through, not eyeballing it."
-          },
-          {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This set reads abstract pattern reasoning fairly cleanly."
-          }
-        ],
-        "feedback": {
-          "pride": [
-            {
-              "id": "pride_ind",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                72,
-                82
-              ],
-              "template": "${pct}th percentile — a real marker of abstract pattern reasoning, and the care shows."
-            }
-          ],
-          "guilt": [
-            {
-              "id": "guilt_effort",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                28,
-                45
-              ],
-              "template": "Bottom ${pct}% — you clearly have the head for abstract pattern reasoning; you just didn't work it through methodically."
-            }
-          ],
-          "disappointment": [
-            {
-              "id": "disap_ind",
-              "comparison": "individuating",
-              "attribution": "none",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "requiresExpectancy": "high",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                26,
-                46
-              ],
-              "template": "${pct}th percentile — short of what your earlier rounds pointed to."
-            }
-          ],
-          "relief": [
-            {
-              "id": "relief_self",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                55,
-                78
-              ],
-              "template": "${pct}th percentile — you cleared the one students on the computing track usually find slow going."
-            }
-          ],
-          "shame": [
-            {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "students on the computing track",
-              "pct": [
-                49,
-                65
-              ],
-              "template": "${pct}% of students on the computing track got this one — you didn't."
-            }
-          ]
-        }
-      }
     },
-    "response": {
-      "probes": [
+    calibration: {
+      realPSuccess: 0.58,
+      medianRtMs: 55000,
+      plausiblePct: [25, 80],
+      plausiblePctSpeed: [25, 78],
+      b: 0.6,
+      itemRef: "F11.3",
+    },
+    timer: {
+      mode: "hidden",
+    },
+    framing: {
+      design: {
+        primes: [
+          {
+            id: "p_expectHigh",
+            setsExpectancy: "high",
+            attributionFrame: "none",
+            text: "Your earlier rounds point to spotting the underlying structure clicking today.",
+          },
+          {
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "This one is a step up — most people who identified as designers slow right down.",
+          },
+          {
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward working the rule through, not eyeballing it.",
+          },
+          {
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This set reads spotting the underlying structure fairly cleanly.",
+          },
+        ],
+        feedback: {
+          pride: [
+            {
+              id: "pride_ind",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [72, 82],
+              template:
+                "${pct}th percentile — a real marker of spotting the underlying structure, and the care shows.",
+            },
+          ],
+          guilt: [
+            {
+              id: "guilt_effort",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [28, 45],
+              template:
+                "Bottom ${pct}% — you clearly have the head for spotting the underlying structure; you just didn't work it through methodically.",
+            },
+          ],
+          disappointment: [
+            {
+              id: "disap_ind",
+              comparison: "individuating",
+              attribution: "none",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              requiresExpectancy: "high",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [26, 46],
+              template:
+                "${pct}th percentile — short of what your earlier rounds pointed to.",
+            },
+          ],
+          relief: [
+            {
+              id: "relief_self",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [55, 78],
+              template:
+                "${pct}th percentile — you cleared the one people who identified as designers usually find slow going.",
+            },
+          ],
+          shame: [
+            {
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "people who identified as designers",
+              pct: [49, 65],
+              template:
+                "${pct}% of people who identified as designers got this one — you didn't.",
+            },
+          ],
+        },
+      },
+      media: {
+        primes: [
+          {
+            id: "p_expectHigh",
+            setsExpectancy: "high",
+            attributionFrame: "none",
+            text: "Your earlier rounds point to visual-structure reasoning clicking today.",
+          },
+          {
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "This one is a step up — most students in media slow right down.",
+          },
+          {
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward working the rule through, not eyeballing it.",
+          },
+          {
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This set reads visual-structure reasoning fairly cleanly.",
+          },
+        ],
+        feedback: {
+          pride: [
+            {
+              id: "pride_ind",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_score",
+              referent: "students in media",
+              pct: [72, 82],
+              template:
+                "${pct}th percentile — a real marker of visual-structure reasoning, and the care shows.",
+            },
+          ],
+          guilt: [
+            {
+              id: "guilt_effort",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "students in media",
+              pct: [28, 45],
+              template:
+                "Bottom ${pct}% — you clearly have the head for visual-structure reasoning; you just didn't work it through methodically.",
+            },
+          ],
+          disappointment: [
+            {
+              id: "disap_ind",
+              comparison: "individuating",
+              attribution: "none",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              requiresExpectancy: "high",
+              pctRef: "self_score",
+              referent: "students in media",
+              pct: [26, 46],
+              template:
+                "${pct}th percentile — short of what your earlier rounds pointed to.",
+            },
+          ],
+          relief: [
+            {
+              id: "relief_self",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "self_score",
+              referent: "students in media",
+              pct: [55, 78],
+              template:
+                "${pct}th percentile — you cleared the one students in media usually find slow going.",
+            },
+          ],
+          shame: [
+            {
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "students in media",
+              pct: [49, 65],
+              template:
+                "${pct}% of students in media got this one — you didn't.",
+            },
+          ],
+        },
+      },
+      computing: {
+        primes: [
+          {
+            id: "p_expectHigh",
+            setsExpectancy: "high",
+            attributionFrame: "none",
+            text: "Your earlier rounds point to abstract pattern reasoning clicking today.",
+          },
+          {
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "This one is a step up — most students on the computing track slow right down.",
+          },
+          {
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward working the rule through, not eyeballing it.",
+          },
+          {
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This set reads abstract pattern reasoning fairly cleanly.",
+          },
+        ],
+        feedback: {
+          pride: [
+            {
+              id: "pride_ind",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [72, 82],
+              template:
+                "${pct}th percentile — a real marker of abstract pattern reasoning, and the care shows.",
+            },
+          ],
+          guilt: [
+            {
+              id: "guilt_effort",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [28, 45],
+              template:
+                "Bottom ${pct}% — you clearly have the head for abstract pattern reasoning; you just didn't work it through methodically.",
+            },
+          ],
+          disappointment: [
+            {
+              id: "disap_ind",
+              comparison: "individuating",
+              attribution: "none",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              requiresExpectancy: "high",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [26, 46],
+              template:
+                "${pct}th percentile — short of what your earlier rounds pointed to.",
+            },
+          ],
+          relief: [
+            {
+              id: "relief_self",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [55, 78],
+              template:
+                "${pct}th percentile — you cleared the one students on the computing track usually find slow going.",
+            },
+          ],
+          shame: [
+            {
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "students on the computing track",
+              pct: [49, 65],
+              template:
+                "${pct}% of students on the computing track got this one — you didn't.",
+            },
+          ],
+        },
+      },
+    },
+    response: {
+      probes: [
         "pride",
         "relief",
         "disappointment",
@@ -10544,409 +9205,367 @@ export const REASONING_BANK = [
         "anxiety",
         "confusion",
         "boredom",
-        "none"
+        "none",
       ],
-      "scale": {
-        "type": "likert",
-        "min": 1,
-        "max": 7
+      scale: {
+        type: "likert",
+        min: 1,
+        max: 7,
       },
-      "cleanCore": {
-        "dominantMin": 5,
-        "othersMax": 3
-      }
-    }
+      cleanCore: {
+        dominantMin: 5,
+        othersMax: 3,
+      },
+    },
   },
   {
-    "id": "mr_mid_02",
-    "stimulusId": "mr_mid_02",
-    "name": "Matrix reasoning — mid (MITRE MR; item F17.1)",
-    "domains": [
-      "design",
-      "media",
-      "computing"
-    ],
-    "modality": "visuospatial",
-    "languageLoad": "low",
-    "difficultyTier": "mid",
-    "unit": "single",
-    "generalAbility": true,
-    "instructions": "Which option (A–H) best completes the pattern? Type the letter.",
-    "stimulus": {
-      "component": "matrixReasoning",
-      "scoreFn": "scoreLetterInput",
-      "response": "input",
-      "answerSet": "A-H",
-      "measures": [
-        "correct",
-        "rtMs"
-      ],
-      "item": {
-        "ref": "F17.1",
-        "form": "1",
-        "b": 0.61,
-        "key": "G",
-        "image": "stimuli/mitre/mr/F17.1.png",
-        "answerSet": "A-H"
-      }
-    },
-    "calibration": {
-      "realPSuccess": 0.58,
-      "medianRtMs": 55000,
-      "plausiblePct": [
-        25,
-        80
-      ],
-      "plausiblePctSpeed": [
-        25,
-        78
-      ],
-      "b": 0.61,
-      "itemRef": "F17.1"
-    },
-    "timer": {
-      "mode": "hidden"
-    },
-    "framing": {
-      "design": {
-        "primes": [
-          {
-            "id": "p_expectHigh",
-            "setsExpectancy": "high",
-            "attributionFrame": "none",
-            "text": "Your earlier rounds point to spotting the underlying structure clicking today."
-          },
-          {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "This one is a step up — most people who identified as designers slow right down."
-          },
-          {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward working the rule through, not eyeballing it."
-          },
-          {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This set reads spotting the underlying structure fairly cleanly."
-          }
-        ],
-        "feedback": {
-          "pride": [
-            {
-              "id": "pride_ind",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                72,
-                82
-              ],
-              "template": "${pct}th percentile — a real marker of spotting the underlying structure, and the care shows."
-            }
-          ],
-          "guilt": [
-            {
-              "id": "guilt_effort",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                28,
-                45
-              ],
-              "template": "Bottom ${pct}% — you clearly have the head for spotting the underlying structure; you just didn't work it through methodically."
-            }
-          ],
-          "disappointment": [
-            {
-              "id": "disap_ind",
-              "comparison": "individuating",
-              "attribution": "none",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "requiresExpectancy": "high",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                26,
-                46
-              ],
-              "template": "${pct}th percentile — short of what your earlier rounds pointed to."
-            }
-          ],
-          "relief": [
-            {
-              "id": "relief_self",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                55,
-                78
-              ],
-              "template": "${pct}th percentile — you cleared the one people who identified as designers usually find slow going."
-            }
-          ],
-          "shame": [
-            {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "people who identified as designers",
-              "pct": [
-                49,
-                65
-              ],
-              "template": "${pct}% of people who identified as designers got this one — you didn't."
-            }
-          ]
-        }
+    id: "mr_mid_02",
+    stimulusId: "mr_mid_02",
+    name: "Matrix reasoning — mid (MITRE MR; item F17.1)",
+    domains: ["design", "media", "computing"],
+    modality: "visuospatial",
+    languageLoad: "low",
+    difficultyTier: "mid",
+    unit: "single",
+    generalAbility: true,
+    instructions:
+      "Which option (A–H) best completes the pattern? Type the letter.",
+    stimulus: {
+      component: "matrixReasoning",
+      scoreFn: "scoreLetterInput",
+      response: "input",
+      answerSet: "A-H",
+      measures: ["correct", "rtMs"],
+      item: {
+        ref: "F17.1",
+        form: "1",
+        b: 0.61,
+        key: "G",
+        image: "stimuli/mitre/mr/F17.1.png",
+        answerSet: "A-H",
       },
-      "media": {
-        "primes": [
-          {
-            "id": "p_expectHigh",
-            "setsExpectancy": "high",
-            "attributionFrame": "none",
-            "text": "Your earlier rounds point to visual-structure reasoning clicking today."
-          },
-          {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "This one is a step up — most students in media slow right down."
-          },
-          {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward working the rule through, not eyeballing it."
-          },
-          {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This set reads visual-structure reasoning fairly cleanly."
-          }
-        ],
-        "feedback": {
-          "pride": [
-            {
-              "id": "pride_ind",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_score",
-              "referent": "students in media",
-              "pct": [
-                72,
-                82
-              ],
-              "template": "${pct}th percentile — a real marker of visual-structure reasoning, and the care shows."
-            }
-          ],
-          "guilt": [
-            {
-              "id": "guilt_effort",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "students in media",
-              "pct": [
-                28,
-                45
-              ],
-              "template": "Bottom ${pct}% — you clearly have the head for visual-structure reasoning; you just didn't work it through methodically."
-            }
-          ],
-          "disappointment": [
-            {
-              "id": "disap_ind",
-              "comparison": "individuating",
-              "attribution": "none",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "requiresExpectancy": "high",
-              "pctRef": "self_score",
-              "referent": "students in media",
-              "pct": [
-                26,
-                46
-              ],
-              "template": "${pct}th percentile — short of what your earlier rounds pointed to."
-            }
-          ],
-          "relief": [
-            {
-              "id": "relief_self",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "self_score",
-              "referent": "students in media",
-              "pct": [
-                55,
-                78
-              ],
-              "template": "${pct}th percentile — you cleared the one students in media usually find slow going."
-            }
-          ],
-          "shame": [
-            {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "students in media",
-              "pct": [
-                49,
-                65
-              ],
-              "template": "${pct}% of students in media got this one — you didn't."
-            }
-          ]
-        }
-      },
-      "computing": {
-        "primes": [
-          {
-            "id": "p_expectHigh",
-            "setsExpectancy": "high",
-            "attributionFrame": "none",
-            "text": "Your earlier rounds point to abstract pattern reasoning clicking today."
-          },
-          {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "This one is a step up — most students on the computing track slow right down."
-          },
-          {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward working the rule through, not eyeballing it."
-          },
-          {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This set reads abstract pattern reasoning fairly cleanly."
-          }
-        ],
-        "feedback": {
-          "pride": [
-            {
-              "id": "pride_ind",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                72,
-                82
-              ],
-              "template": "${pct}th percentile — a real marker of abstract pattern reasoning, and the care shows."
-            }
-          ],
-          "guilt": [
-            {
-              "id": "guilt_effort",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                28,
-                45
-              ],
-              "template": "Bottom ${pct}% — you clearly have the head for abstract pattern reasoning; you just didn't work it through methodically."
-            }
-          ],
-          "disappointment": [
-            {
-              "id": "disap_ind",
-              "comparison": "individuating",
-              "attribution": "none",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "requiresExpectancy": "high",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                26,
-                46
-              ],
-              "template": "${pct}th percentile — short of what your earlier rounds pointed to."
-            }
-          ],
-          "relief": [
-            {
-              "id": "relief_self",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                55,
-                78
-              ],
-              "template": "${pct}th percentile — you cleared the one students on the computing track usually find slow going."
-            }
-          ],
-          "shame": [
-            {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "students on the computing track",
-              "pct": [
-                49,
-                65
-              ],
-              "template": "${pct}% of students on the computing track got this one — you didn't."
-            }
-          ]
-        }
-      }
     },
-    "response": {
-      "probes": [
+    calibration: {
+      realPSuccess: 0.58,
+      medianRtMs: 55000,
+      plausiblePct: [25, 80],
+      plausiblePctSpeed: [25, 78],
+      b: 0.61,
+      itemRef: "F17.1",
+    },
+    timer: {
+      mode: "hidden",
+    },
+    framing: {
+      design: {
+        primes: [
+          {
+            id: "p_expectHigh",
+            setsExpectancy: "high",
+            attributionFrame: "none",
+            text: "Your earlier rounds point to spotting the underlying structure clicking today.",
+          },
+          {
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "This one is a step up — most people who identified as designers slow right down.",
+          },
+          {
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward working the rule through, not eyeballing it.",
+          },
+          {
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This set reads spotting the underlying structure fairly cleanly.",
+          },
+        ],
+        feedback: {
+          pride: [
+            {
+              id: "pride_ind",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [72, 82],
+              template:
+                "${pct}th percentile — a real marker of spotting the underlying structure, and the care shows.",
+            },
+          ],
+          guilt: [
+            {
+              id: "guilt_effort",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [28, 45],
+              template:
+                "Bottom ${pct}% — you clearly have the head for spotting the underlying structure; you just didn't work it through methodically.",
+            },
+          ],
+          disappointment: [
+            {
+              id: "disap_ind",
+              comparison: "individuating",
+              attribution: "none",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              requiresExpectancy: "high",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [26, 46],
+              template:
+                "${pct}th percentile — short of what your earlier rounds pointed to.",
+            },
+          ],
+          relief: [
+            {
+              id: "relief_self",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [55, 78],
+              template:
+                "${pct}th percentile — you cleared the one people who identified as designers usually find slow going.",
+            },
+          ],
+          shame: [
+            {
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "people who identified as designers",
+              pct: [49, 65],
+              template:
+                "${pct}% of people who identified as designers got this one — you didn't.",
+            },
+          ],
+        },
+      },
+      media: {
+        primes: [
+          {
+            id: "p_expectHigh",
+            setsExpectancy: "high",
+            attributionFrame: "none",
+            text: "Your earlier rounds point to visual-structure reasoning clicking today.",
+          },
+          {
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "This one is a step up — most students in media slow right down.",
+          },
+          {
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward working the rule through, not eyeballing it.",
+          },
+          {
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This set reads visual-structure reasoning fairly cleanly.",
+          },
+        ],
+        feedback: {
+          pride: [
+            {
+              id: "pride_ind",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_score",
+              referent: "students in media",
+              pct: [72, 82],
+              template:
+                "${pct}th percentile — a real marker of visual-structure reasoning, and the care shows.",
+            },
+          ],
+          guilt: [
+            {
+              id: "guilt_effort",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "students in media",
+              pct: [28, 45],
+              template:
+                "Bottom ${pct}% — you clearly have the head for visual-structure reasoning; you just didn't work it through methodically.",
+            },
+          ],
+          disappointment: [
+            {
+              id: "disap_ind",
+              comparison: "individuating",
+              attribution: "none",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              requiresExpectancy: "high",
+              pctRef: "self_score",
+              referent: "students in media",
+              pct: [26, 46],
+              template:
+                "${pct}th percentile — short of what your earlier rounds pointed to.",
+            },
+          ],
+          relief: [
+            {
+              id: "relief_self",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "self_score",
+              referent: "students in media",
+              pct: [55, 78],
+              template:
+                "${pct}th percentile — you cleared the one students in media usually find slow going.",
+            },
+          ],
+          shame: [
+            {
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "students in media",
+              pct: [49, 65],
+              template:
+                "${pct}% of students in media got this one — you didn't.",
+            },
+          ],
+        },
+      },
+      computing: {
+        primes: [
+          {
+            id: "p_expectHigh",
+            setsExpectancy: "high",
+            attributionFrame: "none",
+            text: "Your earlier rounds point to abstract pattern reasoning clicking today.",
+          },
+          {
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "This one is a step up — most students on the computing track slow right down.",
+          },
+          {
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward working the rule through, not eyeballing it.",
+          },
+          {
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This set reads abstract pattern reasoning fairly cleanly.",
+          },
+        ],
+        feedback: {
+          pride: [
+            {
+              id: "pride_ind",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [72, 82],
+              template:
+                "${pct}th percentile — a real marker of abstract pattern reasoning, and the care shows.",
+            },
+          ],
+          guilt: [
+            {
+              id: "guilt_effort",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [28, 45],
+              template:
+                "Bottom ${pct}% — you clearly have the head for abstract pattern reasoning; you just didn't work it through methodically.",
+            },
+          ],
+          disappointment: [
+            {
+              id: "disap_ind",
+              comparison: "individuating",
+              attribution: "none",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              requiresExpectancy: "high",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [26, 46],
+              template:
+                "${pct}th percentile — short of what your earlier rounds pointed to.",
+            },
+          ],
+          relief: [
+            {
+              id: "relief_self",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [55, 78],
+              template:
+                "${pct}th percentile — you cleared the one students on the computing track usually find slow going.",
+            },
+          ],
+          shame: [
+            {
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "students on the computing track",
+              pct: [49, 65],
+              template:
+                "${pct}% of students on the computing track got this one — you didn't.",
+            },
+          ],
+        },
+      },
+    },
+    response: {
+      probes: [
         "pride",
         "relief",
         "disappointment",
@@ -10955,409 +9574,367 @@ export const REASONING_BANK = [
         "anxiety",
         "confusion",
         "boredom",
-        "none"
+        "none",
       ],
-      "scale": {
-        "type": "likert",
-        "min": 1,
-        "max": 7
+      scale: {
+        type: "likert",
+        min: 1,
+        max: 7,
       },
-      "cleanCore": {
-        "dominantMin": 5,
-        "othersMax": 3
-      }
-    }
+      cleanCore: {
+        dominantMin: 5,
+        othersMax: 3,
+      },
+    },
   },
   {
-    "id": "mr_mid_03",
-    "stimulusId": "mr_mid_03",
-    "name": "Matrix reasoning — mid (MITRE MR; item F19.1)",
-    "domains": [
-      "design",
-      "media",
-      "computing"
-    ],
-    "modality": "visuospatial",
-    "languageLoad": "low",
-    "difficultyTier": "mid",
-    "unit": "single",
-    "generalAbility": true,
-    "instructions": "Which option (A–H) best completes the pattern? Type the letter.",
-    "stimulus": {
-      "component": "matrixReasoning",
-      "scoreFn": "scoreLetterInput",
-      "response": "input",
-      "answerSet": "A-H",
-      "measures": [
-        "correct",
-        "rtMs"
-      ],
-      "item": {
-        "ref": "F19.1",
-        "form": "1",
-        "b": 0.81,
-        "key": "E",
-        "image": "stimuli/mitre/mr/F19.1.png",
-        "answerSet": "A-H"
-      }
-    },
-    "calibration": {
-      "realPSuccess": 0.58,
-      "medianRtMs": 55000,
-      "plausiblePct": [
-        25,
-        80
-      ],
-      "plausiblePctSpeed": [
-        25,
-        78
-      ],
-      "b": 0.81,
-      "itemRef": "F19.1"
-    },
-    "timer": {
-      "mode": "hidden"
-    },
-    "framing": {
-      "design": {
-        "primes": [
-          {
-            "id": "p_expectHigh",
-            "setsExpectancy": "high",
-            "attributionFrame": "none",
-            "text": "Your earlier rounds point to spotting the underlying structure clicking today."
-          },
-          {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "This one is a step up — most people who identified as designers slow right down."
-          },
-          {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward working the rule through, not eyeballing it."
-          },
-          {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This set reads spotting the underlying structure fairly cleanly."
-          }
-        ],
-        "feedback": {
-          "pride": [
-            {
-              "id": "pride_ind",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                72,
-                82
-              ],
-              "template": "${pct}th percentile — a real marker of spotting the underlying structure, and the care shows."
-            }
-          ],
-          "guilt": [
-            {
-              "id": "guilt_effort",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                28,
-                45
-              ],
-              "template": "Bottom ${pct}% — you clearly have the head for spotting the underlying structure; you just didn't work it through methodically."
-            }
-          ],
-          "disappointment": [
-            {
-              "id": "disap_ind",
-              "comparison": "individuating",
-              "attribution": "none",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "requiresExpectancy": "high",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                26,
-                46
-              ],
-              "template": "${pct}th percentile — short of what your earlier rounds pointed to."
-            }
-          ],
-          "relief": [
-            {
-              "id": "relief_self",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                55,
-                78
-              ],
-              "template": "${pct}th percentile — you cleared the one people who identified as designers usually find slow going."
-            }
-          ],
-          "shame": [
-            {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "people who identified as designers",
-              "pct": [
-                49,
-                65
-              ],
-              "template": "${pct}% of people who identified as designers got this one — you didn't."
-            }
-          ]
-        }
+    id: "mr_mid_03",
+    stimulusId: "mr_mid_03",
+    name: "Matrix reasoning — mid (MITRE MR; item F19.1)",
+    domains: ["design", "media", "computing"],
+    modality: "visuospatial",
+    languageLoad: "low",
+    difficultyTier: "mid",
+    unit: "single",
+    generalAbility: true,
+    instructions:
+      "Which option (A–H) best completes the pattern? Type the letter.",
+    stimulus: {
+      component: "matrixReasoning",
+      scoreFn: "scoreLetterInput",
+      response: "input",
+      answerSet: "A-H",
+      measures: ["correct", "rtMs"],
+      item: {
+        ref: "F19.1",
+        form: "1",
+        b: 0.81,
+        key: "E",
+        image: "stimuli/mitre/mr/F19.1.png",
+        answerSet: "A-H",
       },
-      "media": {
-        "primes": [
-          {
-            "id": "p_expectHigh",
-            "setsExpectancy": "high",
-            "attributionFrame": "none",
-            "text": "Your earlier rounds point to visual-structure reasoning clicking today."
-          },
-          {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "This one is a step up — most students in media slow right down."
-          },
-          {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward working the rule through, not eyeballing it."
-          },
-          {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This set reads visual-structure reasoning fairly cleanly."
-          }
-        ],
-        "feedback": {
-          "pride": [
-            {
-              "id": "pride_ind",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_score",
-              "referent": "students in media",
-              "pct": [
-                72,
-                82
-              ],
-              "template": "${pct}th percentile — a real marker of visual-structure reasoning, and the care shows."
-            }
-          ],
-          "guilt": [
-            {
-              "id": "guilt_effort",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "students in media",
-              "pct": [
-                28,
-                45
-              ],
-              "template": "Bottom ${pct}% — you clearly have the head for visual-structure reasoning; you just didn't work it through methodically."
-            }
-          ],
-          "disappointment": [
-            {
-              "id": "disap_ind",
-              "comparison": "individuating",
-              "attribution": "none",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "requiresExpectancy": "high",
-              "pctRef": "self_score",
-              "referent": "students in media",
-              "pct": [
-                26,
-                46
-              ],
-              "template": "${pct}th percentile — short of what your earlier rounds pointed to."
-            }
-          ],
-          "relief": [
-            {
-              "id": "relief_self",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "self_score",
-              "referent": "students in media",
-              "pct": [
-                55,
-                78
-              ],
-              "template": "${pct}th percentile — you cleared the one students in media usually find slow going."
-            }
-          ],
-          "shame": [
-            {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "students in media",
-              "pct": [
-                49,
-                65
-              ],
-              "template": "${pct}% of students in media got this one — you didn't."
-            }
-          ]
-        }
-      },
-      "computing": {
-        "primes": [
-          {
-            "id": "p_expectHigh",
-            "setsExpectancy": "high",
-            "attributionFrame": "none",
-            "text": "Your earlier rounds point to abstract pattern reasoning clicking today."
-          },
-          {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "This one is a step up — most students on the computing track slow right down."
-          },
-          {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward working the rule through, not eyeballing it."
-          },
-          {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This set reads abstract pattern reasoning fairly cleanly."
-          }
-        ],
-        "feedback": {
-          "pride": [
-            {
-              "id": "pride_ind",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                72,
-                82
-              ],
-              "template": "${pct}th percentile — a real marker of abstract pattern reasoning, and the care shows."
-            }
-          ],
-          "guilt": [
-            {
-              "id": "guilt_effort",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                28,
-                45
-              ],
-              "template": "Bottom ${pct}% — you clearly have the head for abstract pattern reasoning; you just didn't work it through methodically."
-            }
-          ],
-          "disappointment": [
-            {
-              "id": "disap_ind",
-              "comparison": "individuating",
-              "attribution": "none",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "requiresExpectancy": "high",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                26,
-                46
-              ],
-              "template": "${pct}th percentile — short of what your earlier rounds pointed to."
-            }
-          ],
-          "relief": [
-            {
-              "id": "relief_self",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                55,
-                78
-              ],
-              "template": "${pct}th percentile — you cleared the one students on the computing track usually find slow going."
-            }
-          ],
-          "shame": [
-            {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "students on the computing track",
-              "pct": [
-                49,
-                65
-              ],
-              "template": "${pct}% of students on the computing track got this one — you didn't."
-            }
-          ]
-        }
-      }
     },
-    "response": {
-      "probes": [
+    calibration: {
+      realPSuccess: 0.58,
+      medianRtMs: 55000,
+      plausiblePct: [25, 80],
+      plausiblePctSpeed: [25, 78],
+      b: 0.81,
+      itemRef: "F19.1",
+    },
+    timer: {
+      mode: "hidden",
+    },
+    framing: {
+      design: {
+        primes: [
+          {
+            id: "p_expectHigh",
+            setsExpectancy: "high",
+            attributionFrame: "none",
+            text: "Your earlier rounds point to spotting the underlying structure clicking today.",
+          },
+          {
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "This one is a step up — most people who identified as designers slow right down.",
+          },
+          {
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward working the rule through, not eyeballing it.",
+          },
+          {
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This set reads spotting the underlying structure fairly cleanly.",
+          },
+        ],
+        feedback: {
+          pride: [
+            {
+              id: "pride_ind",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [72, 82],
+              template:
+                "${pct}th percentile — a real marker of spotting the underlying structure, and the care shows.",
+            },
+          ],
+          guilt: [
+            {
+              id: "guilt_effort",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [28, 45],
+              template:
+                "Bottom ${pct}% — you clearly have the head for spotting the underlying structure; you just didn't work it through methodically.",
+            },
+          ],
+          disappointment: [
+            {
+              id: "disap_ind",
+              comparison: "individuating",
+              attribution: "none",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              requiresExpectancy: "high",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [26, 46],
+              template:
+                "${pct}th percentile — short of what your earlier rounds pointed to.",
+            },
+          ],
+          relief: [
+            {
+              id: "relief_self",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [55, 78],
+              template:
+                "${pct}th percentile — you cleared the one people who identified as designers usually find slow going.",
+            },
+          ],
+          shame: [
+            {
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "people who identified as designers",
+              pct: [49, 65],
+              template:
+                "${pct}% of people who identified as designers got this one — you didn't.",
+            },
+          ],
+        },
+      },
+      media: {
+        primes: [
+          {
+            id: "p_expectHigh",
+            setsExpectancy: "high",
+            attributionFrame: "none",
+            text: "Your earlier rounds point to visual-structure reasoning clicking today.",
+          },
+          {
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "This one is a step up — most students in media slow right down.",
+          },
+          {
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward working the rule through, not eyeballing it.",
+          },
+          {
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This set reads visual-structure reasoning fairly cleanly.",
+          },
+        ],
+        feedback: {
+          pride: [
+            {
+              id: "pride_ind",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_score",
+              referent: "students in media",
+              pct: [72, 82],
+              template:
+                "${pct}th percentile — a real marker of visual-structure reasoning, and the care shows.",
+            },
+          ],
+          guilt: [
+            {
+              id: "guilt_effort",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "students in media",
+              pct: [28, 45],
+              template:
+                "Bottom ${pct}% — you clearly have the head for visual-structure reasoning; you just didn't work it through methodically.",
+            },
+          ],
+          disappointment: [
+            {
+              id: "disap_ind",
+              comparison: "individuating",
+              attribution: "none",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              requiresExpectancy: "high",
+              pctRef: "self_score",
+              referent: "students in media",
+              pct: [26, 46],
+              template:
+                "${pct}th percentile — short of what your earlier rounds pointed to.",
+            },
+          ],
+          relief: [
+            {
+              id: "relief_self",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "self_score",
+              referent: "students in media",
+              pct: [55, 78],
+              template:
+                "${pct}th percentile — you cleared the one students in media usually find slow going.",
+            },
+          ],
+          shame: [
+            {
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "students in media",
+              pct: [49, 65],
+              template:
+                "${pct}% of students in media got this one — you didn't.",
+            },
+          ],
+        },
+      },
+      computing: {
+        primes: [
+          {
+            id: "p_expectHigh",
+            setsExpectancy: "high",
+            attributionFrame: "none",
+            text: "Your earlier rounds point to abstract pattern reasoning clicking today.",
+          },
+          {
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "This one is a step up — most students on the computing track slow right down.",
+          },
+          {
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward working the rule through, not eyeballing it.",
+          },
+          {
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This set reads abstract pattern reasoning fairly cleanly.",
+          },
+        ],
+        feedback: {
+          pride: [
+            {
+              id: "pride_ind",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [72, 82],
+              template:
+                "${pct}th percentile — a real marker of abstract pattern reasoning, and the care shows.",
+            },
+          ],
+          guilt: [
+            {
+              id: "guilt_effort",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [28, 45],
+              template:
+                "Bottom ${pct}% — you clearly have the head for abstract pattern reasoning; you just didn't work it through methodically.",
+            },
+          ],
+          disappointment: [
+            {
+              id: "disap_ind",
+              comparison: "individuating",
+              attribution: "none",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              requiresExpectancy: "high",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [26, 46],
+              template:
+                "${pct}th percentile — short of what your earlier rounds pointed to.",
+            },
+          ],
+          relief: [
+            {
+              id: "relief_self",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [55, 78],
+              template:
+                "${pct}th percentile — you cleared the one students on the computing track usually find slow going.",
+            },
+          ],
+          shame: [
+            {
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "students on the computing track",
+              pct: [49, 65],
+              template:
+                "${pct}% of students on the computing track got this one — you didn't.",
+            },
+          ],
+        },
+      },
+    },
+    response: {
+      probes: [
         "pride",
         "relief",
         "disappointment",
@@ -11366,409 +9943,367 @@ export const REASONING_BANK = [
         "anxiety",
         "confusion",
         "boredom",
-        "none"
+        "none",
       ],
-      "scale": {
-        "type": "likert",
-        "min": 1,
-        "max": 7
+      scale: {
+        type: "likert",
+        min: 1,
+        max: 7,
       },
-      "cleanCore": {
-        "dominantMin": 5,
-        "othersMax": 3
-      }
-    }
+      cleanCore: {
+        dominantMin: 5,
+        othersMax: 3,
+      },
+    },
   },
   {
-    "id": "mr_mid_04",
-    "stimulusId": "mr_mid_04",
-    "name": "Matrix reasoning — mid (MITRE MR; item F12.4)",
-    "domains": [
-      "design",
-      "media",
-      "computing"
-    ],
-    "modality": "visuospatial",
-    "languageLoad": "low",
-    "difficultyTier": "mid",
-    "unit": "single",
-    "generalAbility": true,
-    "instructions": "Which option (A–H) best completes the pattern? Type the letter.",
-    "stimulus": {
-      "component": "matrixReasoning",
-      "scoreFn": "scoreLetterInput",
-      "response": "input",
-      "answerSet": "A-H",
-      "measures": [
-        "correct",
-        "rtMs"
-      ],
-      "item": {
-        "ref": "F12.4",
-        "form": "1",
-        "b": 0.84,
-        "key": "C",
-        "image": "stimuli/mitre/mr/F12.4.png",
-        "answerSet": "A-H"
-      }
-    },
-    "calibration": {
-      "realPSuccess": 0.58,
-      "medianRtMs": 55000,
-      "plausiblePct": [
-        25,
-        80
-      ],
-      "plausiblePctSpeed": [
-        25,
-        78
-      ],
-      "b": 0.84,
-      "itemRef": "F12.4"
-    },
-    "timer": {
-      "mode": "hidden"
-    },
-    "framing": {
-      "design": {
-        "primes": [
-          {
-            "id": "p_expectHigh",
-            "setsExpectancy": "high",
-            "attributionFrame": "none",
-            "text": "Your earlier rounds point to spotting the underlying structure clicking today."
-          },
-          {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "This one is a step up — most people who identified as designers slow right down."
-          },
-          {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward working the rule through, not eyeballing it."
-          },
-          {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This set reads spotting the underlying structure fairly cleanly."
-          }
-        ],
-        "feedback": {
-          "pride": [
-            {
-              "id": "pride_ind",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                72,
-                82
-              ],
-              "template": "${pct}th percentile — a real marker of spotting the underlying structure, and the care shows."
-            }
-          ],
-          "guilt": [
-            {
-              "id": "guilt_effort",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                28,
-                45
-              ],
-              "template": "Bottom ${pct}% — you clearly have the head for spotting the underlying structure; you just didn't work it through methodically."
-            }
-          ],
-          "disappointment": [
-            {
-              "id": "disap_ind",
-              "comparison": "individuating",
-              "attribution": "none",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "requiresExpectancy": "high",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                26,
-                46
-              ],
-              "template": "${pct}th percentile — short of what your earlier rounds pointed to."
-            }
-          ],
-          "relief": [
-            {
-              "id": "relief_self",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                55,
-                78
-              ],
-              "template": "${pct}th percentile — you cleared the one people who identified as designers usually find slow going."
-            }
-          ],
-          "shame": [
-            {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "people who identified as designers",
-              "pct": [
-                49,
-                65
-              ],
-              "template": "${pct}% of people who identified as designers got this one — you didn't."
-            }
-          ]
-        }
+    id: "mr_mid_04",
+    stimulusId: "mr_mid_04",
+    name: "Matrix reasoning — mid (MITRE MR; item F12.4)",
+    domains: ["design", "media", "computing"],
+    modality: "visuospatial",
+    languageLoad: "low",
+    difficultyTier: "mid",
+    unit: "single",
+    generalAbility: true,
+    instructions:
+      "Which option (A–H) best completes the pattern? Type the letter.",
+    stimulus: {
+      component: "matrixReasoning",
+      scoreFn: "scoreLetterInput",
+      response: "input",
+      answerSet: "A-H",
+      measures: ["correct", "rtMs"],
+      item: {
+        ref: "F12.4",
+        form: "1",
+        b: 0.84,
+        key: "C",
+        image: "stimuli/mitre/mr/F12.4.png",
+        answerSet: "A-H",
       },
-      "media": {
-        "primes": [
-          {
-            "id": "p_expectHigh",
-            "setsExpectancy": "high",
-            "attributionFrame": "none",
-            "text": "Your earlier rounds point to visual-structure reasoning clicking today."
-          },
-          {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "This one is a step up — most students in media slow right down."
-          },
-          {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward working the rule through, not eyeballing it."
-          },
-          {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This set reads visual-structure reasoning fairly cleanly."
-          }
-        ],
-        "feedback": {
-          "pride": [
-            {
-              "id": "pride_ind",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_score",
-              "referent": "students in media",
-              "pct": [
-                72,
-                82
-              ],
-              "template": "${pct}th percentile — a real marker of visual-structure reasoning, and the care shows."
-            }
-          ],
-          "guilt": [
-            {
-              "id": "guilt_effort",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "students in media",
-              "pct": [
-                28,
-                45
-              ],
-              "template": "Bottom ${pct}% — you clearly have the head for visual-structure reasoning; you just didn't work it through methodically."
-            }
-          ],
-          "disappointment": [
-            {
-              "id": "disap_ind",
-              "comparison": "individuating",
-              "attribution": "none",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "requiresExpectancy": "high",
-              "pctRef": "self_score",
-              "referent": "students in media",
-              "pct": [
-                26,
-                46
-              ],
-              "template": "${pct}th percentile — short of what your earlier rounds pointed to."
-            }
-          ],
-          "relief": [
-            {
-              "id": "relief_self",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "self_score",
-              "referent": "students in media",
-              "pct": [
-                55,
-                78
-              ],
-              "template": "${pct}th percentile — you cleared the one students in media usually find slow going."
-            }
-          ],
-          "shame": [
-            {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "students in media",
-              "pct": [
-                49,
-                65
-              ],
-              "template": "${pct}% of students in media got this one — you didn't."
-            }
-          ]
-        }
-      },
-      "computing": {
-        "primes": [
-          {
-            "id": "p_expectHigh",
-            "setsExpectancy": "high",
-            "attributionFrame": "none",
-            "text": "Your earlier rounds point to abstract pattern reasoning clicking today."
-          },
-          {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "This one is a step up — most students on the computing track slow right down."
-          },
-          {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward working the rule through, not eyeballing it."
-          },
-          {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This set reads abstract pattern reasoning fairly cleanly."
-          }
-        ],
-        "feedback": {
-          "pride": [
-            {
-              "id": "pride_ind",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                72,
-                82
-              ],
-              "template": "${pct}th percentile — a real marker of abstract pattern reasoning, and the care shows."
-            }
-          ],
-          "guilt": [
-            {
-              "id": "guilt_effort",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                28,
-                45
-              ],
-              "template": "Bottom ${pct}% — you clearly have the head for abstract pattern reasoning; you just didn't work it through methodically."
-            }
-          ],
-          "disappointment": [
-            {
-              "id": "disap_ind",
-              "comparison": "individuating",
-              "attribution": "none",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "requiresExpectancy": "high",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                26,
-                46
-              ],
-              "template": "${pct}th percentile — short of what your earlier rounds pointed to."
-            }
-          ],
-          "relief": [
-            {
-              "id": "relief_self",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                55,
-                78
-              ],
-              "template": "${pct}th percentile — you cleared the one students on the computing track usually find slow going."
-            }
-          ],
-          "shame": [
-            {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "students on the computing track",
-              "pct": [
-                49,
-                65
-              ],
-              "template": "${pct}% of students on the computing track got this one — you didn't."
-            }
-          ]
-        }
-      }
     },
-    "response": {
-      "probes": [
+    calibration: {
+      realPSuccess: 0.58,
+      medianRtMs: 55000,
+      plausiblePct: [25, 80],
+      plausiblePctSpeed: [25, 78],
+      b: 0.84,
+      itemRef: "F12.4",
+    },
+    timer: {
+      mode: "hidden",
+    },
+    framing: {
+      design: {
+        primes: [
+          {
+            id: "p_expectHigh",
+            setsExpectancy: "high",
+            attributionFrame: "none",
+            text: "Your earlier rounds point to spotting the underlying structure clicking today.",
+          },
+          {
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "This one is a step up — most people who identified as designers slow right down.",
+          },
+          {
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward working the rule through, not eyeballing it.",
+          },
+          {
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This set reads spotting the underlying structure fairly cleanly.",
+          },
+        ],
+        feedback: {
+          pride: [
+            {
+              id: "pride_ind",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [72, 82],
+              template:
+                "${pct}th percentile — a real marker of spotting the underlying structure, and the care shows.",
+            },
+          ],
+          guilt: [
+            {
+              id: "guilt_effort",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [28, 45],
+              template:
+                "Bottom ${pct}% — you clearly have the head for spotting the underlying structure; you just didn't work it through methodically.",
+            },
+          ],
+          disappointment: [
+            {
+              id: "disap_ind",
+              comparison: "individuating",
+              attribution: "none",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              requiresExpectancy: "high",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [26, 46],
+              template:
+                "${pct}th percentile — short of what your earlier rounds pointed to.",
+            },
+          ],
+          relief: [
+            {
+              id: "relief_self",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [55, 78],
+              template:
+                "${pct}th percentile — you cleared the one people who identified as designers usually find slow going.",
+            },
+          ],
+          shame: [
+            {
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "people who identified as designers",
+              pct: [49, 65],
+              template:
+                "${pct}% of people who identified as designers got this one — you didn't.",
+            },
+          ],
+        },
+      },
+      media: {
+        primes: [
+          {
+            id: "p_expectHigh",
+            setsExpectancy: "high",
+            attributionFrame: "none",
+            text: "Your earlier rounds point to visual-structure reasoning clicking today.",
+          },
+          {
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "This one is a step up — most students in media slow right down.",
+          },
+          {
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward working the rule through, not eyeballing it.",
+          },
+          {
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This set reads visual-structure reasoning fairly cleanly.",
+          },
+        ],
+        feedback: {
+          pride: [
+            {
+              id: "pride_ind",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_score",
+              referent: "students in media",
+              pct: [72, 82],
+              template:
+                "${pct}th percentile — a real marker of visual-structure reasoning, and the care shows.",
+            },
+          ],
+          guilt: [
+            {
+              id: "guilt_effort",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "students in media",
+              pct: [28, 45],
+              template:
+                "Bottom ${pct}% — you clearly have the head for visual-structure reasoning; you just didn't work it through methodically.",
+            },
+          ],
+          disappointment: [
+            {
+              id: "disap_ind",
+              comparison: "individuating",
+              attribution: "none",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              requiresExpectancy: "high",
+              pctRef: "self_score",
+              referent: "students in media",
+              pct: [26, 46],
+              template:
+                "${pct}th percentile — short of what your earlier rounds pointed to.",
+            },
+          ],
+          relief: [
+            {
+              id: "relief_self",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "self_score",
+              referent: "students in media",
+              pct: [55, 78],
+              template:
+                "${pct}th percentile — you cleared the one students in media usually find slow going.",
+            },
+          ],
+          shame: [
+            {
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "students in media",
+              pct: [49, 65],
+              template:
+                "${pct}% of students in media got this one — you didn't.",
+            },
+          ],
+        },
+      },
+      computing: {
+        primes: [
+          {
+            id: "p_expectHigh",
+            setsExpectancy: "high",
+            attributionFrame: "none",
+            text: "Your earlier rounds point to abstract pattern reasoning clicking today.",
+          },
+          {
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "This one is a step up — most students on the computing track slow right down.",
+          },
+          {
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward working the rule through, not eyeballing it.",
+          },
+          {
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This set reads abstract pattern reasoning fairly cleanly.",
+          },
+        ],
+        feedback: {
+          pride: [
+            {
+              id: "pride_ind",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [72, 82],
+              template:
+                "${pct}th percentile — a real marker of abstract pattern reasoning, and the care shows.",
+            },
+          ],
+          guilt: [
+            {
+              id: "guilt_effort",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [28, 45],
+              template:
+                "Bottom ${pct}% — you clearly have the head for abstract pattern reasoning; you just didn't work it through methodically.",
+            },
+          ],
+          disappointment: [
+            {
+              id: "disap_ind",
+              comparison: "individuating",
+              attribution: "none",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              requiresExpectancy: "high",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [26, 46],
+              template:
+                "${pct}th percentile — short of what your earlier rounds pointed to.",
+            },
+          ],
+          relief: [
+            {
+              id: "relief_self",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [55, 78],
+              template:
+                "${pct}th percentile — you cleared the one students on the computing track usually find slow going.",
+            },
+          ],
+          shame: [
+            {
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "students on the computing track",
+              pct: [49, 65],
+              template:
+                "${pct}% of students on the computing track got this one — you didn't.",
+            },
+          ],
+        },
+      },
+    },
+    response: {
+      probes: [
         "pride",
         "relief",
         "disappointment",
@@ -11777,445 +10312,397 @@ export const REASONING_BANK = [
         "anxiety",
         "confusion",
         "boredom",
-        "none"
+        "none",
       ],
-      "scale": {
-        "type": "likert",
-        "min": 1,
-        "max": 7
+      scale: {
+        type: "likert",
+        min: 1,
+        max: 7,
       },
-      "cleanCore": {
-        "dominantMin": 5,
-        "othersMax": 3
-      }
-    }
+      cleanCore: {
+        dominantMin: 5,
+        othersMax: 3,
+      },
+    },
   },
   {
-    "id": "mr_hard_01",
-    "stimulusId": "mr_hard_01",
-    "name": "Matrix reasoning — hard (MITRE MR; item F15.5)",
-    "domains": [
-      "design",
-      "media",
-      "computing"
-    ],
-    "modality": "visuospatial",
-    "languageLoad": "low",
-    "difficultyTier": "hard",
-    "unit": "single",
-    "generalAbility": true,
-    "instructions": "Which option (A–H) best completes the pattern? Type the letter.",
-    "stimulus": {
-      "component": "matrixReasoning",
-      "scoreFn": "scoreLetterInput",
-      "response": "input",
-      "answerSet": "A-H",
-      "measures": [
-        "correct",
-        "rtMs"
-      ],
-      "item": {
-        "ref": "F15.5",
-        "form": "1",
-        "b": 1.71,
-        "key": "F",
-        "image": "stimuli/mitre/mr/F15.5.png",
-        "answerSet": "A-H"
-      }
-    },
-    "calibration": {
-      "realPSuccess": 0.22,
-      "medianRtMs": 85000,
-      "plausiblePct": [
-        2,
-        45
-      ],
-      "plausiblePctSpeed": [
-        2,
-        42
-      ],
-      "b": 1.71,
-      "itemRef": "F15.5"
-    },
-    "timer": {
-      "mode": "hidden"
-    },
-    "framing": {
-      "design": {
-        "primes": [
-          {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This set is diagnostic of core spotting the underlying structure."
-          },
-          {
-            "id": "p_expectHigh",
-            "setsExpectancy": "high",
-            "attributionFrame": "none",
-            "text": "Given your run so far, this should be within reach."
-          },
-          {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "Heads-up — most people who identified as designers miss this one."
-          },
-          {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward grinding the rule through methodically."
-          }
-        ],
-        "feedback": {
-          "shame": [
-            {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                3,
-                18
-              ],
-              "template": "You came out in the bottom ${pct}% — spotting the underlying structure may not be where your strength lies."
-            },
-            {
-              "id": "shame_hard",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 3,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                2,
-                10
-              ],
-              "template": "Bottom ${pct}% again — others at your level are well ahead; spotting the underlying structure may just not be your area."
-            },
-            {
-              "id": "shame_speed",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "correct",
-              "pctRef": "self_speed",
-              "referent": "people who identified as designers",
-              "pct": [
-                4,
-                20
-              ],
-              "template": "You got it — but among people who identified as designers who solved it you were in the bottom ${pct}% for speed, and quick spotting the underlying structure is what counts here."
-            }
-          ],
-          "guilt": [
-            {
-              "id": "guilt_effort",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                8,
-                28
-              ],
-              "template": "Bottom ${pct}% — you clearly have the head for spotting the underlying structure; you just didn't work it through methodically."
-            }
-          ],
-          "disappointment": [
-            {
-              "id": "disap_ind",
-              "comparison": "individuating",
-              "attribution": "none",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "requiresExpectancy": "high",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                12,
-                42
-              ],
-              "template": "${pct}th percentile — short of what your earlier rounds pointed to."
-            }
-          ],
-          "relief": [
-            {
-              "id": "relief_norm",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "peer_success",
-              "referent": "people who identified as designers",
-              "pct": [
-                13,
-                29
-              ],
-              "template": "Only ${pct}% of people who identified as designers solve this one — you're one of them."
-            }
-          ]
-        }
+    id: "mr_hard_01",
+    stimulusId: "mr_hard_01",
+    name: "Matrix reasoning — hard (MITRE MR; item F15.5)",
+    domains: ["design", "media", "computing"],
+    modality: "visuospatial",
+    languageLoad: "low",
+    difficultyTier: "hard",
+    unit: "single",
+    generalAbility: true,
+    instructions:
+      "Which option (A–H) best completes the pattern? Type the letter.",
+    stimulus: {
+      component: "matrixReasoning",
+      scoreFn: "scoreLetterInput",
+      response: "input",
+      answerSet: "A-H",
+      measures: ["correct", "rtMs"],
+      item: {
+        ref: "F15.5",
+        form: "1",
+        b: 1.71,
+        key: "F",
+        image: "stimuli/mitre/mr/F15.5.png",
+        answerSet: "A-H",
       },
-      "media": {
-        "primes": [
-          {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This set is diagnostic of core visual-structure reasoning."
-          },
-          {
-            "id": "p_expectHigh",
-            "setsExpectancy": "high",
-            "attributionFrame": "none",
-            "text": "Given your run so far, this should be within reach."
-          },
-          {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "Heads-up — most students in media miss this one."
-          },
-          {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward grinding the rule through methodically."
-          }
-        ],
-        "feedback": {
-          "shame": [
-            {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "students in media",
-              "pct": [
-                3,
-                18
-              ],
-              "template": "You came out in the bottom ${pct}% — visual-structure reasoning may not be where your strength lies."
-            },
-            {
-              "id": "shame_hard",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 3,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "students in media",
-              "pct": [
-                2,
-                10
-              ],
-              "template": "Bottom ${pct}% again — others at your level are well ahead; visual-structure reasoning may just not be your area."
-            },
-            {
-              "id": "shame_speed",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "correct",
-              "pctRef": "self_speed",
-              "referent": "students in media",
-              "pct": [
-                4,
-                20
-              ],
-              "template": "You got it — but among students in media who solved it you were in the bottom ${pct}% for speed, and quick visual-structure reasoning is what counts here."
-            }
-          ],
-          "guilt": [
-            {
-              "id": "guilt_effort",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "students in media",
-              "pct": [
-                8,
-                28
-              ],
-              "template": "Bottom ${pct}% — you clearly have the head for visual-structure reasoning; you just didn't work it through methodically."
-            }
-          ],
-          "disappointment": [
-            {
-              "id": "disap_ind",
-              "comparison": "individuating",
-              "attribution": "none",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "requiresExpectancy": "high",
-              "pctRef": "self_score",
-              "referent": "students in media",
-              "pct": [
-                12,
-                42
-              ],
-              "template": "${pct}th percentile — short of what your earlier rounds pointed to."
-            }
-          ],
-          "relief": [
-            {
-              "id": "relief_norm",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "peer_success",
-              "referent": "students in media",
-              "pct": [
-                13,
-                29
-              ],
-              "template": "Only ${pct}% of students in media solve this one — you're one of them."
-            }
-          ]
-        }
-      },
-      "computing": {
-        "primes": [
-          {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This set is diagnostic of core abstract pattern reasoning."
-          },
-          {
-            "id": "p_expectHigh",
-            "setsExpectancy": "high",
-            "attributionFrame": "none",
-            "text": "Given your run so far, this should be within reach."
-          },
-          {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "Heads-up — most students on the computing track miss this one."
-          },
-          {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward grinding the rule through methodically."
-          }
-        ],
-        "feedback": {
-          "shame": [
-            {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                3,
-                18
-              ],
-              "template": "You came out in the bottom ${pct}% — abstract pattern reasoning may not be where your strength lies."
-            },
-            {
-              "id": "shame_hard",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 3,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                2,
-                10
-              ],
-              "template": "Bottom ${pct}% again — others at your level are well ahead; abstract pattern reasoning may just not be your area."
-            },
-            {
-              "id": "shame_speed",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "correct",
-              "pctRef": "self_speed",
-              "referent": "students on the computing track",
-              "pct": [
-                4,
-                20
-              ],
-              "template": "You got it — but among students on the computing track who solved it you were in the bottom ${pct}% for speed, and quick abstract pattern reasoning is what counts here."
-            }
-          ],
-          "guilt": [
-            {
-              "id": "guilt_effort",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                8,
-                28
-              ],
-              "template": "Bottom ${pct}% — you clearly have the head for abstract pattern reasoning; you just didn't work it through methodically."
-            }
-          ],
-          "disappointment": [
-            {
-              "id": "disap_ind",
-              "comparison": "individuating",
-              "attribution": "none",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "requiresExpectancy": "high",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                12,
-                42
-              ],
-              "template": "${pct}th percentile — short of what your earlier rounds pointed to."
-            }
-          ],
-          "relief": [
-            {
-              "id": "relief_norm",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "peer_success",
-              "referent": "students on the computing track",
-              "pct": [
-                13,
-                29
-              ],
-              "template": "Only ${pct}% of students on the computing track solve this one — you're one of them."
-            }
-          ]
-        }
-      }
     },
-    "response": {
-      "probes": [
+    calibration: {
+      realPSuccess: 0.22,
+      medianRtMs: 85000,
+      plausiblePct: [2, 45],
+      plausiblePctSpeed: [2, 42],
+      b: 1.71,
+      itemRef: "F15.5",
+    },
+    timer: {
+      mode: "hidden",
+    },
+    framing: {
+      design: {
+        primes: [
+          {
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This set is diagnostic of core spotting the underlying structure.",
+          },
+          {
+            id: "p_expectHigh",
+            setsExpectancy: "high",
+            attributionFrame: "none",
+            text: "Given your run so far, this should be within reach.",
+          },
+          {
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "Heads-up — most people who identified as designers miss this one.",
+          },
+          {
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward grinding the rule through methodically.",
+          },
+        ],
+        feedback: {
+          shame: [
+            {
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [3, 18],
+              template:
+                "You came out in the bottom ${pct}% — spotting the underlying structure may not be where your strength lies.",
+            },
+            {
+              id: "shame_hard",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 3,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [2, 10],
+              template:
+                "Bottom ${pct}% again — others at your level are well ahead; spotting the underlying structure may just not be your area.",
+            },
+            {
+              id: "shame_speed",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "correct",
+              pctRef: "self_speed",
+              referent: "people who identified as designers",
+              pct: [4, 20],
+              template:
+                "You got it — but among people who identified as designers who solved it you were in the bottom ${pct}% for speed, and quick spotting the underlying structure is what counts here.",
+            },
+          ],
+          guilt: [
+            {
+              id: "guilt_effort",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [8, 28],
+              template:
+                "Bottom ${pct}% — you clearly have the head for spotting the underlying structure; you just didn't work it through methodically.",
+            },
+          ],
+          disappointment: [
+            {
+              id: "disap_ind",
+              comparison: "individuating",
+              attribution: "none",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              requiresExpectancy: "high",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [12, 42],
+              template:
+                "${pct}th percentile — short of what your earlier rounds pointed to.",
+            },
+          ],
+          relief: [
+            {
+              id: "relief_norm",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "peer_success",
+              referent: "people who identified as designers",
+              pct: [13, 29],
+              template:
+                "Only ${pct}% of people who identified as designers solve this one — you're one of them.",
+            },
+          ],
+        },
+      },
+      media: {
+        primes: [
+          {
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This set is diagnostic of core visual-structure reasoning.",
+          },
+          {
+            id: "p_expectHigh",
+            setsExpectancy: "high",
+            attributionFrame: "none",
+            text: "Given your run so far, this should be within reach.",
+          },
+          {
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "Heads-up — most students in media miss this one.",
+          },
+          {
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward grinding the rule through methodically.",
+          },
+        ],
+        feedback: {
+          shame: [
+            {
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "students in media",
+              pct: [3, 18],
+              template:
+                "You came out in the bottom ${pct}% — visual-structure reasoning may not be where your strength lies.",
+            },
+            {
+              id: "shame_hard",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 3,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "students in media",
+              pct: [2, 10],
+              template:
+                "Bottom ${pct}% again — others at your level are well ahead; visual-structure reasoning may just not be your area.",
+            },
+            {
+              id: "shame_speed",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "correct",
+              pctRef: "self_speed",
+              referent: "students in media",
+              pct: [4, 20],
+              template:
+                "You got it — but among students in media who solved it you were in the bottom ${pct}% for speed, and quick visual-structure reasoning is what counts here.",
+            },
+          ],
+          guilt: [
+            {
+              id: "guilt_effort",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "students in media",
+              pct: [8, 28],
+              template:
+                "Bottom ${pct}% — you clearly have the head for visual-structure reasoning; you just didn't work it through methodically.",
+            },
+          ],
+          disappointment: [
+            {
+              id: "disap_ind",
+              comparison: "individuating",
+              attribution: "none",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              requiresExpectancy: "high",
+              pctRef: "self_score",
+              referent: "students in media",
+              pct: [12, 42],
+              template:
+                "${pct}th percentile — short of what your earlier rounds pointed to.",
+            },
+          ],
+          relief: [
+            {
+              id: "relief_norm",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "peer_success",
+              referent: "students in media",
+              pct: [13, 29],
+              template:
+                "Only ${pct}% of students in media solve this one — you're one of them.",
+            },
+          ],
+        },
+      },
+      computing: {
+        primes: [
+          {
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This set is diagnostic of core abstract pattern reasoning.",
+          },
+          {
+            id: "p_expectHigh",
+            setsExpectancy: "high",
+            attributionFrame: "none",
+            text: "Given your run so far, this should be within reach.",
+          },
+          {
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "Heads-up — most students on the computing track miss this one.",
+          },
+          {
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward grinding the rule through methodically.",
+          },
+        ],
+        feedback: {
+          shame: [
+            {
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [3, 18],
+              template:
+                "You came out in the bottom ${pct}% — abstract pattern reasoning may not be where your strength lies.",
+            },
+            {
+              id: "shame_hard",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 3,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [2, 10],
+              template:
+                "Bottom ${pct}% again — others at your level are well ahead; abstract pattern reasoning may just not be your area.",
+            },
+            {
+              id: "shame_speed",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "correct",
+              pctRef: "self_speed",
+              referent: "students on the computing track",
+              pct: [4, 20],
+              template:
+                "You got it — but among students on the computing track who solved it you were in the bottom ${pct}% for speed, and quick abstract pattern reasoning is what counts here.",
+            },
+          ],
+          guilt: [
+            {
+              id: "guilt_effort",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [8, 28],
+              template:
+                "Bottom ${pct}% — you clearly have the head for abstract pattern reasoning; you just didn't work it through methodically.",
+            },
+          ],
+          disappointment: [
+            {
+              id: "disap_ind",
+              comparison: "individuating",
+              attribution: "none",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              requiresExpectancy: "high",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [12, 42],
+              template:
+                "${pct}th percentile — short of what your earlier rounds pointed to.",
+            },
+          ],
+          relief: [
+            {
+              id: "relief_norm",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "peer_success",
+              referent: "students on the computing track",
+              pct: [13, 29],
+              template:
+                "Only ${pct}% of students on the computing track solve this one — you're one of them.",
+            },
+          ],
+        },
+      },
+    },
+    response: {
+      probes: [
         "pride",
         "relief",
         "disappointment",
@@ -12224,445 +10711,397 @@ export const REASONING_BANK = [
         "anxiety",
         "confusion",
         "boredom",
-        "none"
+        "none",
       ],
-      "scale": {
-        "type": "likert",
-        "min": 1,
-        "max": 7
+      scale: {
+        type: "likert",
+        min: 1,
+        max: 7,
       },
-      "cleanCore": {
-        "dominantMin": 5,
-        "othersMax": 3
-      }
-    }
+      cleanCore: {
+        dominantMin: 5,
+        othersMax: 3,
+      },
+    },
   },
   {
-    "id": "mr_hard_02",
-    "stimulusId": "mr_hard_02",
-    "name": "Matrix reasoning — hard (MITRE MR; item F9.4)",
-    "domains": [
-      "design",
-      "media",
-      "computing"
-    ],
-    "modality": "visuospatial",
-    "languageLoad": "low",
-    "difficultyTier": "hard",
-    "unit": "single",
-    "generalAbility": true,
-    "instructions": "Which option (A–H) best completes the pattern? Type the letter.",
-    "stimulus": {
-      "component": "matrixReasoning",
-      "scoreFn": "scoreLetterInput",
-      "response": "input",
-      "answerSet": "A-H",
-      "measures": [
-        "correct",
-        "rtMs"
-      ],
-      "item": {
-        "ref": "F9.4",
-        "form": "1",
-        "b": 1.75,
-        "key": "E",
-        "image": "stimuli/mitre/mr/F9.4.png",
-        "answerSet": "A-H"
-      }
-    },
-    "calibration": {
-      "realPSuccess": 0.22,
-      "medianRtMs": 85000,
-      "plausiblePct": [
-        2,
-        45
-      ],
-      "plausiblePctSpeed": [
-        2,
-        42
-      ],
-      "b": 1.75,
-      "itemRef": "F9.4"
-    },
-    "timer": {
-      "mode": "hidden"
-    },
-    "framing": {
-      "design": {
-        "primes": [
-          {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This set is diagnostic of core spotting the underlying structure."
-          },
-          {
-            "id": "p_expectHigh",
-            "setsExpectancy": "high",
-            "attributionFrame": "none",
-            "text": "Given your run so far, this should be within reach."
-          },
-          {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "Heads-up — most people who identified as designers miss this one."
-          },
-          {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward grinding the rule through methodically."
-          }
-        ],
-        "feedback": {
-          "shame": [
-            {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                3,
-                18
-              ],
-              "template": "You came out in the bottom ${pct}% — spotting the underlying structure may not be where your strength lies."
-            },
-            {
-              "id": "shame_hard",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 3,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                2,
-                10
-              ],
-              "template": "Bottom ${pct}% again — others at your level are well ahead; spotting the underlying structure may just not be your area."
-            },
-            {
-              "id": "shame_speed",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "correct",
-              "pctRef": "self_speed",
-              "referent": "people who identified as designers",
-              "pct": [
-                4,
-                20
-              ],
-              "template": "You got it — but among people who identified as designers who solved it you were in the bottom ${pct}% for speed, and quick spotting the underlying structure is what counts here."
-            }
-          ],
-          "guilt": [
-            {
-              "id": "guilt_effort",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                8,
-                28
-              ],
-              "template": "Bottom ${pct}% — you clearly have the head for spotting the underlying structure; you just didn't work it through methodically."
-            }
-          ],
-          "disappointment": [
-            {
-              "id": "disap_ind",
-              "comparison": "individuating",
-              "attribution": "none",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "requiresExpectancy": "high",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                12,
-                42
-              ],
-              "template": "${pct}th percentile — short of what your earlier rounds pointed to."
-            }
-          ],
-          "relief": [
-            {
-              "id": "relief_norm",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "peer_success",
-              "referent": "people who identified as designers",
-              "pct": [
-                13,
-                29
-              ],
-              "template": "Only ${pct}% of people who identified as designers solve this one — you're one of them."
-            }
-          ]
-        }
+    id: "mr_hard_02",
+    stimulusId: "mr_hard_02",
+    name: "Matrix reasoning — hard (MITRE MR; item F9.4)",
+    domains: ["design", "media", "computing"],
+    modality: "visuospatial",
+    languageLoad: "low",
+    difficultyTier: "hard",
+    unit: "single",
+    generalAbility: true,
+    instructions:
+      "Which option (A–H) best completes the pattern? Type the letter.",
+    stimulus: {
+      component: "matrixReasoning",
+      scoreFn: "scoreLetterInput",
+      response: "input",
+      answerSet: "A-H",
+      measures: ["correct", "rtMs"],
+      item: {
+        ref: "F9.4",
+        form: "1",
+        b: 1.75,
+        key: "E",
+        image: "stimuli/mitre/mr/F9.4.png",
+        answerSet: "A-H",
       },
-      "media": {
-        "primes": [
-          {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This set is diagnostic of core visual-structure reasoning."
-          },
-          {
-            "id": "p_expectHigh",
-            "setsExpectancy": "high",
-            "attributionFrame": "none",
-            "text": "Given your run so far, this should be within reach."
-          },
-          {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "Heads-up — most students in media miss this one."
-          },
-          {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward grinding the rule through methodically."
-          }
-        ],
-        "feedback": {
-          "shame": [
-            {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "students in media",
-              "pct": [
-                3,
-                18
-              ],
-              "template": "You came out in the bottom ${pct}% — visual-structure reasoning may not be where your strength lies."
-            },
-            {
-              "id": "shame_hard",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 3,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "students in media",
-              "pct": [
-                2,
-                10
-              ],
-              "template": "Bottom ${pct}% again — others at your level are well ahead; visual-structure reasoning may just not be your area."
-            },
-            {
-              "id": "shame_speed",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "correct",
-              "pctRef": "self_speed",
-              "referent": "students in media",
-              "pct": [
-                4,
-                20
-              ],
-              "template": "You got it — but among students in media who solved it you were in the bottom ${pct}% for speed, and quick visual-structure reasoning is what counts here."
-            }
-          ],
-          "guilt": [
-            {
-              "id": "guilt_effort",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "students in media",
-              "pct": [
-                8,
-                28
-              ],
-              "template": "Bottom ${pct}% — you clearly have the head for visual-structure reasoning; you just didn't work it through methodically."
-            }
-          ],
-          "disappointment": [
-            {
-              "id": "disap_ind",
-              "comparison": "individuating",
-              "attribution": "none",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "requiresExpectancy": "high",
-              "pctRef": "self_score",
-              "referent": "students in media",
-              "pct": [
-                12,
-                42
-              ],
-              "template": "${pct}th percentile — short of what your earlier rounds pointed to."
-            }
-          ],
-          "relief": [
-            {
-              "id": "relief_norm",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "peer_success",
-              "referent": "students in media",
-              "pct": [
-                13,
-                29
-              ],
-              "template": "Only ${pct}% of students in media solve this one — you're one of them."
-            }
-          ]
-        }
-      },
-      "computing": {
-        "primes": [
-          {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This set is diagnostic of core abstract pattern reasoning."
-          },
-          {
-            "id": "p_expectHigh",
-            "setsExpectancy": "high",
-            "attributionFrame": "none",
-            "text": "Given your run so far, this should be within reach."
-          },
-          {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "Heads-up — most students on the computing track miss this one."
-          },
-          {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward grinding the rule through methodically."
-          }
-        ],
-        "feedback": {
-          "shame": [
-            {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                3,
-                18
-              ],
-              "template": "You came out in the bottom ${pct}% — abstract pattern reasoning may not be where your strength lies."
-            },
-            {
-              "id": "shame_hard",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 3,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                2,
-                10
-              ],
-              "template": "Bottom ${pct}% again — others at your level are well ahead; abstract pattern reasoning may just not be your area."
-            },
-            {
-              "id": "shame_speed",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "correct",
-              "pctRef": "self_speed",
-              "referent": "students on the computing track",
-              "pct": [
-                4,
-                20
-              ],
-              "template": "You got it — but among students on the computing track who solved it you were in the bottom ${pct}% for speed, and quick abstract pattern reasoning is what counts here."
-            }
-          ],
-          "guilt": [
-            {
-              "id": "guilt_effort",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                8,
-                28
-              ],
-              "template": "Bottom ${pct}% — you clearly have the head for abstract pattern reasoning; you just didn't work it through methodically."
-            }
-          ],
-          "disappointment": [
-            {
-              "id": "disap_ind",
-              "comparison": "individuating",
-              "attribution": "none",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "requiresExpectancy": "high",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                12,
-                42
-              ],
-              "template": "${pct}th percentile — short of what your earlier rounds pointed to."
-            }
-          ],
-          "relief": [
-            {
-              "id": "relief_norm",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "peer_success",
-              "referent": "students on the computing track",
-              "pct": [
-                13,
-                29
-              ],
-              "template": "Only ${pct}% of students on the computing track solve this one — you're one of them."
-            }
-          ]
-        }
-      }
     },
-    "response": {
-      "probes": [
+    calibration: {
+      realPSuccess: 0.22,
+      medianRtMs: 85000,
+      plausiblePct: [2, 45],
+      plausiblePctSpeed: [2, 42],
+      b: 1.75,
+      itemRef: "F9.4",
+    },
+    timer: {
+      mode: "hidden",
+    },
+    framing: {
+      design: {
+        primes: [
+          {
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This set is diagnostic of core spotting the underlying structure.",
+          },
+          {
+            id: "p_expectHigh",
+            setsExpectancy: "high",
+            attributionFrame: "none",
+            text: "Given your run so far, this should be within reach.",
+          },
+          {
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "Heads-up — most people who identified as designers miss this one.",
+          },
+          {
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward grinding the rule through methodically.",
+          },
+        ],
+        feedback: {
+          shame: [
+            {
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [3, 18],
+              template:
+                "You came out in the bottom ${pct}% — spotting the underlying structure may not be where your strength lies.",
+            },
+            {
+              id: "shame_hard",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 3,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [2, 10],
+              template:
+                "Bottom ${pct}% again — others at your level are well ahead; spotting the underlying structure may just not be your area.",
+            },
+            {
+              id: "shame_speed",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "correct",
+              pctRef: "self_speed",
+              referent: "people who identified as designers",
+              pct: [4, 20],
+              template:
+                "You got it — but among people who identified as designers who solved it you were in the bottom ${pct}% for speed, and quick spotting the underlying structure is what counts here.",
+            },
+          ],
+          guilt: [
+            {
+              id: "guilt_effort",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [8, 28],
+              template:
+                "Bottom ${pct}% — you clearly have the head for spotting the underlying structure; you just didn't work it through methodically.",
+            },
+          ],
+          disappointment: [
+            {
+              id: "disap_ind",
+              comparison: "individuating",
+              attribution: "none",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              requiresExpectancy: "high",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [12, 42],
+              template:
+                "${pct}th percentile — short of what your earlier rounds pointed to.",
+            },
+          ],
+          relief: [
+            {
+              id: "relief_norm",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "peer_success",
+              referent: "people who identified as designers",
+              pct: [13, 29],
+              template:
+                "Only ${pct}% of people who identified as designers solve this one — you're one of them.",
+            },
+          ],
+        },
+      },
+      media: {
+        primes: [
+          {
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This set is diagnostic of core visual-structure reasoning.",
+          },
+          {
+            id: "p_expectHigh",
+            setsExpectancy: "high",
+            attributionFrame: "none",
+            text: "Given your run so far, this should be within reach.",
+          },
+          {
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "Heads-up — most students in media miss this one.",
+          },
+          {
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward grinding the rule through methodically.",
+          },
+        ],
+        feedback: {
+          shame: [
+            {
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "students in media",
+              pct: [3, 18],
+              template:
+                "You came out in the bottom ${pct}% — visual-structure reasoning may not be where your strength lies.",
+            },
+            {
+              id: "shame_hard",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 3,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "students in media",
+              pct: [2, 10],
+              template:
+                "Bottom ${pct}% again — others at your level are well ahead; visual-structure reasoning may just not be your area.",
+            },
+            {
+              id: "shame_speed",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "correct",
+              pctRef: "self_speed",
+              referent: "students in media",
+              pct: [4, 20],
+              template:
+                "You got it — but among students in media who solved it you were in the bottom ${pct}% for speed, and quick visual-structure reasoning is what counts here.",
+            },
+          ],
+          guilt: [
+            {
+              id: "guilt_effort",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "students in media",
+              pct: [8, 28],
+              template:
+                "Bottom ${pct}% — you clearly have the head for visual-structure reasoning; you just didn't work it through methodically.",
+            },
+          ],
+          disappointment: [
+            {
+              id: "disap_ind",
+              comparison: "individuating",
+              attribution: "none",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              requiresExpectancy: "high",
+              pctRef: "self_score",
+              referent: "students in media",
+              pct: [12, 42],
+              template:
+                "${pct}th percentile — short of what your earlier rounds pointed to.",
+            },
+          ],
+          relief: [
+            {
+              id: "relief_norm",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "peer_success",
+              referent: "students in media",
+              pct: [13, 29],
+              template:
+                "Only ${pct}% of students in media solve this one — you're one of them.",
+            },
+          ],
+        },
+      },
+      computing: {
+        primes: [
+          {
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This set is diagnostic of core abstract pattern reasoning.",
+          },
+          {
+            id: "p_expectHigh",
+            setsExpectancy: "high",
+            attributionFrame: "none",
+            text: "Given your run so far, this should be within reach.",
+          },
+          {
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "Heads-up — most students on the computing track miss this one.",
+          },
+          {
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward grinding the rule through methodically.",
+          },
+        ],
+        feedback: {
+          shame: [
+            {
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [3, 18],
+              template:
+                "You came out in the bottom ${pct}% — abstract pattern reasoning may not be where your strength lies.",
+            },
+            {
+              id: "shame_hard",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 3,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [2, 10],
+              template:
+                "Bottom ${pct}% again — others at your level are well ahead; abstract pattern reasoning may just not be your area.",
+            },
+            {
+              id: "shame_speed",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "correct",
+              pctRef: "self_speed",
+              referent: "students on the computing track",
+              pct: [4, 20],
+              template:
+                "You got it — but among students on the computing track who solved it you were in the bottom ${pct}% for speed, and quick abstract pattern reasoning is what counts here.",
+            },
+          ],
+          guilt: [
+            {
+              id: "guilt_effort",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [8, 28],
+              template:
+                "Bottom ${pct}% — you clearly have the head for abstract pattern reasoning; you just didn't work it through methodically.",
+            },
+          ],
+          disappointment: [
+            {
+              id: "disap_ind",
+              comparison: "individuating",
+              attribution: "none",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              requiresExpectancy: "high",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [12, 42],
+              template:
+                "${pct}th percentile — short of what your earlier rounds pointed to.",
+            },
+          ],
+          relief: [
+            {
+              id: "relief_norm",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "peer_success",
+              referent: "students on the computing track",
+              pct: [13, 29],
+              template:
+                "Only ${pct}% of students on the computing track solve this one — you're one of them.",
+            },
+          ],
+        },
+      },
+    },
+    response: {
+      probes: [
         "pride",
         "relief",
         "disappointment",
@@ -12671,445 +11110,397 @@ export const REASONING_BANK = [
         "anxiety",
         "confusion",
         "boredom",
-        "none"
+        "none",
       ],
-      "scale": {
-        "type": "likert",
-        "min": 1,
-        "max": 7
+      scale: {
+        type: "likert",
+        min: 1,
+        max: 7,
       },
-      "cleanCore": {
-        "dominantMin": 5,
-        "othersMax": 3
-      }
-    }
+      cleanCore: {
+        dominantMin: 5,
+        othersMax: 3,
+      },
+    },
   },
   {
-    "id": "mr_hard_03",
-    "stimulusId": "mr_hard_03",
-    "name": "Matrix reasoning — hard (MITRE MR; item F20.1)",
-    "domains": [
-      "design",
-      "media",
-      "computing"
-    ],
-    "modality": "visuospatial",
-    "languageLoad": "low",
-    "difficultyTier": "hard",
-    "unit": "single",
-    "generalAbility": true,
-    "instructions": "Which option (A–H) best completes the pattern? Type the letter.",
-    "stimulus": {
-      "component": "matrixReasoning",
-      "scoreFn": "scoreLetterInput",
-      "response": "input",
-      "answerSet": "A-H",
-      "measures": [
-        "correct",
-        "rtMs"
-      ],
-      "item": {
-        "ref": "F20.1",
-        "form": "1",
-        "b": 1.88,
-        "key": "B",
-        "image": "stimuli/mitre/mr/F20.1.png",
-        "answerSet": "A-H"
-      }
-    },
-    "calibration": {
-      "realPSuccess": 0.22,
-      "medianRtMs": 85000,
-      "plausiblePct": [
-        2,
-        45
-      ],
-      "plausiblePctSpeed": [
-        2,
-        42
-      ],
-      "b": 1.88,
-      "itemRef": "F20.1"
-    },
-    "timer": {
-      "mode": "hidden"
-    },
-    "framing": {
-      "design": {
-        "primes": [
-          {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This set is diagnostic of core spotting the underlying structure."
-          },
-          {
-            "id": "p_expectHigh",
-            "setsExpectancy": "high",
-            "attributionFrame": "none",
-            "text": "Given your run so far, this should be within reach."
-          },
-          {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "Heads-up — most people who identified as designers miss this one."
-          },
-          {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward grinding the rule through methodically."
-          }
-        ],
-        "feedback": {
-          "shame": [
-            {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                3,
-                18
-              ],
-              "template": "You came out in the bottom ${pct}% — spotting the underlying structure may not be where your strength lies."
-            },
-            {
-              "id": "shame_hard",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 3,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                2,
-                10
-              ],
-              "template": "Bottom ${pct}% again — others at your level are well ahead; spotting the underlying structure may just not be your area."
-            },
-            {
-              "id": "shame_speed",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "correct",
-              "pctRef": "self_speed",
-              "referent": "people who identified as designers",
-              "pct": [
-                4,
-                20
-              ],
-              "template": "You got it — but among people who identified as designers who solved it you were in the bottom ${pct}% for speed, and quick spotting the underlying structure is what counts here."
-            }
-          ],
-          "guilt": [
-            {
-              "id": "guilt_effort",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                8,
-                28
-              ],
-              "template": "Bottom ${pct}% — you clearly have the head for spotting the underlying structure; you just didn't work it through methodically."
-            }
-          ],
-          "disappointment": [
-            {
-              "id": "disap_ind",
-              "comparison": "individuating",
-              "attribution": "none",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "requiresExpectancy": "high",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                12,
-                42
-              ],
-              "template": "${pct}th percentile — short of what your earlier rounds pointed to."
-            }
-          ],
-          "relief": [
-            {
-              "id": "relief_norm",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "peer_success",
-              "referent": "people who identified as designers",
-              "pct": [
-                13,
-                29
-              ],
-              "template": "Only ${pct}% of people who identified as designers solve this one — you're one of them."
-            }
-          ]
-        }
+    id: "mr_hard_03",
+    stimulusId: "mr_hard_03",
+    name: "Matrix reasoning — hard (MITRE MR; item F20.1)",
+    domains: ["design", "media", "computing"],
+    modality: "visuospatial",
+    languageLoad: "low",
+    difficultyTier: "hard",
+    unit: "single",
+    generalAbility: true,
+    instructions:
+      "Which option (A–H) best completes the pattern? Type the letter.",
+    stimulus: {
+      component: "matrixReasoning",
+      scoreFn: "scoreLetterInput",
+      response: "input",
+      answerSet: "A-H",
+      measures: ["correct", "rtMs"],
+      item: {
+        ref: "F20.1",
+        form: "1",
+        b: 1.88,
+        key: "B",
+        image: "stimuli/mitre/mr/F20.1.png",
+        answerSet: "A-H",
       },
-      "media": {
-        "primes": [
-          {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This set is diagnostic of core visual-structure reasoning."
-          },
-          {
-            "id": "p_expectHigh",
-            "setsExpectancy": "high",
-            "attributionFrame": "none",
-            "text": "Given your run so far, this should be within reach."
-          },
-          {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "Heads-up — most students in media miss this one."
-          },
-          {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward grinding the rule through methodically."
-          }
-        ],
-        "feedback": {
-          "shame": [
-            {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "students in media",
-              "pct": [
-                3,
-                18
-              ],
-              "template": "You came out in the bottom ${pct}% — visual-structure reasoning may not be where your strength lies."
-            },
-            {
-              "id": "shame_hard",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 3,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "students in media",
-              "pct": [
-                2,
-                10
-              ],
-              "template": "Bottom ${pct}% again — others at your level are well ahead; visual-structure reasoning may just not be your area."
-            },
-            {
-              "id": "shame_speed",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "correct",
-              "pctRef": "self_speed",
-              "referent": "students in media",
-              "pct": [
-                4,
-                20
-              ],
-              "template": "You got it — but among students in media who solved it you were in the bottom ${pct}% for speed, and quick visual-structure reasoning is what counts here."
-            }
-          ],
-          "guilt": [
-            {
-              "id": "guilt_effort",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "students in media",
-              "pct": [
-                8,
-                28
-              ],
-              "template": "Bottom ${pct}% — you clearly have the head for visual-structure reasoning; you just didn't work it through methodically."
-            }
-          ],
-          "disappointment": [
-            {
-              "id": "disap_ind",
-              "comparison": "individuating",
-              "attribution": "none",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "requiresExpectancy": "high",
-              "pctRef": "self_score",
-              "referent": "students in media",
-              "pct": [
-                12,
-                42
-              ],
-              "template": "${pct}th percentile — short of what your earlier rounds pointed to."
-            }
-          ],
-          "relief": [
-            {
-              "id": "relief_norm",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "peer_success",
-              "referent": "students in media",
-              "pct": [
-                13,
-                29
-              ],
-              "template": "Only ${pct}% of students in media solve this one — you're one of them."
-            }
-          ]
-        }
-      },
-      "computing": {
-        "primes": [
-          {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This set is diagnostic of core abstract pattern reasoning."
-          },
-          {
-            "id": "p_expectHigh",
-            "setsExpectancy": "high",
-            "attributionFrame": "none",
-            "text": "Given your run so far, this should be within reach."
-          },
-          {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "Heads-up — most students on the computing track miss this one."
-          },
-          {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward grinding the rule through methodically."
-          }
-        ],
-        "feedback": {
-          "shame": [
-            {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                3,
-                18
-              ],
-              "template": "You came out in the bottom ${pct}% — abstract pattern reasoning may not be where your strength lies."
-            },
-            {
-              "id": "shame_hard",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 3,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                2,
-                10
-              ],
-              "template": "Bottom ${pct}% again — others at your level are well ahead; abstract pattern reasoning may just not be your area."
-            },
-            {
-              "id": "shame_speed",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "correct",
-              "pctRef": "self_speed",
-              "referent": "students on the computing track",
-              "pct": [
-                4,
-                20
-              ],
-              "template": "You got it — but among students on the computing track who solved it you were in the bottom ${pct}% for speed, and quick abstract pattern reasoning is what counts here."
-            }
-          ],
-          "guilt": [
-            {
-              "id": "guilt_effort",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                8,
-                28
-              ],
-              "template": "Bottom ${pct}% — you clearly have the head for abstract pattern reasoning; you just didn't work it through methodically."
-            }
-          ],
-          "disappointment": [
-            {
-              "id": "disap_ind",
-              "comparison": "individuating",
-              "attribution": "none",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "requiresExpectancy": "high",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                12,
-                42
-              ],
-              "template": "${pct}th percentile — short of what your earlier rounds pointed to."
-            }
-          ],
-          "relief": [
-            {
-              "id": "relief_norm",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "peer_success",
-              "referent": "students on the computing track",
-              "pct": [
-                13,
-                29
-              ],
-              "template": "Only ${pct}% of students on the computing track solve this one — you're one of them."
-            }
-          ]
-        }
-      }
     },
-    "response": {
-      "probes": [
+    calibration: {
+      realPSuccess: 0.22,
+      medianRtMs: 85000,
+      plausiblePct: [2, 45],
+      plausiblePctSpeed: [2, 42],
+      b: 1.88,
+      itemRef: "F20.1",
+    },
+    timer: {
+      mode: "hidden",
+    },
+    framing: {
+      design: {
+        primes: [
+          {
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This set is diagnostic of core spotting the underlying structure.",
+          },
+          {
+            id: "p_expectHigh",
+            setsExpectancy: "high",
+            attributionFrame: "none",
+            text: "Given your run so far, this should be within reach.",
+          },
+          {
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "Heads-up — most people who identified as designers miss this one.",
+          },
+          {
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward grinding the rule through methodically.",
+          },
+        ],
+        feedback: {
+          shame: [
+            {
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [3, 18],
+              template:
+                "You came out in the bottom ${pct}% — spotting the underlying structure may not be where your strength lies.",
+            },
+            {
+              id: "shame_hard",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 3,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [2, 10],
+              template:
+                "Bottom ${pct}% again — others at your level are well ahead; spotting the underlying structure may just not be your area.",
+            },
+            {
+              id: "shame_speed",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "correct",
+              pctRef: "self_speed",
+              referent: "people who identified as designers",
+              pct: [4, 20],
+              template:
+                "You got it — but among people who identified as designers who solved it you were in the bottom ${pct}% for speed, and quick spotting the underlying structure is what counts here.",
+            },
+          ],
+          guilt: [
+            {
+              id: "guilt_effort",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [8, 28],
+              template:
+                "Bottom ${pct}% — you clearly have the head for spotting the underlying structure; you just didn't work it through methodically.",
+            },
+          ],
+          disappointment: [
+            {
+              id: "disap_ind",
+              comparison: "individuating",
+              attribution: "none",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              requiresExpectancy: "high",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [12, 42],
+              template:
+                "${pct}th percentile — short of what your earlier rounds pointed to.",
+            },
+          ],
+          relief: [
+            {
+              id: "relief_norm",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "peer_success",
+              referent: "people who identified as designers",
+              pct: [13, 29],
+              template:
+                "Only ${pct}% of people who identified as designers solve this one — you're one of them.",
+            },
+          ],
+        },
+      },
+      media: {
+        primes: [
+          {
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This set is diagnostic of core visual-structure reasoning.",
+          },
+          {
+            id: "p_expectHigh",
+            setsExpectancy: "high",
+            attributionFrame: "none",
+            text: "Given your run so far, this should be within reach.",
+          },
+          {
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "Heads-up — most students in media miss this one.",
+          },
+          {
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward grinding the rule through methodically.",
+          },
+        ],
+        feedback: {
+          shame: [
+            {
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "students in media",
+              pct: [3, 18],
+              template:
+                "You came out in the bottom ${pct}% — visual-structure reasoning may not be where your strength lies.",
+            },
+            {
+              id: "shame_hard",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 3,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "students in media",
+              pct: [2, 10],
+              template:
+                "Bottom ${pct}% again — others at your level are well ahead; visual-structure reasoning may just not be your area.",
+            },
+            {
+              id: "shame_speed",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "correct",
+              pctRef: "self_speed",
+              referent: "students in media",
+              pct: [4, 20],
+              template:
+                "You got it — but among students in media who solved it you were in the bottom ${pct}% for speed, and quick visual-structure reasoning is what counts here.",
+            },
+          ],
+          guilt: [
+            {
+              id: "guilt_effort",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "students in media",
+              pct: [8, 28],
+              template:
+                "Bottom ${pct}% — you clearly have the head for visual-structure reasoning; you just didn't work it through methodically.",
+            },
+          ],
+          disappointment: [
+            {
+              id: "disap_ind",
+              comparison: "individuating",
+              attribution: "none",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              requiresExpectancy: "high",
+              pctRef: "self_score",
+              referent: "students in media",
+              pct: [12, 42],
+              template:
+                "${pct}th percentile — short of what your earlier rounds pointed to.",
+            },
+          ],
+          relief: [
+            {
+              id: "relief_norm",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "peer_success",
+              referent: "students in media",
+              pct: [13, 29],
+              template:
+                "Only ${pct}% of students in media solve this one — you're one of them.",
+            },
+          ],
+        },
+      },
+      computing: {
+        primes: [
+          {
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This set is diagnostic of core abstract pattern reasoning.",
+          },
+          {
+            id: "p_expectHigh",
+            setsExpectancy: "high",
+            attributionFrame: "none",
+            text: "Given your run so far, this should be within reach.",
+          },
+          {
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "Heads-up — most students on the computing track miss this one.",
+          },
+          {
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward grinding the rule through methodically.",
+          },
+        ],
+        feedback: {
+          shame: [
+            {
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [3, 18],
+              template:
+                "You came out in the bottom ${pct}% — abstract pattern reasoning may not be where your strength lies.",
+            },
+            {
+              id: "shame_hard",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 3,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [2, 10],
+              template:
+                "Bottom ${pct}% again — others at your level are well ahead; abstract pattern reasoning may just not be your area.",
+            },
+            {
+              id: "shame_speed",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "correct",
+              pctRef: "self_speed",
+              referent: "students on the computing track",
+              pct: [4, 20],
+              template:
+                "You got it — but among students on the computing track who solved it you were in the bottom ${pct}% for speed, and quick abstract pattern reasoning is what counts here.",
+            },
+          ],
+          guilt: [
+            {
+              id: "guilt_effort",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [8, 28],
+              template:
+                "Bottom ${pct}% — you clearly have the head for abstract pattern reasoning; you just didn't work it through methodically.",
+            },
+          ],
+          disappointment: [
+            {
+              id: "disap_ind",
+              comparison: "individuating",
+              attribution: "none",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              requiresExpectancy: "high",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [12, 42],
+              template:
+                "${pct}th percentile — short of what your earlier rounds pointed to.",
+            },
+          ],
+          relief: [
+            {
+              id: "relief_norm",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "peer_success",
+              referent: "students on the computing track",
+              pct: [13, 29],
+              template:
+                "Only ${pct}% of students on the computing track solve this one — you're one of them.",
+            },
+          ],
+        },
+      },
+    },
+    response: {
+      probes: [
         "pride",
         "relief",
         "disappointment",
@@ -13118,445 +11509,397 @@ export const REASONING_BANK = [
         "anxiety",
         "confusion",
         "boredom",
-        "none"
+        "none",
       ],
-      "scale": {
-        "type": "likert",
-        "min": 1,
-        "max": 7
+      scale: {
+        type: "likert",
+        min: 1,
+        max: 7,
       },
-      "cleanCore": {
-        "dominantMin": 5,
-        "othersMax": 3
-      }
-    }
+      cleanCore: {
+        dominantMin: 5,
+        othersMax: 3,
+      },
+    },
   },
   {
-    "id": "mr_hard_04",
-    "stimulusId": "mr_hard_04",
-    "name": "Matrix reasoning — hard (MITRE MR; item F13.NEW2)",
-    "domains": [
-      "design",
-      "media",
-      "computing"
-    ],
-    "modality": "visuospatial",
-    "languageLoad": "low",
-    "difficultyTier": "hard",
-    "unit": "single",
-    "generalAbility": true,
-    "instructions": "Which option (A–H) best completes the pattern? Type the letter.",
-    "stimulus": {
-      "component": "matrixReasoning",
-      "scoreFn": "scoreLetterInput",
-      "response": "input",
-      "answerSet": "A-H",
-      "measures": [
-        "correct",
-        "rtMs"
-      ],
-      "item": {
-        "ref": "F13.NEW2",
-        "form": "1",
-        "b": 2.15,
-        "key": "F",
-        "image": "stimuli/mitre/mr/F13.NEW2.png",
-        "answerSet": "A-H"
-      }
-    },
-    "calibration": {
-      "realPSuccess": 0.22,
-      "medianRtMs": 85000,
-      "plausiblePct": [
-        2,
-        45
-      ],
-      "plausiblePctSpeed": [
-        2,
-        42
-      ],
-      "b": 2.15,
-      "itemRef": "F13.NEW2"
-    },
-    "timer": {
-      "mode": "hidden"
-    },
-    "framing": {
-      "design": {
-        "primes": [
-          {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This set is diagnostic of core spotting the underlying structure."
-          },
-          {
-            "id": "p_expectHigh",
-            "setsExpectancy": "high",
-            "attributionFrame": "none",
-            "text": "Given your run so far, this should be within reach."
-          },
-          {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "Heads-up — most people who identified as designers miss this one."
-          },
-          {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward grinding the rule through methodically."
-          }
-        ],
-        "feedback": {
-          "shame": [
-            {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                3,
-                18
-              ],
-              "template": "You came out in the bottom ${pct}% — spotting the underlying structure may not be where your strength lies."
-            },
-            {
-              "id": "shame_hard",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 3,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                2,
-                10
-              ],
-              "template": "Bottom ${pct}% again — others at your level are well ahead; spotting the underlying structure may just not be your area."
-            },
-            {
-              "id": "shame_speed",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "correct",
-              "pctRef": "self_speed",
-              "referent": "people who identified as designers",
-              "pct": [
-                4,
-                20
-              ],
-              "template": "You got it — but among people who identified as designers who solved it you were in the bottom ${pct}% for speed, and quick spotting the underlying structure is what counts here."
-            }
-          ],
-          "guilt": [
-            {
-              "id": "guilt_effort",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                8,
-                28
-              ],
-              "template": "Bottom ${pct}% — you clearly have the head for spotting the underlying structure; you just didn't work it through methodically."
-            }
-          ],
-          "disappointment": [
-            {
-              "id": "disap_ind",
-              "comparison": "individuating",
-              "attribution": "none",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "requiresExpectancy": "high",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                12,
-                42
-              ],
-              "template": "${pct}th percentile — short of what your earlier rounds pointed to."
-            }
-          ],
-          "relief": [
-            {
-              "id": "relief_norm",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "peer_success",
-              "referent": "people who identified as designers",
-              "pct": [
-                13,
-                29
-              ],
-              "template": "Only ${pct}% of people who identified as designers solve this one — you're one of them."
-            }
-          ]
-        }
+    id: "mr_hard_04",
+    stimulusId: "mr_hard_04",
+    name: "Matrix reasoning — hard (MITRE MR; item F13.NEW2)",
+    domains: ["design", "media", "computing"],
+    modality: "visuospatial",
+    languageLoad: "low",
+    difficultyTier: "hard",
+    unit: "single",
+    generalAbility: true,
+    instructions:
+      "Which option (A–H) best completes the pattern? Type the letter.",
+    stimulus: {
+      component: "matrixReasoning",
+      scoreFn: "scoreLetterInput",
+      response: "input",
+      answerSet: "A-H",
+      measures: ["correct", "rtMs"],
+      item: {
+        ref: "F13.NEW2",
+        form: "1",
+        b: 2.15,
+        key: "F",
+        image: "stimuli/mitre/mr/F13.NEW2.png",
+        answerSet: "A-H",
       },
-      "media": {
-        "primes": [
-          {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This set is diagnostic of core visual-structure reasoning."
-          },
-          {
-            "id": "p_expectHigh",
-            "setsExpectancy": "high",
-            "attributionFrame": "none",
-            "text": "Given your run so far, this should be within reach."
-          },
-          {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "Heads-up — most students in media miss this one."
-          },
-          {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward grinding the rule through methodically."
-          }
-        ],
-        "feedback": {
-          "shame": [
-            {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "students in media",
-              "pct": [
-                3,
-                18
-              ],
-              "template": "You came out in the bottom ${pct}% — visual-structure reasoning may not be where your strength lies."
-            },
-            {
-              "id": "shame_hard",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 3,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "students in media",
-              "pct": [
-                2,
-                10
-              ],
-              "template": "Bottom ${pct}% again — others at your level are well ahead; visual-structure reasoning may just not be your area."
-            },
-            {
-              "id": "shame_speed",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "correct",
-              "pctRef": "self_speed",
-              "referent": "students in media",
-              "pct": [
-                4,
-                20
-              ],
-              "template": "You got it — but among students in media who solved it you were in the bottom ${pct}% for speed, and quick visual-structure reasoning is what counts here."
-            }
-          ],
-          "guilt": [
-            {
-              "id": "guilt_effort",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "students in media",
-              "pct": [
-                8,
-                28
-              ],
-              "template": "Bottom ${pct}% — you clearly have the head for visual-structure reasoning; you just didn't work it through methodically."
-            }
-          ],
-          "disappointment": [
-            {
-              "id": "disap_ind",
-              "comparison": "individuating",
-              "attribution": "none",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "requiresExpectancy": "high",
-              "pctRef": "self_score",
-              "referent": "students in media",
-              "pct": [
-                12,
-                42
-              ],
-              "template": "${pct}th percentile — short of what your earlier rounds pointed to."
-            }
-          ],
-          "relief": [
-            {
-              "id": "relief_norm",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "peer_success",
-              "referent": "students in media",
-              "pct": [
-                13,
-                29
-              ],
-              "template": "Only ${pct}% of students in media solve this one — you're one of them."
-            }
-          ]
-        }
-      },
-      "computing": {
-        "primes": [
-          {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This set is diagnostic of core abstract pattern reasoning."
-          },
-          {
-            "id": "p_expectHigh",
-            "setsExpectancy": "high",
-            "attributionFrame": "none",
-            "text": "Given your run so far, this should be within reach."
-          },
-          {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "Heads-up — most students on the computing track miss this one."
-          },
-          {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward grinding the rule through methodically."
-          }
-        ],
-        "feedback": {
-          "shame": [
-            {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                3,
-                18
-              ],
-              "template": "You came out in the bottom ${pct}% — abstract pattern reasoning may not be where your strength lies."
-            },
-            {
-              "id": "shame_hard",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 3,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                2,
-                10
-              ],
-              "template": "Bottom ${pct}% again — others at your level are well ahead; abstract pattern reasoning may just not be your area."
-            },
-            {
-              "id": "shame_speed",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "correct",
-              "pctRef": "self_speed",
-              "referent": "students on the computing track",
-              "pct": [
-                4,
-                20
-              ],
-              "template": "You got it — but among students on the computing track who solved it you were in the bottom ${pct}% for speed, and quick abstract pattern reasoning is what counts here."
-            }
-          ],
-          "guilt": [
-            {
-              "id": "guilt_effort",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                8,
-                28
-              ],
-              "template": "Bottom ${pct}% — you clearly have the head for abstract pattern reasoning; you just didn't work it through methodically."
-            }
-          ],
-          "disappointment": [
-            {
-              "id": "disap_ind",
-              "comparison": "individuating",
-              "attribution": "none",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "requiresExpectancy": "high",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                12,
-                42
-              ],
-              "template": "${pct}th percentile — short of what your earlier rounds pointed to."
-            }
-          ],
-          "relief": [
-            {
-              "id": "relief_norm",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "peer_success",
-              "referent": "students on the computing track",
-              "pct": [
-                13,
-                29
-              ],
-              "template": "Only ${pct}% of students on the computing track solve this one — you're one of them."
-            }
-          ]
-        }
-      }
     },
-    "response": {
-      "probes": [
+    calibration: {
+      realPSuccess: 0.22,
+      medianRtMs: 85000,
+      plausiblePct: [2, 45],
+      plausiblePctSpeed: [2, 42],
+      b: 2.15,
+      itemRef: "F13.NEW2",
+    },
+    timer: {
+      mode: "hidden",
+    },
+    framing: {
+      design: {
+        primes: [
+          {
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This set is diagnostic of core spotting the underlying structure.",
+          },
+          {
+            id: "p_expectHigh",
+            setsExpectancy: "high",
+            attributionFrame: "none",
+            text: "Given your run so far, this should be within reach.",
+          },
+          {
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "Heads-up — most people who identified as designers miss this one.",
+          },
+          {
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward grinding the rule through methodically.",
+          },
+        ],
+        feedback: {
+          shame: [
+            {
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [3, 18],
+              template:
+                "You came out in the bottom ${pct}% — spotting the underlying structure may not be where your strength lies.",
+            },
+            {
+              id: "shame_hard",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 3,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [2, 10],
+              template:
+                "Bottom ${pct}% again — others at your level are well ahead; spotting the underlying structure may just not be your area.",
+            },
+            {
+              id: "shame_speed",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "correct",
+              pctRef: "self_speed",
+              referent: "people who identified as designers",
+              pct: [4, 20],
+              template:
+                "You got it — but among people who identified as designers who solved it you were in the bottom ${pct}% for speed, and quick spotting the underlying structure is what counts here.",
+            },
+          ],
+          guilt: [
+            {
+              id: "guilt_effort",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [8, 28],
+              template:
+                "Bottom ${pct}% — you clearly have the head for spotting the underlying structure; you just didn't work it through methodically.",
+            },
+          ],
+          disappointment: [
+            {
+              id: "disap_ind",
+              comparison: "individuating",
+              attribution: "none",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              requiresExpectancy: "high",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [12, 42],
+              template:
+                "${pct}th percentile — short of what your earlier rounds pointed to.",
+            },
+          ],
+          relief: [
+            {
+              id: "relief_norm",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "peer_success",
+              referent: "people who identified as designers",
+              pct: [13, 29],
+              template:
+                "Only ${pct}% of people who identified as designers solve this one — you're one of them.",
+            },
+          ],
+        },
+      },
+      media: {
+        primes: [
+          {
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This set is diagnostic of core visual-structure reasoning.",
+          },
+          {
+            id: "p_expectHigh",
+            setsExpectancy: "high",
+            attributionFrame: "none",
+            text: "Given your run so far, this should be within reach.",
+          },
+          {
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "Heads-up — most students in media miss this one.",
+          },
+          {
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward grinding the rule through methodically.",
+          },
+        ],
+        feedback: {
+          shame: [
+            {
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "students in media",
+              pct: [3, 18],
+              template:
+                "You came out in the bottom ${pct}% — visual-structure reasoning may not be where your strength lies.",
+            },
+            {
+              id: "shame_hard",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 3,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "students in media",
+              pct: [2, 10],
+              template:
+                "Bottom ${pct}% again — others at your level are well ahead; visual-structure reasoning may just not be your area.",
+            },
+            {
+              id: "shame_speed",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "correct",
+              pctRef: "self_speed",
+              referent: "students in media",
+              pct: [4, 20],
+              template:
+                "You got it — but among students in media who solved it you were in the bottom ${pct}% for speed, and quick visual-structure reasoning is what counts here.",
+            },
+          ],
+          guilt: [
+            {
+              id: "guilt_effort",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "students in media",
+              pct: [8, 28],
+              template:
+                "Bottom ${pct}% — you clearly have the head for visual-structure reasoning; you just didn't work it through methodically.",
+            },
+          ],
+          disappointment: [
+            {
+              id: "disap_ind",
+              comparison: "individuating",
+              attribution: "none",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              requiresExpectancy: "high",
+              pctRef: "self_score",
+              referent: "students in media",
+              pct: [12, 42],
+              template:
+                "${pct}th percentile — short of what your earlier rounds pointed to.",
+            },
+          ],
+          relief: [
+            {
+              id: "relief_norm",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "peer_success",
+              referent: "students in media",
+              pct: [13, 29],
+              template:
+                "Only ${pct}% of students in media solve this one — you're one of them.",
+            },
+          ],
+        },
+      },
+      computing: {
+        primes: [
+          {
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This set is diagnostic of core abstract pattern reasoning.",
+          },
+          {
+            id: "p_expectHigh",
+            setsExpectancy: "high",
+            attributionFrame: "none",
+            text: "Given your run so far, this should be within reach.",
+          },
+          {
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "Heads-up — most students on the computing track miss this one.",
+          },
+          {
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward grinding the rule through methodically.",
+          },
+        ],
+        feedback: {
+          shame: [
+            {
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [3, 18],
+              template:
+                "You came out in the bottom ${pct}% — abstract pattern reasoning may not be where your strength lies.",
+            },
+            {
+              id: "shame_hard",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 3,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [2, 10],
+              template:
+                "Bottom ${pct}% again — others at your level are well ahead; abstract pattern reasoning may just not be your area.",
+            },
+            {
+              id: "shame_speed",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "correct",
+              pctRef: "self_speed",
+              referent: "students on the computing track",
+              pct: [4, 20],
+              template:
+                "You got it — but among students on the computing track who solved it you were in the bottom ${pct}% for speed, and quick abstract pattern reasoning is what counts here.",
+            },
+          ],
+          guilt: [
+            {
+              id: "guilt_effort",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [8, 28],
+              template:
+                "Bottom ${pct}% — you clearly have the head for abstract pattern reasoning; you just didn't work it through methodically.",
+            },
+          ],
+          disappointment: [
+            {
+              id: "disap_ind",
+              comparison: "individuating",
+              attribution: "none",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              requiresExpectancy: "high",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [12, 42],
+              template:
+                "${pct}th percentile — short of what your earlier rounds pointed to.",
+            },
+          ],
+          relief: [
+            {
+              id: "relief_norm",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "peer_success",
+              referent: "students on the computing track",
+              pct: [13, 29],
+              template:
+                "Only ${pct}% of students on the computing track solve this one — you're one of them.",
+            },
+          ],
+        },
+      },
+    },
+    response: {
+      probes: [
         "pride",
         "relief",
         "disappointment",
@@ -13565,445 +11908,397 @@ export const REASONING_BANK = [
         "anxiety",
         "confusion",
         "boredom",
-        "none"
+        "none",
       ],
-      "scale": {
-        "type": "likert",
-        "min": 1,
-        "max": 7
+      scale: {
+        type: "likert",
+        min: 1,
+        max: 7,
       },
-      "cleanCore": {
-        "dominantMin": 5,
-        "othersMax": 3
-      }
-    }
+      cleanCore: {
+        dominantMin: 5,
+        othersMax: 3,
+      },
+    },
   },
   {
-    "id": "mr_hard_05",
-    "stimulusId": "mr_hard_05",
-    "name": "Matrix reasoning — hard (MITRE MR; item F14.4)",
-    "domains": [
-      "design",
-      "media",
-      "computing"
-    ],
-    "modality": "visuospatial",
-    "languageLoad": "low",
-    "difficultyTier": "hard",
-    "unit": "single",
-    "generalAbility": true,
-    "instructions": "Which option (A–H) best completes the pattern? Type the letter.",
-    "stimulus": {
-      "component": "matrixReasoning",
-      "scoreFn": "scoreLetterInput",
-      "response": "input",
-      "answerSet": "A-H",
-      "measures": [
-        "correct",
-        "rtMs"
-      ],
-      "item": {
-        "ref": "F14.4",
-        "form": "1",
-        "b": 2.36,
-        "key": "E",
-        "image": "stimuli/mitre/mr/F14.4.png",
-        "answerSet": "A-H"
-      }
-    },
-    "calibration": {
-      "realPSuccess": 0.22,
-      "medianRtMs": 85000,
-      "plausiblePct": [
-        2,
-        45
-      ],
-      "plausiblePctSpeed": [
-        2,
-        42
-      ],
-      "b": 2.36,
-      "itemRef": "F14.4"
-    },
-    "timer": {
-      "mode": "hidden"
-    },
-    "framing": {
-      "design": {
-        "primes": [
-          {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This set is diagnostic of core spotting the underlying structure."
-          },
-          {
-            "id": "p_expectHigh",
-            "setsExpectancy": "high",
-            "attributionFrame": "none",
-            "text": "Given your run so far, this should be within reach."
-          },
-          {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "Heads-up — most people who identified as designers miss this one."
-          },
-          {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward grinding the rule through methodically."
-          }
-        ],
-        "feedback": {
-          "shame": [
-            {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                3,
-                18
-              ],
-              "template": "You came out in the bottom ${pct}% — spotting the underlying structure may not be where your strength lies."
-            },
-            {
-              "id": "shame_hard",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 3,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                2,
-                10
-              ],
-              "template": "Bottom ${pct}% again — others at your level are well ahead; spotting the underlying structure may just not be your area."
-            },
-            {
-              "id": "shame_speed",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "correct",
-              "pctRef": "self_speed",
-              "referent": "people who identified as designers",
-              "pct": [
-                4,
-                20
-              ],
-              "template": "You got it — but among people who identified as designers who solved it you were in the bottom ${pct}% for speed, and quick spotting the underlying structure is what counts here."
-            }
-          ],
-          "guilt": [
-            {
-              "id": "guilt_effort",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                8,
-                28
-              ],
-              "template": "Bottom ${pct}% — you clearly have the head for spotting the underlying structure; you just didn't work it through methodically."
-            }
-          ],
-          "disappointment": [
-            {
-              "id": "disap_ind",
-              "comparison": "individuating",
-              "attribution": "none",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "requiresExpectancy": "high",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                12,
-                42
-              ],
-              "template": "${pct}th percentile — short of what your earlier rounds pointed to."
-            }
-          ],
-          "relief": [
-            {
-              "id": "relief_norm",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "peer_success",
-              "referent": "people who identified as designers",
-              "pct": [
-                13,
-                29
-              ],
-              "template": "Only ${pct}% of people who identified as designers solve this one — you're one of them."
-            }
-          ]
-        }
+    id: "mr_hard_05",
+    stimulusId: "mr_hard_05",
+    name: "Matrix reasoning — hard (MITRE MR; item F14.4)",
+    domains: ["design", "media", "computing"],
+    modality: "visuospatial",
+    languageLoad: "low",
+    difficultyTier: "hard",
+    unit: "single",
+    generalAbility: true,
+    instructions:
+      "Which option (A–H) best completes the pattern? Type the letter.",
+    stimulus: {
+      component: "matrixReasoning",
+      scoreFn: "scoreLetterInput",
+      response: "input",
+      answerSet: "A-H",
+      measures: ["correct", "rtMs"],
+      item: {
+        ref: "F14.4",
+        form: "1",
+        b: 2.36,
+        key: "E",
+        image: "stimuli/mitre/mr/F14.4.png",
+        answerSet: "A-H",
       },
-      "media": {
-        "primes": [
-          {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This set is diagnostic of core visual-structure reasoning."
-          },
-          {
-            "id": "p_expectHigh",
-            "setsExpectancy": "high",
-            "attributionFrame": "none",
-            "text": "Given your run so far, this should be within reach."
-          },
-          {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "Heads-up — most students in media miss this one."
-          },
-          {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward grinding the rule through methodically."
-          }
-        ],
-        "feedback": {
-          "shame": [
-            {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "students in media",
-              "pct": [
-                3,
-                18
-              ],
-              "template": "You came out in the bottom ${pct}% — visual-structure reasoning may not be where your strength lies."
-            },
-            {
-              "id": "shame_hard",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 3,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "students in media",
-              "pct": [
-                2,
-                10
-              ],
-              "template": "Bottom ${pct}% again — others at your level are well ahead; visual-structure reasoning may just not be your area."
-            },
-            {
-              "id": "shame_speed",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "correct",
-              "pctRef": "self_speed",
-              "referent": "students in media",
-              "pct": [
-                4,
-                20
-              ],
-              "template": "You got it — but among students in media who solved it you were in the bottom ${pct}% for speed, and quick visual-structure reasoning is what counts here."
-            }
-          ],
-          "guilt": [
-            {
-              "id": "guilt_effort",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "students in media",
-              "pct": [
-                8,
-                28
-              ],
-              "template": "Bottom ${pct}% — you clearly have the head for visual-structure reasoning; you just didn't work it through methodically."
-            }
-          ],
-          "disappointment": [
-            {
-              "id": "disap_ind",
-              "comparison": "individuating",
-              "attribution": "none",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "requiresExpectancy": "high",
-              "pctRef": "self_score",
-              "referent": "students in media",
-              "pct": [
-                12,
-                42
-              ],
-              "template": "${pct}th percentile — short of what your earlier rounds pointed to."
-            }
-          ],
-          "relief": [
-            {
-              "id": "relief_norm",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "peer_success",
-              "referent": "students in media",
-              "pct": [
-                13,
-                29
-              ],
-              "template": "Only ${pct}% of students in media solve this one — you're one of them."
-            }
-          ]
-        }
-      },
-      "computing": {
-        "primes": [
-          {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This set is diagnostic of core abstract pattern reasoning."
-          },
-          {
-            "id": "p_expectHigh",
-            "setsExpectancy": "high",
-            "attributionFrame": "none",
-            "text": "Given your run so far, this should be within reach."
-          },
-          {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "Heads-up — most students on the computing track miss this one."
-          },
-          {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward grinding the rule through methodically."
-          }
-        ],
-        "feedback": {
-          "shame": [
-            {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                3,
-                18
-              ],
-              "template": "You came out in the bottom ${pct}% — abstract pattern reasoning may not be where your strength lies."
-            },
-            {
-              "id": "shame_hard",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 3,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                2,
-                10
-              ],
-              "template": "Bottom ${pct}% again — others at your level are well ahead; abstract pattern reasoning may just not be your area."
-            },
-            {
-              "id": "shame_speed",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "correct",
-              "pctRef": "self_speed",
-              "referent": "students on the computing track",
-              "pct": [
-                4,
-                20
-              ],
-              "template": "You got it — but among students on the computing track who solved it you were in the bottom ${pct}% for speed, and quick abstract pattern reasoning is what counts here."
-            }
-          ],
-          "guilt": [
-            {
-              "id": "guilt_effort",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                8,
-                28
-              ],
-              "template": "Bottom ${pct}% — you clearly have the head for abstract pattern reasoning; you just didn't work it through methodically."
-            }
-          ],
-          "disappointment": [
-            {
-              "id": "disap_ind",
-              "comparison": "individuating",
-              "attribution": "none",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "requiresExpectancy": "high",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                12,
-                42
-              ],
-              "template": "${pct}th percentile — short of what your earlier rounds pointed to."
-            }
-          ],
-          "relief": [
-            {
-              "id": "relief_norm",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "peer_success",
-              "referent": "students on the computing track",
-              "pct": [
-                13,
-                29
-              ],
-              "template": "Only ${pct}% of students on the computing track solve this one — you're one of them."
-            }
-          ]
-        }
-      }
     },
-    "response": {
-      "probes": [
+    calibration: {
+      realPSuccess: 0.22,
+      medianRtMs: 85000,
+      plausiblePct: [2, 45],
+      plausiblePctSpeed: [2, 42],
+      b: 2.36,
+      itemRef: "F14.4",
+    },
+    timer: {
+      mode: "hidden",
+    },
+    framing: {
+      design: {
+        primes: [
+          {
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This set is diagnostic of core spotting the underlying structure.",
+          },
+          {
+            id: "p_expectHigh",
+            setsExpectancy: "high",
+            attributionFrame: "none",
+            text: "Given your run so far, this should be within reach.",
+          },
+          {
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "Heads-up — most people who identified as designers miss this one.",
+          },
+          {
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward grinding the rule through methodically.",
+          },
+        ],
+        feedback: {
+          shame: [
+            {
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [3, 18],
+              template:
+                "You came out in the bottom ${pct}% — spotting the underlying structure may not be where your strength lies.",
+            },
+            {
+              id: "shame_hard",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 3,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [2, 10],
+              template:
+                "Bottom ${pct}% again — others at your level are well ahead; spotting the underlying structure may just not be your area.",
+            },
+            {
+              id: "shame_speed",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "correct",
+              pctRef: "self_speed",
+              referent: "people who identified as designers",
+              pct: [4, 20],
+              template:
+                "You got it — but among people who identified as designers who solved it you were in the bottom ${pct}% for speed, and quick spotting the underlying structure is what counts here.",
+            },
+          ],
+          guilt: [
+            {
+              id: "guilt_effort",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [8, 28],
+              template:
+                "Bottom ${pct}% — you clearly have the head for spotting the underlying structure; you just didn't work it through methodically.",
+            },
+          ],
+          disappointment: [
+            {
+              id: "disap_ind",
+              comparison: "individuating",
+              attribution: "none",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              requiresExpectancy: "high",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [12, 42],
+              template:
+                "${pct}th percentile — short of what your earlier rounds pointed to.",
+            },
+          ],
+          relief: [
+            {
+              id: "relief_norm",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "peer_success",
+              referent: "people who identified as designers",
+              pct: [13, 29],
+              template:
+                "Only ${pct}% of people who identified as designers solve this one — you're one of them.",
+            },
+          ],
+        },
+      },
+      media: {
+        primes: [
+          {
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This set is diagnostic of core visual-structure reasoning.",
+          },
+          {
+            id: "p_expectHigh",
+            setsExpectancy: "high",
+            attributionFrame: "none",
+            text: "Given your run so far, this should be within reach.",
+          },
+          {
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "Heads-up — most students in media miss this one.",
+          },
+          {
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward grinding the rule through methodically.",
+          },
+        ],
+        feedback: {
+          shame: [
+            {
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "students in media",
+              pct: [3, 18],
+              template:
+                "You came out in the bottom ${pct}% — visual-structure reasoning may not be where your strength lies.",
+            },
+            {
+              id: "shame_hard",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 3,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "students in media",
+              pct: [2, 10],
+              template:
+                "Bottom ${pct}% again — others at your level are well ahead; visual-structure reasoning may just not be your area.",
+            },
+            {
+              id: "shame_speed",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "correct",
+              pctRef: "self_speed",
+              referent: "students in media",
+              pct: [4, 20],
+              template:
+                "You got it — but among students in media who solved it you were in the bottom ${pct}% for speed, and quick visual-structure reasoning is what counts here.",
+            },
+          ],
+          guilt: [
+            {
+              id: "guilt_effort",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "students in media",
+              pct: [8, 28],
+              template:
+                "Bottom ${pct}% — you clearly have the head for visual-structure reasoning; you just didn't work it through methodically.",
+            },
+          ],
+          disappointment: [
+            {
+              id: "disap_ind",
+              comparison: "individuating",
+              attribution: "none",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              requiresExpectancy: "high",
+              pctRef: "self_score",
+              referent: "students in media",
+              pct: [12, 42],
+              template:
+                "${pct}th percentile — short of what your earlier rounds pointed to.",
+            },
+          ],
+          relief: [
+            {
+              id: "relief_norm",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "peer_success",
+              referent: "students in media",
+              pct: [13, 29],
+              template:
+                "Only ${pct}% of students in media solve this one — you're one of them.",
+            },
+          ],
+        },
+      },
+      computing: {
+        primes: [
+          {
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This set is diagnostic of core abstract pattern reasoning.",
+          },
+          {
+            id: "p_expectHigh",
+            setsExpectancy: "high",
+            attributionFrame: "none",
+            text: "Given your run so far, this should be within reach.",
+          },
+          {
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "Heads-up — most students on the computing track miss this one.",
+          },
+          {
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward grinding the rule through methodically.",
+          },
+        ],
+        feedback: {
+          shame: [
+            {
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [3, 18],
+              template:
+                "You came out in the bottom ${pct}% — abstract pattern reasoning may not be where your strength lies.",
+            },
+            {
+              id: "shame_hard",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 3,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [2, 10],
+              template:
+                "Bottom ${pct}% again — others at your level are well ahead; abstract pattern reasoning may just not be your area.",
+            },
+            {
+              id: "shame_speed",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "correct",
+              pctRef: "self_speed",
+              referent: "students on the computing track",
+              pct: [4, 20],
+              template:
+                "You got it — but among students on the computing track who solved it you were in the bottom ${pct}% for speed, and quick abstract pattern reasoning is what counts here.",
+            },
+          ],
+          guilt: [
+            {
+              id: "guilt_effort",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [8, 28],
+              template:
+                "Bottom ${pct}% — you clearly have the head for abstract pattern reasoning; you just didn't work it through methodically.",
+            },
+          ],
+          disappointment: [
+            {
+              id: "disap_ind",
+              comparison: "individuating",
+              attribution: "none",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              requiresExpectancy: "high",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [12, 42],
+              template:
+                "${pct}th percentile — short of what your earlier rounds pointed to.",
+            },
+          ],
+          relief: [
+            {
+              id: "relief_norm",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "peer_success",
+              referent: "students on the computing track",
+              pct: [13, 29],
+              template:
+                "Only ${pct}% of students on the computing track solve this one — you're one of them.",
+            },
+          ],
+        },
+      },
+    },
+    response: {
+      probes: [
         "pride",
         "relief",
         "disappointment",
@@ -14012,445 +12307,397 @@ export const REASONING_BANK = [
         "anxiety",
         "confusion",
         "boredom",
-        "none"
+        "none",
       ],
-      "scale": {
-        "type": "likert",
-        "min": 1,
-        "max": 7
+      scale: {
+        type: "likert",
+        min: 1,
+        max: 7,
       },
-      "cleanCore": {
-        "dominantMin": 5,
-        "othersMax": 3
-      }
-    }
+      cleanCore: {
+        dominantMin: 5,
+        othersMax: 3,
+      },
+    },
   },
   {
-    "id": "mr_hard_06",
-    "stimulusId": "mr_hard_06",
-    "name": "Matrix reasoning — hard (MITRE MR; item F1.4)",
-    "domains": [
-      "design",
-      "media",
-      "computing"
-    ],
-    "modality": "visuospatial",
-    "languageLoad": "low",
-    "difficultyTier": "hard",
-    "unit": "single",
-    "generalAbility": true,
-    "instructions": "Which option (A–H) best completes the pattern? Type the letter.",
-    "stimulus": {
-      "component": "matrixReasoning",
-      "scoreFn": "scoreLetterInput",
-      "response": "input",
-      "answerSet": "A-H",
-      "measures": [
-        "correct",
-        "rtMs"
-      ],
-      "item": {
-        "ref": "F1.4",
-        "form": "1",
-        "b": 2.47,
-        "key": "A",
-        "image": "stimuli/mitre/mr/F1.4.png",
-        "answerSet": "A-H"
-      }
-    },
-    "calibration": {
-      "realPSuccess": 0.22,
-      "medianRtMs": 85000,
-      "plausiblePct": [
-        2,
-        45
-      ],
-      "plausiblePctSpeed": [
-        2,
-        42
-      ],
-      "b": 2.47,
-      "itemRef": "F1.4"
-    },
-    "timer": {
-      "mode": "hidden"
-    },
-    "framing": {
-      "design": {
-        "primes": [
-          {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This set is diagnostic of core spotting the underlying structure."
-          },
-          {
-            "id": "p_expectHigh",
-            "setsExpectancy": "high",
-            "attributionFrame": "none",
-            "text": "Given your run so far, this should be within reach."
-          },
-          {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "Heads-up — most people who identified as designers miss this one."
-          },
-          {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward grinding the rule through methodically."
-          }
-        ],
-        "feedback": {
-          "shame": [
-            {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                3,
-                18
-              ],
-              "template": "You came out in the bottom ${pct}% — spotting the underlying structure may not be where your strength lies."
-            },
-            {
-              "id": "shame_hard",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 3,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                2,
-                10
-              ],
-              "template": "Bottom ${pct}% again — others at your level are well ahead; spotting the underlying structure may just not be your area."
-            },
-            {
-              "id": "shame_speed",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "correct",
-              "pctRef": "self_speed",
-              "referent": "people who identified as designers",
-              "pct": [
-                4,
-                20
-              ],
-              "template": "You got it — but among people who identified as designers who solved it you were in the bottom ${pct}% for speed, and quick spotting the underlying structure is what counts here."
-            }
-          ],
-          "guilt": [
-            {
-              "id": "guilt_effort",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                8,
-                28
-              ],
-              "template": "Bottom ${pct}% — you clearly have the head for spotting the underlying structure; you just didn't work it through methodically."
-            }
-          ],
-          "disappointment": [
-            {
-              "id": "disap_ind",
-              "comparison": "individuating",
-              "attribution": "none",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "requiresExpectancy": "high",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                12,
-                42
-              ],
-              "template": "${pct}th percentile — short of what your earlier rounds pointed to."
-            }
-          ],
-          "relief": [
-            {
-              "id": "relief_norm",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "peer_success",
-              "referent": "people who identified as designers",
-              "pct": [
-                13,
-                29
-              ],
-              "template": "Only ${pct}% of people who identified as designers solve this one — you're one of them."
-            }
-          ]
-        }
+    id: "mr_hard_06",
+    stimulusId: "mr_hard_06",
+    name: "Matrix reasoning — hard (MITRE MR; item F1.4)",
+    domains: ["design", "media", "computing"],
+    modality: "visuospatial",
+    languageLoad: "low",
+    difficultyTier: "hard",
+    unit: "single",
+    generalAbility: true,
+    instructions:
+      "Which option (A–H) best completes the pattern? Type the letter.",
+    stimulus: {
+      component: "matrixReasoning",
+      scoreFn: "scoreLetterInput",
+      response: "input",
+      answerSet: "A-H",
+      measures: ["correct", "rtMs"],
+      item: {
+        ref: "F1.4",
+        form: "1",
+        b: 2.47,
+        key: "A",
+        image: "stimuli/mitre/mr/F1.4.png",
+        answerSet: "A-H",
       },
-      "media": {
-        "primes": [
-          {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This set is diagnostic of core visual-structure reasoning."
-          },
-          {
-            "id": "p_expectHigh",
-            "setsExpectancy": "high",
-            "attributionFrame": "none",
-            "text": "Given your run so far, this should be within reach."
-          },
-          {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "Heads-up — most students in media miss this one."
-          },
-          {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward grinding the rule through methodically."
-          }
-        ],
-        "feedback": {
-          "shame": [
-            {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "students in media",
-              "pct": [
-                3,
-                18
-              ],
-              "template": "You came out in the bottom ${pct}% — visual-structure reasoning may not be where your strength lies."
-            },
-            {
-              "id": "shame_hard",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 3,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "students in media",
-              "pct": [
-                2,
-                10
-              ],
-              "template": "Bottom ${pct}% again — others at your level are well ahead; visual-structure reasoning may just not be your area."
-            },
-            {
-              "id": "shame_speed",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "correct",
-              "pctRef": "self_speed",
-              "referent": "students in media",
-              "pct": [
-                4,
-                20
-              ],
-              "template": "You got it — but among students in media who solved it you were in the bottom ${pct}% for speed, and quick visual-structure reasoning is what counts here."
-            }
-          ],
-          "guilt": [
-            {
-              "id": "guilt_effort",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "students in media",
-              "pct": [
-                8,
-                28
-              ],
-              "template": "Bottom ${pct}% — you clearly have the head for visual-structure reasoning; you just didn't work it through methodically."
-            }
-          ],
-          "disappointment": [
-            {
-              "id": "disap_ind",
-              "comparison": "individuating",
-              "attribution": "none",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "requiresExpectancy": "high",
-              "pctRef": "self_score",
-              "referent": "students in media",
-              "pct": [
-                12,
-                42
-              ],
-              "template": "${pct}th percentile — short of what your earlier rounds pointed to."
-            }
-          ],
-          "relief": [
-            {
-              "id": "relief_norm",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "peer_success",
-              "referent": "students in media",
-              "pct": [
-                13,
-                29
-              ],
-              "template": "Only ${pct}% of students in media solve this one — you're one of them."
-            }
-          ]
-        }
-      },
-      "computing": {
-        "primes": [
-          {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This set is diagnostic of core abstract pattern reasoning."
-          },
-          {
-            "id": "p_expectHigh",
-            "setsExpectancy": "high",
-            "attributionFrame": "none",
-            "text": "Given your run so far, this should be within reach."
-          },
-          {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "Heads-up — most students on the computing track miss this one."
-          },
-          {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward grinding the rule through methodically."
-          }
-        ],
-        "feedback": {
-          "shame": [
-            {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                3,
-                18
-              ],
-              "template": "You came out in the bottom ${pct}% — abstract pattern reasoning may not be where your strength lies."
-            },
-            {
-              "id": "shame_hard",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 3,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                2,
-                10
-              ],
-              "template": "Bottom ${pct}% again — others at your level are well ahead; abstract pattern reasoning may just not be your area."
-            },
-            {
-              "id": "shame_speed",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "correct",
-              "pctRef": "self_speed",
-              "referent": "students on the computing track",
-              "pct": [
-                4,
-                20
-              ],
-              "template": "You got it — but among students on the computing track who solved it you were in the bottom ${pct}% for speed, and quick abstract pattern reasoning is what counts here."
-            }
-          ],
-          "guilt": [
-            {
-              "id": "guilt_effort",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                8,
-                28
-              ],
-              "template": "Bottom ${pct}% — you clearly have the head for abstract pattern reasoning; you just didn't work it through methodically."
-            }
-          ],
-          "disappointment": [
-            {
-              "id": "disap_ind",
-              "comparison": "individuating",
-              "attribution": "none",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "requiresExpectancy": "high",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                12,
-                42
-              ],
-              "template": "${pct}th percentile — short of what your earlier rounds pointed to."
-            }
-          ],
-          "relief": [
-            {
-              "id": "relief_norm",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "peer_success",
-              "referent": "students on the computing track",
-              "pct": [
-                13,
-                29
-              ],
-              "template": "Only ${pct}% of students on the computing track solve this one — you're one of them."
-            }
-          ]
-        }
-      }
     },
-    "response": {
-      "probes": [
+    calibration: {
+      realPSuccess: 0.22,
+      medianRtMs: 85000,
+      plausiblePct: [2, 45],
+      plausiblePctSpeed: [2, 42],
+      b: 2.47,
+      itemRef: "F1.4",
+    },
+    timer: {
+      mode: "hidden",
+    },
+    framing: {
+      design: {
+        primes: [
+          {
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This set is diagnostic of core spotting the underlying structure.",
+          },
+          {
+            id: "p_expectHigh",
+            setsExpectancy: "high",
+            attributionFrame: "none",
+            text: "Given your run so far, this should be within reach.",
+          },
+          {
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "Heads-up — most people who identified as designers miss this one.",
+          },
+          {
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward grinding the rule through methodically.",
+          },
+        ],
+        feedback: {
+          shame: [
+            {
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [3, 18],
+              template:
+                "You came out in the bottom ${pct}% — spotting the underlying structure may not be where your strength lies.",
+            },
+            {
+              id: "shame_hard",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 3,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [2, 10],
+              template:
+                "Bottom ${pct}% again — others at your level are well ahead; spotting the underlying structure may just not be your area.",
+            },
+            {
+              id: "shame_speed",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "correct",
+              pctRef: "self_speed",
+              referent: "people who identified as designers",
+              pct: [4, 20],
+              template:
+                "You got it — but among people who identified as designers who solved it you were in the bottom ${pct}% for speed, and quick spotting the underlying structure is what counts here.",
+            },
+          ],
+          guilt: [
+            {
+              id: "guilt_effort",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [8, 28],
+              template:
+                "Bottom ${pct}% — you clearly have the head for spotting the underlying structure; you just didn't work it through methodically.",
+            },
+          ],
+          disappointment: [
+            {
+              id: "disap_ind",
+              comparison: "individuating",
+              attribution: "none",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              requiresExpectancy: "high",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [12, 42],
+              template:
+                "${pct}th percentile — short of what your earlier rounds pointed to.",
+            },
+          ],
+          relief: [
+            {
+              id: "relief_norm",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "peer_success",
+              referent: "people who identified as designers",
+              pct: [13, 29],
+              template:
+                "Only ${pct}% of people who identified as designers solve this one — you're one of them.",
+            },
+          ],
+        },
+      },
+      media: {
+        primes: [
+          {
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This set is diagnostic of core visual-structure reasoning.",
+          },
+          {
+            id: "p_expectHigh",
+            setsExpectancy: "high",
+            attributionFrame: "none",
+            text: "Given your run so far, this should be within reach.",
+          },
+          {
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "Heads-up — most students in media miss this one.",
+          },
+          {
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward grinding the rule through methodically.",
+          },
+        ],
+        feedback: {
+          shame: [
+            {
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "students in media",
+              pct: [3, 18],
+              template:
+                "You came out in the bottom ${pct}% — visual-structure reasoning may not be where your strength lies.",
+            },
+            {
+              id: "shame_hard",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 3,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "students in media",
+              pct: [2, 10],
+              template:
+                "Bottom ${pct}% again — others at your level are well ahead; visual-structure reasoning may just not be your area.",
+            },
+            {
+              id: "shame_speed",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "correct",
+              pctRef: "self_speed",
+              referent: "students in media",
+              pct: [4, 20],
+              template:
+                "You got it — but among students in media who solved it you were in the bottom ${pct}% for speed, and quick visual-structure reasoning is what counts here.",
+            },
+          ],
+          guilt: [
+            {
+              id: "guilt_effort",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "students in media",
+              pct: [8, 28],
+              template:
+                "Bottom ${pct}% — you clearly have the head for visual-structure reasoning; you just didn't work it through methodically.",
+            },
+          ],
+          disappointment: [
+            {
+              id: "disap_ind",
+              comparison: "individuating",
+              attribution: "none",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              requiresExpectancy: "high",
+              pctRef: "self_score",
+              referent: "students in media",
+              pct: [12, 42],
+              template:
+                "${pct}th percentile — short of what your earlier rounds pointed to.",
+            },
+          ],
+          relief: [
+            {
+              id: "relief_norm",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "peer_success",
+              referent: "students in media",
+              pct: [13, 29],
+              template:
+                "Only ${pct}% of students in media solve this one — you're one of them.",
+            },
+          ],
+        },
+      },
+      computing: {
+        primes: [
+          {
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This set is diagnostic of core abstract pattern reasoning.",
+          },
+          {
+            id: "p_expectHigh",
+            setsExpectancy: "high",
+            attributionFrame: "none",
+            text: "Given your run so far, this should be within reach.",
+          },
+          {
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "Heads-up — most students on the computing track miss this one.",
+          },
+          {
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward grinding the rule through methodically.",
+          },
+        ],
+        feedback: {
+          shame: [
+            {
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [3, 18],
+              template:
+                "You came out in the bottom ${pct}% — abstract pattern reasoning may not be where your strength lies.",
+            },
+            {
+              id: "shame_hard",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 3,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [2, 10],
+              template:
+                "Bottom ${pct}% again — others at your level are well ahead; abstract pattern reasoning may just not be your area.",
+            },
+            {
+              id: "shame_speed",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "correct",
+              pctRef: "self_speed",
+              referent: "students on the computing track",
+              pct: [4, 20],
+              template:
+                "You got it — but among students on the computing track who solved it you were in the bottom ${pct}% for speed, and quick abstract pattern reasoning is what counts here.",
+            },
+          ],
+          guilt: [
+            {
+              id: "guilt_effort",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [8, 28],
+              template:
+                "Bottom ${pct}% — you clearly have the head for abstract pattern reasoning; you just didn't work it through methodically.",
+            },
+          ],
+          disappointment: [
+            {
+              id: "disap_ind",
+              comparison: "individuating",
+              attribution: "none",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              requiresExpectancy: "high",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [12, 42],
+              template:
+                "${pct}th percentile — short of what your earlier rounds pointed to.",
+            },
+          ],
+          relief: [
+            {
+              id: "relief_norm",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "peer_success",
+              referent: "students on the computing track",
+              pct: [13, 29],
+              template:
+                "Only ${pct}% of students on the computing track solve this one — you're one of them.",
+            },
+          ],
+        },
+      },
+    },
+    response: {
+      probes: [
         "pride",
         "relief",
         "disappointment",
@@ -14459,287 +12706,246 @@ export const REASONING_BANK = [
         "anxiety",
         "confusion",
         "boredom",
-        "none"
+        "none",
       ],
-      "scale": {
-        "type": "likert",
-        "min": 1,
-        "max": 7
+      scale: {
+        type: "likert",
+        min: 1,
+        max: 7,
       },
-      "cleanCore": {
-        "dominantMin": 5,
-        "othersMax": 3
-      }
-    }
-  }
+      cleanCore: {
+        dominantMin: 5,
+        othersMax: 3,
+      },
+    },
+  },
 ];
 
 export const REASONING_CALIBRATION = [
   {
-    "id": "ns_calib",
-    "stimulusId": "ns_calib",
-    "name": "Number series — familiarisation (reserved item, honest feedback)",
-    "domains": [
-      "computing",
-      "design"
-    ],
-    "modality": "numeric",
-    "languageLoad": "low",
-    "difficultyTier": "easy",
-    "unit": "single",
-    "instructions": "What number comes next? Type your answer.",
-    "stimulus": {
-      "component": "numberSeries",
-      "scoreFn": "scoreNumberInput",
-      "response": "input",
-      "measures": [
-        "correct",
-        "rtMs"
-      ],
-      "item": {
-        "ref": "nst_f01i5",
-        "form": "2",
-        "b": 0.95,
-        "stem": [
-          22,
-          26,
-          34,
-          41,
-          46,
-          56,
-          67,
-          80
-        ],
-        "key": 88
-      }
-    },
-    "calibration": {
-      "realPSuccess": 0.85,
-      "medianRtMs": 35000,
-      "plausiblePct": [
-        60,
-        99
-      ],
-      "plausiblePctSpeed": [
-        60,
-        99
-      ],
-      "b": 0.95,
-      "itemRef": "nst_f01i5"
-    },
-    "timer": {
-      "mode": "hidden"
-    },
-    "framing": {
-      "computing": {
-        "primes": [
-          {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This one is a clean read of logical sequencing."
-          },
-          {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "Heads-up — plenty of students on the computing track slip on the last step here."
-          },
-          {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward a careful read rather than a snap answer."
-          }
-        ],
-        "feedback": {
-          "pride": [
-            {
-              "id": "pride_ind",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                85,
-                98
-              ],
-              "template": "${pct}th percentile — a real marker of logical sequencing, and the care shows."
-            },
-            {
-              "id": "pride_speed",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_speed",
-              "referent": "students on the computing track",
-              "pct": [
-                85,
-                98
-              ],
-              "template": "Top ${pct}th percentile for speed — fast, accurate logical sequencing, the strongest kind."
-            }
-          ],
-          "relief": [
-            {
-              "id": "relief_self",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                62,
-                85
-              ],
-              "template": "${pct}th percentile — you cleared the one students on the computing track usually find slow going."
-            }
-          ],
-          "shame": [
-            {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "students on the computing track",
-              "pct": [
-                76,
-                92
-              ],
-              "template": "${pct}% of students on the computing track got this one — you didn't."
-            }
-          ],
-          "guilt": [
-            {
-              "id": "guilt_norm",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "students on the computing track",
-              "pct": [
-                76,
-                92
-              ],
-              "template": "${pct}% get this one — you clearly have it, you just went too fast."
-            }
-          ]
-        }
+    id: "ns_calib",
+    stimulusId: "ns_calib",
+    name: "Number series — familiarisation (reserved item, honest feedback)",
+    domains: ["computing", "design"],
+    modality: "numeric",
+    languageLoad: "low",
+    difficultyTier: "easy",
+    unit: "single",
+    instructions: "What number comes next? Type your answer.",
+    stimulus: {
+      component: "numberSeries",
+      scoreFn: "scoreNumberInput",
+      response: "input",
+      measures: ["correct", "rtMs"],
+      item: {
+        ref: "nst_f01i5",
+        form: "2",
+        b: 0.95,
+        stem: [22, 26, 34, 41, 46, 56, 67, 80],
+        key: 88,
       },
-      "design": {
-        "primes": [
+    },
+    calibration: {
+      realPSuccess: 0.85,
+      medianRtMs: 35000,
+      plausiblePct: [60, 99],
+      plausiblePctSpeed: [60, 99],
+      b: 0.95,
+      itemRef: "nst_f01i5",
+    },
+    timer: {
+      mode: "hidden",
+    },
+    framing: {
+      computing: {
+        primes: [
           {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This one is a clean read of the rule-finding side of design reasoning."
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This one is a clean read of logical sequencing.",
           },
           {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "Heads-up — plenty of people who identified as designers slip on the last step here."
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "Heads-up — plenty of students on the computing track slip on the last step here.",
           },
           {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward a careful read rather than a snap answer."
-          }
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward a careful read rather than a snap answer.",
+          },
         ],
-        "feedback": {
-          "pride": [
+        feedback: {
+          pride: [
             {
-              "id": "pride_ind",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                85,
-                98
-              ],
-              "template": "${pct}th percentile — a real marker of the rule-finding side of design reasoning, and the care shows."
+              id: "pride_ind",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [85, 98],
+              template:
+                "${pct}th percentile — a real marker of logical sequencing, and the care shows.",
             },
             {
-              "id": "pride_speed",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_speed",
-              "referent": "people who identified as designers",
-              "pct": [
-                85,
-                98
-              ],
-              "template": "Top ${pct}th percentile for speed — fast, accurate the rule-finding side of design reasoning, the strongest kind."
-            }
+              id: "pride_speed",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_speed",
+              referent: "students on the computing track",
+              pct: [85, 98],
+              template:
+                "Top ${pct}th percentile for speed — fast, accurate logical sequencing, the strongest kind.",
+            },
           ],
-          "relief": [
+          relief: [
             {
-              "id": "relief_self",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                62,
-                85
-              ],
-              "template": "${pct}th percentile — you cleared the one people who identified as designers usually find slow going."
-            }
+              id: "relief_self",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [62, 85],
+              template:
+                "${pct}th percentile — you cleared the one students on the computing track usually find slow going.",
+            },
           ],
-          "shame": [
+          shame: [
             {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "people who identified as designers",
-              "pct": [
-                76,
-                92
-              ],
-              "template": "${pct}% of people who identified as designers got this one — you didn't."
-            }
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "students on the computing track",
+              pct: [76, 92],
+              template:
+                "${pct}% of students on the computing track got this one — you didn't.",
+            },
           ],
-          "guilt": [
+          guilt: [
             {
-              "id": "guilt_norm",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "people who identified as designers",
-              "pct": [
-                76,
-                92
-              ],
-              "template": "${pct}% get this one — you clearly have it, you just went too fast."
-            }
-          ]
-        }
-      }
+              id: "guilt_norm",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "students on the computing track",
+              pct: [76, 92],
+              template:
+                "${pct}% get this one — you clearly have it, you just went too fast.",
+            },
+          ],
+        },
+      },
+      design: {
+        primes: [
+          {
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This one is a clean read of the rule-finding side of design reasoning.",
+          },
+          {
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "Heads-up — plenty of people who identified as designers slip on the last step here.",
+          },
+          {
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward a careful read rather than a snap answer.",
+          },
+        ],
+        feedback: {
+          pride: [
+            {
+              id: "pride_ind",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [85, 98],
+              template:
+                "${pct}th percentile — a real marker of the rule-finding side of design reasoning, and the care shows.",
+            },
+            {
+              id: "pride_speed",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_speed",
+              referent: "people who identified as designers",
+              pct: [85, 98],
+              template:
+                "Top ${pct}th percentile for speed — fast, accurate the rule-finding side of design reasoning, the strongest kind.",
+            },
+          ],
+          relief: [
+            {
+              id: "relief_self",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [62, 85],
+              template:
+                "${pct}th percentile — you cleared the one people who identified as designers usually find slow going.",
+            },
+          ],
+          shame: [
+            {
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "people who identified as designers",
+              pct: [76, 92],
+              template:
+                "${pct}% of people who identified as designers got this one — you didn't.",
+            },
+          ],
+          guilt: [
+            {
+              id: "guilt_norm",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "people who identified as designers",
+              pct: [76, 92],
+              template:
+                "${pct}% get this one — you clearly have it, you just went too fast.",
+            },
+          ],
+        },
+      },
     },
-    "response": {
-      "probes": [
+    response: {
+      probes: [
         "pride",
         "relief",
         "disappointment",
@@ -14748,285 +12954,245 @@ export const REASONING_CALIBRATION = [
         "anxiety",
         "confusion",
         "boredom",
-        "none"
+        "none",
       ],
-      "scale": {
-        "type": "likert",
-        "min": 1,
-        "max": 7
+      scale: {
+        type: "likert",
+        min: 1,
+        max: 7,
       },
-      "cleanCore": {
-        "dominantMin": 5,
-        "othersMax": 3
-      }
+      cleanCore: {
+        dominantMin: 5,
+        othersMax: 3,
+      },
     },
-    "phase": "calibration",
-    "honestFeedback": true
+    phase: "calibration",
+    honestFeedback: true,
   },
   {
-    "id": "ls_calib",
-    "stimulusId": "ls_calib",
-    "name": "Letter series — familiarisation (reserved item, honest feedback)",
-    "domains": [
-      "computing",
-      "design"
-    ],
-    "modality": "logic",
-    "languageLoad": "low",
-    "difficultyTier": "easy",
-    "unit": "single",
-    "instructions": "What letter comes next? Type your answer.",
-    "stimulus": {
-      "component": "letterSeries",
-      "scoreFn": "scoreLetterInput",
-      "response": "input",
-      "measures": [
-        "correct",
-        "rtMs"
-      ],
-      "item": {
-        "ref": "ls_f01i3",
-        "form": "2",
-        "b": -2.77,
-        "stem": [
-          "V",
-          "G",
-          "X",
-          "G",
-          "Z",
-          "G",
-          "B"
-        ],
-        "key": "G"
-      }
-    },
-    "calibration": {
-      "realPSuccess": 0.85,
-      "medianRtMs": 35000,
-      "plausiblePct": [
-        60,
-        99
-      ],
-      "plausiblePctSpeed": [
-        60,
-        99
-      ],
-      "b": -2.77,
-      "itemRef": "ls_f01i3"
-    },
-    "timer": {
-      "mode": "hidden"
-    },
-    "framing": {
-      "computing": {
-        "primes": [
-          {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This one is a clean read of step-by-step rule-finding."
-          },
-          {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "Heads-up — plenty of students on the computing track slip on the last step here."
-          },
-          {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward a careful read rather than a snap answer."
-          }
-        ],
-        "feedback": {
-          "pride": [
-            {
-              "id": "pride_ind",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                85,
-                98
-              ],
-              "template": "${pct}th percentile — a real marker of step-by-step rule-finding, and the care shows."
-            },
-            {
-              "id": "pride_speed",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_speed",
-              "referent": "students on the computing track",
-              "pct": [
-                85,
-                98
-              ],
-              "template": "Top ${pct}th percentile for speed — fast, accurate step-by-step rule-finding, the strongest kind."
-            }
-          ],
-          "relief": [
-            {
-              "id": "relief_self",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                62,
-                85
-              ],
-              "template": "${pct}th percentile — you cleared the one students on the computing track usually find slow going."
-            }
-          ],
-          "shame": [
-            {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "students on the computing track",
-              "pct": [
-                76,
-                92
-              ],
-              "template": "${pct}% of students on the computing track got this one — you didn't."
-            }
-          ],
-          "guilt": [
-            {
-              "id": "guilt_norm",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "students on the computing track",
-              "pct": [
-                76,
-                92
-              ],
-              "template": "${pct}% get this one — you clearly have it, you just went too fast."
-            }
-          ]
-        }
+    id: "ls_calib",
+    stimulusId: "ls_calib",
+    name: "Letter series — familiarisation (reserved item, honest feedback)",
+    domains: ["computing", "design"],
+    modality: "logic",
+    languageLoad: "low",
+    difficultyTier: "easy",
+    unit: "single",
+    instructions: "What letter comes next? Type your answer.",
+    stimulus: {
+      component: "letterSeries",
+      scoreFn: "scoreLetterInput",
+      response: "input",
+      measures: ["correct", "rtMs"],
+      item: {
+        ref: "ls_f01i3",
+        form: "2",
+        b: -2.77,
+        stem: ["V", "G", "X", "G", "Z", "G", "B"],
+        key: "G",
       },
-      "design": {
-        "primes": [
+    },
+    calibration: {
+      realPSuccess: 0.85,
+      medianRtMs: 35000,
+      plausiblePct: [60, 99],
+      plausiblePctSpeed: [60, 99],
+      b: -2.77,
+      itemRef: "ls_f01i3",
+    },
+    timer: {
+      mode: "hidden",
+    },
+    framing: {
+      computing: {
+        primes: [
           {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This one is a clean read of the systematic rule-finding behind good design."
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This one is a clean read of step-by-step rule-finding.",
           },
           {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "Heads-up — plenty of people who identified as designers slip on the last step here."
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "Heads-up — plenty of students on the computing track slip on the last step here.",
           },
           {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward a careful read rather than a snap answer."
-          }
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward a careful read rather than a snap answer.",
+          },
         ],
-        "feedback": {
-          "pride": [
+        feedback: {
+          pride: [
             {
-              "id": "pride_ind",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                85,
-                98
-              ],
-              "template": "${pct}th percentile — a real marker of the systematic rule-finding behind good design, and the care shows."
+              id: "pride_ind",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [85, 98],
+              template:
+                "${pct}th percentile — a real marker of step-by-step rule-finding, and the care shows.",
             },
             {
-              "id": "pride_speed",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_speed",
-              "referent": "people who identified as designers",
-              "pct": [
-                85,
-                98
-              ],
-              "template": "Top ${pct}th percentile for speed — fast, accurate the systematic rule-finding behind good design, the strongest kind."
-            }
+              id: "pride_speed",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_speed",
+              referent: "students on the computing track",
+              pct: [85, 98],
+              template:
+                "Top ${pct}th percentile for speed — fast, accurate step-by-step rule-finding, the strongest kind.",
+            },
           ],
-          "relief": [
+          relief: [
             {
-              "id": "relief_self",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                62,
-                85
-              ],
-              "template": "${pct}th percentile — you cleared the one people who identified as designers usually find slow going."
-            }
+              id: "relief_self",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [62, 85],
+              template:
+                "${pct}th percentile — you cleared the one students on the computing track usually find slow going.",
+            },
           ],
-          "shame": [
+          shame: [
             {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "people who identified as designers",
-              "pct": [
-                76,
-                92
-              ],
-              "template": "${pct}% of people who identified as designers got this one — you didn't."
-            }
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "students on the computing track",
+              pct: [76, 92],
+              template:
+                "${pct}% of students on the computing track got this one — you didn't.",
+            },
           ],
-          "guilt": [
+          guilt: [
             {
-              "id": "guilt_norm",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "people who identified as designers",
-              "pct": [
-                76,
-                92
-              ],
-              "template": "${pct}% get this one — you clearly have it, you just went too fast."
-            }
-          ]
-        }
-      }
+              id: "guilt_norm",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "students on the computing track",
+              pct: [76, 92],
+              template:
+                "${pct}% get this one — you clearly have it, you just went too fast.",
+            },
+          ],
+        },
+      },
+      design: {
+        primes: [
+          {
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This one is a clean read of the systematic rule-finding behind good design.",
+          },
+          {
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "Heads-up — plenty of people who identified as designers slip on the last step here.",
+          },
+          {
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward a careful read rather than a snap answer.",
+          },
+        ],
+        feedback: {
+          pride: [
+            {
+              id: "pride_ind",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [85, 98],
+              template:
+                "${pct}th percentile — a real marker of the systematic rule-finding behind good design, and the care shows.",
+            },
+            {
+              id: "pride_speed",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_speed",
+              referent: "people who identified as designers",
+              pct: [85, 98],
+              template:
+                "Top ${pct}th percentile for speed — fast, accurate the systematic rule-finding behind good design, the strongest kind.",
+            },
+          ],
+          relief: [
+            {
+              id: "relief_self",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [62, 85],
+              template:
+                "${pct}th percentile — you cleared the one people who identified as designers usually find slow going.",
+            },
+          ],
+          shame: [
+            {
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "people who identified as designers",
+              pct: [76, 92],
+              template:
+                "${pct}% of people who identified as designers got this one — you didn't.",
+            },
+          ],
+          guilt: [
+            {
+              id: "guilt_norm",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "people who identified as designers",
+              pct: [76, 92],
+              template:
+                "${pct}% get this one — you clearly have it, you just went too fast.",
+            },
+          ],
+        },
+      },
     },
-    "response": {
-      "probes": [
+    response: {
+      probes: [
         "pride",
         "relief",
         "disappointment",
@@ -15035,49 +13201,43 @@ export const REASONING_CALIBRATION = [
         "anxiety",
         "confusion",
         "boredom",
-        "none"
+        "none",
       ],
-      "scale": {
-        "type": "likert",
-        "min": 1,
-        "max": 7
+      scale: {
+        type: "likert",
+        min: 1,
+        max: 7,
       },
-      "cleanCore": {
-        "dominantMin": 5,
-        "othersMax": 3
-      }
+      cleanCore: {
+        dominantMin: 5,
+        othersMax: 3,
+      },
     },
-    "phase": "calibration",
-    "honestFeedback": true
+    phase: "calibration",
+    honestFeedback: true,
   },
   {
-    "id": "fs_calib",
-    "stimulusId": "fs_calib",
-    "name": "Figure series — familiarisation (reserved item, honest feedback)",
-    "domains": [
-      "design",
-      "media"
-    ],
-    "modality": "perceptual",
-    "languageLoad": "low",
-    "difficultyTier": "mid",
-    "unit": "single",
-    "instructions": "Which arrow comes next? Click your answer.",
-    "stimulus": {
-      "component": "figureSeries",
-      "scoreFn": "scoreChoice",
-      "response": "choice",
-      "optionCount": 8,
-      "answerSet": "N|NE|E|SE|S|SW|W|NW",
-      "measures": [
-        "correct",
-        "rtMs"
-      ],
-      "item": {
-        "ref": "as_b1i13",
-        "form": "1",
-        "b": -0.37,
-        "stem": [
+    id: "fs_calib",
+    stimulusId: "fs_calib",
+    name: "Figure series — familiarisation (reserved item, honest feedback)",
+    domains: ["design", "media"],
+    modality: "perceptual",
+    languageLoad: "low",
+    difficultyTier: "mid",
+    unit: "single",
+    instructions: "Which arrow comes next? Click your answer.",
+    stimulus: {
+      component: "figureSeries",
+      scoreFn: "scoreChoice",
+      response: "choice",
+      optionCount: 8,
+      answerSet: "N|NE|E|SE|S|SW|W|NW",
+      measures: ["correct", "rtMs"],
+      item: {
+        ref: "as_b1i13",
+        form: "1",
+        b: -0.37,
+        stem: [
           "NE",
           "NE",
           "N",
@@ -15091,256 +13251,230 @@ export const REASONING_CALIBRATION = [
           "S",
           "SE",
           "NW",
-          "NW"
+          "NW",
         ],
-        "key": "W"
-      }
-    },
-    "calibration": {
-      "realPSuccess": 0.58,
-      "medianRtMs": 55000,
-      "plausiblePct": [
-        25,
-        80
-      ],
-      "plausiblePctSpeed": [
-        25,
-        78
-      ],
-      "b": -0.37,
-      "itemRef": "as_b1i13"
-    },
-    "timer": {
-      "mode": "hidden"
-    },
-    "framing": {
-      "design": {
-        "primes": [
-          {
-            "id": "p_expectHigh",
-            "setsExpectancy": "high",
-            "attributionFrame": "none",
-            "text": "Your earlier rounds point to visual-pattern sense clicking today."
-          },
-          {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "This one is a step up — most people who identified as designers slow right down."
-          },
-          {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward working the rule through, not eyeballing it."
-          },
-          {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This set reads visual-pattern sense fairly cleanly."
-          }
-        ],
-        "feedback": {
-          "pride": [
-            {
-              "id": "pride_ind",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                72,
-                82
-              ],
-              "template": "${pct}th percentile — a real marker of visual-pattern sense, and the care shows."
-            }
-          ],
-          "guilt": [
-            {
-              "id": "guilt_effort",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                28,
-                45
-              ],
-              "template": "Bottom ${pct}% — you clearly have the head for visual-pattern sense; you just didn't work it through methodically."
-            }
-          ],
-          "disappointment": [
-            {
-              "id": "disap_ind",
-              "comparison": "individuating",
-              "attribution": "none",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "requiresExpectancy": "high",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                26,
-                46
-              ],
-              "template": "${pct}th percentile — short of what your earlier rounds pointed to."
-            }
-          ],
-          "relief": [
-            {
-              "id": "relief_self",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                55,
-                78
-              ],
-              "template": "${pct}th percentile — you cleared the one people who identified as designers usually find slow going."
-            }
-          ],
-          "shame": [
-            {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "people who identified as designers",
-              "pct": [
-                49,
-                65
-              ],
-              "template": "${pct}% of people who identified as designers got this one — you didn't."
-            }
-          ]
-        }
+        key: "W",
       },
-      "media": {
-        "primes": [
-          {
-            "id": "p_expectHigh",
-            "setsExpectancy": "high",
-            "attributionFrame": "none",
-            "text": "Your earlier rounds point to visual sequencing clicking today."
-          },
-          {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "This one is a step up — most students in media slow right down."
-          },
-          {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward working the rule through, not eyeballing it."
-          },
-          {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This set reads visual sequencing fairly cleanly."
-          }
-        ],
-        "feedback": {
-          "pride": [
-            {
-              "id": "pride_ind",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_score",
-              "referent": "students in media",
-              "pct": [
-                72,
-                82
-              ],
-              "template": "${pct}th percentile — a real marker of visual sequencing, and the care shows."
-            }
-          ],
-          "guilt": [
-            {
-              "id": "guilt_effort",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "self_score",
-              "referent": "students in media",
-              "pct": [
-                28,
-                45
-              ],
-              "template": "Bottom ${pct}% — you clearly have the head for visual sequencing; you just didn't work it through methodically."
-            }
-          ],
-          "disappointment": [
-            {
-              "id": "disap_ind",
-              "comparison": "individuating",
-              "attribution": "none",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "requiresExpectancy": "high",
-              "pctRef": "self_score",
-              "referent": "students in media",
-              "pct": [
-                26,
-                46
-              ],
-              "template": "${pct}th percentile — short of what your earlier rounds pointed to."
-            }
-          ],
-          "relief": [
-            {
-              "id": "relief_self",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "self_score",
-              "referent": "students in media",
-              "pct": [
-                55,
-                78
-              ],
-              "template": "${pct}th percentile — you cleared the one students in media usually find slow going."
-            }
-          ],
-          "shame": [
-            {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "students in media",
-              "pct": [
-                49,
-                65
-              ],
-              "template": "${pct}% of students in media got this one — you didn't."
-            }
-          ]
-        }
-      }
     },
-    "response": {
-      "probes": [
+    calibration: {
+      realPSuccess: 0.58,
+      medianRtMs: 55000,
+      plausiblePct: [25, 80],
+      plausiblePctSpeed: [25, 78],
+      b: -0.37,
+      itemRef: "as_b1i13",
+    },
+    timer: {
+      mode: "hidden",
+    },
+    framing: {
+      design: {
+        primes: [
+          {
+            id: "p_expectHigh",
+            setsExpectancy: "high",
+            attributionFrame: "none",
+            text: "Your earlier rounds point to visual-pattern sense clicking today.",
+          },
+          {
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "This one is a step up — most people who identified as designers slow right down.",
+          },
+          {
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward working the rule through, not eyeballing it.",
+          },
+          {
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This set reads visual-pattern sense fairly cleanly.",
+          },
+        ],
+        feedback: {
+          pride: [
+            {
+              id: "pride_ind",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [72, 82],
+              template:
+                "${pct}th percentile — a real marker of visual-pattern sense, and the care shows.",
+            },
+          ],
+          guilt: [
+            {
+              id: "guilt_effort",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [28, 45],
+              template:
+                "Bottom ${pct}% — you clearly have the head for visual-pattern sense; you just didn't work it through methodically.",
+            },
+          ],
+          disappointment: [
+            {
+              id: "disap_ind",
+              comparison: "individuating",
+              attribution: "none",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              requiresExpectancy: "high",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [26, 46],
+              template:
+                "${pct}th percentile — short of what your earlier rounds pointed to.",
+            },
+          ],
+          relief: [
+            {
+              id: "relief_self",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [55, 78],
+              template:
+                "${pct}th percentile — you cleared the one people who identified as designers usually find slow going.",
+            },
+          ],
+          shame: [
+            {
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "people who identified as designers",
+              pct: [49, 65],
+              template:
+                "${pct}% of people who identified as designers got this one — you didn't.",
+            },
+          ],
+        },
+      },
+      media: {
+        primes: [
+          {
+            id: "p_expectHigh",
+            setsExpectancy: "high",
+            attributionFrame: "none",
+            text: "Your earlier rounds point to visual sequencing clicking today.",
+          },
+          {
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "This one is a step up — most students in media slow right down.",
+          },
+          {
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward working the rule through, not eyeballing it.",
+          },
+          {
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This set reads visual sequencing fairly cleanly.",
+          },
+        ],
+        feedback: {
+          pride: [
+            {
+              id: "pride_ind",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_score",
+              referent: "students in media",
+              pct: [72, 82],
+              template:
+                "${pct}th percentile — a real marker of visual sequencing, and the care shows.",
+            },
+          ],
+          guilt: [
+            {
+              id: "guilt_effort",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "self_score",
+              referent: "students in media",
+              pct: [28, 45],
+              template:
+                "Bottom ${pct}% — you clearly have the head for visual sequencing; you just didn't work it through methodically.",
+            },
+          ],
+          disappointment: [
+            {
+              id: "disap_ind",
+              comparison: "individuating",
+              attribution: "none",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              requiresExpectancy: "high",
+              pctRef: "self_score",
+              referent: "students in media",
+              pct: [26, 46],
+              template:
+                "${pct}th percentile — short of what your earlier rounds pointed to.",
+            },
+          ],
+          relief: [
+            {
+              id: "relief_self",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "self_score",
+              referent: "students in media",
+              pct: [55, 78],
+              template:
+                "${pct}th percentile — you cleared the one students in media usually find slow going.",
+            },
+          ],
+          shame: [
+            {
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "students in media",
+              pct: [49, 65],
+              template:
+                "${pct}% of students in media got this one — you didn't.",
+            },
+          ],
+        },
+      },
+    },
+    response: {
+      probes: [
         "pride",
         "relief",
         "disappointment",
@@ -15349,384 +13483,342 @@ export const REASONING_CALIBRATION = [
         "anxiety",
         "confusion",
         "boredom",
-        "none"
+        "none",
       ],
-      "scale": {
-        "type": "likert",
-        "min": 1,
-        "max": 7
+      scale: {
+        type: "likert",
+        min: 1,
+        max: 7,
       },
-      "cleanCore": {
-        "dominantMin": 5,
-        "othersMax": 3
-      }
+      cleanCore: {
+        dominantMin: 5,
+        othersMax: 3,
+      },
     },
-    "phase": "calibration",
-    "honestFeedback": true
+    phase: "calibration",
+    honestFeedback: true,
   },
   {
-    "id": "mr_calib",
-    "stimulusId": "mr_calib",
-    "name": "Matrix reasoning — familiarisation (reserved item, honest feedback)",
-    "domains": [
-      "design",
-      "media",
-      "computing"
-    ],
-    "modality": "visuospatial",
-    "languageLoad": "low",
-    "difficultyTier": "easy",
-    "unit": "single",
-    "generalAbility": true,
-    "instructions": "Which option (A–H) best completes the pattern? Type the letter.",
-    "stimulus": {
-      "component": "matrixReasoning",
-      "scoreFn": "scoreLetterInput",
-      "response": "input",
-      "answerSet": "A-H",
-      "measures": [
-        "correct",
-        "rtMs"
-      ],
-      "item": {
-        "ref": "F4.1",
-        "form": "2",
-        "b": -0.87,
-        "key": "E",
-        "image": "stimuli/mitre/mr/F4.1.png",
-        "answerSet": "A-H"
-      }
-    },
-    "calibration": {
-      "realPSuccess": 0.85,
-      "medianRtMs": 35000,
-      "plausiblePct": [
-        60,
-        99
-      ],
-      "plausiblePctSpeed": [
-        60,
-        99
-      ],
-      "b": -0.87,
-      "itemRef": "F4.1"
-    },
-    "timer": {
-      "mode": "hidden"
-    },
-    "framing": {
-      "design": {
-        "primes": [
-          {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This one is a clean read of spotting the underlying structure."
-          },
-          {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "Heads-up — plenty of people who identified as designers slip on the last step here."
-          },
-          {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward a careful read rather than a snap answer."
-          }
-        ],
-        "feedback": {
-          "pride": [
-            {
-              "id": "pride_ind",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                85,
-                98
-              ],
-              "template": "${pct}th percentile — a real marker of spotting the underlying structure, and the care shows."
-            },
-            {
-              "id": "pride_speed",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_speed",
-              "referent": "people who identified as designers",
-              "pct": [
-                85,
-                98
-              ],
-              "template": "Top ${pct}th percentile for speed — fast, accurate spotting the underlying structure, the strongest kind."
-            }
-          ],
-          "relief": [
-            {
-              "id": "relief_self",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "self_score",
-              "referent": "people who identified as designers",
-              "pct": [
-                62,
-                85
-              ],
-              "template": "${pct}th percentile — you cleared the one people who identified as designers usually find slow going."
-            }
-          ],
-          "shame": [
-            {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "people who identified as designers",
-              "pct": [
-                76,
-                92
-              ],
-              "template": "${pct}% of people who identified as designers got this one — you didn't."
-            }
-          ],
-          "guilt": [
-            {
-              "id": "guilt_norm",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "people who identified as designers",
-              "pct": [
-                76,
-                92
-              ],
-              "template": "${pct}% get this one — you clearly have it, you just went too fast."
-            }
-          ]
-        }
+    id: "mr_calib",
+    stimulusId: "mr_calib",
+    name: "Matrix reasoning — familiarisation (reserved item, honest feedback)",
+    domains: ["design", "media", "computing"],
+    modality: "visuospatial",
+    languageLoad: "low",
+    difficultyTier: "easy",
+    unit: "single",
+    generalAbility: true,
+    instructions:
+      "Which option (A–H) best completes the pattern? Type the letter.",
+    stimulus: {
+      component: "matrixReasoning",
+      scoreFn: "scoreLetterInput",
+      response: "input",
+      answerSet: "A-H",
+      measures: ["correct", "rtMs"],
+      item: {
+        ref: "F4.1",
+        form: "2",
+        b: -0.87,
+        key: "E",
+        image: "stimuli/mitre/mr/F4.1.png",
+        answerSet: "A-H",
       },
-      "media": {
-        "primes": [
-          {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This one is a clean read of visual-structure reasoning."
-          },
-          {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "Heads-up — plenty of students in media slip on the last step here."
-          },
-          {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward a careful read rather than a snap answer."
-          }
-        ],
-        "feedback": {
-          "pride": [
-            {
-              "id": "pride_ind",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_score",
-              "referent": "students in media",
-              "pct": [
-                85,
-                98
-              ],
-              "template": "${pct}th percentile — a real marker of visual-structure reasoning, and the care shows."
-            },
-            {
-              "id": "pride_speed",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_speed",
-              "referent": "students in media",
-              "pct": [
-                85,
-                98
-              ],
-              "template": "Top ${pct}th percentile for speed — fast, accurate visual-structure reasoning, the strongest kind."
-            }
-          ],
-          "relief": [
-            {
-              "id": "relief_self",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "self_score",
-              "referent": "students in media",
-              "pct": [
-                62,
-                85
-              ],
-              "template": "${pct}th percentile — you cleared the one students in media usually find slow going."
-            }
-          ],
-          "shame": [
-            {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "students in media",
-              "pct": [
-                76,
-                92
-              ],
-              "template": "${pct}% of students in media got this one — you didn't."
-            }
-          ],
-          "guilt": [
-            {
-              "id": "guilt_norm",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "students in media",
-              "pct": [
-                76,
-                92
-              ],
-              "template": "${pct}% get this one — you clearly have it, you just went too fast."
-            }
-          ]
-        }
-      },
-      "computing": {
-        "primes": [
-          {
-            "id": "p_abilityDiag",
-            "setsExpectancy": "none",
-            "attributionFrame": "ability",
-            "text": "This one is a clean read of abstract pattern reasoning."
-          },
-          {
-            "id": "p_expectLow",
-            "setsExpectancy": "low",
-            "attributionFrame": "none",
-            "text": "Heads-up — plenty of students on the computing track slip on the last step here."
-          },
-          {
-            "id": "p_effortCue",
-            "setsExpectancy": "none",
-            "attributionFrame": "effort",
-            "text": "These reward a careful read rather than a snap answer."
-          }
-        ],
-        "feedback": {
-          "pride": [
-            {
-              "id": "pride_ind",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                85,
-                98
-              ],
-              "template": "${pct}th percentile — a real marker of abstract pattern reasoning, and the care shows."
-            },
-            {
-              "id": "pride_speed",
-              "comparison": "individuating",
-              "attribution": "ability_effort",
-              "severity": 1,
-              "requiresOutcome": "correct",
-              "pctRef": "self_speed",
-              "referent": "students on the computing track",
-              "pct": [
-                85,
-                98
-              ],
-              "template": "Top ${pct}th percentile for speed — fast, accurate abstract pattern reasoning, the strongest kind."
-            }
-          ],
-          "relief": [
-            {
-              "id": "relief_self",
-              "comparison": "normative_shared",
-              "attribution": "task_difficulty",
-              "severity": 0,
-              "requiresOutcome": "correct",
-              "requiresExpectancy": "low",
-              "pctRef": "self_score",
-              "referent": "students on the computing track",
-              "pct": [
-                62,
-                85
-              ],
-              "template": "${pct}th percentile — you cleared the one students on the computing track usually find slow going."
-            }
-          ],
-          "shame": [
-            {
-              "id": "shame_mild",
-              "comparison": "individuating",
-              "attribution": "ability",
-              "severity": 2,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "students on the computing track",
-              "pct": [
-                76,
-                92
-              ],
-              "template": "${pct}% of students on the computing track got this one — you didn't."
-            }
-          ],
-          "guilt": [
-            {
-              "id": "guilt_norm",
-              "comparison": "individuating",
-              "attribution": "effort",
-              "severity": 1,
-              "requiresOutcome": "incorrect",
-              "pctRef": "peer_success",
-              "referent": "students on the computing track",
-              "pct": [
-                76,
-                92
-              ],
-              "template": "${pct}% get this one — you clearly have it, you just went too fast."
-            }
-          ]
-        }
-      }
     },
-    "response": {
-      "probes": [
+    calibration: {
+      realPSuccess: 0.85,
+      medianRtMs: 35000,
+      plausiblePct: [60, 99],
+      plausiblePctSpeed: [60, 99],
+      b: -0.87,
+      itemRef: "F4.1",
+    },
+    timer: {
+      mode: "hidden",
+    },
+    framing: {
+      design: {
+        primes: [
+          {
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This one is a clean read of spotting the underlying structure.",
+          },
+          {
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "Heads-up — plenty of people who identified as designers slip on the last step here.",
+          },
+          {
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward a careful read rather than a snap answer.",
+          },
+        ],
+        feedback: {
+          pride: [
+            {
+              id: "pride_ind",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [85, 98],
+              template:
+                "${pct}th percentile — a real marker of spotting the underlying structure, and the care shows.",
+            },
+            {
+              id: "pride_speed",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_speed",
+              referent: "people who identified as designers",
+              pct: [85, 98],
+              template:
+                "Top ${pct}th percentile for speed — fast, accurate spotting the underlying structure, the strongest kind.",
+            },
+          ],
+          relief: [
+            {
+              id: "relief_self",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "self_score",
+              referent: "people who identified as designers",
+              pct: [62, 85],
+              template:
+                "${pct}th percentile — you cleared the one people who identified as designers usually find slow going.",
+            },
+          ],
+          shame: [
+            {
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "people who identified as designers",
+              pct: [76, 92],
+              template:
+                "${pct}% of people who identified as designers got this one — you didn't.",
+            },
+          ],
+          guilt: [
+            {
+              id: "guilt_norm",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "people who identified as designers",
+              pct: [76, 92],
+              template:
+                "${pct}% get this one — you clearly have it, you just went too fast.",
+            },
+          ],
+        },
+      },
+      media: {
+        primes: [
+          {
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This one is a clean read of visual-structure reasoning.",
+          },
+          {
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "Heads-up — plenty of students in media slip on the last step here.",
+          },
+          {
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward a careful read rather than a snap answer.",
+          },
+        ],
+        feedback: {
+          pride: [
+            {
+              id: "pride_ind",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_score",
+              referent: "students in media",
+              pct: [85, 98],
+              template:
+                "${pct}th percentile — a real marker of visual-structure reasoning, and the care shows.",
+            },
+            {
+              id: "pride_speed",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_speed",
+              referent: "students in media",
+              pct: [85, 98],
+              template:
+                "Top ${pct}th percentile for speed — fast, accurate visual-structure reasoning, the strongest kind.",
+            },
+          ],
+          relief: [
+            {
+              id: "relief_self",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "self_score",
+              referent: "students in media",
+              pct: [62, 85],
+              template:
+                "${pct}th percentile — you cleared the one students in media usually find slow going.",
+            },
+          ],
+          shame: [
+            {
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "students in media",
+              pct: [76, 92],
+              template:
+                "${pct}% of students in media got this one — you didn't.",
+            },
+          ],
+          guilt: [
+            {
+              id: "guilt_norm",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "students in media",
+              pct: [76, 92],
+              template:
+                "${pct}% get this one — you clearly have it, you just went too fast.",
+            },
+          ],
+        },
+      },
+      computing: {
+        primes: [
+          {
+            id: "p_abilityDiag",
+            setsExpectancy: "none",
+            attributionFrame: "ability",
+            text: "This one is a clean read of abstract pattern reasoning.",
+          },
+          {
+            id: "p_expectLow",
+            setsExpectancy: "low",
+            attributionFrame: "none",
+            text: "Heads-up — plenty of students on the computing track slip on the last step here.",
+          },
+          {
+            id: "p_effortCue",
+            setsExpectancy: "none",
+            attributionFrame: "effort",
+            text: "These reward a careful read rather than a snap answer.",
+          },
+        ],
+        feedback: {
+          pride: [
+            {
+              id: "pride_ind",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [85, 98],
+              template:
+                "${pct}th percentile — a real marker of abstract pattern reasoning, and the care shows.",
+            },
+            {
+              id: "pride_speed",
+              comparison: "individuating",
+              attribution: "ability_effort",
+              severity: 1,
+              requiresOutcome: "correct",
+              pctRef: "self_speed",
+              referent: "students on the computing track",
+              pct: [85, 98],
+              template:
+                "Top ${pct}th percentile for speed — fast, accurate abstract pattern reasoning, the strongest kind.",
+            },
+          ],
+          relief: [
+            {
+              id: "relief_self",
+              comparison: "normative_shared",
+              attribution: "task_difficulty",
+              severity: 0,
+              requiresOutcome: "correct",
+              requiresExpectancy: "low",
+              pctRef: "self_score",
+              referent: "students on the computing track",
+              pct: [62, 85],
+              template:
+                "${pct}th percentile — you cleared the one students on the computing track usually find slow going.",
+            },
+          ],
+          shame: [
+            {
+              id: "shame_mild",
+              comparison: "individuating",
+              attribution: "ability",
+              severity: 2,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "students on the computing track",
+              pct: [76, 92],
+              template:
+                "${pct}% of students on the computing track got this one — you didn't.",
+            },
+          ],
+          guilt: [
+            {
+              id: "guilt_norm",
+              comparison: "individuating",
+              attribution: "effort",
+              severity: 1,
+              requiresOutcome: "incorrect",
+              pctRef: "peer_success",
+              referent: "students on the computing track",
+              pct: [76, 92],
+              template:
+                "${pct}% get this one — you clearly have it, you just went too fast.",
+            },
+          ],
+        },
+      },
+    },
+    response: {
+      probes: [
         "pride",
         "relief",
         "disappointment",
@@ -15735,19 +13827,19 @@ export const REASONING_CALIBRATION = [
         "anxiety",
         "confusion",
         "boredom",
-        "none"
+        "none",
       ],
-      "scale": {
-        "type": "likert",
-        "min": 1,
-        "max": 7
+      scale: {
+        type: "likert",
+        min: 1,
+        max: 7,
       },
-      "cleanCore": {
-        "dominantMin": 5,
-        "othersMax": 3
-      }
+      cleanCore: {
+        dominantMin: 5,
+        othersMax: 3,
+      },
     },
-    "phase": "calibration",
-    "honestFeedback": true
-  }
+    phase: "calibration",
+    honestFeedback: true,
+  },
 ];

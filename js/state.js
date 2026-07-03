@@ -20,6 +20,7 @@ export const trial = {
   currentSelection: null,
   currentDisplayed: null,
   currentRealPerf: null,
+  currentDerived: null,
   currentBlockItem: 0,
   blockCorrect: 0,
   blockTotal: 0,

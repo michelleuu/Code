@@ -1,9 +1,4 @@
-import {
-  session,
-  trial,
-  stageData,
-  SKIP_WEBGAZER,
-} from "../state.js";
+import { session, trial, stageData, SKIP_WEBGAZER } from "../state.js";
 import {
   startStageTracking,
   stopStageTracking,
@@ -56,16 +51,15 @@ export function createIqaBlock() {
         task?.instructions || "Which image looks lower quality?";
       return `
         <div id="task-screen">
-          <div class="task-label">Image Quality</div>
-          <div class="rot-progress">Image ${trial.currentBlockItem + 1} / ${pairs.length}</div>
+          <div class="task-label">Image Quality - Image ${trial.currentBlockItem + 1}/${pairs.length}</div>
           <div class="iqa-pair">
             <div class="iqa-side">
               <img class="iqa-img" src="${iqaImgPath(pair.left)}" alt="Left image">
-              <p class="iqa-img-label">Left</p>
+              <p class="iqa-img-label">(a) Left image</p>
             </div>
             <div class="iqa-side">
               <img class="iqa-img" src="${iqaImgPath(pair.right)}" alt="Right image">
-              <p class="iqa-img-label">Right</p>
+              <p class="iqa-img-label">(b) Right image</p>
             </div>
           </div>
           <p class="task-instructions">${instructions}</p>

@@ -4,97 +4,78 @@ import { onTrialFinish, advancePhase } from "../../controller.js";
 import { PROBES, EMOTIONS } from "../../trial_schema.js";
 import { currentTask } from "../current_task.js";
 
-const SCALE_LABELS = [
-  "Not at all",
-  "Slightly",
-  "Somewhat",
-  "Moderately",
-  "Fairly",
-  "Very",
-  "Extremely",
-];
+// A selected button records a rating comfortably above task.response.cleanCore's
+// dominantMin (5 in trial_schema.js / media_common.js), an unselected one records
+// the scale floor — so feltDominant()/othersMax scoring in controller.js needs no
+// changes: it just sees the same 1-7 selfReport values the slider/rating UIs produce.
+const SELECTED_VALUE = 7;
+const UNSELECTED_VALUE = 1;
 
-// Renders one radio-scale row for a single emotion.
-function probeRow(em) {
-  const cells = [1, 2, 3, 4, 5, 6, 7]
-    .map(
-      (v) =>
-        `<td><input type="radio" name="probe_${em}" value="${v}"
-      onchange="window._probeValues['${em}']=parseInt(this.value)"></td>`,
-    )
-    .join("");
-  return `<tr><td class="probe-em-label">${em}</td>${cells}</tr>`;
+// Display labels for probe keys whose data-key spelling differs from what we
+// want on the button (mirrors probe_screen2.js's OTHER_LABEL_OVERRIDES).
+const LABEL_OVERRIDES = {
+  boredom: "Bored",
+  confusion: "Confused",
+  anxiety: "Distressed",
+};
+
+function capitalize(str) {
+  return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
-// Renders a full-width section header row (e.g. "Primary Emotion") inside
-// the table body — omit the group entirely (call site) when it's empty.
-function probeSectionRow(label) {
-  return `<tr class="probe-section-row"><td class="probe-section-label" colspan="8">${label}</td></tr>`;
+function labelFor(em) {
+  return LABEL_OVERRIDES[em] || capitalize(em);
+}
+
+function buildButton(em, small) {
+  return `<button type="button" class="probe3-btn ${small ? "probe3-btn-small" : "probe3-btn-large"}" data-em="${em}">${labelFor(em)}</button>`;
 }
 
 /* ====================================================================
- * Probe markup — kept separate from the trial-object wiring below so
- * alternative UI versions are easy to try: write another renderProbe*
- * function with the same ({ probeList, primaryEmotions, otherEmotions, hasNone })
- * signature and swap it into the `stimulus` function in
- * createProbeScreen(). The on_load/on_finish scoring logic doesn't
- * need to change between UI variants.
+ * Probe markup (big-button variant) — same swappable-renderer pattern as
+ * probe_screen.js's renderProbeGrid / probe_screen2.js's renderProbeChecklist:
+ * primary emotions get large buttons, everything else gets small ones.
+ * Selecting a button is binary (felt strongly / not), so there's no 1-7
+ * rating step here — see SELECTED_VALUE/UNSELECTED_VALUE above for how that
+ * maps back onto the shared selfReport schema.
+ * (Selecting a button records a flat 7 for that emotion; leaving it unselected records a flat 1.)
  * ==================================================================== */
-export function renderProbeGrid({
-  probeList,
+export function renderProbeButtons({
   primaryEmotions,
   otherEmotions,
   hasNone,
 }) {
-  const headerCols = SCALE_LABELS.map(
-    (lbl, i) => `
-    <th class="probe-th-col">
-      <span class="probe-num">${i + 1}</span>
-      <span class="probe-lbl">${lbl}</span>
-    </th>`,
-  ).join("");
-
-  const bodyRows =
-    (primaryEmotions.length
-      ? probeSectionRow("Primary Emotion") +
-        primaryEmotions.map(probeRow).join("")
-      : "") +
-    (otherEmotions.length
-      ? probeSectionRow("Other Emotions (Optional)") +
-        otherEmotions.map(probeRow).join("")
-      : "");
-
-  const noneRow = hasNone
-    ? `
-    <div class="probe-none-row">
-      <label>
-        <input type="checkbox" id="probe_none"
-          onchange="window._probeValues['none']=this.checked?1:0">
-        None of the above
-      </label>
-    </div>`
-    : "";
+  const primaryButtons = primaryEmotions
+    .map((em) => buildButton(em, false))
+    .join("");
+  const otherButtons = otherEmotions
+    .map((em) => buildButton(em, true))
+    .join("");
+  const noneButton = hasNone ? buildButton("none", true) : "";
 
   return `
     <div id="probe-screen">
       <h2 class="probe-heading">Which emotions do you feel strongly right now?</h2>
-      <p class="probe-subtitle">Select all that apply. If you leave an emotion unselected, it will be recorded as 1 (Not at all).</p>
-      <div class="probe-card">
-        <table class="probe-table">
-          <thead><tr>
-            <th class="probe-th-emotion"></th>
-            ${headerCols}
-          </tr></thead>
-          <tbody>${bodyRows}</tbody>
-        </table>
+      <p class="probe-subtitle">Select any emotion you feel strongly (5-7 out of 7). Leave the rest unselected.</p>
+      <div class="probe3-grid probe3-grid-primary">${primaryButtons}</div>
+
+      <h2 class="probe-heading probe-heading-inline">
+        Are you feeling any of these?
+        <span class="probe-optional-tag">(Optional)</span>
+      </h2>
+      <div class="probe3-grid probe3-grid-secondary">
+        ${otherButtons}
+        ${noneButton}
       </div>
-      ${noneRow}
     </div>`;
 }
 
 /* ====================================================================
- * Emotion probe — 7-point self-report grid shown after every trial.
- * Also where trial data gets finalized and handed to onTrialFinish/advancePhase.
+ * Emotion probe (big-button variant) — participant taps large buttons for
+ * the primary emotions they feel strongly and small buttons for the
+ * optional/other ones. on_finish records into window._probeValues exactly
+ * like probe_screen.js/probe_screen2.js, so the data schema is identical
+ * between UI variants.
  * ==================================================================== */
 export function createProbeScreen() {
   return {
@@ -107,12 +88,7 @@ export function createProbeScreen() {
       const otherEmotions = emotions.filter((em) => !EMOTIONS.includes(em));
       const hasNone = probeList.includes("none");
 
-      return renderProbeGrid({
-        probeList,
-        primaryEmotions,
-        otherEmotions,
-        hasNone,
-      });
+      return renderProbeButtons({ primaryEmotions, otherEmotions, hasNone });
     },
     choices: ["Submit"],
     css_classes: "content-align-top",
@@ -125,25 +101,25 @@ export function createProbeScreen() {
           },
         ],
     on_load: function () {
-      document
-        .querySelectorAll('input[type="radio"][name^="probe_"]')
-        .forEach((radio) => {
-          radio.addEventListener("mousedown", function () {
-            this._wasChecked = this.checked;
-          });
-          radio.addEventListener("click", function () {
-            if (this._wasChecked) {
-              this.checked = false;
-              delete window._probeValues[this.name.replace(/^probe_/, "")];
-            }
-          });
+      document.querySelectorAll(".probe3-btn").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const em = btn.dataset.em;
+          const selected = btn.classList.toggle("selected");
+          if (em === "none") {
+            window._probeValues[em] = selected ? 1 : 0;
+          } else if (selected) {
+            window._probeValues[em] = SELECTED_VALUE;
+          } else {
+            delete window._probeValues[em];
+          }
         });
+      });
     },
     on_finish: function (data) {
       const probeList = currentTask()?.response?.probes || PROBES;
       const selfReport = {};
       for (const em of probeList)
-        selfReport[em] = window._probeValues?.[em] ?? 1;
+        selfReport[em] = window._probeValues?.[em] ?? UNSELECTED_VALUE;
 
       const trialUid = `${session.participant.participantId}_t${session.trialOrdinal}`;
       const realized = {
