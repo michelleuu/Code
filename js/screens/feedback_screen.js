@@ -34,6 +34,10 @@ export function createFeedbackScreen() {
           ["pct_ref", d?.pctRef ?? ""],
           ["attribution", d?.attribution ?? ""],
         ],
+        [
+          ["correct", trial.currentRealPerf?.correct ?? ""],
+          ["total", trial.currentRealPerf?.total ?? ""],
+        ],
       ]);
       return `
         <div id="feedback-screen">

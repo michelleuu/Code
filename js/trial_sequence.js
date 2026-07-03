@@ -9,9 +9,9 @@ import { createRotationBlock } from "./tasks/task_rotation.js";
 import { createIqaBlock } from "./tasks/task_iqa.js";
 import { createPrimeScreen } from "./screens/prime_screen.js";
 import { createFeedbackScreen } from "./screens/feedback_screen.js";
-import { createProbeScreen } from "./screens/probe_screen.js";
+// import { createProbeScreen } from "./screens/probe_screen.js";
 // import { createProbeScreen } from "./screens/probe_screen2.js";
-// import { createProbeScreen } from "./screens/probe_screen3.js";
+import { createProbeScreen } from "./screens/probe_screen3.js";
 import { createDerivedDebugScreen } from "./screens/derived_debug_screen.js";
 
 /* ============================================================================
