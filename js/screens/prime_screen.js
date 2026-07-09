@@ -1,6 +1,6 @@
 import { session, trial } from "../state.js";
 import { currentTask } from "../current_task.js";
-import { disableContinueButton, renderDebugPanel } from "./screen_helpers.js";
+import { hideContinueButton, renderDebugPanel } from "./screen_helpers.js";
 
 /* ====================================================================
  * Prime screen — shown before the task when a prime was selected.
@@ -22,6 +22,12 @@ export function createPrimeScreen() {
         (p) => p.id === trial.currentSelection.primeId,
       );
       const primeText = primeObj?.text || "";
+      // instructionsOnPrime: timed tasks (P-3, CF-1) repeat the mechanic
+      // reminder here so participants aren't reading it for the first time
+      // once the clock is already running.
+      const instructionsHtml = task.instructionsOnPrime && task.instructions
+        ? `<p class="stage-instructions">${task.instructions}</p>`
+        : "";
       const debugPanel = renderDebugPanel([
         [
           ["BankId", trial.currentSelection?.bankId ?? ""],
@@ -29,12 +35,18 @@ export function createPrimeScreen() {
           ["targetEmotion", trial.currentSelection?.targetEmotion ?? ""],
           ["primeId", trial.currentSelection?.primeId ?? ""],
         ],
-        [["controller_reason", JSON.stringify(trial.currentSelection?.reason ?? {})]],
+        [
+          [
+            "controller_reason",
+            JSON.stringify(trial.currentSelection?.reason ?? {}),
+          ],
+        ],
       ]);
       return `
         <div id="prime-screen">
-          <p class="stage-label">Prepare for the next task.</p>
+          <p class="stage-label">Next task</p>
           ${primeText ? `<p class="stage-text">${primeText}</p>` : ""}
+          ${instructionsHtml}
           ${debugPanel}
         </div>`;
     },
@@ -42,7 +54,7 @@ export function createPrimeScreen() {
     // No webgazer extension or mouse/click tracking here — nothing is logged
     // during the prime screen.
     on_load: function () {
-      primeContinueTimer = disableContinueButton();
+      primeContinueTimer = hideContinueButton();
     },
     on_finish: function (data) {
       clearTimeout(primeContinueTimer);

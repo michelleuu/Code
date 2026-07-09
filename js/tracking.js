@@ -79,7 +79,10 @@ export function resetTrialBuffers() {
   trial.currentRealPerf  = null;
   trial.currentDisplayed = null;
   trial.currentDerived   = null;
+  trial.currentItemPerf  = null;
   trial.currentBlockItem = 0;
   trial.blockCorrect     = 0;
   trial.blockTotal       = 0;
+  trial.taskTimedOut     = false;
+  trial.rotItemTimedOut  = false;
 }

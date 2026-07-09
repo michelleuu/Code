@@ -99,7 +99,10 @@ export function createTaskInput() {
       const component = currentTask()?.stimulus?.component;
       const limitMs = INPUT_TIME_LIMIT_MS[component];
       if (limitMs) {
-        taskInputTimer = setTimeout(() => window.jsPsych.finishTrial(), limitMs);
+        taskInputTimer = setTimeout(() => {
+          trial.taskTimedOut = true;
+          window.jsPsych.finishTrial();
+        }, limitMs);
       }
     },
     on_finish: function (data) {
@@ -109,6 +112,7 @@ export function createTaskInput() {
       }
       stopStageTracking();
       stopKeyTracking();
+      data.timed_out = trial.taskTimedOut;
       const task = currentTask();
       const key = task?.stimulus?.item?.key ?? null;
       const answer = (data.response?.task_answer || "").trim();

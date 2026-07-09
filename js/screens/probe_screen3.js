@@ -101,14 +101,32 @@ export function createProbeScreen() {
           },
         ],
     on_load: function () {
-      document.querySelectorAll(".probe3-btn").forEach((btn) => {
+      // "None of the above" is mutually exclusive with every other button:
+      // selecting it clears all other selections, and selecting any other
+      // button clears it.
+      const buttons = Array.from(document.querySelectorAll(".probe3-btn"));
+      const noneBtn = buttons.find((btn) => btn.dataset.em === "none");
+
+      buttons.forEach((btn) => {
         btn.addEventListener("click", () => {
           const em = btn.dataset.em;
           const selected = btn.classList.toggle("selected");
           if (em === "none") {
             window._probeValues[em] = selected ? 1 : 0;
+            if (selected) {
+              buttons.forEach((other) => {
+                if (other === btn || !other.classList.contains("selected"))
+                  return;
+                other.classList.remove("selected");
+                delete window._probeValues[other.dataset.em];
+              });
+            }
           } else if (selected) {
             window._probeValues[em] = SELECTED_VALUE;
+            if (noneBtn && noneBtn.classList.contains("selected")) {
+              noneBtn.classList.remove("selected");
+              window._probeValues.none = 0;
+            }
           } else {
             delete window._probeValues[em];
           }

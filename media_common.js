@@ -170,26 +170,31 @@ export function buildMediaFraming(ab, ref, tier, { floorLimited = false } = {}) 
 /* ---- Task assembler: wires framing + response + timer consistently --------- *
  * The family supplies the CONCRETE bits (id, stimulus, calibration, domains,
  * ability wording per domain); everything family-invariant is filled here.
- * `instructions` is an optional short neutral string rendered above the stimulus
- * before any framing fires. It is family-specific and invariant across all blocks
- * of that family (same wording every trial, taught in familiarisation). Kept
- * separate from the framing layer, which is the emotional manipulation.           */
+ * `instructions`      : optional short neutral string rendered above the stimulus
+ *                       before any framing fires. Separate from framing layer.
+ * `instructionsOnPrime`: if true, the component also renders instructions on the
+ *                       prime page (useful for timed tasks where the participant
+ *                       needs a reminder of the mechanics before the block starts).
+ * `framingOverride`   : supply a complete per-domain framing object to bypass
+ *                       buildMediaFraming (used by families whose prime text
+ *                       doesn't fit the standard templates, e.g. P-3).           */
 export function buildMediaTask({
   id, name, domains, modality, languageLoad = "low", difficultyTier,
   stimulus, calibration, abilityByDomain, generalAbility = false,
   unit = "block", timerMode = "hidden", floorLimited = false,
-  instructions = null,
+  instructions = null, instructionsOnPrime = false,
+  framingOverride = null,
 }) {
   return {
     id, stimulusId: id, name,
     domains, modality, languageLoad, difficultyTier, unit,
     ...(generalAbility ? { generalAbility: true } : {}),
     ...(instructions ? { instructions } : {}),
+    ...(instructionsOnPrime ? { instructionsOnPrime: true } : {}),
     stimulus,
     calibration,
-    timer: { mode: timerMode },          // measured silently; percentile shown only at feedback
-    // per-DOMAIN framing: same stimulus, identity-specific wording/referent
-    framing: Object.fromEntries(domains.map((d) =>
+    timer: { mode: timerMode },
+    framing: framingOverride ?? Object.fromEntries(domains.map((d) =>
       [d, buildMediaFraming(abilityByDomain[d], REFERENT[d], difficultyTier, { floorLimited })])),
     response: RESPONSE,
   };

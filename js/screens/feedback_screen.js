@@ -1,7 +1,11 @@
 import { session, trial, stageData, SKIP_WEBGAZER } from "../state.js";
 import { J } from "../utils.js";
 import { startCapture, stopCapture } from "../webcam.js";
-import { disableContinueButton, renderDebugPanel } from "./screen_helpers.js";
+import {
+  hideContinueButton,
+  renderDebugPanel,
+  showTimeoutPopup,
+} from "./screen_helpers.js";
 
 /* ====================================================================
  * Feedback screen — shows the (possibly emotion-framed) result after a
@@ -56,6 +60,7 @@ export function createFeedbackScreen() {
           },
         ],
     on_load: function () {
+      if (trial.taskTimedOut) showTimeoutPopup();
       session.revealTsMs = performance.now();
       session.webgazerTrialStartPerfMs = performance.now();
       if (!SKIP_WEBGAZER) {
@@ -74,7 +79,7 @@ export function createFeedbackScreen() {
       startCapture(
         `${session.participant.participantId}_t${session.trialOrdinal}_feedback`,
       );
-      feedbackContinueTimer = disableContinueButton();
+      feedbackContinueTimer = hideContinueButton();
     },
     on_finish: function (data) {
       clearTimeout(feedbackContinueTimer);

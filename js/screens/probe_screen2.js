@@ -36,19 +36,13 @@ export function renderProbeChecklist({
   otherEmotions,
   hasNone,
 }) {
-  // Radio (not checkbox) inputs, styled to match the About You / rating-
-  // table radios (.probe-table input[type="radio"]). Each gets its own
-  // unique name so it acts as an independent toggle rather than a
-  // mutually-exclusive group; the "click again to deselect" behavior
-  // (native radios can't be unchecked by clicking themselves) is wired
-  // in on_load via .probe-toggle-radio, the same pattern probe_screen.js
-  // already uses for its rating grid.
+  // Checkboxes — this is a "select all that apply" checklist, so multiple
+  // items can be checked at once.
   const primaryRows = primaryEmotions
     .map(
       (em) => `
       <label class="probe-check-row">
-        <input type="radio" class="probe-primary-check probe-toggle-radio"
-          name="primary_${em}" data-em="${em}">
+        <input type="checkbox" class="probe-check-input probe-primary-check" data-em="${em}">
         <span>${capitalize(em)}</span>
       </label>`,
     )
@@ -58,7 +52,7 @@ export function renderProbeChecklist({
     .map(
       (em) => `
       <label class="probe-check-row">
-        <input type="radio" class="probe-toggle-radio" name="other_${em}" data-em="${em}"
+        <input type="checkbox" class="probe-check-input" data-em="${em}"
           onchange="window._probeValues['${em}']=this.checked?1:0">
         <span>${otherLabel(em)}</span>
       </label>`,
@@ -68,7 +62,7 @@ export function renderProbeChecklist({
   const noneRow = hasNone
     ? `
       <label class="probe-check-row">
-        <input type="radio" class="probe-toggle-radio" id="probe_none" name="probe_none" data-em="none"
+        <input type="checkbox" class="probe-check-input" id="probe_none" data-em="none"
           onchange="window._probeValues['none']=this.checked?1:0">
         <span>None of the above</span>
       </label>`
@@ -184,32 +178,45 @@ export function createProbeScreen() {
         ratingSection.style.display = checkedEmotions.length ? "" : "none";
       };
 
-      // These are <input type="radio"> (styled to match the About You /
-      // rating-table radios), but each behaves as an independent on/off
-      // toggle rather than a mutually-exclusive group. Native radios can't
-      // be unchecked by clicking themselves again, so track pre-click state
-      // and manually clear it on a re-click — the same trick probe_screen.js
-      // uses for its rating grid.
-      document.querySelectorAll(".probe-toggle-radio").forEach((radio) => {
-        radio.addEventListener("mousedown", function () {
-          this._wasChecked = this.checked;
-        });
-        radio.addEventListener("click", function () {
-          if (this._wasChecked) {
-            this.checked = false;
-            if (this.classList.contains("probe-primary-check")) {
-              delete window._probeValues[this.dataset.em];
-              refreshRatingRows();
-            } else {
-              window._probeValues[this.dataset.em] = 0;
-            }
-          }
+      document.querySelectorAll(".probe-primary-check").forEach((cb) => {
+        cb.addEventListener("change", function () {
+          if (!this.checked) delete window._probeValues[this.dataset.em];
+          refreshRatingRows();
         });
       });
 
-      document.querySelectorAll(".probe-primary-check").forEach((cb) => {
-        cb.addEventListener("change", refreshRatingRows);
-      });
+      // "None of the above" is mutually exclusive with every other checklist
+      // item: checking it clears everything else, and checking anything else
+      // clears it.
+      const noneCheckbox = document.getElementById("probe_none");
+      const otherCheckboxes = Array.from(
+        document.querySelectorAll(".probe-check-input"),
+      ).filter((cb) => cb !== noneCheckbox);
+
+      if (noneCheckbox) {
+        noneCheckbox.addEventListener("change", function () {
+          if (!this.checked) return;
+          otherCheckboxes.forEach((cb) => {
+            if (!cb.checked) return;
+            cb.checked = false;
+            if (cb.classList.contains("probe-primary-check")) {
+              delete window._probeValues[cb.dataset.em];
+            } else {
+              window._probeValues[cb.dataset.em] = 0;
+            }
+          });
+          refreshRatingRows();
+        });
+
+        otherCheckboxes.forEach((cb) => {
+          cb.addEventListener("change", function () {
+            if (this.checked && noneCheckbox.checked) {
+              noneCheckbox.checked = false;
+              window._probeValues.none = 0;
+            }
+          });
+        });
+      }
     },
     on_finish: function (data) {
       const probeList = currentTask()?.response?.probes || PROBES;

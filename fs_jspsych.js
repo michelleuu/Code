@@ -15,13 +15,13 @@
 // 8 directions, clockwise from North. This array order IS the option order
 // (matches the MITRE A–H radio order: ↑ ↗ → ↘ ↓ ↙ ← ↖), so option index == direction index.
 export const DIRS = [
-  { code: "N",  deg: 0,   uni: "\u2191" },
-  { code: "NE", deg: 45,  uni: "\u2197" },
-  { code: "E",  deg: 90,  uni: "\u2192" },
+  { code: "N", deg: 0, uni: "\u2191" },
+  { code: "NE", deg: 45, uni: "\u2197" },
+  { code: "E", deg: 90, uni: "\u2192" },
   { code: "SE", deg: 135, uni: "\u2198" },
-  { code: "S",  deg: 180, uni: "\u2193" },
+  { code: "S", deg: 180, uni: "\u2193" },
   { code: "SW", deg: 225, uni: "\u2199" },
-  { code: "W",  deg: 270, uni: "\u2190" },
+  { code: "W", deg: 270, uni: "\u2190" },
   { code: "NW", deg: 315, uni: "\u2196" },
 ];
 const DEG = Object.fromEntries(DIRS.map((d) => [d.code, d.deg]));
@@ -47,18 +47,24 @@ export function renderSequence(codes, px = 34, gap = 14) {
 export function buildFsTrial(item, opts = {}) {
   const px = opts.optionPx ?? 32;
   return {
-    type: jsPsychHtmlButtonResponse,                       // assumes jsPsych v8 global
-    stimulus:
-      `${renderSequence(item.stem, opts.stemPx ?? 34)}
+    type: jsPsychHtmlButtonResponse, // assumes jsPsych v8 global
+    stimulus: `${renderSequence(item.stem, opts.stemPx ?? 34)}
        <p style="margin-top:18px;font-size:15px">Select the arrow that comes next.</p>`,
-    choices: DIRS.map((d) => d.code),                      // values; index == direction index
+    choices: DIRS.map((d) => d.code), // values; index == direction index
     // jsPsych v8: button_html is (choice, index) => string
-    button_html: (choice) => `<button class="jspsych-btn">${arrowSVG(choice, px)}</button>`,
-    trial_duration: opts.timeLimitMs ?? 60000,             // FS 1-minute/item limit
-    data: { task: "FS", item: item.ref, key: item.key, b: item.b, tier: item.tier,
-            ...(opts.data || {}) },
+    button_html: (choice) =>
+      `<button class="jspsych-btn">${arrowSVG(choice, px)}</button>`,
+    trial_duration: opts.timeLimitMs ?? 60000, // FS 1-minute/item limit
+    data: {
+      task: "FS",
+      item: item.ref,
+      key: item.key,
+      b: item.b,
+      tier: item.tier,
+      ...(opts.data || {}),
+    },
     on_finish: (d) => {
-      d.response_code = d.response == null ? null : DIRS[d.response].code;  // null = timed out
+      d.response_code = d.response == null ? null : DIRS[d.response].code; // null = timed out
       d.correct = d.response_code === item.key;
     },
   };

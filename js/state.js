@@ -21,6 +21,7 @@ export const trial = {
   currentDisplayed: null,
   currentRealPerf: null,
   currentDerived: null,
+  currentItemPerf: null, // CF-1: per-item {correct, rtMs} for the single-trial (main-bank) case
   currentBlockItem: 0,
   blockCorrect: 0,
   blockTotal: 0,
@@ -28,6 +29,8 @@ export const trial = {
   backspaceCount: 0,
   responseTracker: null,
   rotBlockTracker: null,
+  taskTimedOut: false,
+  rotItemTimedOut: false,
 };
 
 /* Stage-separated tracking arrays (prime / task / feedback / probe) */

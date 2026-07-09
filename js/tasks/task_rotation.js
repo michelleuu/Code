@@ -7,6 +7,7 @@ import {
 } from "../tracking.js";
 import { resolveOutcomeFeedback } from "../../controller.js";
 import { currentTask } from "../current_task.js";
+import { showTimeoutPopup } from "../screens/screen_helpers.js";
 
 const ROTATION_TIME_LIMIT_MS = 7500; // 7500ms per item, per Ganis & Kievit paradigm
 const ROTATION_BLANK_MS = 250; // blank screen preceding each item
@@ -69,6 +70,14 @@ export function createRotationBlock() {
             params: { targets: ["#task-screen"] },
           },
         ],
+    on_load: function () {
+      // The previous item timed out — show the "time's up" popup on this
+      // (the next) item's page instead of waiting for the whole block to end.
+      if (trial.rotItemTimedOut) {
+        trial.rotItemTimedOut = false;
+        showTimeoutPopup();
+      }
+    },
     on_finish: function (data) {
       const refs = currentTask()?.stimulus?.block?.stimulusRefs || [];
       const ref = refs[trial.currentBlockItem];
@@ -89,6 +98,14 @@ export function createRotationBlock() {
       const isCorrect = answer !== null && answer === ref?.correctResp ? 1 : 0;
       trial.blockCorrect += isCorrect;
       trial.blockTotal++;
+      if (answer === null) {
+        // Last item in the block: there's no next item page to show the
+        // popup on, so fall back to the feedback screen (same as the
+        // single-item tasks). Otherwise, flag it for the next item's on_load.
+        const isLastItem = trial.currentBlockItem === refs.length - 1;
+        if (isLastItem) trial.taskTimedOut = true;
+        else trial.rotItemTimedOut = true;
+      }
       trial.keypressLog.push({
         item: trial.currentBlockItem,
         answer,

@@ -125,19 +125,44 @@ export function createProbeScreen() {
           },
         ],
     on_load: function () {
-      document
-        .querySelectorAll('input[type="radio"][name^="probe_"]')
-        .forEach((radio) => {
-          radio.addEventListener("mousedown", function () {
-            this._wasChecked = this.checked;
+      const radios = Array.from(
+        document.querySelectorAll('input[type="radio"][name^="probe_"]'),
+      );
+      radios.forEach((radio) => {
+        radio.addEventListener("mousedown", function () {
+          this._wasChecked = this.checked;
+        });
+        radio.addEventListener("click", function () {
+          if (this._wasChecked) {
+            this.checked = false;
+            delete window._probeValues[this.name.replace(/^probe_/, "")];
+          }
+        });
+      });
+
+      // "None of the above" is mutually exclusive with the rating grid:
+      // checking it clears every rated emotion, and rating any emotion
+      // clears it.
+      const noneCheckbox = document.getElementById("probe_none");
+      if (noneCheckbox) {
+        noneCheckbox.addEventListener("change", function () {
+          if (!this.checked) return;
+          radios.forEach((radio) => {
+            if (!radio.checked) return;
+            radio.checked = false;
+            delete window._probeValues[radio.name.replace(/^probe_/, "")];
           });
-          radio.addEventListener("click", function () {
-            if (this._wasChecked) {
-              this.checked = false;
-              delete window._probeValues[this.name.replace(/^probe_/, "")];
+        });
+
+        radios.forEach((radio) => {
+          radio.addEventListener("change", function () {
+            if (this.checked && noneCheckbox.checked) {
+              noneCheckbox.checked = false;
+              window._probeValues.none = 0;
             }
           });
         });
+      }
     },
     on_finish: function (data) {
       const probeList = currentTask()?.response?.probes || PROBES;

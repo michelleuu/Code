@@ -9,21 +9,43 @@ import { SHOW_DEBUG_INFO } from "../state.js";
 // appearing, forcing participants to spend at least this long on the screen.
 export const CONTINUE_DELAY_MS = 10000; // display for 10 sec
 
-// Disables the jsPsych button-response button (pale/muted via the
-// .jspsych-btn:disabled override in experiment.css, cursor: not-allowed)
-// for CONTINUE_DELAY_MS, then re-enables it back to its normal style.
+// Hides the jsPsych button-response button and shows a "Preparing for next
+// task..." message in its place (same spot in the layout) for
+// CONTINUE_DELAY_MS, then swaps the message back out for the button.
 // Returns the timer id so callers can clear it on_finish.
-export function disableContinueButton() {
-  const buttons = document.querySelectorAll(
-    "#jspsych-html-button-response-btngroup button",
+export function hideContinueButton() {
+  const btnGroup = document.getElementById(
+    "jspsych-html-button-response-btngroup",
   );
-  if (!buttons.length) return null;
+  if (!btnGroup) return null;
 
-  buttons.forEach((btn) => (btn.disabled = true));
+  const preparing = document.createElement("p");
+  preparing.className = "stage-label preparing-next-task";
+  preparing.textContent = "Preparing for next task...";
+  btnGroup.insertAdjacentElement("beforebegin", preparing);
+  btnGroup.style.display = "none";
 
   return setTimeout(() => {
-    buttons.forEach((btn) => (btn.disabled = false));
+    preparing.remove();
+    btnGroup.style.display = "";
   }, CONTINUE_DELAY_MS);
+}
+
+// How long the "time's up" popup stays on screen after a timed task hits its
+// limit and advances away without a response.
+export const TIMEOUT_POPUP_MS = 2000;
+
+// Shows a brief "time's up" banner (see .timeout-popup in experiment.css),
+// removing it after TIMEOUT_POPUP_MS. Called on the page a timed-out task
+// advances to (the feedback screen), so the participant knows why the task
+// ended early instead of assuming their answer was lost.
+export function showTimeoutPopup() {
+  const popup = document.createElement("div");
+  popup.className = "timeout-popup";
+  popup.textContent =
+    "The allotted time has ended. Please move on to the next task.";
+  document.body.appendChild(popup);
+  setTimeout(() => popup.remove(), TIMEOUT_POPUP_MS);
 }
 
 // Renders a monospace dev-only panel of trial fields below the prime/feedback

@@ -23,34 +23,34 @@ body {
   margin: 0 auto;
 }
 .box {
-  max-width: 820px;
+  max-width: 51.25rem;
   margin: auto;
-  padding: 35px;
+  padding: 2.1875rem;
   text-align: center;
 }
 .box p {
-  font-size: 17px;
+  font-size: 1.0625rem;
   line-height: 1.7;
-  margin: 10px 0;
+  margin: 0.625rem 0;
 }
 .box h1 {
-  font-size: 26px;
-  margin-bottom: 14px;
+  font-size: 1.625rem;
+  margin-bottom: 0.875rem;
 }
 .box h2 {
-  font-size: 26px;
-  margin-bottom: 12px;
+  font-size: 1.625rem;
+  margin-bottom: 0.75rem;
 }
 /* Muted fine-print below main content (consent notice, disclaimers) */
 .note {
-  font-size: 14px;
+  font-size: 0.875rem;
   color: #888;
-  margin-top: 18px;
+  margin-top: 1.125rem;
 }
 /* Subtitle below a heading before survey sections */
 .survey-intro {
   color: #555;
-  margin-bottom: 46px;
+  margin-bottom: 2.875rem;
 }
 /* Left-aligned variant of .box for survey/form screens */
 .box-left {
@@ -58,30 +58,64 @@ body {
 }
 /* Blank buffer between task and feedback screens */
 .settle {
-  min-height: 80px;
+  min-height: 5rem;
 }
 
 /* ---- Prime screen ---- */
 #prime-screen {
-  margin: 60px auto;
+  margin: 3.75rem auto;
 }
 
 /* ---- Stage label + text (prime "prepare for the next task" /
    feedback "your response has been recorded" screens) ---- */
 .stage-label {
-  font-size: 13px;
+  font-size: 0.8125rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: #999;
-  margin-bottom: 22px;
+  color: #111;
+  margin-bottom: 1.375rem;
+}
+/* Same look as .stage-label but without the uppercase transform. */
+.preparing-next-task {
+  text-transform: none;
 }
 .stage-text {
-  font-size: 21px;
+  font-size: 1.3125rem;
   font-weight: 600;
   color: #111;
   line-height: 1.6;
-  max-width: 640px;
-  margin: 0 auto 30px;
+  max-width: 40rem;
+  margin: 0 auto 1.875rem;
+}
+/* instructionsOnPrime: mechanic reminder shown under the prime text for
+   timed tasks (P-3, CF-1) so the clock isn't already running the first
+   time the participant reads it. */
+.stage-instructions {
+  font-size: 0.9375rem;
+  color: #666;
+  max-width: 36rem;
+  margin: 0 auto 1.875rem;
+}
+
+/* ---- Timeout popup (shown briefly on the feedback screen when a timed
+   task's limit is reached — see showTimeoutPopup in screen_helpers.js) ----
+   Fixed to the viewport so it overlays near the top without affecting the
+   layout/height of the screen it's shown on. */
+.timeout-popup {
+  position: fixed;
+  left: 50%;
+  top: 1.75rem;
+  transform: translateX(-50%);
+  max-width: min(90%, 35rem);
+  padding: 0.875rem 1.375rem;
+  background: #c0392b;
+  color: #fff;
+  border-radius: 0.625rem;
+  text-align: center;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.18);
+  z-index: 20;
 }
 
 /* ---- Debug panel (dev-only trial info on prime/feedback screens) ----
@@ -91,15 +125,15 @@ body {
 .debug-panel {
   position: fixed;
   left: 50%;
-  bottom: 28px;
+  bottom: 1.75rem;
   transform: translateX(-50%);
-  width: min(90%, 780px);
-  padding: 14px 18px;
+  width: min(90%, 48.75rem);
+  padding: 0.875rem 1.125rem;
   background: #f0f0f0;
-  border-radius: 10px;
+  border-radius: 0.625rem;
   text-align: left;
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  font-size: 12px;
+  font-size: 0.75rem;
   line-height: 1.7;
   color: #333;
   z-index: 10;
@@ -108,10 +142,10 @@ body {
   overflow-y: auto;
 }
 
-/* Pale/subtle look for the prime/feedback "Continue"-style button while it's
-   disabled during the CONTINUE_DELAY_MS cooldown (see disableContinueButton
-   in js/screens/screen_helpers.js). Overrides jspsych.css's default disabled
-   style, which is closer to full contrast than we want here. */
+/* Pale/subtle look for a jsPsych button-response button once jsPsych disables
+   it after a click (see after_response in plugin-html-button-response.js).
+   Overrides jspsych.css's default disabled style, which is closer to full
+   contrast than we want here. */
 .jspsych-btn:disabled {
   background-color: #fcfcfc;
   color: #bbb;
@@ -121,21 +155,21 @@ body {
 
 /* ---- Task screens ---- */
 #task-screen {
-  max-width: 780px;
+  max-width: 48.75rem;
   margin: 0 auto;
-  padding: 30px 20px;
+  padding: 1.875rem 1.25rem;
   text-align: center;
 }
 .task-label {
-  font-size: 14px;
+  font-size: 0.875rem;
   color: #888;
-  margin-bottom: 6px;
+  margin-bottom: 0.375rem;
   letter-spacing: 0.04em;
 }
 .task-prompt {
-  font-size: 20px;
+  font-size: 1.25rem;
   font-weight: 600;
-  margin-bottom: 18px;
+  margin-bottom: 1.125rem;
   color: #111;
 }
 
@@ -144,81 +178,81 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 32px;
-  margin: 20px 0;
+  gap: 2rem;
+  margin: 1.25rem 0;
 }
 .rot-pair img {
-  max-height: 520px;
-  max-width: 640px;
+  max-height: 32.5rem;
+  max-width: 40rem;
 }
 .rot-choices {
   display: flex;
-  gap: 32px;
+  gap: 2rem;
   justify-content: center;
-  margin: 18px 0 4px;
+  margin: 1.125rem 0 0.25rem;
 }
 .rot-choice-label {
   display: flex;
   align-items: center;
-  gap: 7px;
-  font-size: 16px;
+  gap: 0.4375rem;
+  font-size: 1rem;
   color: #333;
   cursor: pointer;
 }
 .rot-warn {
   color: #c0392b;
-  font-size: 14px;
-  margin-top: 8px;
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
   display: none;
 }
 .rot-next-btn {
-  margin-top: 14px;
-  padding: 9px 32px;
-  font-size: 15px;
+  margin-top: 0.875rem;
+  padding: 0.5625rem 2rem;
+  font-size: 0.9375rem;
   background: #4a90d9;
   color: #fff;
   border: none;
-  border-radius: 6px;
+  border-radius: 0.375rem;
   cursor: pointer;
 }
 
 /* ---- Feedback screen ---- */
 #feedback-screen {
-  max-width: 620px;
-  margin: 80px auto;
-  padding: 36px 44px;
+  max-width: 38.75rem;
+  margin: 5rem auto;
+  padding: 2.25rem 2.75rem;
   text-align: center;
 }
 
 /* ---- Emotion probe ---- */
 /* Same outer margin/structure as the "About You" intake survey (.box.box-left:
-   max-width 820px, 35px padding, centered box but left-aligned content) so the
+   max-width 51.25rem, 2.1875rem padding, centered box but left-aligned content) so the
    two screens read consistently instead of the probe using its own narrower box. */
 #probe-screen {
-  max-width: 820px;
-  margin-top: 40px;
+  max-width: 51.25rem;
+  margin-top: 2.5rem;
   margin-bottom: 0;
   margin-left: auto;
   margin-right: auto;
-  padding: 35px;
+  padding: 2.1875rem;
   text-align: left;
 }
 .probe-heading {
-  font-size: 21px;
+  font-size: 1.3125rem;
   font-weight: 600;
   color: #111;
-  margin: 0 0 6px;
+  margin: 0 0 0.375rem;
 }
 .probe-subtitle {
-  font-size: 14px;
+  font-size: 0.875rem;
   color: #888;
-  margin: 0 0 22px;
+  margin: 0 0 1.375rem;
 }
 /* White card wrapping just the rating table, per the reference layout —
    heading/subtitle and the "none of the above" row sit outside it. */
 .probe-card {
-  border-radius: 10px;
-  padding: 22px 28px 6px;
+  border-radius: 0.625rem;
+  padding: 1.375rem 1.75rem 0.375rem;
   /* background: #fff;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06); */
 }
@@ -227,120 +261,118 @@ body {
 .probe-table {
   width: 100%;
   border-collapse: collapse;
-  margin-bottom: 8px;
+  margin-bottom: 0.5rem;
 }
 .probe-th-emotion {
-  width: 160px;
+  width: 10rem;
 }
 .probe-th-col {
   text-align: center;
-  padding: 4px 6px 10px;
-  min-width: 72px;
+  padding: 0.25rem 0.375rem 0.625rem;
+  min-width: 4.5rem;
 }
 .probe-num {
   display: block;
-  font-size: 15px;
+  font-size: 0.9375rem;
   font-weight: 600;
   color: #222;
 }
 .probe-lbl {
   display: block;
-  font-size: 11px;
+  font-size: 0.6875rem;
   color: #888;
   font-weight: 400;
-  margin-top: 3px;
+  margin-top: 0.1875rem;
   white-space: nowrap;
 }
 .probe-table tbody tr td {
   text-align: center;
-  padding: 9px 6px;
+  padding: 0.5625rem 0.375rem;
   border-top: 1px solid #e4e4e4;
 }
 .probe-em-label {
   text-align: left !important;
-  font-size: 16px;
+  font-size: 1rem;
   color: #222;
   text-transform: capitalize;
-  padding-left: 4px !important;
-  padding-right: 12px !important;
+  padding-left: 0.25rem !important;
+  padding-right: 0.75rem !important;
 }
 /* "Primary Emotion" / "Other Emotions (Optional)" group header rows */
 .probe-section-label {
   text-align: left !important;
-  font-size: 12px;
+  font-size: 0.75rem;
   font-weight: 600;
   color: #999;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  padding: 14px 4px 8px !important;
+  padding: 0.875rem 0.25rem 0.5rem !important;
 }
 .probe-table input[type="radio"] {
-  width: 16px;
-  height: 16px;
+  width: 1rem;
+  height: 1rem;
   cursor: pointer;
   accent-color: #4a90d9;
 }
 .probe-none-row {
-  margin-top: 18px;
-  font-size: 14px;
+  margin-top: 1.125rem;
+  font-size: 0.875rem;
   color: #555;
 }
 .probe-none-row label {
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 0.5rem;
 }
 
 /* ---- Emotion probe v2 (checklist + expanding rating rows, probe_screen2.js) ---- */
 .probe-heading-inline {
   display: flex;
   align-items: baseline;
-  gap: 8px;
+  gap: 0.5rem;
 }
 .probe-optional-tag {
-  font-size: 14px;
+  font-size: 0.875rem;
   font-weight: 400;
   color: #999;
 }
 .probe-checklist {
-  margin: 14px 0 0;
+  margin: 0.875rem 0 0;
 }
 .probe-check-row {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 6px 0;
-  font-size: 16px;
+  gap: 0.625rem;
+  padding: 0.375rem 0;
+  font-size: 1rem;
   color: #222;
   cursor: pointer;
 }
-/* Same round-radio look as .probe-table input[type="radio"] (the About You /
-   rating-table controls) — these are radios acting as independent toggles,
-   not a real mutually-exclusive group; see .probe-toggle-radio in probe_screen2.js. */
-.probe-check-row input[type="radio"] {
-  width: 16px;
-  height: 16px;
+/* Checklist controls — "select all that apply", so real checkboxes. */
+.probe-check-row input[type="checkbox"] {
+  width: 1rem;
+  height: 1rem;
   cursor: pointer;
   accent-color: #4a90d9;
 }
 .probe-divider {
   border-top: 1px solid #e4e4e4;
-  margin: 26px 0;
+  margin: 1.625rem 0;
 }
 .probe-rate-row {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 1.25rem;
   width: 100%;
-  margin-bottom: 22px;
+  margin-bottom: 1.375rem;
 }
 .probe-rate-label {
   /* Wide enough for the longest emotion name ("Disappointment") so it never
      overlaps/clips into the scale next to it. */
-  width: 150px;
+  width: 9.375rem;
   flex-shrink: 0;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 600;
   color: #111;
 }
@@ -352,7 +384,7 @@ body {
 .probe-rate-btn {
   flex: 1;
   min-width: 0;
-  padding: 8px 4px;
+  padding: 0.5rem 0.25rem;
   background: #fff;
   border: 1px solid #ddd;
   border-left: none;
@@ -362,24 +394,24 @@ body {
 }
 .probe-rate-scale .probe-rate-btn:first-child {
   border-left: 1px solid #ddd;
-  border-top-left-radius: 6px;
-  border-bottom-left-radius: 6px;
+  border-top-left-radius: 0.375rem;
+  border-bottom-left-radius: 0.375rem;
 }
 .probe-rate-scale .probe-rate-btn:last-child {
-  border-top-right-radius: 6px;
-  border-bottom-right-radius: 6px;
+  border-top-right-radius: 0.375rem;
+  border-bottom-right-radius: 0.375rem;
 }
 .probe-rate-num {
   display: block;
-  font-size: 15px;
+  font-size: 0.9375rem;
   font-weight: 600;
   color: #222;
 }
 .probe-rate-lbl {
   display: block;
-  font-size: 10px;
+  font-size: 0.625rem;
   color: #888;
-  margin-top: 2px;
+  margin-top: 0.125rem;
   white-space: nowrap;
 }
 .probe-rate-btn:hover {
@@ -398,15 +430,15 @@ body {
 .probe3-grid {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
-  margin: 14px 0 26px;
+  gap: 0.75rem;
+  margin: 0.875rem 0 1.625rem;
 }
 .probe3-btn {
   font-family: inherit;
   cursor: pointer;
   background: #fff;
   border: 1px solid #ddd;
-  border-radius: 10px;
+  border-radius: 0.625rem;
   color: #222;
   text-transform: capitalize;
 }
@@ -419,15 +451,15 @@ body {
   color: #fff;
 }
 .probe3-btn-large {
-  flex: 1 1 140px;
-  padding: 22px 10px;
-  font-size: 17px;
+  flex: 1 1 8.75rem;
+  padding: 1.375rem 0.625rem;
+  font-size: 1.0625rem;
   font-weight: 600;
 }
 .probe3-btn-small {
   flex: 0 1 auto;
-  padding: 10px 18px;
-  font-size: 14px;
+  padding: 0.625rem 1.125rem;
+  font-size: 0.875rem;
   font-weight: 500;
 }
 
@@ -435,15 +467,15 @@ body {
 .probe-row {
   display: flex;
   align-items: center;
-  margin-bottom: 14px;
+  margin-bottom: 0.875rem;
 }
 .probe-label {
-  width: 150px;
-  font-size: 15px;
+  width: 9.375rem;
+  font-size: 0.9375rem;
   color: #444;
   flex-shrink: 0;
   text-align: right;
-  padding-right: 16px;
+  padding-right: 1rem;
   text-transform: capitalize;
 }
 .probe-radios {
@@ -451,28 +483,28 @@ body {
 }
 .probe-radio-options {
   display: flex;
-  gap: 6px;
+  gap: 0.375rem;
 }
 .probe-radio-label {
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-size: 13px;
-  gap: 2px;
+  font-size: 0.8125rem;
+  gap: 0.125rem;
   cursor: pointer;
 }
 .probe-anchors {
   display: flex;
   justify-content: space-between;
-  font-size: 11px;
+  font-size: 0.6875rem;
   color: #aaa;
-  margin: 4px 0 0;
+  margin: 0.25rem 0 0;
 }
 
 /* ---- Heatmap ---- */
 .heatmap-container {
   position: relative;
-  margin: 20px auto 60px;
+  margin: 1.25rem auto 3.75rem;
   border: 2px solid #333;
   background: white;
   overflow: hidden;
@@ -481,15 +513,15 @@ body {
 /* ---- Webcam preview ---- */
 #webcam-status {
   color: #aaa;
-  font-size: 13px;
-  margin-top: 8px;
+  font-size: 0.8125rem;
+  margin-top: 0.5rem;
 }
 .webcam-preview {
-  width: 560px;
-  height: 420px;
+  width: 35rem;
+  height: 26.25rem;
   display: block;
-  margin: 18px auto 6px;
-  border-radius: 8px;
+  margin: 1.125rem auto 0.375rem;
+  border-radius: 0.5rem;
   background: #111;
   transform: scaleX(-1); /* mirror so it feels like looking in a mirror */
   object-fit: cover;
@@ -497,28 +529,28 @@ body {
 
 /* ---- Task instructions line (shown below stimulus, above input) ---- */
 .task-instructions {
-  font-size: 15px;
+  font-size: 0.9375rem;
   color: #555;
-  margin: 10px 0 18px;
+  margin: 0.625rem 0 1.125rem;
 }
 
 /* ---- Figure Series arrow sequence ---- */
 .fs-sequence {
-  margin: 18px auto 10px;
-  max-width: 680px;
+  margin: 1.125rem auto 0.625rem;
+  max-width: 42.5rem;
 }
 
 /* ---- Matrix Reasoning image ---- */
 .mr-image {
-  max-width: 520px;
-  max-height: 380px;
+  max-width: 32.5rem;
+  max-height: 23.75rem;
   display: block;
-  margin: 16px auto;
+  margin: 1rem auto;
 }
 .mr-options {
-  font-size: 14px;
+  font-size: 0.875rem;
   color: #666;
-  margin: 6px 0 12px;
+  margin: 0.375rem 0 0.75rem;
   letter-spacing: 0.06em;
 }
 
@@ -527,8 +559,8 @@ body {
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  gap: 28px;
-  margin: 16px 0 10px;
+  gap: 1.75rem;
+  margin: 1rem 0 0.625rem;
 }
 .iqa-side {
   display: flex;
@@ -536,29 +568,143 @@ body {
   align-items: center;
 }
 .iqa-img {
-  max-width: 440px;
-  max-height: 380px;
+  max-width: 27.5rem;
+  max-height: 23.75rem;
   display: block;
 }
 .iqa-img-label {
-  font-size: 13px;
+  font-size: 0.8125rem;
   color: #888;
-  margin-top: 6px;
+  margin-top: 0.375rem;
+}
+
+/* ---- CF-1 Hidden Figures (key strip + pattern) ---- *
+   Keys and the pattern image are rendered at native pixel size and both
+   live inside .cf1-stimulus, which task_cf1.js shrinks as ONE unit (via
+   `zoom`, computed on_load) if the pair is wider than the screen — so a
+   key is always exactly the same size as its match in the pattern, at
+   whatever scale, see cf1_subbank.js STIMULI note. */
+.cf1-stimulus {
+  width: fit-content;
+  margin: 0 auto;
+  max-width: 100%;
+}
+.cf1-keys {
+  display: flex;
+  justify-content: center;
+  gap: 1.25rem;
+  margin: 0.5rem auto 1.25rem;
+}
+.cf1-key {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 0 0 auto;
+}
+.cf1-key img {
+  display: block;
+}
+.cf1-key-letter {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #333;
+  margin-top: 0.25rem;
+}
+.cf1-grid {
+  display: flex;
+  justify-content: center;
+  margin: 0.5rem auto 1.25rem;
+}
+.cf1-grid img {
+  display: block;
+}
+.cf1-radios {
+  display: flex;
+  justify-content: center;
+  gap: 1.75rem;
+  margin: 0.5rem 0 1.25rem;
+}
+.cf1-radio-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333;
+  cursor: pointer;
+}
+.cf1-radio-label input[type="radio"] {
+  width: 1.125rem;
+  height: 1.125rem;
+  cursor: pointer;
+  accent-color: #4a90d9;
+}
+
+/* ---- P-3 Identical Pictures (stacked rows, right-justified) ---- *
+   Row images run up to ~1480px native (see p3_subbank.js STIMULI note) —
+   wider than #task-screen (~780px) — so task_p3.js scales each row DOWN
+   to fit (via `zoom`, never clipped: the participant needs to see the
+   target and all five alternatives). The radio strip is then sized in JS
+   to match that row's RENDERED (post-scale) width, so five equidistant
+   slots track the image's right edge even though source rows aren't
+   consistently cropped — see the LAYOUT NOTE in task_p3.js. */
+.p3-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+  margin: 0.75rem auto 0;
+  width: 100%;
+}
+/* width:100% (not shrink-to-fit) is load-bearing: a flex column child
+   with align-items:flex-end sizes to its own content, and an unscaled
+   native-size row image would balloon the row — and the whole page —
+   past #task-screen's width before task_p3.js gets a chance to shrink it. */
+.p3-row {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.p3-row-image {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end; /* right-justify within the row */
+}
+.p3-row-image img {
+  display: block;
+  max-width: none;
+}
+.p3-row-radios {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.25rem;
+  align-self: flex-end; /* width is set in JS to match the rendered image */
+}
+.p3-radio-label {
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+}
+.p3-radio-label input[type="radio"] {
+  width: 1.0625rem;
+  height: 1.0625rem;
+  cursor: pointer;
+  accent-color: #4a90d9;
 }
 
 /* ---- Survey intake ---- */
 .intake-section {
-  margin-bottom: 46px;
+  margin-bottom: 2.875rem;
   text-align: left;
 }
 .intake-section h3 {
-  font-size: 20px;
+  font-size: 1.25rem;
   font-weight: 700;
   color: #111;
-  margin-bottom: 5px;
+  margin-bottom: 0.3125rem;
 }
 .intake-section p {
-  font-size: 17px;
+  font-size: 1.0625rem;
   color: #444;
-  margin-bottom: 10px;
+  margin-bottom: 0.625rem;
 }

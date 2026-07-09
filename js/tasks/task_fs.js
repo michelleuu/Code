@@ -72,6 +72,8 @@ export function createTaskChoiceFS() {
     on_finish: function (data) {
       stopStageTracking();
       stopKeyTracking();
+      trial.taskTimedOut = data.response == null;
+      data.timed_out = trial.taskTimedOut;
       const task = currentTask();
       const item = task?.stimulus?.item;
       const chosenDir = data.response != null ? DIRS[data.response] : null;
