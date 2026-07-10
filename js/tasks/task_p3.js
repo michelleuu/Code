@@ -108,7 +108,8 @@ export function createP3Block() {
         const radios = row.querySelector(".p3-row-radios");
         const sizeToImage = () => {
           const available = cell.clientWidth;
-          if (img.naturalWidth > available) img.style.zoom = available / img.naturalWidth;
+          if (img.naturalWidth > available)
+            img.style.zoom = available / img.naturalWidth;
           radios.style.width = `${img.getBoundingClientRect().width * ALT_REGION_FRACTION}px`;
         };
         if (img.complete) sizeToImage();
@@ -127,7 +128,8 @@ export function createP3Block() {
       let correct = 0,
         incorrect = 0;
       const responses = items.map((it, i) => {
-        const answer = rowSelections[i] != null ? Number(rowSelections[i]) : null;
+        const answer =
+          rowSelections[i] != null ? Number(rowSelections[i]) : null;
         const isCorrect = answer != null && answer === it.correctResp;
         if (answer != null) isCorrect ? correct++ : incorrect++;
         return { item: i, answer, correct: isCorrect ? 1 : 0 };
@@ -143,7 +145,7 @@ export function createP3Block() {
         total: items.length,
         netScore,
         passed: netScore >= passMark,
-        rtMs: currentTask()?.stimulus?.limitMs ?? 7000,
+        rtMs: task?.stimulus?.limitMs,
         responses,
       };
       data.timed_out = true; // page always ends via the invisible time limit

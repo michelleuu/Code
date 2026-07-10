@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>P-3 test — hard (8 rows)</title>
+    <script src="../jspsych/jspsych.js"></script>
+    <script src="../jspsych/plugin-html-keyboard-response.js"></script>
+    <link rel="stylesheet" href="../jspsych/jspsych.css" />
+    <link rel="stylesheet" href="../css/experiment.css" />
+    <style>
+      #result-wrap { max-width: 40rem; margin: 3rem auto; padding: 0 1.25rem; text-align: center; }
+      #result-wrap h2 { font-size: 1.25rem; }
+      #result-wrap pre { text-align: left; background: #f4f4f4; padding: 1rem; border-radius: 0.5rem; overflow-x: auto; }
+      #result-wrap a { display: inline-block; margin-top: 1rem; }
+    </style>
+  </head>
+  <body></body>
+  <script type="module">
+    import { P3_SUBBANK } from "../stimuli/p3_bank.js";
+    import { trial, session } from "../js/state.js";
+    import { resetTrialBuffers } from "../js/tracking.js";
+    import { createP3Block } from "../js/tasks/task_p3.js";
+
+    window.TRIAL_BANK_FULL = [...P3_SUBBANK];
+    resetTrialBuffers();
+    session.trialOrdinal = 0;
+    session.trialStartMs = performance.now();
+
+    const TIER = "hard"; // change to "easy" / "mid" if you copy this file
+    const task = P3_SUBBANK.find((x) => x.difficultyTier === TIER);
+    // task_p3.js renders each item's .file verbatim as an <img src>; the bank
+    // stores paths relative to the project root (e.g. "stimuli/ets/P3/..."),
+    // but this page lives in tools/, so rewrite them relative to here.
+    task.stimulus.block.items.forEach((it) => { it.file = "../" + it.file; });
+    trial.currentSelection = { bankId: task.id, honestFeedback: true };
+
+    const { p3BlockStart, p3PageNode, p3BlockEnd } = createP3Block();
+    const timeline = [p3BlockStart, p3PageNode, p3BlockEnd, {
+      type: jsPsychHtmlKeyboardResponse,
+      stimulus: () => `
+        <div id="result-wrap">
+          <h2>Done — ${TIER} (${task.stimulus.block.n} rows, ${task.stimulus.limitMs}ms limit)</h2>
+          <pre>${JSON.stringify(trial.currentRealPerf, null, 2)}</pre>
+          <a href="javascript:location.reload()">Try again</a>
+        </div>`,
+      choices: "NO_KEYS",
+      trial_duration: 999999,
+    }];
+
+    const jsPsych = initJsPsych();
+    jsPsych.run(timeline);
+  </script>
+</html>
