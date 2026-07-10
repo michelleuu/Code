@@ -1,4 +1,4 @@
-import { session, trial, stageData, SKIP_WEBGAZER } from "../state.js";
+import { session, trial, stageData } from "../state.js";
 import {
   startStageTracking,
   stopStageTracking,
@@ -62,14 +62,6 @@ export function createRotationBlock() {
     },
     choices: ["Same shape", "Mirror image"],
     trial_duration: ROTATION_TIME_LIMIT_MS,
-    extensions: SKIP_WEBGAZER
-      ? []
-      : [
-          {
-            type: jsPsychExtensionWebgazer,
-            params: { targets: ["#task-screen"] },
-          },
-        ],
     on_load: function () {
       // The previous item timed out — show the "time's up" popup on this
       // (the next) item's page instead of waiting for the whole block to end.

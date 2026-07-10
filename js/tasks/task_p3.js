@@ -1,4 +1,4 @@
-import { session, trial, stageData, SKIP_WEBGAZER } from "../state.js";
+import { session, trial, stageData } from "../state.js";
 import {
   startStageTracking,
   stopStageTracking,
@@ -91,14 +91,6 @@ export function createP3Block() {
     trial_duration: function () {
       return currentTask()?.stimulus?.limitMs ?? 7000;
     },
-    extensions: SKIP_WEBGAZER
-      ? []
-      : [
-          {
-            type: jsPsychExtensionWebgazer,
-            params: { targets: ["#task-screen"] },
-          },
-        ],
     on_start: function () {
       rowSelections.length = 0;
     },

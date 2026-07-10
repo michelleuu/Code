@@ -31,6 +31,7 @@ export const trial = {
   rotBlockTracker: null,
   taskTimedOut: false,
   rotItemTimedOut: false,
+  cf1ItemTimedOut: false,
 };
 
 /* Stage-separated tracking arrays (prime / task / feedback / probe) */

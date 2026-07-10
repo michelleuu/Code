@@ -1,4 +1,4 @@
-import { session, trial, clock, SKIP_WEBGAZER } from "../state.js";
+import { session, trial, clock } from "../state.js";
 import { J } from "../utils.js";
 import { onTrialFinish, advancePhase } from "../../controller.js";
 import { PROBES, EMOTIONS } from "../../trial_schema.js";
@@ -116,14 +116,6 @@ export function createProbeScreen() {
     },
     choices: ["Submit"],
     css_classes: "content-align-top",
-    extensions: SKIP_WEBGAZER
-      ? []
-      : [
-          {
-            type: jsPsychExtensionWebgazer,
-            params: { targets: ["#probe-screen"] },
-          },
-        ],
     on_load: function () {
       const radios = Array.from(
         document.querySelectorAll('input[type="radio"][name^="probe_"]'),

@@ -3,21 +3,7 @@ body {
   font-family: Arial, sans-serif;
   background: #fafafa;
 }
-/* Opt-in fix for jspsych.css's .jspsych-content (applied per-trial via the
-   `css_classes: "content-align-top"` trial parameter — see the About You
-   intake survey in index.html and probe_screen.js/probe_screen2.js).
-   By default .jspsych-content is a non-growing flex item with `margin: auto`
-   in both axes, inside a .jspsych-content-wrapper that's stretched to the
-   full viewport height. That shrink-to-fit width means two screens
-   declaring the same max-width can still get centered at different
-   computed widths depending on how wide their content naturally wants to
-   be (e.g. the probe checklist's short labels vs the intake survey's wide
-   tables), and the vertical auto-margin centers SHORT content inside the
-   tall wrapper, making a screen look like it "starts" lower on the page
-   until enough content is added to fill the space. This class forces a
-   full-width, top-aligned box instead, scoped to only the screens that
-   need to match each other — every other screen keeps jsPsych's default
-   shrink-to-fit/centered behavior. */
+
 .jspsych-content.content-align-top {
   width: 100%;
   margin: 0 auto;
@@ -29,27 +15,27 @@ body {
   text-align: center;
 }
 .box p {
-  font-size: 1.0625rem;
+  font-size: 1.2;
   line-height: 1.7;
   margin: 0.625rem 0;
 }
 .box h1 {
-  font-size: 1.625rem;
-  margin-bottom: 0.875rem;
+  font-size: 2rem;
+  margin-bottom: 2rem;
 }
 .box h2 {
-  font-size: 1.625rem;
-  margin-bottom: 0.75rem;
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
 }
 /* Muted fine-print below main content (consent notice, disclaimers) */
 .note {
-  font-size: 0.875rem;
-  color: #888;
+  font-size: 1rem;
+  color: #4b5563;
   margin-top: 1.125rem;
 }
 /* Subtitle below a heading before survey sections */
 .survey-intro {
-  color: #555;
+  color: #4b5563;
   margin-bottom: 2.875rem;
 }
 /* Left-aligned variant of .box for survey/form screens */
@@ -69,7 +55,7 @@ body {
 /* ---- Stage label + text (prime "prepare for the next task" /
    feedback "your response has been recorded" screens) ---- */
 .stage-label {
-  font-size: 0.8125rem;
+  font-size: 1.2rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: #111;
@@ -80,27 +66,15 @@ body {
   text-transform: none;
 }
 .stage-text {
-  font-size: 1.3125rem;
+  font-size: 2rem;
   font-weight: 600;
   color: #111;
   line-height: 1.6;
-  max-width: 40rem;
+  max-width: 70rem;
   margin: 0 auto 1.875rem;
 }
-/* instructionsOnPrime: mechanic reminder shown under the prime text for
-   timed tasks (P-3, CF-1) so the clock isn't already running the first
-   time the participant reads it. */
-.stage-instructions {
-  font-size: 0.9375rem;
-  color: #666;
-  max-width: 36rem;
-  margin: 0 auto 1.875rem;
-}
-
-/* ---- Timeout popup (shown briefly on the feedback screen when a timed
-   task's limit is reached — see showTimeoutPopup in screen_helpers.js) ----
-   Fixed to the viewport so it overlays near the top without affecting the
-   layout/height of the screen it's shown on. */
+/* ---- Timeout popup (shown briefly on the feedback screen when a timed ---- */
+/* task's limit is reached — see showTimeoutPopup in screen_helpers.js) */
 .timeout-popup {
   position: fixed;
   left: 50%;
@@ -112,16 +86,14 @@ body {
   color: #fff;
   border-radius: 0.625rem;
   text-align: center;
-  font-size: 0.9375rem;
+  font-size: 1rem;
   font-weight: 600;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.18);
   z-index: 20;
 }
 
-/* ---- Debug panel (dev-only trial info on prime/feedback screens) ----
-   Toggle visibility with SHOW_DEBUG_INFO in js/state.js. Fixed to the
-   viewport so it overlays near the bottom-center without affecting the
-   layout/height of the screen it's shown on. */
+/* ---- Debug panel (dev-only trial info on prime/feedback screens) ---- */
+/* Toggle visibility with SHOW_DEBUG_INFO in js/state.js. */
 .debug-panel {
   position: fixed;
   left: 50%;
@@ -133,19 +105,20 @@ body {
   border-radius: 0.625rem;
   text-align: left;
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   line-height: 1.7;
   color: #333;
-  z-index: 10;
+  z-index: -10;
   overflow-wrap: break-word;
   max-height: 40vh;
   overflow-y: auto;
 }
 
-/* Pale/subtle look for a jsPsych button-response button once jsPsych disables
-   it after a click (see after_response in plugin-html-button-response.js).
-   Overrides jspsych.css's default disabled style, which is closer to full
-   contrast than we want here. */
+.jspsych-btn {
+  font-size: 1.2rem;
+}
+
+/* Pale/subtle look for a jsPsych button-response button once jsPsych disables it */
 .jspsych-btn:disabled {
   background-color: #fcfcfc;
   color: #bbb;
@@ -161,13 +134,13 @@ body {
   text-align: center;
 }
 .task-label {
-  font-size: 0.875rem;
-  color: #888;
-  margin-bottom: 0.375rem;
+  font-size: 1.2rem;
+  color: #111;
+  margin-bottom: 2.5rem;
   letter-spacing: 0.04em;
 }
 .task-prompt {
-  font-size: 1.25rem;
+  font-size: 2rem;
   font-weight: 600;
   margin-bottom: 1.125rem;
   color: #111;
@@ -182,8 +155,8 @@ body {
   margin: 1.25rem 0;
 }
 .rot-pair img {
-  max-height: 32.5rem;
-  max-width: 40rem;
+  max-height: 42.5rem;
+  max-width: 50rem;
 }
 .rot-choices {
   display: flex;
@@ -201,14 +174,14 @@ body {
 }
 .rot-warn {
   color: #c0392b;
-  font-size: 0.875rem;
+  font-size: 0.8rem;
   margin-top: 0.5rem;
   display: none;
 }
 .rot-next-btn {
   margin-top: 0.875rem;
   padding: 0.5625rem 2rem;
-  font-size: 0.9375rem;
+  font-size: 1rem;
   background: #4a90d9;
   color: #fff;
   border: none;
@@ -218,7 +191,7 @@ body {
 
 /* ---- Feedback screen ---- */
 #feedback-screen {
-  max-width: 38.75rem;
+  max-width: 70rem;
   margin: 5rem auto;
   padding: 2.25rem 2.75rem;
   text-align: center;
@@ -238,13 +211,13 @@ body {
   text-align: left;
 }
 .probe-heading {
-  font-size: 1.3125rem;
+  font-size: 1.8rem;
   font-weight: 600;
   color: #111;
-  margin: 0 0 0.375rem;
+  margin: 0 0 1rem;
 }
 .probe-subtitle {
-  font-size: 0.875rem;
+  font-size: 1.2rem;
   color: #888;
   margin: 0 0 1.375rem;
 }
@@ -273,14 +246,14 @@ body {
 }
 .probe-num {
   display: block;
-  font-size: 0.9375rem;
+  font-size: 1rem;
   font-weight: 600;
   color: #222;
 }
 .probe-lbl {
   display: block;
-  font-size: 0.6875rem;
-  color: #888;
+  font-size: 0.8rem;
+  color: #6c757d;
   font-weight: 400;
   margin-top: 0.1875rem;
   white-space: nowrap;
@@ -333,7 +306,7 @@ body {
   gap: 0.5rem;
 }
 .probe-optional-tag {
-  font-size: 0.875rem;
+  font-size: 1.2rem;
   font-weight: 400;
   color: #999;
 }
@@ -426,12 +399,36 @@ body {
   color: #fff;
 }
 
-/* ---- Emotion probe v3 (big/small toggle buttons, probe_screen3.js) ---- */
+/* ---- Emotion probe v3 (big/small toggle buttons, probe_screen3.js) ---- *
+   Unlike v1/v2, v3 skips the content-align-top opt-in (see probe_screen3.js)
+   so its outer box falls back to jsPsych's own default: a shrink-to-fit
+   box centered via margin:auto inside .jspsych-content-wrapper. These rules
+   center everything INSIDE that box too — scoped to .probe-screen-v3 so
+   v1/v2 (which still want left-aligned content) are unaffected. */
+#probe-screen.probe-screen-v3 {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+.probe-screen-v3 .probe-heading-inline {
+  justify-content: center;
+}
+.probe-screen-v3 .probe3-grid {
+  justify-content: center;
+}
+/* Primary emotion row (5 buttons) must stay on one line — shrink the
+   buttons (flex-shrink already allows this via .probe3-btn-large's
+   `flex: 1 1 8.75rem`) instead of letting the 5th one wrap onto its own
+   full-width row. Compound selector (not source order) beats .probe3-grid's
+   own flex-wrap:wrap below, which is equal specificity and comes later. */
+.probe3-grid.probe3-grid-primary {
+  flex-wrap: nowrap;
+}
 .probe3-grid {
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
-  margin: 0.875rem 0 1.625rem;
+  margin: 0.875rem 0 4rem;
 }
 .probe3-btn {
   font-family: inherit;
@@ -453,13 +450,13 @@ body {
 .probe3-btn-large {
   flex: 1 1 8.75rem;
   padding: 1.375rem 0.625rem;
-  font-size: 1.0625rem;
+  font-size: 1.2rem;
   font-weight: 600;
 }
 .probe3-btn-small {
   flex: 0 1 auto;
   padding: 0.625rem 1.125rem;
-  font-size: 0.875rem;
+  font-size: 1rem;
   font-weight: 500;
 }
 
@@ -529,8 +526,8 @@ body {
 
 /* ---- Task instructions line (shown below stimulus, above input) ---- */
 .task-instructions {
-  font-size: 0.9375rem;
-  color: #555;
+  font-size: 1.2rem;
+  color: #111;
   margin: 0.625rem 0 1.125rem;
 }
 
@@ -548,7 +545,7 @@ body {
   margin: 1rem auto;
 }
 .mr-options {
-  font-size: 0.875rem;
+  font-size: 1rem;
   color: #666;
   margin: 0.375rem 0 0.75rem;
   letter-spacing: 0.06em;
@@ -568,12 +565,12 @@ body {
   align-items: center;
 }
 .iqa-img {
-  max-width: 27.5rem;
-  max-height: 23.75rem;
+  max-width: 44rem;
+  max-height: 40.25rem;
   display: block;
 }
 .iqa-img-label {
-  font-size: 0.8125rem;
+  font-size: 0.875rem;
   color: #888;
   margin-top: 0.375rem;
 }
@@ -629,7 +626,7 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 0.375rem;
-  font-size: 1rem;
+  font-size: 1.2rem;
   font-weight: 600;
   color: #333;
   cursor: pointer;
@@ -641,14 +638,7 @@ body {
   accent-color: #4a90d9;
 }
 
-/* ---- P-3 Identical Pictures (stacked rows, right-justified) ---- *
-   Row images run up to ~1480px native (see p3_subbank.js STIMULI note) —
-   wider than #task-screen (~780px) — so task_p3.js scales each row DOWN
-   to fit (via `zoom`, never clipped: the participant needs to see the
-   target and all five alternatives). The radio strip is then sized in JS
-   to match that row's RENDERED (post-scale) width, so five equidistant
-   slots track the image's right edge even though source rows aren't
-   consistently cropped — see the LAYOUT NOTE in task_p3.js. */
+/* ---- P-3 Identical Pictures (stacked rows, right-justified) ---- */
 .p3-block {
   display: flex;
   flex-direction: column;
@@ -656,10 +646,7 @@ body {
   margin: 0.75rem auto 0;
   width: 100%;
 }
-/* width:100% (not shrink-to-fit) is load-bearing: a flex column child
-   with align-items:flex-end sizes to its own content, and an unscaled
-   native-size row image would balloon the row — and the whole page —
-   past #task-screen's width before task_p3.js gets a chance to shrink it. */
+
 .p3-row {
   display: flex;
   flex-direction: column;

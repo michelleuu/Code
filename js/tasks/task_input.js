@@ -1,10 +1,4 @@
-import {
-  session,
-  trial,
-  stageData,
-  activeTracking,
-  SKIP_WEBGAZER,
-} from "../state.js";
+import { session, trial, stageData, activeTracking } from "../state.js";
 import { makeResponseTracker } from "../response_tracker.js";
 import {
   startStageTracking,
@@ -81,14 +75,6 @@ export function createTaskInput() {
       },
     ],
     button_label: "Submit",
-    extensions: SKIP_WEBGAZER
-      ? []
-      : [
-          {
-            type: jsPsychExtensionWebgazer,
-            params: { targets: ["#task-screen"] },
-          },
-        ],
     on_load: function () {
       startStageTracking("task", stageData.task.moves, stageData.task.clicks);
       startKeyTracking();

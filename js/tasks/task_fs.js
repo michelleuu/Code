@@ -1,10 +1,4 @@
-import {
-  session,
-  trial,
-  stageData,
-  activeTracking,
-  SKIP_WEBGAZER,
-} from "../state.js";
+import { session, trial, stageData, activeTracking } from "../state.js";
 import { makeResponseTracker } from "../response_tracker.js";
 import {
   startStageTracking,
@@ -43,14 +37,6 @@ export function createTaskChoiceFS() {
     // jsPsych v7: choices are the button label HTML; index = response value
     choices: DIRS.map((d) => arrowSVG(d.code, 32)),
     trial_duration: FS_TIME_LIMIT_MS,
-    extensions: SKIP_WEBGAZER
-      ? []
-      : [
-          {
-            type: jsPsychExtensionWebgazer,
-            params: { targets: ["#task-screen"] },
-          },
-        ],
     on_load: function () {
       startStageTracking("task", stageData.task.moves, stageData.task.clicks);
       startKeyTracking();

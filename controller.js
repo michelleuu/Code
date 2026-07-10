@@ -224,9 +224,29 @@ function selectInduction(participant, pool, phase) {
     if (!candidates.length) continue;
 
     // 3. score feasible candidates; soften under load happens in chooseVariant()
-    const best = candidates
-      .map((x) => ({ ...x, s: scoreCandidate(x.c, participant, pool, phase) }))
-      .sort((a, b) => b.s - a.s)[0];
+    // ---- ORIGINAL CODE ----
+    // const best = candidates
+    //   .map((x) => ({ ...x, s: scoreCandidate(x.c, participant, pool, phase) }))
+    //   .sort((a, b) => b.s - a.s)[0];
+    //
+    // ---- Bug fix: ----
+    // If multiple tasks have the same highest score, don't always choose the
+    // one that appears first in TRIAL_BANK. Instead, randomly select one of
+    // the tied tasks so every equally scored candidate has a fair chance.
+
+    // Score each candidate based on the current participant state.
+    const scored = candidates.map((x) => ({
+      ...x,
+      s: scoreCandidate(x.c, participant, pool, phase),
+    }));
+
+    // Find the highest score among all candidates.
+    const maxScore = Math.max(...scored.map((x) => x.s));
+    // Collect every candidate
+    const tiedForBest = scored.filter((x) => x.s === maxScore);
+
+    // Randomly choose one so ties are resolved fairly
+    const best = tiedForBest[Math.floor(Math.random() * tiedForBest.length)];
 
     return realize(best.c, participant, pool, phase, {
       poolDeficit: deficitSnapshot(pool),

@@ -1,63 +1,107 @@
 <!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8" />
-<title>P-3 layout demo — all 96 items</title>
-<link rel="stylesheet" href="../css/experiment.css" />
-<style>
-  /* demo-page chrome only — .p3-row / .p3-row-image / .p3-row-radios below
+  <head>
+    <meta charset="UTF-8" />
+    <title>P-3 layout demo — all 96 items</title>
+    <link rel="stylesheet" href="../css/experiment.css" />
+    <style>
+      /* demo-page chrome only — .p3-row / .p3-row-image / .p3-row-radios below
      come straight from experiment.css, so this IS what production renders. */
-  body { background: #f4f4f4; padding: 1.5rem; }
-  h1 { font-size: 1.25rem; margin: 0 0 0.25rem; }
-  p.sub { color: #666; font-size: 0.875rem; margin: 0 0 1rem; max-width: 50rem; }
-  #controls { margin-bottom: 1rem; }
-  #controls button {
-    padding: 0.5rem 1rem; font-size: 0.875rem; cursor: pointer;
-    border: 1px solid #ccc; border-radius: 0.375rem; background: #fff;
-  }
-  /* mock-up of the real task's prime/task-instructions text, for context —
+      body {
+        background: #f4f4f4;
+        padding: 1.5rem;
+      }
+      h1 {
+        font-size: 1.25rem;
+        margin: 0 0 0.25rem;
+      }
+      p.sub {
+        color: #666;
+        font-size: 0.875rem;
+        margin: 0 0 1rem;
+        max-width: 50rem;
+      }
+      #controls {
+        margin-bottom: 1rem;
+      }
+      #controls button {
+        padding: 0.5rem 1rem;
+        font-size: 0.875rem;
+        cursor: pointer;
+        border: 1px solid #ccc;
+        border-radius: 0.375rem;
+        background: #fff;
+      }
+      /* mock-up of the real task's prime/task-instructions text, for context —
      not part of .p3-row, just this demo page's chrome */
-  #task-context {
-    background: #fff; border-radius: 0.5rem; padding: 1rem 1.25rem;
-    margin-bottom: 1.25rem; font-size: 0.9375rem; color: #333; max-width: 50rem;
-  }
-  #task-context .kv { font-size: 0.8125rem; color: #888; margin-top: 0.5rem; }
-  #task-context .kv b { color: #555; }
-  .demo-item {
-    background: #fff; border-radius: 0.5rem; margin-bottom: 0.75rem;
-    padding: 0.75rem 1rem 1rem; box-shadow: 0 1px 3px rgba(0,0,0,0.08);
-  }
-  .demo-label { font-size: 0.8125rem; font-weight: 700; color: #333; margin-bottom: 0.375rem; }
-  .demo-label .hint { font-weight: 400; color: #999; margin-left: 0.5rem; }
-  #task-screen { max-width: 48.75rem; padding: 0; margin: 0; }
-</style>
-</head>
-<body>
-  <h1>P-3 layout demo — all 96 items</h1>
-  <p class="sub">
-    Each row below uses the exact same markup/CSS/scaling as the real task
-    (task_p3.js + .p3-row rules in experiment.css): image right-justified,
-    five radio buttons equidistant underneath. Scroll through and note which
-    P3-N.png need white space added/cropped on the right so the radios line
-    up with the five answer figures. Edit the PNG on disk, then click
-    "Reload images" (or refresh) to see the result — no server restart needed.
-  </p>
+      #task-context {
+        background: #fff;
+        border-radius: 0.5rem;
+        padding: 1rem 1.25rem;
+        margin-bottom: 1.25rem;
+        font-size: 0.9375rem;
+        color: #333;
+        max-width: 50rem;
+      }
+      #task-context .kv {
+        font-size: 0.8125rem;
+        color: #888;
+        margin-top: 0.5rem;
+      }
+      #task-context .kv b {
+        color: #555;
+      }
+      .demo-item {
+        background: #fff;
+        border-radius: 0.5rem;
+        margin-bottom: 0.75rem;
+        padding: 0.75rem 1rem 1rem;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+      }
+      .demo-label {
+        font-size: 0.8125rem;
+        font-weight: 700;
+        color: #333;
+        margin-bottom: 0.375rem;
+      }
+      .demo-label .hint {
+        font-weight: 400;
+        color: #999;
+        margin-left: 0.5rem;
+      }
+      #task-screen {
+        max-width: 48.75rem;
+        padding: 0;
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>P-3 layout demo — all 96 items</h1>
+    <p class="sub">
+      Each row below uses the exact same markup/CSS/scaling as the real task
+      (task_p3.js + .p3-row rules in experiment.css): image right-justified,
+      five radio buttons equidistant underneath. Scroll through and note which
+      P3-N.png need white space added/cropped on the right so the radios line up
+      with the five answer figures. Edit the PNG on disk, then click "Reload
+      images" (or refresh) to see the result — no server restart needed.
+    </p>
 
-  <div id="task-context">Loading task context…</div>
+    <div id="task-context">Loading task context…</div>
 
-  <div id="controls"><button id="reload">Reload images</button></div>
-  <div id="list"></div>
+    <div id="controls"><button id="reload">Reload images</button></div>
+    <div id="list"></div>
 
-<script type="module">
-import { P3_SUBBANK, P3_CALIBRATION } from "../stimuli/p3_bank.js";
+    <script type="module">
+      import { P3_SUBBANK, P3_CALIBRATION } from "../stimuli/p3_bank.js";
 
-const TOTAL = 96;
-const IMG_DIR = "../stimuli/ets/P3";
+      const TOTAL = 96;
+      const IMG_DIR = "../stimuli/ets/P3";
 
-// Pull instructions/timing straight from the real bank so this can't drift
-// out of sync with what participants actually see.
-const sample = P3_SUBBANK[0];
-document.getElementById("task-context").innerHTML = `
+      // Pull instructions/timing straight from the real bank so this can't drift
+      // out of sync with what participants actually see.
+      const sample = P3_SUBBANK[0];
+      document.getElementById("task-context").innerHTML = `
   <div><b>Instructions shown to participants:</b> "${sample.instructions}"</div>
   <div class="kv">
     Each row = <b>1 target figure</b> (leftmost — reference only, not a choice)
@@ -71,58 +115,65 @@ document.getElementById("task-context").innerHTML = `
     ${sample.stimulus.block.n} items in this example block, tiers 4/6/8 items.
   </div>`;
 
-function buildRow(id) {
-  const wrap = document.createElement("div");
-  wrap.className = "demo-item";
-  wrap.innerHTML = `
+      function buildRow(id) {
+        const wrap = document.createElement("div");
+        wrap.className = "demo-item";
+        wrap.innerHTML = `
     <div class="demo-label">P3-${id}.png <span class="hint">(target + 5 alternatives)</span></div>
     <div id="task-screen">
       <div class="p3-row" data-row="${id}">
         <div class="p3-row-image"><img src="${IMG_DIR}/P3-${id}.png" alt="P3-${id}"></div>
         <div class="p3-row-radios">
-          ${[1, 2, 3, 4, 5].map((n) => `
+          ${[1, 2, 3, 4, 5]
+            .map(
+              (n) => `
             <label class="p3-radio-label">
               <input type="radio" name="p3_demo_${id}" value="${n}">
-            </label>`).join("")}
+            </label>`,
+            )
+            .join("")}
         </div>
       </div>
     </div>`;
-  return wrap;
-}
+        return wrap;
+      }
 
-// Same sizing logic as task_p3.js on_load: scale the image down to fit
-// #task-screen if it's wider than native, then size the radio strip to
-// ALT_REGION_FRACTION of the image's RENDERED (post-scale) width, right-
-// aligned — leaves the leftmost slice (the target figure's column) empty
-// instead of spreading radios across it. See task_p3.js's LAYOUT NOTE.
-const ALT_REGION_FRACTION = 0.72;
-function sizeRow(row) {
-  const img = row.querySelector(".p3-row-image img");
-  const cell = row.querySelector(".p3-row-image");
-  const radios = row.querySelector(".p3-row-radios");
-  const apply = () => {
-    img.style.zoom = 1;
-    const available = cell.clientWidth;
-    if (img.naturalWidth > available) img.style.zoom = available / img.naturalWidth;
-    radios.style.width = `${img.getBoundingClientRect().width * ALT_REGION_FRACTION}px`;
-  };
-  if (img.complete && img.naturalWidth) apply();
-  else img.addEventListener("load", apply, { once: true });
-}
+      // Same sizing logic as task_p3.js on_load: scale the image down to fit
+      // #task-screen if it's wider than native, then size the radio strip to
+      // ALT_REGION_FRACTION of the image's RENDERED (post-scale) width, right-
+      // aligned — leaves the leftmost slice (the target figure's column) empty
+      // instead of spreading radios across it. See task_p3.js's LAYOUT NOTE.
+      const ALT_REGION_FRACTION = 0.72;
+      function sizeRow(row) {
+        const img = row.querySelector(".p3-row-image img");
+        const cell = row.querySelector(".p3-row-image");
+        const radios = row.querySelector(".p3-row-radios");
+        const apply = () => {
+          img.style.zoom = 1;
+          const available = cell.clientWidth;
+          if (img.naturalWidth > available)
+            img.style.zoom = available / img.naturalWidth;
+          radios.style.width = `${img.getBoundingClientRect().width * ALT_REGION_FRACTION}px`;
+        };
+        if (img.complete && img.naturalWidth) apply();
+        else img.addEventListener("load", apply, { once: true });
+      }
 
-function renderAll(bust) {
-  const list = document.getElementById("list");
-  list.innerHTML = "";
-  for (let id = 1; id <= TOTAL; id++) {
-    const row = buildRow(id);
-    if (bust) row.querySelector("img").src += `?t=${bust}`;
-    list.appendChild(row);
-    sizeRow(row.querySelector(".p3-row"));
-  }
-}
+      function renderAll(bust) {
+        const list = document.getElementById("list");
+        list.innerHTML = "";
+        for (let id = 1; id <= TOTAL; id++) {
+          const row = buildRow(id);
+          if (bust) row.querySelector("img").src += `?t=${bust}`;
+          list.appendChild(row);
+          sizeRow(row.querySelector(".p3-row"));
+        }
+      }
 
-document.getElementById("reload").addEventListener("click", () => renderAll(Date.now()));
-renderAll();
-</script>
-</body>
+      document
+        .getElementById("reload")
+        .addEventListener("click", () => renderAll(Date.now()));
+      renderAll();
+    </script>
+  </body>
 </html>

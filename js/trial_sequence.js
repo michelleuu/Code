@@ -12,8 +12,8 @@ import { createP3Block } from "./tasks/task_p3.js";
 import { createPrimeScreen } from "./screens/prime_screen.js";
 import { createFeedbackScreen } from "./screens/feedback_screen.js";
 // import { createProbeScreen } from "./screens/probe_screen.js";
-import { createProbeScreen } from "./screens/probe_screen2.js";
-//import { createProbeScreen } from "./screens/probe_screen3.js";
+// import { createProbeScreen } from "./screens/probe_screen2.js";
+import { createProbeScreen } from "./screens/probe_screen3.js";
 import { createDerivedDebugScreen } from "./screens/derived_debug_screen.js";
 
 /* ============================================================================
@@ -77,7 +77,11 @@ export function buildTrialSequence(selectionFn) {
       timeline: [taskInput],
       conditional_function: function () {
         const c = currentTask()?.stimulus?.component;
-        return c === "numberSeries" || c === "letterSeries" || c === "matrixReasoning";
+        return (
+          c === "numberSeries" ||
+          c === "letterSeries" ||
+          c === "matrixReasoning"
+        );
       },
     },
     {
@@ -112,7 +116,9 @@ export function buildTrialSequence(selectionFn) {
       // P-3: identical-pictures block, all N items on one invisible timer
       timeline: [p3BlockStart, p3PageNode, p3BlockEnd],
       conditional_function: function () {
-        return currentTask()?.stimulus?.component === "p3IdenticalPicturesBlock";
+        return (
+          currentTask()?.stimulus?.component === "p3IdenticalPicturesBlock"
+        );
       },
     },
   ];

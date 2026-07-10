@@ -85,4 +85,5 @@ export function resetTrialBuffers() {
   trial.blockTotal       = 0;
   trial.taskTimedOut     = false;
   trial.rotItemTimedOut  = false;
+  trial.cf1ItemTimedOut  = false;
 }

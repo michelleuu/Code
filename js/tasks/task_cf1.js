@@ -1,4 +1,4 @@
-import { session, trial, stageData, SKIP_WEBGAZER } from "../state.js";
+import { session, trial, stageData } from "../state.js";
 import {
   startStageTracking,
   stopStageTracking,
@@ -7,6 +7,7 @@ import {
 } from "../tracking.js";
 import { resolveOutcomeFeedback } from "../../controller.js";
 import { currentTask } from "../current_task.js";
+import { showTimeoutPopup } from "../screens/screen_helpers.js";
 
 /* ====================================================================
  * CF-1 Hidden Figures item (ETS Kit)
@@ -89,18 +90,17 @@ export function createCf1Block() {
     trial_duration: function () {
       return currentTask()?.stimulus?.limitMs ?? 90000;
     },
-    extensions: SKIP_WEBGAZER
-      ? []
-      : [
-          {
-            type: jsPsychExtensionWebgazer,
-            params: { targets: ["#task-screen"] },
-          },
-        ],
     on_start: function () {
       selected = null;
     },
     on_load: function () {
+      // The previous item timed out — show the "time's up" popup on this
+      // (the next) item's page instead of waiting for the whole block to
+      // end. Mirrors task_rotation.js's rotItemTimedOut handling.
+      if (trial.cf1ItemTimedOut) {
+        trial.cf1ItemTimedOut = false;
+        showTimeoutPopup();
+      }
       document.querySelectorAll('input[name="cf1_choice"]').forEach((r) => {
         r.addEventListener("change", () => {
           selected = r.value;
@@ -159,6 +159,14 @@ export function createCf1Block() {
         rt: t,
         timedOut: data.response === null,
       });
+      if (data.response === null) {
+        // Last item (or the only item, for a main-bank single trial): no
+        // next item page to show the popup on, so fall back to the
+        // feedback screen. Otherwise, flag it for the next item's on_load.
+        const isLastItem = trial.currentBlockItem === items.length - 1;
+        if (isLastItem) trial.taskTimedOut = true;
+        else trial.cf1ItemTimedOut = true;
+      }
       // per-item real perf, needed for the single-trial (main-bank) case
       trial.currentItemPerf = { correct: isCorrect, rtMs: t };
       trial.currentBlockItem++;

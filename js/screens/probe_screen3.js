@@ -1,4 +1,4 @@
-import { session, trial, clock, SKIP_WEBGAZER } from "../state.js";
+import { session, trial, clock } from "../state.js";
 import { J } from "../utils.js";
 import { onTrialFinish, advancePhase } from "../../controller.js";
 import { PROBES, EMOTIONS } from "../../trial_schema.js";
@@ -17,6 +17,7 @@ const LABEL_OVERRIDES = {
   boredom: "Bored",
   confusion: "Confused",
   anxiety: "Distressed",
+  none: "None of the above",
 };
 
 function capitalize(str) {
@@ -54,7 +55,7 @@ export function renderProbeButtons({
   const noneButton = hasNone ? buildButton("none", true) : "";
 
   return `
-    <div id="probe-screen">
+    <div id="probe-screen" class="probe-screen-v3">
       <h2 class="probe-heading">Which emotions do you feel strongly right now?</h2>
       <p class="probe-subtitle">Select any emotion you feel strongly (5-7 out of 7). Leave the rest unselected.</p>
       <div class="probe3-grid probe3-grid-primary">${primaryButtons}</div>
@@ -91,15 +92,6 @@ export function createProbeScreen() {
       return renderProbeButtons({ primaryEmotions, otherEmotions, hasNone });
     },
     choices: ["Submit"],
-    css_classes: "content-align-top",
-    extensions: SKIP_WEBGAZER
-      ? []
-      : [
-          {
-            type: jsPsychExtensionWebgazer,
-            params: { targets: ["#probe-screen"] },
-          },
-        ],
     on_load: function () {
       // "None of the above" is mutually exclusive with every other button:
       // selecting it clears all other selections, and selecting any other

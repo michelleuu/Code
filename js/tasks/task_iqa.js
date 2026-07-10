@@ -1,4 +1,4 @@
-import { session, trial, stageData, SKIP_WEBGAZER } from "../state.js";
+import { session, trial, stageData } from "../state.js";
 import {
   startStageTracking,
   stopStageTracking,
@@ -66,14 +66,6 @@ export function createIqaBlock() {
         </div>`;
     },
     choices: ["Left image is lower quality", "Right image is lower quality"],
-    extensions: SKIP_WEBGAZER
-      ? []
-      : [
-          {
-            type: jsPsychExtensionWebgazer,
-            params: { targets: ["#task-screen"] },
-          },
-        ],
     on_finish: function (data) {
       const pairs = currentTask()?.stimulus?.block?.pairs || [];
       const pair = pairs[trial.currentBlockItem];
