@@ -165,6 +165,7 @@ export const framingForDomains = (domains, framing) =>
  * ========================================================================== */
 export const PARTICIPANT_STATE_TEMPLATE = {
   participantId: null,
+  rngState: null, // seeded PRNG state (lazily seeded from participantId on first draw) — makes tie-breaks reproducible on replay
   sco: null, // 1-7 social-comparison orientation (INCOM)
   domainValue: { design: null, media: null, computing: null }, // 1-7 identity / "this is me"
   domainExpectancy: { design: null, media: null, computing: null }, // 1-7 expected performance (intake + calibration)

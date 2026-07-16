@@ -22,12 +22,21 @@ export function createPrimeScreen() {
         (p) => p.id === trial.currentSelection.primeId,
       );
       const primeText = primeObj?.text || "";
+      const tieBreak = trial.currentSelection?.reason?.tieBreak;
       const debugPanel = renderDebugPanel([
         [
           ["BankId", trial.currentSelection?.bankId ?? ""],
           ["domainUsed", trial.currentSelection?.domainUsed ?? ""],
           ["targetEmotion", trial.currentSelection?.targetEmotion ?? ""],
           ["primeId", trial.currentSelection?.primeId ?? ""],
+        ],
+        [
+          [
+            "tieBreak",
+            tieBreak
+              ? `${tieBreak.tiedCount} tied [${tieBreak.tiedBankIds.join(", ")}] → picked #${tieBreak.chosenIndex} (rng=${tieBreak.rngValue.toFixed(4)})`
+              : "no tie",
+          ],
         ],
         [
           [

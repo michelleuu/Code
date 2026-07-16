@@ -224,33 +224,28 @@ function selectInduction(participant, pool, phase) {
     if (!candidates.length) continue;
 
     // 3. score feasible candidates; soften under load happens in chooseVariant()
-    // ---- ORIGINAL CODE ----
-    // const best = candidates
-    //   .map((x) => ({ ...x, s: scoreCandidate(x.c, participant, pool, phase) }))
-    //   .sort((a, b) => b.s - a.s)[0];
-    //
-    // ---- Bug fix: ----
-    // If multiple tasks have the same highest score, don't always choose the
-    // one that appears first in TRIAL_BANK. Instead, randomly select one of
-    // the tied tasks so every equally scored candidate has a fair chance.
-
-    // Score each candidate based on the current participant state.
     const scored = candidates.map((x) => ({
       ...x,
       s: scoreCandidate(x.c, participant, pool, phase),
     }));
-
-    // Find the highest score among all candidates.
     const maxScore = Math.max(...scored.map((x) => x.s));
-    // Collect every candidate
     const tiedForBest = scored.filter((x) => x.s === maxScore);
-
-    // Randomly choose one so ties are resolved fairly
-    const best = tiedForBest[Math.floor(Math.random() * tiedForBest.length)];
+    // Ties resolve via a seeded PRNG (participant.rngState), not Math.random(),
+    // so the choice is still reproducible when a session is replayed from the
+    // same participantId + call order (see header note on determinism).
+    const tieBreak =
+      tiedForBest.length > 1 ? seededTieBreak(tiedForBest, participant) : null;
+    const best = tieBreak ? tieBreak.picked : tiedForBest[0];
 
     return realize(best.c, participant, pool, phase, {
       poolDeficit: deficitSnapshot(pool),
       gatesPassed: passedGates(best.c, participant),
+      tieBreak: tieBreak && {
+        tiedCount: tieBreak.tiedCount,
+        tiedBankIds: tieBreak.tiedBankIds,
+        chosenIndex: tieBreak.chosenIndex,
+        rngValue: tieBreak.rngValue,
+      },
     });
   }
 
@@ -635,8 +630,39 @@ function pickPrimeId(task, domain, emotion) {
 function chooseVariant(c, s) {
   // PROVISIONAL only — authoritative softening + SCO pick happen in resolveOutcomeFeedback()
   // once the real outcome is known. (Cross-emotion fallback shame->guilt is a SELECTION-time
-  // choice, not done here.) TODO seeded tie-break.
+  // choice, not done here.) c.variant is already pinned by enumerateCandidates(); the
+  // score-tie case is handled by seededTieBreak() in selectInduction(), not here.
   return c.variant;
+}
+
+/* ---- Seeded PRNG — lazily seeded per-participant so tie-breaks (and any other
+ * randomness) are reproducible on replay from the same participantId + call
+ * order, matching the file-header determinism guarantee. Mutates s.rngState. */
+function hashSeed(str) {
+  let h = 1779033703 ^ str.length;
+  for (let i = 0; i < str.length; i++) {
+    h = Math.imul(h ^ str.charCodeAt(i), 3432918353);
+    h = (h << 13) | (h >>> 19);
+  }
+  return (h ^ (h >>> 16)) >>> 0 || 1; // avoid a 0 seed (mulberry32 degenerates)
+}
+function nextRandom(s) {
+  if (s.rngState == null) s.rngState = hashSeed(String(s.participantId ?? "seed"));
+  let t = (s.rngState = (s.rngState + 0x6d2b79f5) | 0);
+  t = Math.imul(t ^ (t >>> 15), t | 1);
+  t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+  return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+}
+function seededTieBreak(tied, s) {
+  const rngValue = nextRandom(s);
+  const chosenIndex = Math.floor(rngValue * tied.length);
+  return {
+    picked: tied[chosenIndex],
+    tiedCount: tied.length,
+    tiedBankIds: tied.map((x) => x.c.task.id),
+    chosenIndex,
+    rngValue,
+  };
 }
 
 // TODO stubs (return safe defaults so the skeleton runs):
