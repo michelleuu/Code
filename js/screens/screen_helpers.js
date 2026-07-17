@@ -7,7 +7,7 @@ import { SHOW_DEBUG_INFO } from "../state.js";
 
 // How long the prime/feedback "Continue"-style button stays hidden before
 // appearing, forcing participants to spend at least this long on the screen.
-export const CONTINUE_DELAY_MS = 10000; // display for 10 sec
+export const CONTINUE_DELAY_MS = 1000; // display for 10 sec
 
 // Hides the jsPsych button-response button and shows a "Preparing for next
 // task..." message in its place (same spot in the layout) for
@@ -59,5 +59,5 @@ export function renderDebugPanel(rows) {
       .map(([label, value]) => `<strong>${label}:</strong> ${value}`)
       .join(", "),
   );
-  return `<div class="debug-panel">${lines.map((l) => `<div>${l}</div>`).join("")}</div>`;
+  return `<div class="debug-panel"><div class="debug-panel-inner">${lines.map((l) => `<div>${l}</div>`).join("")}</div></div>`;
 }

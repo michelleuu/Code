@@ -3,7 +3,7 @@ export const SKIP_WEBGAZER = true;
 
 /* DEV TOGGLE: set false to hide the trial-info debug panel on prime/feedback
    screens before running real participants. */
-export const SHOW_DEBUG_INFO = true;
+export const SHOW_DEBUG_INFO = false;
 
 /* Session-level state — persists across trials */
 export const session = {

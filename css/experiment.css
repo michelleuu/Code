@@ -8,6 +8,23 @@ body {
   width: 100%;
   margin: 0 auto;
 }
+/* Override jsPsych's flex defaults — flex items default to min-width: auto,
+   which lets a long unbroken string (e.g. our JSON.stringify'd debug-panel
+   content, no spaces between tokens) force the whole row wider than the
+   viewport in Safari even with overflow-wrap set. */
+.jspsych-content-wrapper,
+.jspsych-content {
+  min-width: 0;
+}
+/* Positioning context for .debug-panel (below). .jspsych-content-wrapper
+   centers itself vertically via margin: auto against the leftover space in
+   body's flex column — if the panel were in-flow, growing it would shrink
+   that leftover space and drag the centered text/button upward with it.
+   Anchoring the panel via position: absolute keeps it fully outside that
+   height calculation, so it can never move anything above it. */
+.jspsych-content {
+  position: relative;
+}
 .box {
   max-width: 51.25rem;
   margin: auto;
@@ -95,11 +112,28 @@ body {
 /* ---- Debug panel (dev-only trial info on prime/feedback screens) ---- */
 /* Toggle visibility with SHOW_DEBUG_INFO in js/state.js. */
 .debug-panel {
-  position: fixed;
+  /* Placed via `prompt` (see prime_screen.js etc.), so it's already last in
+     the DOM, after the button. position: absolute + top: 100% then anchors
+     it right below .jspsych-content's real (panel-excluded) height, so it
+     renders after the button without being part of the box that gets
+     vertically centered — see the .jspsych-content comment above.
+     This outer box is just a positioning/spacing shell — see .debug-panel-inner
+     for the visible box. A scroll container's scrollHeight is defined by its
+     descendants' bottom BORDER edges, never their margins, so trailing space
+     after the panel has to be real padding on whichever box defines that
+     bottom-most edge (this one) — margin here (or padding on body) is silently
+     excluded from the scrollable area and never becomes reachable/visible. */
+  position: absolute;
+  top: 100%;
   left: 50%;
-  bottom: 1.75rem;
   transform: translateX(-50%);
   width: min(90%, 48.75rem);
+  max-width: 100%;
+  min-width: 0;
+  margin-top: 1.75rem;
+  padding-bottom: 1.75rem;
+}
+.debug-panel-inner {
   padding: 0.875rem 1.125rem;
   background: #f0f0f0;
   border-radius: 0.625rem;
@@ -108,14 +142,15 @@ body {
   font-size: 0.8rem;
   line-height: 1.7;
   color: #333;
-  z-index: -10;
-  overflow-wrap: break-word;
+  overflow-wrap: anywhere;
+  word-break: break-word;
   max-height: 40vh;
   overflow-y: auto;
 }
 
 .jspsych-btn {
   font-size: 1.2rem;
+  margin-bottom: 5rem;
 }
 
 /* Pale/subtle look for a jsPsych button-response button once jsPsych disables it */

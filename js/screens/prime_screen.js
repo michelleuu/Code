@@ -22,8 +22,19 @@ export function createPrimeScreen() {
         (p) => p.id === trial.currentSelection.primeId,
       );
       const primeText = primeObj?.text || "";
+      return `
+        <div id="prime-screen">
+          <p class="stage-label">Next task</p>
+          ${primeText ? `<p class="stage-text">${primeText}</p>` : ""}
+        </div>`;
+    },
+    choices: ["Start task"],
+    // Rendered via `prompt`, not inline in `stimulus` — jsPsych appends prompt
+    // HTML after the button group, so the panel lands after it in normal flow
+    // without ever affecting the position of the text/button above it.
+    prompt: function () {
       const tieBreak = trial.currentSelection?.reason?.tieBreak;
-      const debugPanel = renderDebugPanel([
+      return renderDebugPanel([
         [
           ["BankId", trial.currentSelection?.bankId ?? ""],
           ["domainUsed", trial.currentSelection?.domainUsed ?? ""],
@@ -45,14 +56,7 @@ export function createPrimeScreen() {
           ],
         ],
       ]);
-      return `
-        <div id="prime-screen">
-          <p class="stage-label">Next task</p>
-          ${primeText ? `<p class="stage-text">${primeText}</p>` : ""}
-          ${debugPanel}
-        </div>`;
     },
-    choices: ["Start task"],
     // No webgazer extension or mouse/click tracking here — nothing is logged
     // during the prime screen.
     on_load: function () {

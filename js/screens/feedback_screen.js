@@ -22,7 +22,18 @@ export function createFeedbackScreen() {
       // variant cleared the gates (honestFallback) — both cases show label only.
       const d = trial.currentDisplayed;
       const framedText = d && !d.honestFallback ? d.framedText : null;
-      const debugPanel = renderDebugPanel([
+      return `
+        <div id="feedback-screen">
+          <p class="stage-label">Your response has been recorded.</p>
+          ${framedText ? `<p class="stage-text">${framedText}</p>` : ""}
+        </div>`;
+    },
+    choices: ["Next task"],
+    // Rendered via `prompt`, not inline in `stimulus` — see prime_screen.js
+    // for why (jsPsych appends prompt HTML after the button group).
+    prompt: function () {
+      const d = trial.currentDisplayed;
+      return renderDebugPanel([
         [
           ["BankId", trial.currentSelection?.bankId ?? ""],
           ["domainUsed", trial.currentSelection?.domainUsed ?? ""],
@@ -43,14 +54,7 @@ export function createFeedbackScreen() {
           ["total", trial.currentRealPerf?.total ?? ""],
         ],
       ]);
-      return `
-        <div id="feedback-screen">
-          <p class="stage-label">Your response has been recorded.</p>
-          ${framedText ? `<p class="stage-text">${framedText}</p>` : ""}
-          ${debugPanel}
-        </div>`;
     },
-    choices: ["Next task"],
     extensions: SKIP_WEBGAZER
       ? []
       : [

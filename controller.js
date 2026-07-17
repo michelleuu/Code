@@ -638,6 +638,7 @@ function chooseVariant(c, s) {
 /* ---- Seeded PRNG — lazily seeded per-participant so tie-breaks (and any other
  * randomness) are reproducible on replay from the same participantId + call
  * order, matching the file-header determinism guarantee. Mutates s.rngState. */
+// Turn the participant ID into a numeric seed
 function hashSeed(str) {
   let h = 1779033703 ^ str.length;
   for (let i = 0; i < str.length; i++) {
@@ -646,6 +647,7 @@ function hashSeed(str) {
   }
   return (h ^ (h >>> 16)) >>> 0 || 1; // avoid a 0 seed (mulberry32 degenerates)
 }
+// Generate the next reproducible random value.
 function nextRandom(s) {
   if (s.rngState == null) s.rngState = hashSeed(String(s.participantId ?? "seed"));
   let t = (s.rngState = (s.rngState + 0x6d2b79f5) | 0);
@@ -653,6 +655,7 @@ function nextRandom(s) {
   t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
   return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
 }
+// Use value to select one tied candidate and record debug information.
 function seededTieBreak(tied, s) {
   const rngValue = nextRandom(s);
   const chosenIndex = Math.floor(rngValue * tied.length);

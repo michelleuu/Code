@@ -15,8 +15,17 @@ export function createDerivedDebugScreen() {
   const derivedDebugNode = {
     type: jsPsychHtmlButtonResponse,
     stimulus: function () {
+      return `
+        <div id="derived-debug-screen">
+          <p class="stage-label">[Dev only] Derived scoring for this trial.</p>
+        </div>`;
+    },
+    choices: ["Next task"],
+    // Rendered via `prompt`, not inline in `stimulus` — see prime_screen.js
+    // for why (jsPsych appends prompt HTML after the button group).
+    prompt: function () {
       const d = trial.currentDerived || {};
-      const debugPanel = renderDebugPanel([
+      return renderDebugPanel([
         [
           ["feltDominant", d.feltDominant ?? ""],
           ["confirmed", d.confirmed ?? ""],
@@ -26,13 +35,7 @@ export function createDerivedDebugScreen() {
         ],
         [["derived", J(d)]],
       ]);
-      return `
-        <div id="derived-debug-screen">
-          <p class="stage-label">[Dev only] Derived scoring for this trial.</p>
-          ${debugPanel}
-        </div>`;
     },
-    choices: ["Next task"],
     data: function () {
       return { phase: "derived_debug" };
     },
