@@ -189,6 +189,7 @@ export const PARTICIPANT_STATE_TEMPLATE = {
     recentModalities: [], // for ANTI_STACK
     recentDomains: [], // for ANTI_STACK
     usedStimulusIds: [], // single-shot enforcement (on STIMULUS, not framing id)
+    usedCalibrationIds: [], // calibration tasks already served, so retries/repeats don't reuse the same block
     referentClaims: {}, // {referent: "competent"|"weak"} norm-coherence (OPEN DECISION)
     negLoadAtClose: null, // snapshot of cap usage at the main->close boundary
   },

@@ -7,6 +7,21 @@ import {
   showTimeoutPopup,
 } from "./screen_helpers.js";
 
+// Real (undeceived) result text — shown whenever there's no fabricated framing
+// to display: calibration (honestFeedback: true skips resolveOutcomeFeedback
+// entirely) and the honestFallback case (no framed variant cleared the gates).
+// Per the design doc, both cases "degrade to honest feedback" rather than
+// showing nothing.
+function honestFeedbackText(perf) {
+  if (!perf || perf.correct == null || perf.total == null) return null;
+  if (perf.total <= 1) {
+    return perf.correct >= 1
+      ? "Your response was correct."
+      : "Your response was incorrect.";
+  }
+  return `You answered ${perf.correct} out of ${perf.total} items correctly.`;
+}
+
 /* ====================================================================
  * Feedback screen — shows the (possibly emotion-framed) result after a
  * task, plus a dev-only debug panel of the resolved feedback fields.
@@ -19,13 +34,18 @@ export function createFeedbackScreen() {
     stimulus: function () {
       // d is null during calibration/honest-feedback trials (resolveOutcomeFeedback
       // is only called for non-honestFeedback selections) and whenever no framed
-      // variant cleared the gates (honestFallback) — both cases show label only.
+      // variant cleared the gates (honestFallback) — both cases show the real,
+      // undeceived result instead of a fabricated frame.
       const d = trial.currentDisplayed;
       const framedText = d && !d.honestFallback ? d.framedText : null;
+      const honestText = framedText
+        ? null
+        : honestFeedbackText(trial.currentRealPerf);
       return `
         <div id="feedback-screen">
           <p class="stage-label">Your response has been recorded.</p>
           ${framedText ? `<p class="stage-text">${framedText}</p>` : ""}
+          ${honestText ? `<p class="stage-text">${honestText}</p>` : ""}
         </div>`;
     },
     choices: ["Next task"],
@@ -93,6 +113,9 @@ export function createFeedbackScreen() {
         session._cancelFeedbackGaze = null;
       }
       data.framed_text = trial.currentDisplayed?.framedText || null;
+      data.honest_text = data.framed_text
+        ? null
+        : honestFeedbackText(trial.currentRealPerf);
       data.emotion_shown = trial.currentDisplayed?.emotionShown || null;
       data.pivoted_to = trial.currentDisplayed?.pivotedTo || null;
       data.honest_fallback = trial.currentDisplayed?.honestFallback || false;

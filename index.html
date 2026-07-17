@@ -391,26 +391,25 @@
       stimulus: `
         <div class="box">
           <h2>Practice Round</h2>
-          <p>Before the main study, you will complete a short practice round of 1–3 tasks.</p>
-          <p>Each task is followed by your score and a short emotion check-in. The practice ends once you have completed at least one task successfully, or after 3 tasks at most.</p>
+          <p>Before the main study, you will complete a short practice round of at least 3 tasks.</p>
+          <p>Each task is followed by your score and a short emotion check-in. The practice round continues until you've completed at least 3 tasks and your most recent one was successful.</p>
         </div>`,
       choices: ["Begin Practice"],
       data: { phase: "calibration_intro" },
     });
-
-    var calibTrialIndex = 0;
 
     timeline.push({
       timeline: buildTrialSequence(function () {
         return selectNextTrial(session.participant, session.pool, clock);
       }),
       loop_function: function () {
-        calibTrialIndex++;
-        // Loop continues until the participant passes a calibration task OR maxTasks is reached
-        return (
-          calibTrialIndex < CONFIG.calibration.maxTasks &&
-          session.participant.ledger.lastCalibrationOk === false
-        );
+        // advancePhase() only runs at the start of each trial (against the PREVIOUS
+        // trial's recorded result) — the trial that just finished hasn't been
+        // re-evaluated yet at this point, so re-run it here before deciding whether
+        // to loop. controller.js's phase/CONFIG.calibration.maxTasks rule (>= maxTasks
+        // attempts AND the most recent one passed) is the only exit condition now.
+        advancePhase(session.participant, session.pool, clock);
+        return session.participant.phase !== "main";
       },
     });
 
@@ -422,11 +421,6 @@
           <p>You will complete a series of tasks and receive your results after each one.</p>
         </div>`,
       choices: ["Begin Main Study"],
-      on_finish: function () {
-        if (session.participant.phase === "calibration") {
-          session.participant.phase = "main";
-        }
-      },
       data: { phase: "calibration_complete_notice" },
     });
 
@@ -438,6 +432,11 @@
       }),
       loop_function: function () {
         //mainTrialCount++;
+        // advancePhase() only runs at the start of each trial (against the PREVIOUS
+        // trial's recorded result) — re-run it here so this checks the trial that
+        // JUST finished (main -> positive_close -> debrief), same as the calibration
+        // loop above, instead of a stale phase value.
+        advancePhase(session.participant, session.pool, clock);
         //return session.participant.phase !== "debrief" && mainTrialCount < 10;
         return session.participant.phase !== "debrief";
       },

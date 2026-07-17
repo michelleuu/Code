@@ -472,6 +472,8 @@ export function onTrialFinish(realized, participant, pool, clock) {
     L.lastCalibrationOk =
       roundOutcome(realized.realPerformance, taskById(realized.bankId)) ===
       "correct";
+    L.usedCalibrationIds = L.usedCalibrationIds || [];
+    L.usedCalibrationIds.push(realized.bankId);
     // TODO: refine participant.domainExpectancy + per-task believable band from real perf
     return;
   }
@@ -707,11 +709,19 @@ function snapshot(s) {
     domainValue: { ...s.domainValue },
   };
 }
-function pickCalibrationTask(domain, _tier, _participant) {
+function pickCalibrationTask(domain, _tier, participant) {
   // use the family FAMILIARISATION blocks (honest feedback, reserved stimuli), never an
-  // experimental single-shot task. Prefer one serving the participant's top domain.
+  // experimental single-shot task. Prefer one serving the participant's top domain,
+  // and prefer one not already served this session — every CALIBRATION_BANK entry is
+  // difficultyTier "easy" (no mid/hard calibration content exists to escalate _tier
+  // into), so task VARIETY, not difficulty, is what keeps repeat attempts from just
+  // replaying the same block.
+  const used = participant?.ledger?.usedCalibrationIds || [];
+  const domainMatches = CALIBRATION_BANK.filter((t) => t.domains.includes(domain));
   return (
-    CALIBRATION_BANK.find((t) => t.domains.includes(domain)) ||
+    domainMatches.find((t) => !used.includes(t.id)) ||
+    CALIBRATION_BANK.find((t) => !used.includes(t.id)) ||
+    domainMatches[0] ||
     CALIBRATION_BANK[0] ||
     TRIAL_BANK[0]
   );
